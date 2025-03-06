@@ -1,0 +1,33 @@
+- title: Introduction
+  links:
+    - text: "Equations différentielles ordinaires"
+      href: introduction/edo.qmd
+    - text: "Modèle de Kaplan"
+      href: introduction/kaplan.qmd
+    - text: "Problème aux moindres carrés"
+      href: introduction/moindres_carres.qmd
+
+- title: Equations différentielles ordinaires linéaires
+  links:
+    - text: "Définition"
+      href: edo_affines/definition.qmd
+    - text: "Exponentielle de matrice"
+      href: edo_affines/exponentielle.qmd
+    - text: "Solution générale"
+      href: edo_affines/solution.qmd
+    - text: "Exemples"
+      href: edo_affines/exemples.qmd
+
+- title: Intégration numérique
+  links:
+    - text: "Euler"
+      href: integration_numerique/euler.qmd
+    - text: "Méthodes de Runge-Kutta"
+      href: integration_numerique/runge_kutta.qmd
+
+- title: Dérivées
+  links:
+    - text: "Fonctions dérivées"
+      href: derivees/fonctions.qmd
+    - text: "Equations variationnelles"
+      href: derivees/equations.qmd

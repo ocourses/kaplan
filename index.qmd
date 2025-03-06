@@ -1,0 +1,16 @@
+---
+title-block-banner: true
+title: "EDO"
+subtitle: "Introduction aux équations différentielles ordinaires"
+author: "[Olivier Cots](https://github.com/ocots)"
+date: last-modified
+page-layout: custom
+template-partials: 
+    - assets/html/title-block.html
+css: 
+    - assets/css/title-block.css
+include-in-header:
+    - text: |
+        <script src="assets/js/title-block.js"></script> 
+hide-description: true
+---

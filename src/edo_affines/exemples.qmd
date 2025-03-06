@@ -1,0 +1,114 @@
+---
+title: "Exemples et Exercices"
+page-layout: article
+---
+
+## Exemple 1 : Système Linéaire avec Convergence
+
+Considérons le système linéaire suivant :
+
+$$
+\dot{x}(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+$$
+
+1. **Calcul de l'Exponentielle de la Matrice** :
+   - La matrice $A = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ est diagonale.
+   - L'exponentielle de $A$ est :
+
+     $$
+     e^{tA} = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix}
+     $$
+
+2. **Solution du Système** :
+   - La solution est donnée par :
+
+     $$
+     x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+     $$
+
+3. **Comportement à l'Infini** :
+   - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ car les valeurs propres $-1$ et $-2$ sont négatives.
+
+## Exemple 2 : Système Linéaire avec Divergence
+
+Considérons le système linéaire suivant :
+
+$$
+\dot{x}(t) = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+$$
+
+1. **Calcul de l'Exponentielle de la Matrice** :
+   - La matrice $A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$ a des valeurs propres complexes conjuguées $1 \pm i$.
+   - L'exponentielle de $A$ est :
+
+     $$
+     e^{tA} = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
+     $$
+
+2. **Solution du Système** :
+   - La solution est donnée par :
+
+     $$
+     x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
+     $$
+
+3. **Comportement à l'Infini** :
+   - Lorsque $t \to \infty$, $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
+
+## Exemple 3 : Système Affine
+
+Considérons le système affine suivant :
+
+$$
+\dot{x}(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+$$
+
+1. **Solution du Système** :
+   - La solution est donnée par :
+
+     $$
+     x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+     $$
+
+   - Calculons l'intégrale :
+
+     $$
+     x(t) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+     $$
+
+   - Ce qui donne :
+
+     $$
+     x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
+     $$
+
+2. **Comportement à l'Infini** :
+   - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}$.
+
+# Exercices
+
+1. **Exercice 1** :
+   - Résolvez le système linéaire suivant et déterminez son comportement à l'infini :
+
+     $$
+     \dot{x}(t) = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+     $$
+
+2. **Exercice 2** :
+   - Calculez l'exponentielle de la matrice $A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ et décrivez le comportement du système associé.
+
+3. **Exercice 3** :
+   - Considérez le système affine suivant et trouvez sa solution :
+
+     $$
+     \dot{x}(t) = \begin{pmatrix} -1 & 1 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+     $$
+
+4. **Exercice 4** :
+   - Étudiez le comportement à l'infini du système suivant :
+
+     $$
+     \dot{x}(t) = \begin{pmatrix} 2 & -1 \\ 1 & 2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+     $$
+
+Ces exemples et exercices permettent de pratiquer le calcul de l'exponentielle de matrices et d'analyser le comportement des systèmes dynamiques linéaires.

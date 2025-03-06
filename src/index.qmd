@@ -1,0 +1,12 @@
+---
+title: "Cours Prépa INP"
+subtitle: "Introduction aux équations différentielles ordinaires"
+page-layout: article
+listing:
+  id: src-links
+  template: ../assets/ejs/links.ejs
+  contents: src.yml
+---
+
+::: {#src-links .column-screen-inset-right style="max-width: 850px;"}
+:::

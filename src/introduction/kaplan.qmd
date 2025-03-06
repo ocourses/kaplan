@@ -1,0 +1,56 @@
+---
+title: "Problème de Kaplan"
+page-layout: article
+---
+
+Le problème de Kaplan est un exemple concret d'estimation de paramètres et de la condition initiale dans le cadre d'une équation différentielle ordinaire linéaire vectorielle. Ce problème est souvent utilisé pour illustrer les techniques d'identification de systèmes dynamiques.
+
+## Présentation du Problème
+
+Considérons un système dynamique linéaire décrit par l'équation différentielle suivante :
+
+$$
+x'(t) = Ax(t) + Bu(t), \quad x(0) = x_0
+$$
+
+où :
+
+- $x(t)$ est le vecteur d'état du système à l'instant $t$.
+- $A$ est la matrice des coefficients, représentant la dynamique interne du système.
+- $B$ est une matrice qui modélise l'influence des entrées $u(t)$ sur le système.
+- $u(t)$ est le vecteur des entrées ou des commandes appliquées au système.
+
+## Objectif
+
+L'objectif du problème de Kaplan est d'estimer :
+
+1. **Les paramètres** : Les éléments des matrices $A$ et $B$.
+2. **La condition initiale** : Le vecteur d'état initial $x_0$.
+
+Ces estimations sont basées sur des mesures bruitées de l'état $x(t)$ et des entrées $u(t)$ sur un intervalle de temps donné.
+
+## Importance
+
+La résolution de ce problème est cruciale dans de nombreuses applications pratiques :
+
+- **Contrôle de processus industriels** : Pour ajuster les paramètres d'un système de contrôle afin d'optimiser la production.
+- **Modélisation économique** : Pour estimer les paramètres d'un modèle économique à partir de données historiques.
+- **Biologie** : Pour comprendre les dynamiques de populations ou de réactions biochimiques.
+
+## Exemple Simple
+
+Imaginons un système simple où un objet est soumis à une force de rappel proportionnelle à son déplacement (comme un ressort) et à une force d'amortissement proportionnelle à sa vitesse. L'équation différentielle pourrait être :
+
+$$
+x'(t) = \begin{pmatrix} 0 & 1 \\ -k/m & -c/m \end{pmatrix} x(t) + \begin{pmatrix} 0 \\ 1/m \end{pmatrix} u(t)
+$$
+
+où :
+
+- $x(t) = \begin{pmatrix} x(t) \\ v(t) \end{pmatrix}$ est le vecteur d'état contenant la position $x(t)$ et la vitesse $v(t)$.
+- $k$ est la constante de rappel du ressort.
+- $c$ est le coefficient d'amortissement.
+- $m$ est la masse de l'objet.
+- $u(t)$ est une force externe appliquée.
+
+Dans ce contexte, le problème de Kaplan consisterait à estimer les valeurs de $k$, $c$, et $m$, ainsi que la condition initiale $x(0)$, à partir de mesures de $x(t)$ et $u(t)$.

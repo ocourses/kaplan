@@ -1,0 +1,88 @@
+---
+title: "Méthode d'Euler"
+page-layout: article
+---
+
+La méthode d'Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est particulièrement utile pour les systèmes linéaires et affines.
+
+## Introduction à la Méthode d'Euler
+
+Considérons l'équation différentielle générale :
+
+$$
+\dot{x}(t) = f(t, x(t))
+$$
+
+où $f(t, x(t))$ décrit la dynamique du système. Dans le cas linéaire, $f(t, x(t)) = Ax(t)$, et dans le cas affine, $f(t, x(t)) = Ax(t) + b(t)$.
+
+## Schéma d'Euler
+
+La méthode d'Euler discrétise le temps en utilisant une grille uniforme $t_i = t_0 + ih$, où $h$ est le pas de temps. L'approximation de la solution $x(t_i)$ est notée $x_i$. Le schéma d'Euler est donné par :
+
+$$
+x_{i+1} = x_i + hf(t_i, x_i)
+$$
+
+## Application au Cas Linéaire
+
+Pour un système linéaire $\dot{x}(t) = Ax(t)$, le schéma d'Euler devient :
+
+$$
+x_{i+1} = x_i + hAx_i = (I + hA)x_i
+$$
+
+où $I$ est la matrice identité.
+
+# Consistance, Stabilité et Convergence de la Méthode d'Euler
+
+## Consistance
+
+La consistance d'un schéma numérique mesure à quel point le schéma approche bien l'équation différentielle continue lorsque le pas de temps $h$ tend vers zéro.
+
+Pour la méthode d'Euler appliquée à l'équation différentielle linéaire $\dot{x}(t) = Ax(t)$, considérons l'erreur locale $e_i$ à chaque étape :
+
+$$
+e_i = x(t_{i+1}) - x(t_i) - hAx(t_i)
+$$
+
+En utilisant le développement de Taylor de $x(t)$ autour de $t_i$, nous avons :
+
+$$
+x(t_{i+1}) = x(t_i) + h\dot{x}(t_i) + \frac{h^2}{2}\ddot{x}(\xi)
+$$
+
+pour un certain $\xi \in (t_i, t_{i+1})$. Puisque $\dot{x}(t_i) = Ax(t_i)$, nous obtenons :
+
+$$
+e_i = hAx(t_i) + \frac{h^2}{2}\ddot{x}(\xi) - hAx(t_i) = \frac{h^2}{2}\ddot{x}(\xi)
+$$
+
+Ainsi, l'erreur locale est d'ordre $O(h^2)$, ce qui signifie que la méthode d'Euler est **consistante d'ordre 1**.
+
+## Stabilité
+
+La stabilité d'un schéma numérique garantit que les erreurs d'approximation ne s'amplifient pas au cours du temps. Pour la méthode d'Euler appliquée à $\dot{x}(t) = Ax(t)$, considérons deux suites $(x_i)$ et $(y_i)$ définies par :
+
+$$
+x_{i+1} = x_i + hAx_i
+$$
+
+$$
+y_{i+1} = y_i + hAy_i + \epsilon_i
+$$
+
+où $\epsilon_i$ est une perturbation. Le schéma est dit stable s'il existe une constante $S > 0$ indépendante de $h$ telle que :
+
+$$
+\|x_i - y_i\| \leq S \|x_0 - y_0\| + S \max_{0 \leq j \leq i} \|\epsilon_j\|
+$$
+
+pour tout $i$. Cela signifie que de petites perturbations mènent à de petites erreurs, indépendamment de la subdivision du temps.
+
+## Convergence
+
+La convergence d'un schéma numérique signifie que la solution numérique $x_i$ approche la solution exacte $x(t_i)$ lorsque $h \to 0$.
+
+Pour la méthode d'Euler, la convergence est assurée par la consistance et la stabilité (Théorème de Lax-Richtmyer). Puisque nous avons montré que la méthode d'Euler est consistante d'ordre 1 et stable, elle est également convergente.
+
+En résumé, pour un système linéaire $\dot{x}(t) = Ax(t)$ avec des valeurs propres à parties réelles négatives, la méthode d'Euler est convergente, ce qui signifie que $x_i \to x(t_i)$ lorsque $h \to 0$.
