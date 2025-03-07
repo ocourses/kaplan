@@ -309,10 +309,7 @@ window.Quarto = {
   <li><a href="#présentation-de-lalgorithme" id="toc-présentation-de-lalgorithme" class="nav-link" data-scroll-target="#présentation-de-lalgorithme">Présentation de l’algorithme</a></li>
   </ul></li>
   <li><a href="#fonctions-nécessaires" id="toc-fonctions-nécessaires" class="nav-link" data-scroll-target="#fonctions-nécessaires">Fonctions Nécessaires</a></li>
-  <li><a href="#exemple" id="toc-exemple" class="nav-link" data-scroll-target="#exemple">Exemple</a>
-  <ul class="collapse">
   <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -516,8 +513,8 @@ A_k \Delta \theta = b_k
 </ol>
 <p>Ces fonctions permettent de calculer les prédictions du modèle et les dérivées nécessaires pour mettre à jour les paramètres à chaque itération de l’algorithme de Gauss-Newton. La suite du cours est consacrée à l’implémentation de ces fonctions pour résoudre des problèmes de Kaplan concrets.</p>
 </section>
-<section id="exemple" class="level2">
-<h2 class="anchored" data-anchor-id="exemple">Exemple</h2>
+<section id="exercice" class="level2">
+<h2 class="anchored" data-anchor-id="exercice">Exercice</h2>
 <p>Considérons le modèle linéaire suivant :</p>
 <p><span class="math display"> x(t, \theta) = a + b\, t </span></p>
 <p>où :</p>
@@ -551,11 +548,21 @@ Note
 </span></p>
 </div>
 </div>
-<section id="exercice" class="level3">
-<h3 class="anchored" data-anchor-id="exercice">Exercice</h3>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Développer à la main la première itération de l’algorithme de Gauss-Newton. Vous pouvez choisir <span class="math inline">\theta_0 = (1, 1)</span> comme initialisation.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -564,7 +571,7 @@ Correction
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Nous cherchons à estimer les paramètres <span class="math inline">a</span> et <span class="math inline">b</span> en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.</p>
 <section id="étapes-de-lalgorithme-de-gauss-newton" class="level3">
@@ -688,7 +695,6 @@ b_0 = \sum_{i=1}^{3} {J_{i,0}}^T \left( x_i - x(t_i, \theta_0) \right) = \begin{
 </div>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

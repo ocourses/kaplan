@@ -177,7 +177,7 @@ Pour implémenter cet algorithme, deux fonctions principales sont nécessaires :
 
 Ces fonctions permettent de calculer les prédictions du modèle et les dérivées nécessaires pour mettre à jour les paramètres à chaque itération de l'algorithme de Gauss-Newton. La suite du cours est consacrée à l'implémentation de ces fonctions pour résoudre des problèmes de Kaplan concrets.
 
-## Exemple
+## Exercice
 
 Considérons le modèle linéaire suivant :
 
@@ -209,9 +209,11 @@ $$
 $$
 :::
 
-### Exercice 
+::: {.callout-tip icon=false}
+### Question 
 
 Développer à la main la première itération de l'algorithme de Gauss-Newton. Vous pouvez choisir $\theta_0 = (1, 1)$ comme initialisation.
+:::
 
 ::: {.callout-caution collapse="true" icon=false}
 ### Correction
