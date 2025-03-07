@@ -63,14 +63,14 @@ $$
    x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 $$
 
-Ceci nous amène, à l'itération $k$, à devoir résoudre le problème aux moindres carrés linéaires :
+Ceci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :
 
 $$
    \mathrm{minimiser}~ F_k(\Delta \theta) = \frac{1}{2} \sum_{i=1}^{N} \left\| x_i - x(t_i, \theta_k) - \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta \right\|^2.
 $$
 
 ::: {.callout-important}
-A l'itération $k$, la fonction à minimiser dépend de $\Delta \theta$, la valeur du paramètre $\theta$ est fixée à $\theta_k$.
+A chaque itération, la fonction à minimiser dépend de $\Delta \theta$, la valeur du paramètre $\theta$ est fixée à $\theta_k$.
 :::
 
 Le prochain itéré s'écrit :
@@ -81,7 +81,7 @@ $$
 
 où $\Delta \theta_k$ est la solution du problème aux moindres carrés linéaires faisant intervenir $F_k$.
 
-### Solution du problème à l'itération $k$
+### Solution du problème linéaire
 
 Le point $\Delta \theta_k \in \mathbb{R}^l$ est obtenu en annulant le gradient de $F_k$, c'est-à-dire en résolvant :
 
@@ -118,7 +118,7 @@ Voici les étapes principales :
 
 1. **Initialisation** : Choisir une estimation initiale $\theta_0$ des paramètres.
 
-2. **Itération** : Pour chaque itération $k$ :
+2. **Itération** : Pour chaque itération :
 
    - Calculer la prédiction $x(t_i, \theta_k)$ pour chaque instant $t_i$.
    - Calculer les [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_jacobienne) $J_{i,k}$ des dérivées partielles de $x(t_i, \theta)$ par rapport à $\theta$, évaluée en $\theta_k$ :
@@ -211,7 +211,7 @@ $$
 
 ### Exercice 
 
-Développer à la main la première itération de l'algorithme de Gauss-Newton.
+Développer à la main la première itération de l'algorithme de Gauss-Newton. Vous pouvez choisir $\theta_0 = (1, 1)$ comme initialisation.
 
 ::: {.callout-caution collapse="true" icon=false}
 ### Correction
@@ -223,7 +223,7 @@ Nous cherchons à estimer les paramètres $a$ et $b$ en minimisant la somme des 
 1. **Initialisation** :
    - Choisissons une estimation initiale $\theta_0 = (1, 1)$.
 
-2. **Itération 0** :
+2. **Itération 1** :
    - Calculons les prédictions $x(t_i, \theta_0)$ pour chaque instant $t_i$ :
      $$
      x(1, \theta_0) = 1 \cdot 1 + 1 \cdot 1 = 2
@@ -300,7 +300,9 @@ Nous cherchons à estimer les paramètres $a$ et $b$ en minimisant la somme des 
 
 ### Tableau de Convergence
 
-| Itération | $\theta_1$ | $\theta_2$ | Écart $\Delta \theta_1$ | Écart $\Delta \theta_2$ | Valeur du coût $F(\theta)$ |
+On rappelle que le paramètre s'écrit $\theta = (a, b)$. On note alors la variation d'une itération à l'autre $\Delta \theta = (\Delta a, \Delta b)$. Puisque le problème est déjà un problème aux moindres carrés linéaires, nous n'observons aucune amélioration après la première itération, l'algorithme converge en une seule itération.
+
+| Itération | $a$         | $b$         | Écart $\Delta a$         | Écart $\Delta b$         | Valeur du coût $F(\theta)$ |
 |-----------|-------------|-------------|--------------------------|--------------------------|----------------------------|
 | 0         | 1.000       | 1.000       | -                        | -                        | 0.500                     |
 | 1         | 1/3         | 1.500       | -2/3                     | 0.500                    | 0.083                     |
