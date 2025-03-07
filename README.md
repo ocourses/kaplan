@@ -1,2 +1,3 @@
-# Cours sur les équations différentielles ordinaires et application au modèle de Kaplan
+# Cours sur l'estimation de paramètres dans les équations différentielles ordinaires linéaires
 
+Ce cours est destiné aux étudiants de la [Prépa des INP](https://www.la-prepa-des-inp.fr) en deuxième année.
