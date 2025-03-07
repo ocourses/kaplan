@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Aide pour ce cours
+    url: https://github.com/ocourses/kaplan/discussions
+    about: Posez vos questions à cette adresse.
+  - name: Support pour l'ensemble de l'organisation ocourses
+    url: https://github.com/orgs/ocourses/discussions
+    about: Pour une aide générale, utilisez cette adresse.
