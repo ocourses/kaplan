@@ -1,0 +1,214 @@
+---
+title: "Exponentielle de Matrice"
+page-layout: article
+---
+
+L'exponentielle d'une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d'exponentielle des nombres réels aux matrices.
+
+## Définition de l'Exponentielle de Matrice
+
+L'exponentielle d'une matrice $A \in \mathrm{M}_n(\mathbb{R})$ est définie par la série de Taylor :
+
+$$
+e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!}.
+$$
+
+::: {.callout-caution collapse="true" icon=false}
+### Preuve de la convergence de la série
+
+Pour montrer que cette série converge absolument pour toute matrice $A \in \mathrm{M}_n(\mathbb{R})$, nous allons utiliser une norme d'algèbre (ou norme subordonnée). Soit $\|\cdot\|$ une norme subordonnée sur $\mathrm{M}_n(\mathbb{R})$. Une norme subordonnée satisfait la propriété suivante :
+
+$$
+\|A B\| \leq \|A\| \|B\| \quad \text{pour toutes matrices} \ A, B \in \mathrm{M}_n(\mathbb{R}).
+$$
+
+Dans ce cas, nous pouvons majorer la norme de chaque terme de la série. En utilisant la norme subordonnée, nous avons :
+
+$$
+\left\| \frac{A^k}{k!} \right\| = \frac{\|A^k\|}{k!}.
+$$
+
+En appliquant la propriété de la norme subordonnée, on sait que :
+
+$$
+\|A^k\| \leq \|A\|^k.
+$$
+
+Ainsi, chaque terme de la série est majoré par :
+
+$$
+\frac{\|A^k\|}{k!} \leq \frac{\|A\|^k}{k!}.
+$$
+
+La série $\sum_{k=0}^{\infty} \frac{\|A\|^k}{k!}$ est simplement l'exponentielle scalaire de la norme $\|A\|$ :
+
+$$
+\sum_{k=0}^{\infty} \frac{\|A\|^k}{k!} = e^{\|A\|}.
+$$
+
+Puisque la série de droite converge, il en découle que la série de matrices $\sum_{k=0}^{\infty} \frac{A^k}{k!}$ converge également absolument. En effet, une série absolument convergente dans un espace vectoriel de dimension finie est convergente.
+
+Ainsi, la série pour $e^A$ converge absolument pour toute matrice $A \in \mathrm{M}_n(\mathbb{R})$.
+
+:::
+
+## Propriétés de l'Exponentielle de Matrice
+
+### Exponentielle d'une Matrice Diagonale
+
+Si $D$ est une matrice diagonale avec des éléments diagonaux $d_1, d_2, \dots, d_n$, c'est-à-dire :
+
+$$
+D = \text{diag}(d_1, d_2, \dots, d_n),
+$$
+
+alors l'exponentielle de $D$ est simplement l'exponentielle des éléments diagonaux :
+
+$$
+e^D = \text{diag}(e^{d_1}, e^{d_2}, \dots, e^{d_n}).
+$$
+
+Cela simplifie les calculs, car il suffit de calculer l'exponentielle des éléments diagonaux de la matrice.
+
+### Exponentielle d'une Matrice Transformée
+
+Si une matrice $A$ est similaire à une matrice diagonale $D$ par une matrice de passage $P$ (i.e., $A = P D P^{-1}$), alors :
+
+$$
+e^A = P e^D P^{-1}.
+$$
+
+Cela permet de calculer l'exponentielle de $A$ en passant à une base où $A$ est diagonale, ce qui est souvent plus facile à manipuler.
+
+::: {.callout-note}
+L'exponentielle d'une matrice est donc particulièrement simple à calculer lorsque la matrice est diagonale ou diagonalisable.
+:::
+
+### Exponentielle d'une Somme de Matrices Commutantes
+
+Si les matrices $A$ et $B$ commutent, c'est-à-dire si $AB = BA$, alors l'exponentielle de leur somme est le produit des exponentielles :
+
+$$
+e^{A + B} = e^A e^B.
+$$
+
+Cela simplifie les calculs dans le cas où les matrices commutent, car il est plus facile de manipuler les exponentielles séparées.
+
+::: {.callout-caution collapse="true" icon=false}
+### Preuve
+
+Soit $A$ et $B$ deux matrices dans $\mathrm{M}_n(\mathbb{R})$ qui commutent, c'est-à-dire que $AB = BA$.
+
+Nous utilisons l'expansion en série de Taylor pour calculer l'exponentielle d'une matrice :
+
+$$
+e^{A+B} = \sum_{k=0}^{\infty} \frac{(A+B)^k}{k!}.
+$$
+
+En développant $(A+B)^k$ à l'aide du binôme de Newton, on obtient :
+
+$$
+(A + B)^k = \sum_{j=0}^{k} \binom{k}{j} A^{k-j} B^j.
+$$
+
+Puis, en substituant cette expression dans la série de l'exponentielle, nous avons :
+
+$$
+e^{A+B} = \sum_{k=0}^{\infty} \frac{1}{k!} \sum_{j=0}^{k} \binom{k}{j} A^{k-j} B^j.
+$$
+
+Nous réorganisons la somme en permutant les indices de somme pour séparer les termes en $A$ et $B$ :
+
+$$
+e^{A+B} = \sum_{n=0}^{\infty} \frac{1}{n!} A^n \sum_{l=0}^{\infty} \frac{1}{l!} B^l = e^A e^B.
+$$
+
+Cela conclut la démonstration.
+:::
+
+::: {.callout-important}
+La commutativité des matrices $A$ et $B$ est une condition essentielle pour que cette propriété soit valide.
+:::
+
+### Inversibilité et Dérivabilité
+
+Soit $A \in \mathrm{M}_n(\mathbb{R})$ une matrice carrée. On a les propriétés suivantes :
+
+1. **Inversibilité** : $e^A$ est toujours une matrice inversible et son inverse est donné par :
+
+   $$
+   (e^A)^{-1} = e^{-A}.
+   $$
+
+2. **Dérivabilité** : L'application $t \mapsto e^{tA}$ est dérivable par rapport à $t$, et sa dérivée est donnée par :
+
+   $$
+   \frac{\mathrm{d}}{\mathrm{d} t} e^{tA} = A e^{tA} = e^{tA} A.
+   $$
+
+::: {.callout-caution collapse="true" icon=false}
+### Preuve
+
+1. **Inversibilité** :
+
+   Pour prouver que $e^A$ est inversible et que son inverse est $e^{-A}$, nous utilisons la commutativité des matrices. En effet, il est évident que les matrices $A$ et $-A$ commutent, donc on peut écrire :
+
+   $$
+   e^{-A} e^A = e^A e^{-A} = e^{A + (-A)} = e^0 = I,
+   $$
+
+   où $I$ est la matrice identité. Ainsi, $e^A$ est inversible et son inverse est $e^{-A}$.
+
+2. **Dérivabilité** :
+
+   Fixons un $t \in \mathbb{R}$. Pour étudier la dérivée de $e^{tA}$ par rapport à $t$, nous commençons par utiliser la définition de la dérivée :
+
+   $$
+   \frac{d}{dt} e^{tA} = \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h}.
+   $$
+
+   Nous réécrivons la différence comme suit :
+
+   $$
+   e^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I),
+   $$
+
+   où $I$ est la matrice identité. Divisons par $h$ :
+
+   $$
+   \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I}{h}.
+   $$
+
+   Maintenant, utilisons l'expansion en série de $e^{hA}$ pour petites valeurs de $h$ :
+
+   $$
+   e^{hA} = I + hA + \frac{h^2}{2!} A^2 + \cdots.
+   $$
+
+   Ainsi, on a :
+
+   $$
+   \frac{e^{hA} - I}{h} = A + \frac{h}{2!} A^2 + \cdots.
+   $$
+
+   En prenant la limite quand $h \to 0$, tous les termes en puissance de $h$ disparaissent, et il reste :
+
+   $$
+   \lim_{h \to 0} \frac{e^{hA} - I}{h} = A.
+   $$
+
+   Donc, la dérivée de $e^{tA}$ est :
+
+   $$
+   \frac{d}{dt} e^{tA} = e^{tA} A.
+   $$
+
+   Par commutativité de $A$ avec ses puissances, on peut aussi écrire cette dérivée comme :
+
+   $$
+   \frac{d}{dt} e^{tA} = A e^{tA}.
+   $$
+
+Cela conclut la démonstration des deux propriétés.
+:::
+

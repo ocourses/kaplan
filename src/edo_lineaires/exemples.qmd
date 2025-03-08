@@ -55,9 +55,9 @@ $$
 3. **Comportement à l'Infini** :
    - Lorsque $t \to \infty$, $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
 
-## Exemple 3 : Système Affine
+## Exemple 3 : Système Linéaire avec Second Membre Constant
 
-Considérons le système affine suivant :
+Considérons le système linéaire suivant avec un second membre constant :
 
 $$
 \dot{x}(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
@@ -94,11 +94,39 @@ $$
      \dot{x}(t) = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
      $$
 
+   ::: {.callout-tip icon=false}
+   ### Question
+   Résoudre ce système et analyser son comportement à long terme.
+   :::
+
+   ::: {.callout-caution collapse="true" icon=false}
+   ### Correction
+   1. Calcul de l'exponentielle de la matrice $A = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix}$.
+   2. Solution du système en utilisant $x(t) = e^{tA} x(0)$.
+   3. Comportement à l'infini : analyse des valeurs propres et conclusion sur le comportement asymptotique.
+   :::
+
 2. **Exercice 2** :
    - Calculez l'exponentielle de la matrice $A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ et décrivez le comportement du système associé.
 
+   ::: {.callout-tip icon=false}
+   ### Question
+   Trouvez l'exponentielle de la matrice et analysez son comportement.
+   :::
+
+   ::: {.callout-caution collapse="true" icon=false}
+   ### Correction
+   La matrice $A$ est de type rotation. Son exponentielle est :
+
+   $$
+   e^{tA} = \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
+   $$
+
+   Ce système représente une rotation dans le plan, donc les solutions sont périodiques.
+   :::
+
 3. **Exercice 3** :
-   - Considérez le système affine suivant et trouvez sa solution :
+   - Considérez le système linéaire suivant avec un second membre constant et trouvez sa solution :
 
      $$
      \dot{x}(t) = \begin{pmatrix} -1 & 1 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
@@ -111,4 +139,14 @@ $$
      \dot{x}(t) = \begin{pmatrix} 2 & -1 \\ 1 & 2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
      $$
 
-Ces exemples et exercices permettent de pratiquer le calcul de l'exponentielle de matrices et d'analyser le comportement des systèmes dynamiques linéaires.
+   ::: {.callout-tip icon=false}
+   ### Question
+   Analyser le comportement à l'infini du système.
+   :::
+
+   ::: {.callout-caution collapse="true" icon=false}
+   ### Correction
+   Ce système a des valeurs propres positives, donc les solutions divergeront à l'infini.
+   :::
+
+Ces exemples et exercices permettent de pratiquer le calcul de l'exponentielle de matrices et d'analyser le comportement des systèmes dynamiques linéaires, avec ou sans second membre constant.

@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/edo_affines/definition.html" rel="next">
+<link href="../../src/edo_lineaires/definitions.html" rel="next">
 <link href="../../src/introduction/kaplan.html" rel="prev">
 <link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -191,7 +191,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations différentielles ordinaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">EDO linéaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,25 +219,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/definition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définition</span></a>
+  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exponentielle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponentielle de matrice</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/solution.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solution générale</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exemples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exemples</span></a>
   </div>
 </li>
@@ -345,8 +345,8 @@ x'(t) = Ax(t) + Bu(t), \quad x(0) = x_0
 <p>où :</p>
 <ul>
 <li><span class="math inline">x(t) \in \mathbb{R}^n</span> est le vecteur d’état à l’instant <span class="math inline">t</span>.</li>
-<li><span class="math inline">A \in \mathbb{R}^{n \times n}</span> est la matrice des coefficients.</li>
-<li><span class="math inline">B \in \mathbb{R}^{n \times m}</span> est la matrice d’entrée.</li>
+<li><span class="math inline">A \in \mathrm{M}_{n}(\mathbb{R})</span> est la matrice des coefficients.</li>
+<li><span class="math inline">B \in \mathrm{M}_{n, m}(\mathbb{R})</span> est la matrice d’entrée.</li>
 <li><span class="math inline">u(t) \in \mathbb{R}^m</span> est le vecteur des entrées.</li>
 </ul>
 <p>Nous disposons de mesures <span class="math inline">x_i</span> à des instants <span class="math inline">t_i</span> pour <span class="math inline">i = 1, 2, \ldots, N</span>. Nous cherchons à estimer les paramètres</p>
@@ -447,9 +447,9 @@ Important
 </span></p>
 <p>où</p>
 <p><span class="math display">
-   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathrm{M}_{l, l}(\mathbb{R})
+   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathrm{M}_{l}(\mathbb{R})
    \quad \text{et} \quad
-   b_k = \sum_{i=1}^{N} {J_{i,k}}^T \left( x_i - x(t_i, \theta_k) \right) \in \mathbb{R}^{l}.
+   b_k = \sum_{i=1}^{N} {J_{i,k}}^T \left( x_i - x(t_i, \theta_k) \right) \in \mathbb{R}^l.
 </span></p>
 </section>
 <section id="présentation-de-lalgorithme" class="level3">
@@ -1122,8 +1122,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/edo_affines/definition.html" class="pagination-link" aria-label="Définition">
-        <span class="nav-page-text">Définition</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/edo_lineaires/definitions.html" class="pagination-link" aria-label="Définitions">
+        <span class="nav-page-text">Définitions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

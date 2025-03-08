@@ -172,11 +172,8 @@ f(t, x) = A x + B(t).
 $$
 
 ::: {.callout-note}
-On dira que l'équation différentielle est autonome si $f$ ne dépend pas explicitement du temps $t$ et non autonome sinon.
-:::
-
-::: {.callout-warning}
-Dans la littérature, on parle d'équation différentielle linéaire homogène lorsque $B(t) = 0$ et d'équation différentielle linéaire non homogène (ou avec second membre) sinon.
+- On dira que l'équation différentielle est autonome si $f$ ne dépend pas explicitement du temps $t$ et non autonome sinon.
+- Dans la littérature, on parle d'équation différentielle linéaire homogène lorsque $B(t) = 0$ et d'équation différentielle linéaire non homogène (ou avec second membre) sinon.
 :::
 
 ## Importance des Équations Différentielles

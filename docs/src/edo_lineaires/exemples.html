@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Schémas de Runge-Kutta – Cours EDO</title>
+<title>Exemples et Exercices – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/derivees/fonctions.html" rel="next">
-<link href="../../src/integration_numerique/euler.html" rel="prev">
+<link href="../../src/integration_numerique/euler.html" rel="next">
+<link href="../../src/edo_lineaires/solution.html" rel="prev">
 <link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -115,11 +115,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Schémas de Runge-Kutta – Cours EDO">
+<meta property="og:title" content="Exemples et Exercices – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="assets/images/trajectory.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Schémas de Runge-Kutta – Cours EDO">
+<meta name="twitter:title" content="Exemples et Exercices – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="assets/images/trajectory.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -158,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthode de Runge-Kutta</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -210,13 +210,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
@@ -237,7 +237,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exemples</span></a>
   </div>
 </li>
@@ -245,13 +245,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Intégration numérique</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
@@ -260,7 +260,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Méthode de Runge-Kutta</span></a>
   </div>
 </li>
@@ -301,22 +301,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercice-schéma-de-runge-kutta-dordre-2" id="toc-exercice-schéma-de-runge-kutta-dordre-2" class="nav-link active" data-scroll-target="#exercice-schéma-de-runge-kutta-dordre-2">Exercice : Schéma de Runge-Kutta d’Ordre 2</a></li>
-  <li><a href="#schémas-de-runge-kutta-explicites" id="toc-schémas-de-runge-kutta-explicites" class="nav-link" data-scroll-target="#schémas-de-runge-kutta-explicites">Schémas de Runge-Kutta Explicites</a>
-  <ul class="collapse">
-  <li><a href="#tableau-de-butcher" id="toc-tableau-de-butcher" class="nav-link" data-scroll-target="#tableau-de-butcher">Tableau de Butcher</a></li>
-  <li><a href="#exemples-de-schémas-de-runge-kutta" id="toc-exemples-de-schémas-de-runge-kutta" class="nav-link" data-scroll-target="#exemples-de-schémas-de-runge-kutta">Exemples de Schémas de Runge-Kutta</a></li>
-  </ul></li>
-  <li><a href="#tp-vérification-numérique-des-ordres" id="toc-tp-vérification-numérique-des-ordres" class="nav-link" data-scroll-target="#tp-vérification-numérique-des-ordres">TP : Vérification Numérique des Ordres</a></li>
+  <li><a href="#exemple-1-système-linéaire-avec-convergence" id="toc-exemple-1-système-linéaire-avec-convergence" class="nav-link active" data-scroll-target="#exemple-1-système-linéaire-avec-convergence">Exemple 1 : Système Linéaire avec Convergence</a></li>
+  <li><a href="#exemple-2-système-linéaire-avec-divergence" id="toc-exemple-2-système-linéaire-avec-divergence" class="nav-link" data-scroll-target="#exemple-2-système-linéaire-avec-divergence">Exemple 2 : Système Linéaire avec Divergence</a></li>
+  <li><a href="#exemple-3-système-linéaire-avec-second-membre-constant" id="toc-exemple-3-système-linéaire-avec-second-membre-constant" class="nav-link" data-scroll-target="#exemple-3-système-linéaire-avec-second-membre-constant">Exemple 3 : Système Linéaire avec Second Membre Constant</a></li>
+  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthode de Runge-Kutta</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Schémas de Runge-Kutta</h1>
+<h1 class="title">Exemples et Exercices</h1>
 </div>
 
 
@@ -333,128 +330,215 @@ window.Quarto = {
 </header>
 
 
-<section id="exercice-schéma-de-runge-kutta-dordre-2" class="level1">
-<h1>Exercice : Schéma de Runge-Kutta d’Ordre 2</h1>
-<p><strong>Exercice :</strong></p>
-<p>Considérons le schéma de Runge-Kutta suivant :</p>
+<section id="exemple-1-système-linéaire-avec-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-1-système-linéaire-avec-convergence">Exemple 1 : Système Linéaire avec Convergence</h2>
+<p>Considérons le système linéaire suivant :</p>
 <p><span class="math display">
-\begin{align*}
-k_1 &amp;= f(t_0, x_0) \\
-k_2 &amp;= f(t_0 + c_2h, x_0 + a_{21}hk_1) \\
-x_1 &amp;= x_0 + h(b_1k_1 + b_2k_2)
-\end{align*}
+\dot{x}(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 </span></p>
 <ol type="1">
-<li><strong>Montrer que <span class="math inline">c_2 = a_{21}</span></strong> :
+<li><strong>Calcul de l’Exponentielle de la Matrice</strong> :
 <ul>
-<li><p>En utilisant le développement de Taylor pour <span class="math inline">f</span> autour de <span class="math inline">(t_0, x_0)</span>, nous avons :</p>
+<li><p>La matrice <span class="math inline">A = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix}</span> est diagonale.</p></li>
+<li><p>L’exponentielle de <span class="math inline">A</span> est :</p>
 <p><span class="math display">
-f(t_0 + c_2h, x_0 + a_{21}hk_1) = f(t_0, x_0) + c_2h \frac{\partial f}{\partial t} + a_{21}hk_1 \frac{\partial f}{\partial x} + O(h^2)
-</span></p></li>
-<li><p>Pour que le schéma soit d’ordre 2, les termes d’ordre 1 doivent correspondre, ce qui implique <span class="math inline">c_2 = a_{21}</span>.</p></li>
-</ul></li>
-<li><strong>Relations pour l’Ordre 2</strong> :
-<ul>
-<li><p>Pour que le schéma soit d’ordre 2, les coefficients doivent satisfaire les conditions suivantes :</p>
-<p><span class="math display">
-b_1 + b_2 = 1
-</span></p>
-<p><span class="math display">
-b_2 c_2 = \frac{1}{2}
-</span></p></li>
-<li><p>En substituant <span class="math inline">c_2 = a_{21}</span> dans la deuxième équation, nous obtenons :</p>
-<p><span class="math display">
-b_2 a_{21} = \frac{1}{2}
+e^{tA} = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix}
 </span></p></li>
 </ul></li>
-<li><strong>Conclusion</strong> :
+<li><strong>Solution du Système</strong> :
 <ul>
-<li>En résolvant ces équations, nous trouvons que <span class="math inline">b_1 = 0</span>, <span class="math inline">b_2 = 1</span>, et <span class="math inline">a_{21} = \frac{1}{2}</span>.</li>
-<li>Ces valeurs correspondent à la méthode de Runge-Kutta d’ordre 2, également connue sous le nom de méthode du point milieu.</li>
+<li><p>La solution est donnée par :</p>
+<p><span class="math display">
+x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+</span></p></li>
+</ul></li>
+<li><strong>Comportement à l’Infini</strong> :
+<ul>
+<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}</span> car les valeurs propres <span class="math inline">-1</span> et <span class="math inline">-2</span> sont négatives.</li>
 </ul></li>
 </ol>
 </section>
-<section id="schémas-de-runge-kutta-explicites" class="level1">
-<h1>Schémas de Runge-Kutta Explicites</h1>
-<p>Les schémas de Runge-Kutta sont des méthodes numériques utilisées pour résoudre les équations différentielles ordinaires. Ils sont définis par un tableau de Butcher qui spécifie les coefficients utilisés dans les calculs intermédiaires.</p>
-<section id="tableau-de-butcher" class="level2">
-<h2 class="anchored" data-anchor-id="tableau-de-butcher">Tableau de Butcher</h2>
-<p>Un schéma de Runge-Kutta est défini par le tableau suivant :</p>
+<section id="exemple-2-système-linéaire-avec-divergence" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-2-système-linéaire-avec-divergence">Exemple 2 : Système Linéaire avec Divergence</h2>
+<p>Considérons le système linéaire suivant :</p>
 <p><span class="math display">
-\begin{array}{c|cccc}
-0 &amp;  &amp;  &amp;  &amp;  \\
-c_2 &amp; a_{21} &amp;  &amp;  &amp;  \\
-\vdots &amp; \vdots &amp; \ddots &amp;  &amp;  \\
-c_s &amp; a_{s1} &amp; a_{s2} &amp; \cdots &amp; a_{s,s-1} \\
-\hline
-&amp; b_1 &amp; b_2 &amp; \cdots &amp; b_s \\
-\end{array}
+\dot{x}(t) = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 </span></p>
-</section>
-<section id="exemples-de-schémas-de-runge-kutta" class="level2">
-<h2 class="anchored" data-anchor-id="exemples-de-schémas-de-runge-kutta">Exemples de Schémas de Runge-Kutta</h2>
 <ol type="1">
-<li><strong>Méthode d’Euler</strong> :
+<li><strong>Calcul de l’Exponentielle de la Matrice</strong> :
 <ul>
-<li><p>Tableau de Butcher :</p>
+<li><p>La matrice <span class="math inline">A = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix}</span> a des valeurs propres complexes conjuguées <span class="math inline">1 \pm i</span>.</p></li>
+<li><p>L’exponentielle de <span class="math inline">A</span> est :</p>
 <p><span class="math display">
-\begin{array}{c|c}
-0 &amp; 0 \\
-\hline
-&amp; 1 \\
-\end{array}
+e^{tA} = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
 </span></p></li>
-<li><p>Ordre : 1</p></li>
 </ul></li>
-<li><strong>Méthode de Runge-Kutta d’Ordre 2 (Point Milieu)</strong> :
+<li><strong>Solution du Système</strong> :
 <ul>
-<li><p>Tableau de Butcher :</p>
+<li><p>La solution est donnée par :</p>
 <p><span class="math display">
-\begin{array}{c|cc}
-0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; \frac{1}{2} &amp; 0 \\
-\hline
-&amp; 0 &amp; 1 \\
-\end{array}
+x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
 </span></p></li>
-<li><p>Ordre : 2</p></li>
 </ul></li>
-<li><strong>Méthode de Heun</strong> :
+<li><strong>Comportement à l’Infini</strong> :
 <ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|cc}
-0 &amp; 0 &amp; 0 \\
-1 &amp; 1 &amp; 0 \\
-\hline
-&amp; \frac{1}{2} &amp; \frac{1}{2} \\
-\end{array}
-</span></p></li>
-<li><p>Ordre : 2</p></li>
-</ul></li>
-<li><strong>Méthode de Runge-Kutta d’Ordre 4 (RK4)</strong> :
-<ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|cccc}
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\
-1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
-\hline
-&amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{6} \\
-\end{array}
-</span></p></li>
-<li><p>Ordre : 4</p></li>
+<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">\|x(t)\| \to \infty</span> car la partie réelle des valeurs propres est positive.</li>
 </ul></li>
 </ol>
 </section>
+<section id="exemple-3-système-linéaire-avec-second-membre-constant" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-3-système-linéaire-avec-second-membre-constant">Exemple 3 : Système Linéaire avec Second Membre Constant</h2>
+<p>Considérons le système linéaire suivant avec un second membre constant :</p>
+<p><span class="math display">
+\dot{x}(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+</span></p>
+<ol type="1">
+<li><strong>Solution du Système</strong> :
+<ul>
+<li><p>La solution est donnée par :</p>
+<p><span class="math display">
+x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+</span></p></li>
+<li><p>Calculons l’intégrale :</p>
+<p><span class="math display">
+x(t) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} &amp; 0 \\ 0 &amp; e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+</span></p></li>
+<li><p>Ce qui donne :</p>
+<p><span class="math display">
+x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
+</span></p></li>
+</ul></li>
+<li><strong>Comportement à l’Infini</strong> :
+<ul>
+<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}</span>.</li>
+</ul></li>
+</ol>
 </section>
-<section id="tp-vérification-numérique-des-ordres" class="level1">
-<h1>TP : Vérification Numérique des Ordres</h1>
-<p><strong>Objectif :</strong> - Implémentez les méthodes de Runge-Kutta ci-dessus et vérifiez numériquement leurs ordres en comparant les erreurs pour différents pas de temps <span class="math inline">h</span>.</p>
-<p><strong>Instructions :</strong> - Choisissez une équation différentielle test, par exemple <span class="math inline">\dot{x}(t) = -x(t)</span> avec <span class="math inline">x(0) = 1</span>. - Calculez les solutions numériques pour différents pas de temps <span class="math inline">h</span> et comparez les erreurs avec la solution exacte <span class="math inline">x(t) = e^{-t}</span>. - Vérifiez que l’erreur décroît comme <span class="math inline">O(h^p)</span>, où <span class="math inline">p</span> est l’ordre attendu de la méthode.</p>
-<p>Ces exercices et exemples permettent de comprendre les schémas de Runge-Kutta et de vérifier leur précision numérique.</p>
+<section id="exercices" class="level1">
+<h1>Exercices</h1>
+<ol type="1">
+<li><strong>Exercice 1</strong> :
+<ul>
+<li><p>Résolvez le système linéaire suivant et déterminez son comportement à l’infini :</p>
+<p><span class="math display">
+\dot{x}(t) = \begin{pmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Résoudre ce système et analyser son comportement à long terme.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Calcul de l’exponentielle de la matrice <span class="math inline">A = \begin{pmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{pmatrix}</span>.</li>
+<li>Solution du système en utilisant <span class="math inline">x(t) = e^{tA} x(0)</span>.</li>
+<li>Comportement à l’infini : analyse des valeurs propres et conclusion sur le comportement asymptotique.</li>
+</ol>
+</div>
+</div>
+</div></li>
+<li><strong>Exercice 2</strong> :
+<ul>
+<li>Calculez l’exponentielle de la matrice <span class="math inline">A = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}</span> et décrivez le comportement du système associé.</li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Trouvez l’exponentielle de la matrice et analysez son comportement.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La matrice <span class="math inline">A</span> est de type rotation. Son exponentielle est :</p>
+<p><span class="math display">
+e^{tA} = \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
+</span></p>
+<p>Ce système représente une rotation dans le plan, donc les solutions sont périodiques.</p>
+</div>
+</div>
+</div></li>
+<li><strong>Exercice 3</strong> :
+<ul>
+<li><p>Considérez le système linéaire suivant avec un second membre constant et trouvez sa solution :</p>
+<p><span class="math display">
+\dot{x}(t) = \begin{pmatrix} -1 &amp; 1 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+</span></p></li>
+</ul></li>
+<li><strong>Exercice 4</strong> :
+<ul>
+<li><p>Étudiez le comportement à l’infini du système suivant :</p>
+<p><span class="math display">
+\dot{x}(t) = \begin{pmatrix} 2 &amp; -1 \\ 1 &amp; 2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analyser le comportement à l’infini du système.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ce système a des valeurs propres positives, donc les solutions divergeront à l’infini.</p>
+</div>
+</div>
+</div></li>
+</ol>
+<p>Ces exemples et exercices permettent de pratiquer le calcul de l’exponentielle de matrices et d’analyser le comportement des systèmes dynamiques linéaires, avec ou sans second membre constant.</p>
 
 
 </section>
@@ -879,13 +963,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/integration_numerique/euler.html" class="pagination-link" aria-label="Méthode d'Euler">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Méthode d’Euler</span>
+      <a href="../../src/edo_lineaires/solution.html" class="pagination-link" aria-label="Solution générale">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Solution générale</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/derivees/fonctions.html" class="pagination-link" aria-label="Fonctions dérivées">
-        <span class="nav-page-text">Fonctions dérivées</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/integration_numerique/euler.html" class="pagination-link" aria-label="Méthode d'Euler">
+        <span class="nav-page-text">Méthode d’Euler</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

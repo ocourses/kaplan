@@ -73,22 +73,22 @@ website:
           contents:
             - section: "Introduction"
               contents: 
-                - text: "Equations différentielles ordinaires"
+                - text: "Équations différentielles ordinaires"
                   href: src/introduction/edo.qmd
                 - text: "Modèle de Kaplan"
                   href: src/introduction/kaplan.qmd
                 - text: "Problème aux moindres carrés"
                   href: src/introduction/moindres_carres.qmd
-            - section: "EDO  linéaires"
+            - section: "Équations différentielles ordinaires linéaires"
               contents: 
-                - text: "Définition"
-                  href: src/edo_affines/definition.qmd
+                - text: "Définitions"
+                  href: src/edo_lineaires/definitions.qmd
                 - text: "Exponentielle de matrice"
-                  href: src/edo_affines/exponentielle.qmd
+                  href: src/edo_lineaires/exponentielle.qmd
                 - text: "Solution générale"
-                  href: src/edo_affines/solution.qmd
+                  href: src/edo_lineaires/solution.qmd
                 - text: "Exemples"
-                  href: src/edo_affines/exemples.qmd
+                  href: src/edo_lineaires/exemples.qmd
             - section: "Intégration numérique"
               contents: 
                 - text: "Méthode d'Euler"

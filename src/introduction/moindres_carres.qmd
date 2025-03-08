@@ -16,8 +16,8 @@ $$
 où :
 
 - $x(t) \in \mathbb{R}^n$ est le vecteur d'état à l'instant $t$.
-- $A \in \mathbb{R}^{n \times n}$ est la matrice des coefficients.
-- $B \in \mathbb{R}^{n \times m}$ est la matrice d'entrée.
+- $A \in \mathrm{M}_{n}(\mathbb{R})$ est la matrice des coefficients.
+- $B \in \mathrm{M}_{n, m}(\mathbb{R})$ est la matrice d'entrée.
 - $u(t) \in \mathbb{R}^m$ est le vecteur des entrées.
 
 Nous disposons de mesures $x_i$ à des instants $t_i$ pour $i = 1, 2, \ldots, N$. Nous cherchons à estimer les paramètres 
@@ -107,9 +107,9 @@ $$
 où
 
 $$
-   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathrm{M}_{l, l}(\mathbb{R})
+   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathrm{M}_{l}(\mathbb{R})
    \quad \text{et} \quad 
-   b_k = \sum_{i=1}^{N} {J_{i,k}}^T \left( x_i - x(t_i, \theta_k) \right) \in \mathbb{R}^{l}.
+   b_k = \sum_{i=1}^{N} {J_{i,k}}^T \left( x_i - x(t_i, \theta_k) \right) \in \mathbb{R}^l.
 $$
 
 ### Présentation de l'algorithme

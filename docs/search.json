@@ -16,7 +16,7 @@
     "href": "src/derivees/equations.html#problème-de-cauchy-pour-les-équations-variationnelles",
     "title": "Équations Variationnelles",
     "section": "Problème de Cauchy pour les Équations Variationnelles",
-    "text": "Problème de Cauchy pour les Équations Variationnelles\nConsidérons une EDO dépendant de paramètres \\theta :\n\n\\dot{x}(t) = f(t, x(t), \\theta), \\quad x(t_0) = x_0\n\nPour trouver la dérivée de la solution x(t, x_0, \\theta) par rapport à x_0 ou \\theta, nous devons résoudre un problème de Cauchy pour les équations variationnelles.\n\nDérivée par Rapport à x_0 :\n\nLa dérivée \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) satisfait l’équation variationnelle suivante :\n\n\\frac{d}{dt} \\left( \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) \\right) = \\frac{\\partial f}{\\partial x}(t, x(t, x_0, \\theta), \\theta) \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta)\n\nAvec la condition initiale :\n\n\\frac{\\partial x}{\\partial x_0}(t_0, x_0, \\theta) = I\n\n\nDérivée par Rapport à \\theta :\n\nLa dérivée \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) satisfait l’équation variationnelle suivante :\n\n\\frac{d}{dt} \\left( \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) \\right) = \\frac{\\partial f}{\\partial x}(t, x(t, x_0, \\theta), \\theta) \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) + \\frac{\\partial f}{\\partial \\theta}(t, x(t, x_0, \\theta), \\theta)\n\nAvec la condition initiale :\n\n\\frac{\\partial x}{\\partial \\theta}(t_0, x_0, \\theta) = 0",
+    "text": "Problème de Cauchy pour les Équations Variationnelles\nConsidérons une EDO dépendant de paramètres \\theta :\n\n\\dot{x}(t) = f(t, x(t), \\theta), \\quad x(t_0) = x_0\n\nPour trouver la dérivée de la solution x(t, x_0, \\theta) par rapport à x_0 ou \\theta, nous devons résoudre un problème de Cauchy pour les équations variationnelles.\n\n1. Dérivée par Rapport à x_0 :\nLa dérivée X(t) = \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) satisfait l’équation variationnelle suivante :\n\n\\frac{d}{dt} X(t) = \\frac{\\partial f}{\\partial x}(t, x(t, x_0, \\theta), \\theta) \\, X(t)\n\nAvec la condition initiale :\n\nX(t_0) = I\n\n\n\n2. Dérivée par Rapport à \\theta :\nLa dérivée Y(t) = \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) satisfait l’équation variationnelle suivante :\n\n\\frac{d}{dt} Y(t) = \\frac{\\partial f}{\\partial x}(t, x(t, x_0, \\theta), \\theta) \\, Y(t) + \\frac{\\partial f}{\\partial \\theta}(t, x(t, x_0, \\theta), \\theta)\n\nAvec la condition initiale :\n\nY(t_0) = 0",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -28,7 +28,7 @@
     "href": "src/derivees/equations.html#résolution-des-équations-variationnelles",
     "title": "Équations Variationnelles",
     "section": "Résolution des Équations Variationnelles",
-    "text": "Résolution des Équations Variationnelles\nLes équations variationnelles peuvent être résolues en utilisant soit l’exponentielle de matrice (dans le cas linéaire), soit des schémas numériques comme les méthodes de Runge-Kutta.\n\nExponentielle de Matrice :\n\nDans le cas linéaire \\dot{x}(t) = Ax(t), la solution de l’équation variationnelle pour \\frac{\\partial x}{\\partial x_0}(t, x_0) est donnée par :\n\n\\frac{\\partial x}{\\partial x_0}(t, x_0) = e^{tA}\n\n\nSchémas de Runge-Kutta :\n\nPour des systèmes plus complexes ou lorsque A dépend de paramètres, les méthodes de Runge-Kutta peuvent être utilisées pour résoudre numériquement les équations variationnelles.\nPar exemple, pour le cas affine \\dot{x}(t) = Ax(t) + b(t), les schémas de Runge-Kutta peuvent être appliqués directement aux équations variationnelles.",
+    "text": "Résolution des Équations Variationnelles\nLes équations variationnelles peuvent être résolues en utilisant soit l’exponentielle de matrice (dans le cas linéaire), soit des schémas numériques comme les méthodes de Runge-Kutta.\n\n1. Exponentielle de Matrice :\nDans le cas linéaire \\dot{x}(t) = A x(t), la solution de l’équation variationnelle pour X(t) = \\frac{\\partial x}{\\partial x_0}(t, x_0) est donnée par :\n\nX(t) = e^{tA}\n\n\n\n2. Schémas de Runge-Kutta :\nPour des systèmes plus complexes ou lorsque A dépend de paramètres, les méthodes de Runge-Kutta peuvent être utilisées pour résoudre numériquement les équations variationnelles.\nPar exemple, pour l’EDO \\dot{x}(t) = A x(t) + b(t), les schémas de Runge-Kutta peuvent être appliqués directement aux équations variationnelles.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -184,7 +184,7 @@
     "href": "src/index.html",
     "title": "Cours Prépa INP",
     "section": "",
-    "text": "Introduction\n\n\nEquations différentielles ordinaires\nModèle de Kaplan\nProblème aux moindres carrés\n\n\n\n\n\n\nEquations différentielles ordinaires linéaires\n\n\nDéfinition\nExponentielle de matrice\nSolution générale\nExemples\n\n\n\n\n\n\nIntégration numérique\n\n\nEuler\nMéthodes de Runge-Kutta\n\n\n\n\n\n\nDérivées\n\n\nFonctions dérivées\nEquations variationnelles\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top",
+    "text": "Introduction\n\n\nÉquations différentielles ordinaires\nModèle de Kaplan\nProblème aux moindres carrés\n\n\n\n\n\n\nÉquations différentielles ordinaires linéaires\n\n\nDéfinitions\nExponentielle de matrice\nSolution générale\nExemples\n\n\n\n\n\n\nIntégration numérique\n\n\nEuler\nMéthodes de Runge-Kutta\n\n\n\n\n\n\nDérivées\n\n\nFonctions dérivées\nEquations variationnelles\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Cours"
     ]
@@ -258,7 +258,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -270,7 +270,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -282,7 +282,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -294,7 +294,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -306,7 +306,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -318,7 +318,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -342,7 +342,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -362,7 +362,7 @@
     "href": "src/introduction/moindres_carres.html#formulation-mathématique",
     "title": "Problème de Kaplan sous Forme de Moindres Carrés",
     "section": "Formulation Mathématique",
-    "text": "Formulation Mathématique\nConsidérons le problème de Cauchy linéaire décrit par :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) \\in \\mathbb{R}^n est le vecteur d’état à l’instant t.\nA \\in \\mathbb{R}^{n \\times n} est la matrice des coefficients.\nB \\in \\mathbb{R}^{n \\times m} est la matrice d’entrée.\nu(t) \\in \\mathbb{R}^m est le vecteur des entrées.\n\nNous disposons de mesures x_i à des instants t_i pour i = 1, 2, \\ldots, N. Nous cherchons à estimer les paramètres\n\n   \\theta = (A, B, x_0)\n en minimisant la fonction coût suivante :\n\nF(\\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\| x_i - x(t_i, \\theta) \\|^2\n\noù :\n\nx(t_i, \\theta) est la prédiction du modèle à l’instant t_i avec les paramètres \\theta.\n\\| \\cdot \\| désigne la norme euclidienne.\n\n\n\n\n\n\n\nNote\n\n\n\n\nLa fonction coût F est la somme des carrés des erreurs entre les mesures observées x_i et les prédictions du modèle x(t_i, \\theta). On appelle ces erreurs les résidus.\nL’objectif est de trouver les paramètres \\theta qui minimisent cette fonction coût.\nCette formulation est un problème d’optimisation aux moindres carrés.\nLes mesures x_i peuvent être bruitées, ce qui nécessite une approche robuste pour estimer les paramètres.\n\n\n\nLes matrices A et B et le vecteur x_0 sont ici considérés comme des paramètres à estimer. Dans certains cas, seuls certains paramètres peuvent être inconnus. Il est aussi possible de ne chercher qu’à estimer une partie des paramètres. Dans ce cas, si nous notons \\theta \\in \\mathbb{R}^l les paramètres à estimer, nous pouvons écrire la dépendance de A, B et x_0 en fonction de \\theta, et le problème de Cauchy devient :\n\nx'(t) = A(\\theta)x(t) + B(\\theta)u(t), \\quad x(0) = x_0(\\theta).\n\n\n\n\n\n\n\nImportant\n\n\n\nNous parlons de problème aux moindres carrés linéaire si \\theta \\mapsto x(t_i, \\theta) est linéaire pour toute donnée t_i, sinon on parle de problème aux moindres carrés non linéaire.",
+    "text": "Formulation Mathématique\nConsidérons le problème de Cauchy linéaire décrit par :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) \\in \\mathbb{R}^n est le vecteur d’état à l’instant t.\nA \\in \\mathrm{M}_{n}(\\mathbb{R}) est la matrice des coefficients.\nB \\in \\mathrm{M}_{n, m}(\\mathbb{R}) est la matrice d’entrée.\nu(t) \\in \\mathbb{R}^m est le vecteur des entrées.\n\nNous disposons de mesures x_i à des instants t_i pour i = 1, 2, \\ldots, N. Nous cherchons à estimer les paramètres\n\n   \\theta = (A, B, x_0)\n en minimisant la fonction coût suivante :\n\nF(\\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\| x_i - x(t_i, \\theta) \\|^2\n\noù :\n\nx(t_i, \\theta) est la prédiction du modèle à l’instant t_i avec les paramètres \\theta.\n\\| \\cdot \\| désigne la norme euclidienne.\n\n\n\n\n\n\n\nNote\n\n\n\n\nLa fonction coût F est la somme des carrés des erreurs entre les mesures observées x_i et les prédictions du modèle x(t_i, \\theta). On appelle ces erreurs les résidus.\nL’objectif est de trouver les paramètres \\theta qui minimisent cette fonction coût.\nCette formulation est un problème d’optimisation aux moindres carrés.\nLes mesures x_i peuvent être bruitées, ce qui nécessite une approche robuste pour estimer les paramètres.\n\n\n\nLes matrices A et B et le vecteur x_0 sont ici considérés comme des paramètres à estimer. Dans certains cas, seuls certains paramètres peuvent être inconnus. Il est aussi possible de ne chercher qu’à estimer une partie des paramètres. Dans ce cas, si nous notons \\theta \\in \\mathbb{R}^l les paramètres à estimer, nous pouvons écrire la dépendance de A, B et x_0 en fonction de \\theta, et le problème de Cauchy devient :\n\nx'(t) = A(\\theta)x(t) + B(\\theta)u(t), \\quad x(0) = x_0(\\theta).\n\n\n\n\n\n\n\nImportant\n\n\n\nNous parlons de problème aux moindres carrés linéaire si \\theta \\mapsto x(t_i, \\theta) est linéaire pour toute donnée t_i, sinon on parle de problème aux moindres carrés non linéaire.",
     "crumbs": [
       "Cours",
       "Introduction",
@@ -374,7 +374,7 @@
     "href": "src/introduction/moindres_carres.html#algorithme-de-gauss-newton",
     "title": "Problème de Kaplan sous Forme de Moindres Carrés",
     "section": "Algorithme de Gauss-Newton",
-    "text": "Algorithme de Gauss-Newton\n\nDescription de la méthode\nL’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût F. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial \\theta_0, l’algorithme va construire une suite d’itérés (\\theta_k)_{k\\ge 0} qui on l’espère converge vers un minimum de F. L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons \\theta_k l’itéré courant. Nous pouvons approcher pour chaque instant t_i la prédiction \\theta \\mapsto x(t_i, \\theta) par son approximation linéaire au voisinage du point courant \\theta_k :\n\n   x(t_i, \\theta_k) + \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta.\n\nCeci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :\n\n   \\mathrm{minimiser}~ F_k(\\Delta \\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\left\\| x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right\\|^2.\n\n\n\n\n\n\n\nImportant\n\n\n\nA chaque itération, la fonction à minimiser dépend de \\Delta \\theta, la valeur du paramètre \\theta est fixée à \\theta_k.\n\n\nLe prochain itéré s’écrit :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du problème aux moindres carrés linéaires faisant intervenir F_k.\n\n\nSolution du problème linéaire\nLe point \\Delta \\theta_k \\in \\mathbb{R}^l est obtenu en annulant le gradient de F_k, c’est-à-dire en résolvant :\n\n\\begin{aligned}\n   \\nabla F_k(\\Delta \\theta) &= \\sum_{i=1}^{N} {\\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)}^T \\left( x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right) \\\\\n   &= \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) - \\left( \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\right) \\Delta \\theta = 0,\n\\end{aligned}\n\noù l’on a introduit la notation\n\n   J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k).\n\nSi l’on regarde attentivement l’équation ci-dessus en \\Delta \\theta, nous pouvons remarquer que nous devons résoudre un simple système linéaire de la forme :\n\n   A_k \\Delta \\theta = b_k,\n\noù\n\n   A_k = \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\in \\mathrm{M}_{l, l}(\\mathbb{R})\n   \\quad \\text{et} \\quad\n   b_k = \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) \\in \\mathbb{R}^{l}.\n\n\n\nPrésentation de l’algorithme\nVoici les étapes principales :\n\nInitialisation : Choisir une estimation initiale \\theta_0 des paramètres.\nItération : Pour chaque itération :\n\nCalculer la prédiction x(t_i, \\theta_k) pour chaque instant t_i.\nCalculer les matrice jacobienne J_{i,k} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_k :\n\n  J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k) =\n   \\begin{pmatrix}\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\vdots &\n    \\displaystyle\\vdots &\n    \\displaystyle\\ddots &\n    \\displaystyle\\vdots \\\\[1em]\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_l}(t_i, \\theta_k)\n  \\end{pmatrix} \\in \\mathrm{M}_{n, l}(\\mathbb{\\R})\n  \nMettre à jour les paramètres en utilisant la formule :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du système linéaire :\n\nA_k \\Delta \\theta = b_k\n\navec A_k et b_k définis ci-dessus.\n\nConvergence : Répéter jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.",
+    "text": "Algorithme de Gauss-Newton\n\nDescription de la méthode\nL’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût F. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial \\theta_0, l’algorithme va construire une suite d’itérés (\\theta_k)_{k\\ge 0} qui on l’espère converge vers un minimum de F. L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons \\theta_k l’itéré courant. Nous pouvons approcher pour chaque instant t_i la prédiction \\theta \\mapsto x(t_i, \\theta) par son approximation linéaire au voisinage du point courant \\theta_k :\n\n   x(t_i, \\theta_k) + \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta.\n\nCeci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :\n\n   \\mathrm{minimiser}~ F_k(\\Delta \\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\left\\| x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right\\|^2.\n\n\n\n\n\n\n\nImportant\n\n\n\nA chaque itération, la fonction à minimiser dépend de \\Delta \\theta, la valeur du paramètre \\theta est fixée à \\theta_k.\n\n\nLe prochain itéré s’écrit :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du problème aux moindres carrés linéaires faisant intervenir F_k.\n\n\nSolution du problème linéaire\nLe point \\Delta \\theta_k \\in \\mathbb{R}^l est obtenu en annulant le gradient de F_k, c’est-à-dire en résolvant :\n\n\\begin{aligned}\n   \\nabla F_k(\\Delta \\theta) &= \\sum_{i=1}^{N} {\\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)}^T \\left( x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right) \\\\\n   &= \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) - \\left( \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\right) \\Delta \\theta = 0,\n\\end{aligned}\n\noù l’on a introduit la notation\n\n   J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k).\n\nSi l’on regarde attentivement l’équation ci-dessus en \\Delta \\theta, nous pouvons remarquer que nous devons résoudre un simple système linéaire de la forme :\n\n   A_k \\Delta \\theta = b_k,\n\noù\n\n   A_k = \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\in \\mathrm{M}_{l}(\\mathbb{R})\n   \\quad \\text{et} \\quad\n   b_k = \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) \\in \\mathbb{R}^l.\n\n\n\nPrésentation de l’algorithme\nVoici les étapes principales :\n\nInitialisation : Choisir une estimation initiale \\theta_0 des paramètres.\nItération : Pour chaque itération :\n\nCalculer la prédiction x(t_i, \\theta_k) pour chaque instant t_i.\nCalculer les matrice jacobienne J_{i,k} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_k :\n\n  J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k) =\n   \\begin{pmatrix}\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\vdots &\n    \\displaystyle\\vdots &\n    \\displaystyle\\ddots &\n    \\displaystyle\\vdots \\\\[1em]\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_l}(t_i, \\theta_k)\n  \\end{pmatrix} \\in \\mathrm{M}_{n, l}(\\mathbb{\\R})\n  \nMettre à jour les paramètres en utilisant la formule :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du système linéaire :\n\nA_k \\Delta \\theta = b_k\n\navec A_k et b_k définis ci-dessus.\n\nConvergence : Répéter jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.",
     "crumbs": [
       "Cours",
       "Introduction",
@@ -554,7 +554,7 @@
     "href": "src/integration_numerique/euler.html",
     "title": "Méthode d’Euler",
     "section": "",
-    "text": "La méthode d’Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est particulièrement utile pour les systèmes linéaires et affines.",
+    "text": "La méthode d’Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est souvent utilisée pour les systèmes linéaires et permet de trouver des approximations de la solution au fil du temps.",
     "crumbs": [
       "Cours",
       "Intégration numérique",
@@ -566,7 +566,7 @@
     "href": "src/integration_numerique/euler.html#introduction-à-la-méthode-deuler",
     "title": "Méthode d’Euler",
     "section": "Introduction à la Méthode d’Euler",
-    "text": "Introduction à la Méthode d’Euler\nConsidérons l’équation différentielle générale :\n\n\\dot{x}(t) = f(t, x(t))\n\noù f(t, x(t)) décrit la dynamique du système. Dans le cas linéaire, f(t, x(t)) = Ax(t), et dans le cas affine, f(t, x(t)) = Ax(t) + b(t).",
+    "text": "Introduction à la Méthode d’Euler\nConsidérons une équation différentielle du premier ordre :\n\n\\dot{x}(t) = f(t, x(t))\n\noù ( f(t, x(t)) ) est une fonction qui décrit l’évolution du système à un instant donné. Dans le cas d’un système linéaire, la fonction ( f ) est souvent de la forme :\n\nf(t, x(t)) = A x(t)\n\noù ( A ) est une matrice constante et ( x(t) ) est un vecteur d’état.",
     "crumbs": [
       "Cours",
       "Intégration numérique",
@@ -578,7 +578,7 @@
     "href": "src/integration_numerique/euler.html#schéma-deuler",
     "title": "Méthode d’Euler",
     "section": "Schéma d’Euler",
-    "text": "Schéma d’Euler\nLa méthode d’Euler discrétise le temps en utilisant une grille uniforme t_i = t_0 + ih, où h est le pas de temps. L’approximation de la solution x(t_i) est notée x_i. Le schéma d’Euler est donné par :\n\nx_{i+1} = x_i + hf(t_i, x_i)",
+    "text": "Schéma d’Euler\nLa méthode d’Euler consiste à discrétiser le temps en utilisant une grille uniforme ( t_i = t_0 + ih ), où ( h ) est le pas de temps. À chaque instant ( t_i ), on obtient une approximation de la solution ( x(t_i) ), notée ( x_i ). Le schéma d’Euler est donné par :\n\nx_{i+1} = x_i + h f(t_i, x_i)\n\nDans le cas d’un système linéaire, cela devient :\n\nx_{i+1} = x_i + h A x_i = (I + h A) x_i\n\noù ( I ) est la matrice identité de taille appropriée.",
     "crumbs": [
       "Cours",
       "Intégration numérique",
@@ -638,7 +638,7 @@
     "href": "src/derivees/fonctions.html",
     "title": "Fonctions Dérivées",
     "section": "",
-    "text": "Considérons une équation différentielle ordinaire dépendant d’une condition initiale :\n\n\\dot{x}(t) = f(t, x(t)), \\quad x(t_0) = x_0\n\nNous souhaitons étudier comment la solution x(t, x_0) varie en fonction de la condition initiale x_0.",
+    "text": "Considérons une équation différentielle ordinaire dépendant d’une condition initiale :\n\n\\dot{x}(t) = f(t, x(t)), \\quad x(t_0) = x_0\n\nNous souhaitons étudier comment la solution x(t) varie en fonction de la condition initiale x_0.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -650,7 +650,7 @@
     "href": "src/derivees/fonctions.html#fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo",
     "title": "Fonctions Dérivées",
     "section": "",
-    "text": "Considérons une équation différentielle ordinaire dépendant d’une condition initiale :\n\n\\dot{x}(t) = f(t, x(t)), \\quad x(t_0) = x_0\n\nNous souhaitons étudier comment la solution x(t, x_0) varie en fonction de la condition initiale x_0.",
+    "text": "Considérons une équation différentielle ordinaire dépendant d’une condition initiale :\n\n\\dot{x}(t) = f(t, x(t)), \\quad x(t_0) = x_0\n\nNous souhaitons étudier comment la solution x(t) varie en fonction de la condition initiale x_0.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -662,7 +662,7 @@
     "href": "src/derivees/fonctions.html#dérivée-par-rapport-à-la-condition-initiale",
     "title": "Fonctions Dérivées",
     "section": "Dérivée par Rapport à la Condition Initiale",
-    "text": "Dérivée par Rapport à la Condition Initiale\nSupposons que la solution x(t, x_0) est dérivable par rapport à x_0. Nous voulons trouver la dérivée \\frac{\\partial x}{\\partial x_0}(t, x_0).\n\nÉquation Intégrale :\n\nLa solution de l’EDO peut être exprimée sous forme intégrale :\n\nx(t, x_0) = x_0 + \\int_{t_0}^{t} f(s, x(s, x_0)) \\, ds\n\n\nDérivation par Rapport à x_0 :\n\nEn dérivant cette équation par rapport à x_0, nous obtenons :\n\n\\frac{\\partial x}{\\partial x_0}(t, x_0) = I + \\int_{t_0}^{t} \\frac{\\partial f}{\\partial x}(s, x(s, x_0)) \\frac{\\partial x}{\\partial x_0}(s, x_0) \\, ds\n\nIci, I est la matrice identité, et \\frac{\\partial f}{\\partial x} est la jacobienne de f par rapport à x.\n\nÉquation Variationnelle :\n\nLa fonction \\frac{\\partial x}{\\partial x_0}(t, x_0) satisfait une équation différentielle linéaire appelée équation variationnelle :\n\n\\frac{d}{dt} \\left( \\frac{\\partial x}{\\partial x_0}(t, x_0) \\right) = \\frac{\\partial f}{\\partial x}(t, x(t, x_0)) \\frac{\\partial x}{\\partial x_0}(t, x_0)\n\nAvec la condition initiale \\frac{\\partial x}{\\partial x_0}(t_0, x_0) = I.",
+    "text": "Dérivée par Rapport à la Condition Initiale\nSoit X(t) = \\frac{\\partial x(t)}{\\partial x_0}, la dérivée de la solution x(t) par rapport à la condition initiale x_0. Nous cherchons à déterminer l’équation différentielle satisfaite par X(t).\n\n1. Équation Intégrale\nLa solution de l’EDO peut être écrite sous la forme intégrale suivante :\n\nx(t) = x_0 + \\int_{t_0}^{t} f(s, x(s)) \\, ds\n\n\n\n2. Dérivation par Rapport à x_0\nEn dérivant cette équation par rapport à x_0, nous obtenons l’équation suivante pour X(t) :\n\nX'(t) = \\frac{\\partial f}{\\partial x}(t, x(t)) \\, X(t)\n\nAvec la condition initiale :\n\nX(t_0) = I\n\nOù I est la matrice identité (si x(t) est un vecteur, ou simplement 1 si x(t) est un scalaire), et \\frac{\\partial f}{\\partial x} est la jacobienne de f par rapport à x.\n\n\n3. Équation Variationnelle\nLa fonction X(t) satisfait ainsi une équation différentielle linéaire appelée équation variationnelle :\n\nX'(t) = \\frac{\\partial f}{\\partial x}(t, x(t)) \\, X(t)\n\nAvec la condition initiale :\n\nX(t_0) = I\n\nCette équation décrit comment les petites variations de la condition initiale x_0 influencent l’évolution de la solution x(t) dans le temps.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -674,7 +674,7 @@
     "href": "src/derivees/fonctions.html#introduction-de-paramètres",
     "title": "Fonctions Dérivées",
     "section": "Introduction de Paramètres",
-    "text": "Introduction de Paramètres\nConsidérons maintenant une EDO dépendant de paramètres \\theta :\n\n\\dot{x}(t) = f(t, x(t), \\theta), \\quad x(t_0) = x_0\n\nNous souhaitons trouver la dérivée de la solution x(t, x_0, \\theta) par rapport aux paramètres \\theta.",
+    "text": "Introduction de Paramètres\nConsidérons maintenant une EDO dépendant de paramètres \\theta :\n\n\\dot{x}(t) = f(t, x(t), \\theta), \\quad x(t_0) = x_0\n\nNous souhaitons trouver la dérivée de la solution x(t) par rapport aux paramètres \\theta.\n\n4. Équation Intégrale avec Paramètres\nLa solution de cette EDO avec les paramètres \\theta peut être écrite sous la forme intégrale :\n\nx(t, \\theta) = x_0 + \\int_{t_0}^{t} f(s, x(s, \\theta), \\theta) \\, ds\n\n\n\n5. Dérivation par Rapport à \\theta\nLa dérivée de x(t) par rapport à \\theta donne une équation variationnelle pour \\frac{\\partial x}{\\partial \\theta}(t, \\theta), et peut être obtenue en différentiant l’équation intégrale par rapport à \\theta :\n\n\\frac{\\partial x}{\\partial \\theta}(t, \\theta) = \\int_{t_0}^{t} \\frac{\\partial f}{\\partial \\theta}(s, x(s, \\theta), \\theta) \\, ds\n\nCette dérivation permet d’obtenir une sensibilité de la solution x(t) par rapport aux paramètres \\theta.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -698,7 +698,7 @@
     "href": "src/derivees/fonctions.html#combinaison-des-dérivées",
     "title": "Fonctions Dérivées",
     "section": "Combinaison des Dérivées",
-    "text": "Combinaison des Dérivées\nLorsque la solution x(t, x_0, \\theta) dépend à la fois de la condition initiale x_0 et des paramètres \\theta, la dérivée totale par rapport à t est donnée par la somme des dérivées partielles :\n\n\\frac{d}{dt} x(t, x_0, \\theta) = \\frac{\\partial x}{\\partial t}(t, x_0, \\theta) + \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) \\dot{x}_0 + \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) \\dot{\\theta}\n\n\n\\frac{\\partial x}{\\partial t}(t, x_0, \\theta) est la dérivée partielle de x par rapport à t.\n\\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) est la dérivée partielle de x par rapport à x_0.\n\\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) est la dérivée partielle de x par rapport à \\theta.\n\nCette relation montre comment les variations de la condition initiale et des paramètres affectent la dynamique du système.",
+    "text": "Combinaison des Dérivées\nLorsque la solution x(t, x_0, \\theta) dépend à la fois de la condition initiale x_0 et des paramètres \\theta, la dérivée totale de x(t, x_0, \\theta) par rapport à t est donnée par :\n\n\\frac{d}{dt} x(t, x_0, \\theta) = \\frac{\\partial x}{\\partial t}(t, x_0, \\theta) + \\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) \\dot{x_0} + \\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) \\dot{\\theta}\n\n\n\\frac{\\partial x}{\\partial t}(t, x_0, \\theta) est la dérivée partielle de x par rapport à t.\n\\frac{\\partial x}{\\partial x_0}(t, x_0, \\theta) est la dérivée partielle de x par rapport à x_0.\n\\frac{\\partial x}{\\partial \\theta}(t, x_0, \\theta) est la dérivée partielle de x par rapport à \\theta.\n\nCette relation montre comment les variations de la condition initiale x_0 et des paramètres \\theta affectent la dynamique du système.",
     "crumbs": [
       "Cours",
       "Dérivées",
@@ -734,11 +734,11 @@
     "href": "src/introduction/edo.html#edo-linéaire-générale",
     "title": "Introduction aux Équations Différentielles Ordinaires",
     "section": "EDO Linéaire Générale",
-    "text": "EDO Linéaire Générale\nConsidérons maintenant une équation différentielle (ordinaire) d’ordre 1 linéaire non homogène :\n\nx'(t) = A x(t) + B(t)\n\noù A est une matrice constante de taille n \\times n et B(t) est un vecteur de taille n dépendant du temps t.\nCette équation n’est pas autonome car elle dépend explicitement du temps t à travers B(t). Cette équation est affine en x(t), car elle contient un terme linéaire A x(t) et un terme constant B(t). Nous parlerons d’équation différentielle linéaire non homogène. C’est une équation d’ordre 1 car elle ne fait intervenir que la dérivée première de x(t), mais c’est une équation vectorielle car x(t) est un vecteur de taille n.\n\n\n\n\n\n\nNote\n\n\n\nToutes les équations différentielles que nous considérons seront linéaires et auront une matrice A constante. Cela simplifie la résolution.\n\n\nPour mieux comprendre que le temps t intervient explicitement seulement dans B(t), nous pouvons réécrire l’équation à l’aide d’une fonction f (appelée second membre) dépendant du temps t et de la variable x :\n\nx'(t) = f(t, x(t))\n\noù f est une fonction de \\mathbb{R} \\times \\mathbb{R}^n dans \\mathbb{R}^n définie par\n\nf(t, x) = A x + B(t).\n\n\n\n\n\n\n\nNote\n\n\n\nOn dira que l’équation différentielle est autonome si f ne dépend pas explicitement du temps t et non autonome sinon.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nDans la littérature, on parle d’équation différentielle linéaire homogène lorsque B(t) = 0 et d’équation différentielle linéaire non homogène (ou avec second membre) sinon.",
+    "text": "EDO Linéaire Générale\nConsidérons maintenant une équation différentielle (ordinaire) d’ordre 1 linéaire non homogène :\n\nx'(t) = A x(t) + B(t)\n\noù A est une matrice constante de taille n \\times n et B(t) est un vecteur de taille n dépendant du temps t.\nCette équation n’est pas autonome car elle dépend explicitement du temps t à travers B(t). Cette équation est affine en x(t), car elle contient un terme linéaire A x(t) et un terme constant B(t). Nous parlerons d’équation différentielle linéaire non homogène. C’est une équation d’ordre 1 car elle ne fait intervenir que la dérivée première de x(t), mais c’est une équation vectorielle car x(t) est un vecteur de taille n.\n\n\n\n\n\n\nNote\n\n\n\nToutes les équations différentielles que nous considérons seront linéaires et auront une matrice A constante. Cela simplifie la résolution.\n\n\nPour mieux comprendre que le temps t intervient explicitement seulement dans B(t), nous pouvons réécrire l’équation à l’aide d’une fonction f (appelée second membre) dépendant du temps t et de la variable x :\n\nx'(t) = f(t, x(t))\n\noù f est une fonction de \\mathbb{R} \\times \\mathbb{R}^n dans \\mathbb{R}^n définie par\n\nf(t, x) = A x + B(t).\n\n\n\n\n\n\n\nNote\n\n\n\n\nOn dira que l’équation différentielle est autonome si f ne dépend pas explicitement du temps t et non autonome sinon.\nDans la littérature, on parle d’équation différentielle linéaire homogène lorsque B(t) = 0 et d’équation différentielle linéaire non homogène (ou avec second membre) sinon.",
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -988,7 +988,7 @@
     "crumbs": [
       "Cours",
       "Introduction",
-      "Equations différentielles ordinaires"
+      "Équations différentielles ordinaires"
     ]
   },
   {
@@ -1001,6 +1001,409 @@
       "Cours",
       "Introduction",
       "Problème aux moindres carrés"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html",
+    "href": "src/edo_lineaires/exemples.html",
+    "title": "Exemples et Exercices",
+    "section": "",
+    "text": "Considérons le système linéaire suivant :\n\n\\dot{x}(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est :\n\ne^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par :\n\nx(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exemples"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html#exemple-1-système-linéaire-avec-convergence",
+    "href": "src/edo_lineaires/exemples.html#exemple-1-système-linéaire-avec-convergence",
+    "title": "Exemples et Exercices",
+    "section": "",
+    "text": "Considérons le système linéaire suivant :\n\n\\dot{x}(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est :\n\ne^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par :\n\nx(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exemples"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html#exemple-2-système-linéaire-avec-divergence",
+    "href": "src/edo_lineaires/exemples.html#exemple-2-système-linéaire-avec-divergence",
+    "title": "Exemples et Exercices",
+    "section": "Exemple 2 : Système Linéaire avec Divergence",
+    "text": "Exemple 2 : Système Linéaire avec Divergence\nConsidérons le système linéaire suivant :\n\n\\dot{x}(t) = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} a des valeurs propres complexes conjuguées 1 \\pm i.\nL’exponentielle de A est :\n\ne^{tA} = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par :\n\nx(t) = e^{tA} x(0) = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = e^t \\begin{pmatrix} \\cos(t) \\\\ \\sin(t) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, \\|x(t)\\| \\to \\infty car la partie réelle des valeurs propres est positive.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exemples"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html#exemple-3-système-affine",
+    "href": "src/edo_lineaires/exemples.html#exemple-3-système-affine",
+    "title": "Exemples et Exercices",
+    "section": "Exemple 3 : Système Affine",
+    "text": "Exemple 3 : Système Affine\nConsidérons le système affine suivant :\n\n\\dot{x}(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par :\n\nx(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, ds\n\nCalculons l’intégrale :\n\nx(t) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} & 0 \\\\ 0 & e^{-2(t-s)} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, ds\n\nCe qui donne :\n\nx(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ \\frac{1}{2} (1 - e^{-2t}) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\end{pmatrix}."
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html",
+    "href": "src/edo_lineaires/exponentielle.html",
+    "title": "Exponentielle de Matrice",
+    "section": "",
+    "text": "L’exponentielle d’une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d’exponentielle des nombres réels aux matrices.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#définition",
+    "href": "src/edo_lineaires/exponentielle.html#définition",
+    "title": "Exponentielle de Matrice",
+    "section": "Définition",
+    "text": "Définition\nPour une matrice A \\in M_n(\\mathbb{R}), l’exponentielle de A est définie par la série infinie :\n\ne^A = \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} = I + A + \\frac{A^2}{2!} + \\frac{A^3}{3!} + \\cdots\n\noù I est la matrice identité de taille n \\times n.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#existence",
+    "href": "src/edo_lineaires/exponentielle.html#existence",
+    "title": "Exponentielle de Matrice",
+    "section": "Existence",
+    "text": "Existence\nPour montrer que l’exponentielle est bien définie pour toute matrice A \\in M_n(\\mathbb{R}), nous devons vérifier que la série converge. En utilisant la norme matricielle, on peut montrer que la série converge absolument pour toute matrice A. En effet, pour toute norme matricielle subordonnée, on a :\n\n\\left\\| \\frac{A^k}{k!} \\right\\| \\leq \\frac{\\|A\\|^k}{k!}\n\nLa série numérique \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} converge, donc par comparaison, la série matricielle \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} converge également.\nEn dimension finie, le fait que la série converge absolument implique qu’elle converge. Ce résultat est vrai dans un espace vectoriel normé de dimension finie, où la convergence absolue d’une série implique sa convergence.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#propriétés-utiles",
+    "href": "src/edo_lineaires/exponentielle.html#propriétés-utiles",
+    "title": "Exponentielle de Matrice",
+    "section": "Propriétés Utiles",
+    "text": "Propriétés Utiles\n\nExponentielle de la Matrice Nulle :\n\nL’exponentielle de la matrice nulle 0 est la matrice identité I :\n\ne^0 = I\n\n\nExponentielle d’une Somme :\n\nSi A et B sont deux matrices qui commutent (c’est-à-dire AB = BA), alors :\n\ne^{A+B} = e^A e^B\n\nPreuve : Utilisons le binôme de Newton et le produit de Cauchy pour les séries :\n\ne^A e^B = \\left( \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} \\right) \\left( \\sum_{j=0}^{\\infty} \\frac{B^j}{j!} \\right)\n\nEn utilisant le produit de Cauchy, nous obtenons :\n\ne^A e^B = \\sum_{n=0}^{\\infty} \\sum_{k=0}^{n} \\frac{A^k}{k!} \\frac{B^{n-k}}{(n-k)!} = \\sum_{n=0}^{\\infty} \\frac{1}{n!} \\sum_{k=0}^{n} \\binom{n}{k} A^k B^{n-k}\n\nPuisque A et B commutent, nous avons :\n\n\\sum_{k=0}^{n} \\binom{n}{k} A^k B^{n-k} = (A+B)^n\n\nDonc,\n\ne^A e^B = \\sum_{n=0}^{\\infty} \\frac{(A+B)^n}{n!} = e^{A+B}\n\n\nDérivée de l’Exponentielle :\n\nLa dérivée de e^{tA} par rapport à t est donnée par :\n\n\\frac{d}{dt} e^{tA} = A e^{tA}\n\nPreuve : (Formellement) En utilisant la définition de la dérivée et la série exponentielle, nous avons :\n\n\\frac{d}{dt} e^{tA} = \\frac{d}{dt} \\sum_{k=0}^{\\infty} \\frac{(tA)^k}{k!} = \\sum_{k=1}^{\\infty} \\frac{A^k t^{k-1}}{(k-1)!} = A \\sum_{k=1}^{\\infty} \\frac{(tA)^{k-1}}{(k-1)!} = A e^{tA}\n\n\n\nCes propriétés sont essentielles pour résoudre les équations différentielles linéaires et pour comprendre le comportement des systèmes dynamiques linéaires.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html",
+    "href": "src/edo_lineaires/definition.html",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "",
+    "text": "Un problème de Cauchy consiste à résoudre une équation différentielle ordinaire (EDO) accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = f(t,x(t)), \\quad x(t_0) = x_0\n\noù : - x:I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I, - f:I \\times \\mathbb{R}^n \\to \\mathbb{R}^n est une fonction donnée, - t_0 \\in I est l’instant initial, - x_0 \\in \\mathbb{R}^n est la condition initiale.\nDans le cas où f est une fonction affine en x, on obtient une équation différentielle linéaire.",
+    "crumbs": [
+      "Cours",
+      "EDO  linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#définition-dun-problème-de-cauchy",
+    "href": "src/edo_lineaires/definition.html#définition-dun-problème-de-cauchy",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "",
+    "text": "Un problème de Cauchy consiste à résoudre une équation différentielle ordinaire (EDO) accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = f(t,x(t)), \\quad x(t_0) = x_0\n\noù : - x:I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I, - f:I \\times \\mathbb{R}^n \\to \\mathbb{R}^n est une fonction donnée, - t_0 \\in I est l’instant initial, - x_0 \\in \\mathbb{R}^n est la condition initiale.\nDans le cas où f est une fonction affine en x, on obtient une équation différentielle linéaire.",
+    "crumbs": [
+      "Cours",
+      "EDO  linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#terminologie",
+    "href": "src/edo_lineaires/definition.html#terminologie",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Terminologie",
+    "text": "Terminologie\nUne équation différentielle ordinaire (EDO) linéaire s’écrit sous la forme :\n\nx'(t) + a(t)x(t) = b(t),\n\noù : - a(t) et b(t) sont des fonctions définies sur un intervalle I, - x(t) est l’inconnue.\nOn distingue plusieurs cas : - Équation linéaire homogène : lorsque b(t) = 0, l’équation devient :\n\n  x'(t) + a(t)x(t) = 0.\n  \n\nÉquation linéaire non homogène (avec second membre) : lorsque b(t) \\neq 0.\nÉquation autonome : lorsque a(t) et b(t) sont constantes, c’est-à-dire indépendantes de t.",
+    "crumbs": [
+      "Cours",
+      "EDO  linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#définition-dune-solution",
+    "href": "src/edo_lineaires/definition.html#définition-dune-solution",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Définition d’une Solution",
+    "text": "Définition d’une Solution\nUne solution d’une EDO sur un intervalle I est une fonction x:I \\to \\mathbb{R} qui est dérivable et qui satisfait l’équation différentielle pour tout t \\in I.\nPour un problème de Cauchy x'(t) = f(t,x) avec condition initiale x(t_0) = x_0, une solution est une fonction x(t) telle que :\n\nx'(t) = f(t,x(t)), \\quad \\text{et} \\quad x(t_0) = x_0.",
+    "crumbs": [
+      "Cours",
+      "EDO  linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#solution-dans-le-cas-scalaire",
+    "href": "src/edo_lineaires/definition.html#solution-dans-le-cas-scalaire",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Solution dans le Cas Scalaire",
+    "text": "Solution dans le Cas Scalaire\nDans le cas d’une équation linéaire homogène scalaire :\n\nx'(t) + a(t)x(t) = 0,\n\non peut résoudre l’équation en utilisant la méthode du facteur intégrant. La solution générale est donnée par :\n\nx(t) = C e^{-\\int a(t)dt},\n\noù C est une constante déterminée par la condition initiale x(t_0) = x_0, ce qui donne :\n\nC = x_0 e^{\\int_{t_0}^{t} a(s)ds}.\n\nDans le cas non homogène :\n\nx'(t) + a(t)x(t) = b(t),\n\non utilise la variation de la constante pour obtenir une solution particulière.",
+    "crumbs": [
+      "Cours",
+      "EDO  linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html",
+    "href": "src/edo_lineaires/solution.html",
+    "title": "Solution du Problème Linéaire",
+    "section": "",
+    "text": "Considérons le problème de Cauchy linéaire suivant :\n\\dot{x}(t) = A x(t), \\quad x(0) = x_0\noù A \\in M_n(\\mathbb{R}) est une matrice constante et x_0 \\in \\mathbb{R}^n est le vecteur d’état initial.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#théorème",
+    "href": "src/edo_lineaires/solution.html#théorème",
+    "title": "Solution du Problème Linéaire",
+    "section": "Théorème",
+    "text": "Théorème\nLa solution du problème de Cauchy linéaire est donnée par :\n\nx(t, x_0) = e^{tA} x_0\n\n\nPreuve de l’Existence\nMontrons que x(t, x_0) = e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\n\n\n\n\n\nVérification de la Condition Initiale\n\n\n\n\n\nÀ t = 0, nous avons : \nx(0, x_0) = e^{0 \\cdot A} x_0 = I x_0 = x_0\n Donc, la condition initiale est satisfaite.\n\n\n\n\n\n\n\n\n\nVérification de l’Équation Différentielle\n\n\n\n\n\nCalculons la dérivée de x(t, x_0) par rapport à t : \n\\frac{d}{dt} x(t, x_0) = \\frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)\n Donc, x(t, x_0) satisfait l’équation différentielle \\dot{x}(t) = A x(t).\n\n\n\nAinsi, x(t, x_0) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.\n\n\nPreuve de l’Unicité\nSupposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - x(t, x_0). Alors,\n\n\\dot{z}(t) = \\dot{y}(t) - \\dot{x}(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)\n\nAvec la condition initiale z(0) = y(0) - x(0, x_0) = 0.\nConsidérons maintenant le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n\\dot{w}(t) = \\frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} \\dot{z}(t) = -A w(t) + e^{-tA} A z(t) = 0\n\nPuisque \\dot{w}(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 \\cdot A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = x(t, x_0). Cela prouve l’unicité de la solution.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#preuve-de-lexistence",
+    "href": "src/edo_lineaires/solution.html#preuve-de-lexistence",
+    "title": "Solution du Problème Linéaire",
+    "section": "Preuve de l’Existence",
+    "text": "Preuve de l’Existence\nMontrons que x(t, x_0) = e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\nVérification de la Condition Initiale :\n\nÀ t = 0, nous avons :\n\nx(0, x_0) = e^{0 \\cdot A} x_0 = I x_0 = x_0\n\nDonc, la condition initiale est satisfaite.\n\nVérification de l’Équation Différentielle :\n\nCalculons la dérivée de x(t, x_0) par rapport à t :\n\n\\frac{d}{dt} x(t, x_0) = \\frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)\n\nDonc, x(t, x_0) satisfait l’équation différentielle \\dot{x}(t) = Ax(t).\n\n\nAinsi, x(t, x_0) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#preuve-de-lunicité",
+    "href": "src/edo_lineaires/solution.html#preuve-de-lunicité",
+    "title": "Solution du Problème Linéaire",
+    "section": "Preuve de l’Unicité",
+    "text": "Preuve de l’Unicité\nSupposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - x(t, x_0). Alors,\n\n\\dot{z}(t) = \\dot{y}(t) - \\dot{x}(t, x_0) = Ay(t) - Ax(t, x_0) = A(y(t) - x(t, x_0)) = Az(t)\n\nAvec la condition initiale z(0) = y(0) - x(0, x_0) = 0.\nConsidérons le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n\\dot{w}(t) = \\frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} \\dot{z}(t) = -A w(t) + e^{-tA} A z(t) = 0\n\nPuisque \\dot{w}(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 \\cdot A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = x(t, x_0). Cela prouve l’unicité de la solution.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#théorème-1",
+    "href": "src/edo_lineaires/solution.html#théorème-1",
+    "title": "Solution du Problème Linéaire",
+    "section": "Théorème",
+    "text": "Théorème\nSupposons l’existence d’une solution maximale et l’unicité. La solution du problème de Cauchy affine est donnée par :\n\nx(t) = e^{tA} x_0 + \\int_{0}^{t} e^{(t-s)A} b(s) \\, ds\n\nExercice : Vérifiez que cette fonction est bien une solution du problème de Cauchy en utilisant les propriétés de l’exponentielle de matrice et en montrant qu’elle satisfait à la fois l’équation différentielle et la condition initiale.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#changement-de-variable",
+    "href": "src/edo_lineaires/solution.html#changement-de-variable",
+    "title": "Solution du Problème Linéaire",
+    "section": "Changement de Variable",
+    "text": "Changement de Variable\nPosons z(t) = x(t) - x_p(t), où x_p(t) est une solution particulière de l’équation \\dot{x}(t) = Ax(t) + b.\n\nÉquation pour z(t) :\n\nEn substituant x(t) = z(t) + x_p(t) dans l’équation originale, nous obtenons :\n\n\\dot{z}(t) + \\dot{x}_p(t) = A(z(t) + x_p(t)) + b\n\nPuisque x_p(t) est une solution particulière, \\dot{x}_p(t) = Ax_p(t) + b. Donc,\n\n\\dot{z}(t) = Az(t)\n\nAinsi, z(t) satisfait une équation différentielle linéaire homogène.\n\nSolution de z(t) :\n\nLa solution de \\dot{z}(t) = Az(t) avec la condition initiale z(0) = x_0 - x_p(0) est donnée par :\n\nz(t) = e^{tA} (x_0 - x_p(0))\n\n\nSolution de x(t) :\n\nEn revenant à la variable originale, nous avons :\n\nx(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t)\n\n\n\nCe changement de variable permet de ramener le problème affine à un problème linéaire homogène, facilitant ainsi sa résolution.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#remarque",
+    "href": "src/edo_lineaires/solution.html#remarque",
+    "title": "Solution du Problème Linéaire",
+    "section": "Remarque",
+    "text": "Remarque\nSi b appartient à l’image de A, c’est-à-dire s’il existe un vecteur x_e tel que Ax_e = -b, alors nous pouvons choisir x_p(t) = x_e. En effet, dans ce cas, x_e est une solution particulière constante de l’équation \\dot{x}(t) = Ax(t) + b, car :\n\nAx_e + b = -b + b = 0\n\nAinsi, x_p(t) = x_e est une solution particulière constante, simplifiant encore le changement de variable.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html",
+    "href": "src/edo_lineaires/definitions.html",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "",
+    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx: I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I,\nA(t) \\in \\mathrm{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant. Cela simplifie les calculs et permet de mieux comprendre les solutions sans la complication de la dépendance temporelle de A(t).",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html#définition-dun-problème-de-cauchy",
+    "href": "src/edo_lineaires/definitions.html#définition-dun-problème-de-cauchy",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "",
+    "text": "Un problème de Cauchy consiste à résoudre une équation différentielle ordinaire (EDO) accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\n\\mathbf{x}'(t) = A(t)\\mathbf{x}(t) + \\mathbf{b}(t), \\quad \\mathbf{x}(t_0) = \\mathbf{x}_0\n\noù :\n\n\\mathbf{x}: I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I,\nA(t) \\in \\mathbb{R}^{n \\times n} est une matrice donnée, dépendant du temps t,\n\\mathbf{b}(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\n\\mathbf{x}_0 \\in \\mathbb{R}^n est la condition initiale.\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant. Cela simplifie les calculs et permet de mieux comprendre les solutions sans la complication de la dépendance temporelle de A(t).",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html#terminologie",
+    "href": "src/edo_lineaires/definitions.html#terminologie",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Terminologie",
+    "text": "Terminologie\nUne équation différentielle ordinaire (EDO) linéaire s’écrit sous la forme matricielle :\n\nx'(t) = A(t) x(t) + b(t),\n\noù :\n\nA(t) \\in \\mathrm{M}_{n}(\\mathbb{R}) est une matrice de taille n \\times n,\nb(t) \\in \\mathbb{R}^n est un vecteur de taille n.\n\nOn distingue plusieurs cas :\n\nÉquation linéaire homogène : lorsque b(t) = 0, l’équation devient :\n\nx'(t) = A(t) x(t).\n\nÉquation linéaire non homogène (avec second membre) : lorsque b(t) \\neq 0.\nÉquation autonome : lorsque A(t) et b(t) sont constants, c’est-à-dire indépendants de t.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html#définition-dune-solution",
+    "href": "src/edo_lineaires/definitions.html#définition-dune-solution",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Définition d’une Solution",
+    "text": "Définition d’une Solution\nUne solution d’une EDO sur un intervalle I est une fonction vectorielle x: I \\to \\mathbb{R}^n qui est dérivable et qui satisfait l’équation différentielle pour tout t \\in I.\nPour un problème de Cauchy x'(t) = A(t) x(t) + b(t) avec condition initiale x(t_0) = x_0, une solution est une fonction x(t) telle que :\n\nx'(t) = A(t) x(t) + b(t), \\quad \\text{et} \\quad x(t_0) = x_0.\n\n\n\n\n\n\n\nNote\n\n\n\nIl est courant d’utiliser des notations différentes pour la solution et la variable inconnue du problème. Par exemple, au lieu d’écrire x(t) pour la solution du problème de Cauchy, on peut choisir d’utiliser une autre lettre, comme \\varphi(t), afin de distinguer clairement la fonction inconnue de la solution elle-même. Cela peut être utile pour éviter toute confusion, notamment dans les contextes où plusieurs équations différentielles sont traitées simultanément.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html#solution-dans-le-cas-scalaire",
+    "href": "src/edo_lineaires/definitions.html#solution-dans-le-cas-scalaire",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "Solution dans le Cas Scalaire",
+    "text": "Solution dans le Cas Scalaire\nDans le cas d’une équation linéaire homogène scalaire autonome, où a est une fonction constante, et en considérant le problème de Cauchy avec la condition initiale x(0) = x_0, l’équation est donnée par :\n\nx'(t) = a x(t), \\quad x(0) = x_0.\n\nLa solution générale de cette équation est :\n\nx(t) = C e^{a t},\n\noù C est une constante déterminée par la condition initiale. En imposant x(0) = x_0, on trouve :\n\nC = x_0.\n\nAinsi, la solution particulière du problème de Cauchy est :\n\nx(t) = x_0 e^{a t}.\n\nLe fait que a soit constant simplifie les calculs, car l’intégrale de a devient simplement a t, ce qui donne une solution exponentielle simple en fonction du temps t.\n\n\n\n\n\n\nCommentaire sur le Cas Vectoriel\n\n\n\nLe cas scalaire fait intervenir l’exponentielle sur \\mathbb{R}, c’est-à-dire la fonction e^x. Dans le cas vectoriel, où x(t) \\in \\mathbb{R}^n, nous aurons besoin de l’exponentielle de matrices, qui est une généralisation de l’exponentielle scalaire. Cette exponentielle de matrices sera définie et explorée plus tard dans le cours.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definitions.html#définition-dun-problème-de-cauchy-linéaire",
+    "href": "src/edo_lineaires/definitions.html#définition-dun-problème-de-cauchy-linéaire",
+    "title": "Équations Différentielles Ordinaires Linéaires",
+    "section": "",
+    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx: I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I,\nA(t) \\in \\mathrm{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant. Cela simplifie les calculs et permet de mieux comprendre les solutions sans la complication de la dépendance temporelle de A(t).",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Définitions"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#existence-de-lexponentielle-de-matrice",
+    "href": "src/edo_lineaires/exponentielle.html#existence-de-lexponentielle-de-matrice",
+    "title": "Exponentielle de Matrice",
+    "section": "Existence de l’Exponentielle de Matrice",
+    "text": "Existence de l’Exponentielle de Matrice\nL’exponentielle d’une matrice A \\in \\mathrm{M}_n(\\mathbb{R}) est définie par la série de Taylor :\n\ne^A = \\sum_{k=0}^{\\infty} \\frac{A^k}{k!}.\n\n\n\n\n\n\n\nPreuve de la convergence\n\n\n\n\n\nPour montrer que cette série converge absolument pour toute matrice A \\in \\mathrm{M}_n(\\mathbb{R}), nous allons utiliser une norme d’algèbre (ou norme subordonnée). Soit \\|\\cdot\\| une norme subordonnée sur \\mathrm{M}_n(\\mathbb{R}). Une norme subordonnée satisfait la propriété suivante :\n\n\\|A B\\| \\leq \\|A\\| \\|B\\| \\quad \\text{pour toutes matrices} \\ A, B \\in \\mathrm{M}_n(\\mathbb{R}).\n\nDans ce cas, nous pouvons majorer la norme de chaque terme de la série. En utilisant la norme subordonnée, nous avons :\n\n\\left\\| \\frac{A^k}{k!} \\right\\| = \\frac{\\|A^k\\|}{k!}.\n\nEn appliquant la propriété de la norme subordonnée, on sait que :\n\n\\|A^k\\| \\leq \\|A\\|^k.\n\nAinsi, chaque terme de la série est majoré par :\n\n\\frac{\\|A^k\\|}{k!} \\leq \\frac{\\|A\\|^k}{k!}.\n\nLa série \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} est simplement l’exponentielle scalaire de la norme \\|A\\| :\n\n\\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} = e^{\\|A\\|}.\n\nPuisque la série de droite converge, il en découle que la série de matrices \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} converge également absolument. En effet, une série absolument convergente dans un espace vectoriel de dimension finie est convergente.\nAinsi, la série pour e^A converge absolument pour toute matrice A \\in \\mathrm{M}_n(\\mathbb{R}).\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nLa convergence de la série pour l’exponentielle de matrice est donc assurée par la convergence de la série scalaire correspondante et par l’utilisation d’une norme subordonnée.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#définition-et-propriétés-de-lexponentielle-de-matrice",
+    "href": "src/edo_lineaires/exponentielle.html#définition-et-propriétés-de-lexponentielle-de-matrice",
+    "title": "Exponentielle de Matrice",
+    "section": "Définition et Propriétés de l’Exponentielle de Matrice",
+    "text": "Définition et Propriétés de l’Exponentielle de Matrice\n\nExponentielle d’une Matrice Diagonale\nSi D est une matrice diagonale avec des éléments diagonaux d_1, d_2, \\dots, d_n, c’est-à-dire :\n\nD = \\text{diag}(d_1, d_2, \\dots, d_n),\n\nalors l’exponentielle de D est simplement l’exponentielle des éléments diagonaux :\n\ne^D = \\text{diag}(e^{d_1}, e^{d_2}, \\dots, e^{d_n}).\n\nCela simplifie les calculs, car il suffit de calculer l’exponentielle des éléments individuels de la matrice.\n\n\n\n\n\n\nQuestion\n\n\n\nPourquoi l’exponentielle d’une matrice diagonale est-elle plus facile à calculer que celle d’une matrice générale ?\n\n\n\n\nExponentielle d’une Matrice Transformée\nSi une matrice A est similaire à une matrice diagonale D par une matrice de passage P (i.e., A = P D P^{-1}), alors :\n\ne^A = P e^D P^{-1}.\n\nCela permet de calculer l’exponentielle de A en passant à une base où A est diagonale, ce qui est souvent plus facile à manipuler.\n\n\n\n\n\n\nNote\n\n\n\nL’exponentielle d’une matrice est donc particulièrement simple à calculer lorsque la matrice est diagonale ou diagonalisable.\n\n\n\n\nExponentielle d’une Somme de Matrices Commutantes\nSi les matrices A et B commutent, c’est-à-dire si AB = BA, alors l’exponentielle de leur somme est le produit des exponentielles :\n\ne^{A + B} = e^A e^B.\n\nCela simplifie les calculs dans le cas où les matrices commutent, car il est plus facile de manipuler les exponentielles séparées.\n\n\n\n\n\n\nImportant\n\n\n\nRappel : La commutativité des matrices A et B est une condition importante pour que cette propriété soit valide.\n\n\n\n\nThéorème : Propriétés de l’Exponentielle de Matrice\nSoit A \\in \\mathrm{M}_n(\\mathbb{R}) une matrice carrée. On a les propriétés suivantes :\n\nInversibilité : e^A est toujours une matrice inversible et son inverse est donné par :\n\n(e^A)^{-1} = e^{-A}.\n\nDérivabilité : L’application t \\mapsto e^{tA} est dérivable par rapport à t, et sa dérivée est donnée par :\n\n\\frac{d}{dt} e^{tA} = A e^{tA} = e^{tA} A.\n\n\nCela montre que l’exponentielle d’une matrice varie de manière régulière et que son comportement est lié de manière simple à la matrice A elle-même.\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nSi A et B commutent, alors e^{A+B} = e^A e^B est une propriété clé. Cependant, cette relation n’est pas valable lorsque A et B ne commutent pas. Dans ce dernier cas, le produit des exponentielles ne donne pas nécessairement l’exponentielle de la somme.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#définition-de-lexponentielle-de-matrice",
+    "href": "src/edo_lineaires/exponentielle.html#définition-de-lexponentielle-de-matrice",
+    "title": "Exponentielle de Matrice",
+    "section": "Définition de l’Exponentielle de Matrice",
+    "text": "Définition de l’Exponentielle de Matrice\nL’exponentielle d’une matrice A \\in \\mathrm{M}_n(\\mathbb{R}) est définie par la série de Taylor :\n\ne^A = \\sum_{k=0}^{\\infty} \\frac{A^k}{k!}.\n\n\n\n\n\n\n\nPreuve de la convergence de la série\n\n\n\n\n\nPour montrer que cette série converge absolument pour toute matrice A \\in \\mathrm{M}_n(\\mathbb{R}), nous allons utiliser une norme d’algèbre (ou norme subordonnée). Soit \\|\\cdot\\| une norme subordonnée sur \\mathrm{M}_n(\\mathbb{R}). Une norme subordonnée satisfait la propriété suivante :\n\n\\|A B\\| \\leq \\|A\\| \\|B\\| \\quad \\text{pour toutes matrices} \\ A, B \\in \\mathrm{M}_n(\\mathbb{R}).\n\nDans ce cas, nous pouvons majorer la norme de chaque terme de la série. En utilisant la norme subordonnée, nous avons :\n\n\\left\\| \\frac{A^k}{k!} \\right\\| = \\frac{\\|A^k\\|}{k!}.\n\nEn appliquant la propriété de la norme subordonnée, on sait que :\n\n\\|A^k\\| \\leq \\|A\\|^k.\n\nAinsi, chaque terme de la série est majoré par :\n\n\\frac{\\|A^k\\|}{k!} \\leq \\frac{\\|A\\|^k}{k!}.\n\nLa série \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} est simplement l’exponentielle scalaire de la norme \\|A\\| :\n\n\\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} = e^{\\|A\\|}.\n\nPuisque la série de droite converge, il en découle que la série de matrices \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} converge également absolument. En effet, une série absolument convergente dans un espace vectoriel de dimension finie est convergente.\nAinsi, la série pour e^A converge absolument pour toute matrice A \\in \\mathrm{M}_n(\\mathbb{R}).",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exponentielle.html#propriétés-de-lexponentielle-de-matrice",
+    "href": "src/edo_lineaires/exponentielle.html#propriétés-de-lexponentielle-de-matrice",
+    "title": "Exponentielle de Matrice",
+    "section": "Propriétés de l’Exponentielle de Matrice",
+    "text": "Propriétés de l’Exponentielle de Matrice\n\nExponentielle d’une Matrice Diagonale\nSi D est une matrice diagonale avec des éléments diagonaux d_1, d_2, \\dots, d_n, c’est-à-dire :\n\nD = \\text{diag}(d_1, d_2, \\dots, d_n),\n\nalors l’exponentielle de D est simplement l’exponentielle des éléments diagonaux :\n\ne^D = \\text{diag}(e^{d_1}, e^{d_2}, \\dots, e^{d_n}).\n\nCela simplifie les calculs, car il suffit de calculer l’exponentielle des éléments diagonaux de la matrice.\n\n\nExponentielle d’une Matrice Transformée\nSi une matrice A est similaire à une matrice diagonale D par une matrice de passage P (i.e., A = P D P^{-1}), alors :\n\ne^A = P e^D P^{-1}.\n\nCela permet de calculer l’exponentielle de A en passant à une base où A est diagonale, ce qui est souvent plus facile à manipuler.\n\n\n\n\n\n\nNote\n\n\n\nL’exponentielle d’une matrice est donc particulièrement simple à calculer lorsque la matrice est diagonale ou diagonalisable.\n\n\n\n\nExponentielle d’une Somme de Matrices Commutantes\nSi les matrices A et B commutent, c’est-à-dire si AB = BA, alors l’exponentielle de leur somme est le produit des exponentielles :\n\ne^{A + B} = e^A e^B.\n\nCela simplifie les calculs dans le cas où les matrices commutent, car il est plus facile de manipuler les exponentielles séparées.\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nSoit A et B deux matrices dans \\mathrm{M}_n(\\mathbb{R}) qui commutent, c’est-à-dire que AB = BA.\nNous utilisons l’expansion en série de Taylor pour calculer l’exponentielle d’une matrice :\n\ne^{A+B} = \\sum_{k=0}^{\\infty} \\frac{(A+B)^k}{k!}.\n\nEn développant (A+B)^k à l’aide du binôme de Newton, on obtient :\n\n(A + B)^k = \\sum_{j=0}^{k} \\binom{k}{j} A^{k-j} B^j.\n\nPuis, en substituant cette expression dans la série de l’exponentielle, nous avons :\n\ne^{A+B} = \\sum_{k=0}^{\\infty} \\frac{1}{k!} \\sum_{j=0}^{k} \\binom{k}{j} A^{k-j} B^j.\n\nNous réorganisons la somme en permutant les indices de somme pour séparer les termes en A et B :\n\ne^{A+B} = \\sum_{n=0}^{\\infty} \\frac{1}{n!} A^n \\sum_{l=0}^{\\infty} \\frac{1}{l!} B^l = e^A e^B.\n\nCela conclut la démonstration.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nLa commutativité des matrices A et B est une condition essentielle pour que cette propriété soit valide.\n\n\n\n\nInversibilité et Dérivabilité\nSoit A \\in \\mathrm{M}_n(\\mathbb{R}) une matrice carrée. On a les propriétés suivantes :\n\nInversibilité : e^A est toujours une matrice inversible et son inverse est donné par :\n\n(e^A)^{-1} = e^{-A}.\n\nDérivabilité : L’application t \\mapsto e^{tA} est dérivable par rapport à t, et sa dérivée est donnée par :\n\n\\frac{\\mathrm{d}}{\\mathrm{d} t} e^{tA} = A e^{tA} = e^{tA} A.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\n\nInversibilité :\nPour prouver que e^A est inversible et que son inverse est e^{-A}, nous utilisons la commutativité des matrices. En effet, il est évident que les matrices A et -A commutent, donc on peut écrire :\n\ne^{-A} e^A = e^A e^{-A} = e^{A + (-A)} = e^0 = I,\n\noù I est la matrice identité. Ainsi, e^A est inversible et son inverse est e^{-A}.\nDérivabilité :\nFixons un t \\in \\mathbb{R}. Pour étudier la dérivée de e^{tA} par rapport à t, nous commençons par utiliser la définition de la dérivée :\n\n\\frac{d}{dt} e^{tA} = \\lim_{h \\to 0} \\frac{e^{(t+h)A} - e^{tA}}{h}.\n\nNous réécrivons la différence comme suit :\n\ne^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I),\n\noù I est la matrice identité. Divisons par h :\n\n\\frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \\frac{e^{hA} - I}{h}.\n\nMaintenant, utilisons l’expansion en série de e^{hA} pour petites valeurs de h :\n\ne^{hA} = I + hA + \\frac{h^2}{2!} A^2 + \\cdots.\n\nAinsi, on a :\n\n\\frac{e^{hA} - I}{h} = A + \\frac{h}{2!} A^2 + \\cdots.\n\nEn prenant la limite quand h \\to 0, tous les termes en puissance de h disparaissent, et il reste :\n\n\\lim_{h \\to 0} \\frac{e^{hA} - I}{h} = A.\n\nDonc, la dérivée de e^{tA} est :\n\n\\frac{d}{dt} e^{tA} = e^{tA} A.\n\nPar commutativité de A avec ses puissances, on peut aussi écrire cette dérivée comme :\n\n\\frac{d}{dt} e^{tA} = A e^{tA}.\n\n\nCela conclut la démonstration des deux propriétés.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exponentielle de matrice"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#solution-du-problème-linéaire-non-homogène",
+    "href": "src/edo_lineaires/solution.html#solution-du-problème-linéaire-non-homogène",
+    "title": "Solution du Problème Linéaire",
+    "section": "Solution du Problème Linéaire Non Homogène",
+    "text": "Solution du Problème Linéaire Non Homogène\nConsidérons maintenant le problème de Cauchy linéaire non homogène :\n\n\\dot{x}(t) = A x(t) + b(t), \\quad x(0) = x_0\n\noù A \\in M_n(\\mathbb{R}) est une matrice constante et b(t) est un vecteur dépendant du temps.\n\nThéorème\nSupposons l’existence d’une solution maximale et l’unicité. La solution du problème de Cauchy linéaire non homogène est donnée par :\n\nx(t) = e^{tA} x_0 + \\int_{0}^{t} e^{(t-s)A} b(s) \\, ds\n\n\n\n\n\n\n\nExercice\n\n\n\n\n\nVérifiez que cette fonction est bien une solution du problème de Cauchy en utilisant les propriétés de l’exponentielle de matrice et en montrant qu’elle satisfait à la fois l’équation différentielle et la condition initiale.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
+    "href": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
+    "title": "Solution du Problème Linéaire",
+    "section": "Cas Particulier : b Constant",
+    "text": "Cas Particulier : b Constant\nSi b est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable.\n\nChangement de Variable\nPosons z(t) = x(t) - x_p(t), où x_p(t) est une solution particulière de l’équation \\dot{x}(t) = A x(t) + b.\n\n\n\n\n\n\n1. Équation pour z(t)\n\n\n\n\n\nEn substituant x(t) = z(t) + x_p(t) dans l’équation originale, nous obtenons : \n\\dot{z}(t) + \\dot{x}_p(t) = A(z(t) + x_p(t)) + b\n\nPuisque x_p(t) est une solution particulière, \\dot{x}_p(t) = A x_p(t) + b. Donc, \n\\dot{z}(t) = A z(t)\n\nAinsi, z(t) satisfait une équation différentielle linéaire homogène.\n\n\n\n\n\n\n\n\n\n2. Solution de z(t)\n\n\n\n\n\nLa solution de \\dot{z}(t) = A z(t) avec la condition initiale z(0) = x_0 - x_p(0) est donnée par : \nz(t) = e^{tA} (x_0 - x_p(0))\n\n\n\n\n\n\n\n\n\n\n3. Solution de x(t)\n\n\n\n\n\nEn revenant à la variable originale, nous avons : \nx(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t)\n\n\n\n\nCe changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.\n\n\nRemarque\nSi b appartient à l’image de A, c’est-à-dire s’il existe un vecteur x_e tel que A x_e = -b, alors nous pouvons choisir x_p(t) = x_e. En effet, dans ce cas, x_e est une solution particulière constante de l’équation \\dot{x}(t) = A x(t) + b, car : \nA x_e + b = -b + b = 0\n\nAinsi, x_p(t) = x_e est une solution particulière constante, simplifiant encore le changement de variable.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Solution générale"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html#exemple-3-système-linéaire-avec-second-membre-constant",
+    "href": "src/edo_lineaires/exemples.html#exemple-3-système-linéaire-avec-second-membre-constant",
+    "title": "Exemples et Exercices",
+    "section": "Exemple 3 : Système Linéaire avec Second Membre Constant",
+    "text": "Exemple 3 : Système Linéaire avec Second Membre Constant\nConsidérons le système linéaire suivant avec un second membre constant :\n\n\\dot{x}(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par :\n\nx(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, ds\n\nCalculons l’intégrale :\n\nx(t) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} & 0 \\\\ 0 & e^{-2(t-s)} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, ds\n\nCe qui donne :\n\nx(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ \\frac{1}{2} (1 - e^{-2t}) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\end{pmatrix}.",
+    "crumbs": [
+      "Cours",
+      "Équations différentielles ordinaires linéaires",
+      "Exemples"
+    ]
+  },
+  {
+    "objectID": "src/integration_numerique/euler.html#consistance-stabilité-et-convergence-de-la-méthode-deuler",
+    "href": "src/integration_numerique/euler.html#consistance-stabilité-et-convergence-de-la-méthode-deuler",
+    "title": "Méthode d’Euler",
+    "section": "Consistance, Stabilité et Convergence de la Méthode d’Euler",
+    "text": "Consistance, Stabilité et Convergence de la Méthode d’Euler\n\nConsistance\nLa consistance d’un schéma numérique mesure à quel point la solution numérique se rapproche de la solution exacte lorsque le pas de temps ( h ) devient petit.\nPour la méthode d’Euler appliquée à l’équation différentielle linéaire ( (t) = A x(t) ), l’erreur locale ( e_i ) à chaque étape est donnée par :\n\ne_i = x(t_{i+1}) - x(t_i) - h A x(t_i)\n\nEn utilisant le développement en série de Taylor de ( x(t) ) autour de ( t_i ), nous avons :\n\nx(t_{i+1}) = x(t_i) + h \\dot{x}(t_i) + \\frac{h^2}{2} \\ddot{x}(\\xi)\n\npour un certain ( (t_i, t_{i+1}) ). Comme ( (t_i) = A x(t_i) ), cela donne :\n\ne_i = h A x(t_i) + \\frac{h^2}{2} \\ddot{x}(\\xi) - h A x(t_i) = \\frac{h^2}{2} \\ddot{x}(\\xi)\n\nAinsi, l’erreur locale est d’ordre ( O(h^2) ), ce qui signifie que la méthode d’Euler est consistante d’ordre 1.\n\n\nStabilité\nLa stabilité d’un schéma numérique garantit que les erreurs d’approximation ne s’amplifient pas au cours du temps. Pour la méthode d’Euler appliquée à ( (t) = A x(t) ), considérons deux suites ( (x_i) ) et ( (y_i) ) définies par :\n\nx_{i+1} = x_i + h A x_i\n\n\ny_{i+1} = y_i + h A y_i + \\epsilon_i\n\noù ( _i ) est une perturbation. Le schéma est stable s’il existe une constante ( S &gt; 0 ) indépendante de ( h ) telle que :\n\n\\| x_i - y_i \\| \\leq S \\| x_0 - y_0 \\| + S \\max_{0 \\leq j \\leq i} \\| \\epsilon_j \\|\n\nCela signifie que de petites perturbations ne conduisent pas à des erreurs de plus en plus grandes, indépendamment de la taille du pas de temps.\n\n\nConvergence\nLa convergence d’un schéma numérique signifie que la solution numérique ( x_i ) se rapproche de la solution exacte ( x(t_i) ) lorsque ( h ).\nLa convergence de la méthode d’Euler repose sur les théorèmes de consistance et de stabilité (Théorème de Lax-Richtmyer). Comme nous avons montré que la méthode est consistante d’ordre 1 et stable, elle est également convergente. Cela implique que :\n\nx_i \\to x(t_i) \\quad \\text{lorsque} \\quad h \\to 0\n\nEn résumé, pour un système linéaire ( (t) = A x(t) ), la méthode d’Euler est convergente si les valeurs propres de ( A ) ont des parties réelles négatives, ce qui assure que ( x_i ) approche ( x(t_i) ) lorsque ( h ) devient petit.",
+    "crumbs": [
+      "Cours",
+      "Intégration numérique",
+      "Méthode d'Euler"
     ]
   }
 ]

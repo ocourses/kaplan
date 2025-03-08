@@ -190,7 +190,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations différentielles ordinaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -210,7 +210,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">EDO linéaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,25 +218,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/definition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définition</span></a>
+  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exponentielle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponentielle de matrice</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/solution.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solution générale</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exemples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exemples</span></a>
   </div>
 </li>
@@ -300,9 +300,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problème-de-cauchy-pour-les-équations-variationnelles" id="toc-problème-de-cauchy-pour-les-équations-variationnelles" class="nav-link active" data-scroll-target="#problème-de-cauchy-pour-les-équations-variationnelles">Problème de Cauchy pour les Équations Variationnelles</a></li>
-  <li><a href="#résolution-des-équations-variationnelles" id="toc-résolution-des-équations-variationnelles" class="nav-link" data-scroll-target="#résolution-des-équations-variationnelles">Résolution des Équations Variationnelles</a></li>
-  <li><a href="#application-au-cas-affine" id="toc-application-au-cas-affine" class="nav-link" data-scroll-target="#application-au-cas-affine">Application au Cas Affine</a></li>
+  <li><a href="#problème-de-cauchy-pour-les-équations-variationnelles" id="toc-problème-de-cauchy-pour-les-équations-variationnelles" class="nav-link active" data-scroll-target="#problème-de-cauchy-pour-les-équations-variationnelles">Problème de Cauchy pour les Équations Variationnelles</a>
+  <ul class="collapse">
+  <li><a href="#dérivée-par-rapport-à-x_0" id="toc-dérivée-par-rapport-à-x_0" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-x_0">1. Dérivée par Rapport à <span class="math inline">x_0</span> :</a></li>
+  <li><a href="#dérivée-par-rapport-à-theta" id="toc-dérivée-par-rapport-à-theta" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-theta">2. Dérivée par Rapport à <span class="math inline">\theta</span> :</a></li>
+  </ul></li>
+  <li><a href="#résolution-des-équations-variationnelles" id="toc-résolution-des-équations-variationnelles" class="nav-link" data-scroll-target="#résolution-des-équations-variationnelles">Résolution des Équations Variationnelles</a>
+  <ul class="collapse">
+  <li><a href="#exponentielle-de-matrice" id="toc-exponentielle-de-matrice" class="nav-link" data-scroll-target="#exponentielle-de-matrice">1. Exponentielle de Matrice :</a></li>
+  <li><a href="#schémas-de-runge-kutta" id="toc-schémas-de-runge-kutta" class="nav-link" data-scroll-target="#schémas-de-runge-kutta">2. Schémas de Runge-Kutta :</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -336,73 +343,46 @@ window.Quarto = {
 \dot{x}(t) = f(t, x(t), \theta), \quad x(t_0) = x_0
 </span></p>
 <p>Pour trouver la dérivée de la solution <span class="math inline">x(t, x_0, \theta)</span> par rapport à <span class="math inline">x_0</span> ou <span class="math inline">\theta</span>, nous devons résoudre un problème de Cauchy pour les équations variationnelles.</p>
-<ol type="1">
-<li><strong>Dérivée par Rapport à <span class="math inline">x_0</span></strong> :
-<ul>
-<li><p>La dérivée <span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
+<section id="dérivée-par-rapport-à-x_0" class="level3">
+<h3 class="anchored" data-anchor-id="dérivée-par-rapport-à-x_0">1. Dérivée par Rapport à <span class="math inline">x_0</span> :</h3>
+<p>La dérivée <span class="math inline">X(t) = \frac{\partial x}{\partial x_0}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
 <p><span class="math display">
-\frac{d}{dt} \left( \frac{\partial x}{\partial x_0}(t, x_0, \theta) \right) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \frac{\partial x}{\partial x_0}(t, x_0, \theta)
-</span></p></li>
-<li><p>Avec la condition initiale :</p>
+\frac{d}{dt} X(t) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \, X(t)
+</span></p>
+<p>Avec la condition initiale :</p>
 <p><span class="math display">
-\frac{\partial x}{\partial x_0}(t_0, x_0, \theta) = I
-</span></p></li>
-</ul></li>
-<li><strong>Dérivée par Rapport à <span class="math inline">\theta</span></strong> :
-<ul>
-<li><p>La dérivée <span class="math inline">\frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
+X(t_0) = I
+</span></p>
+</section>
+<section id="dérivée-par-rapport-à-theta" class="level3">
+<h3 class="anchored" data-anchor-id="dérivée-par-rapport-à-theta">2. Dérivée par Rapport à <span class="math inline">\theta</span> :</h3>
+<p>La dérivée <span class="math inline">Y(t) = \frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
 <p><span class="math display">
-\frac{d}{dt} \left( \frac{\partial x}{\partial \theta}(t, x_0, \theta) \right) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \frac{\partial x}{\partial \theta}(t, x_0, \theta) + \frac{\partial f}{\partial \theta}(t, x(t, x_0, \theta), \theta)
-</span></p></li>
-<li><p>Avec la condition initiale :</p>
+\frac{d}{dt} Y(t) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \, Y(t) + \frac{\partial f}{\partial \theta}(t, x(t, x_0, \theta), \theta)
+</span></p>
+<p>Avec la condition initiale :</p>
 <p><span class="math display">
-\frac{\partial x}{\partial \theta}(t_0, x_0, \theta) = 0
-</span></p></li>
-</ul></li>
-</ol>
+Y(t_0) = 0
+</span></p>
+</section>
 </section>
 <section id="résolution-des-équations-variationnelles" class="level2">
 <h2 class="anchored" data-anchor-id="résolution-des-équations-variationnelles">Résolution des Équations Variationnelles</h2>
 <p>Les équations variationnelles peuvent être résolues en utilisant soit l’exponentielle de matrice (dans le cas linéaire), soit des schémas numériques comme les méthodes de Runge-Kutta.</p>
-<ol type="1">
-<li><strong>Exponentielle de Matrice</strong> :
-<ul>
-<li><p>Dans le cas linéaire <span class="math inline">\dot{x}(t) = Ax(t)</span>, la solution de l’équation variationnelle pour <span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0)</span> est donnée par :</p>
+<section id="exponentielle-de-matrice" class="level3">
+<h3 class="anchored" data-anchor-id="exponentielle-de-matrice">1. Exponentielle de Matrice :</h3>
+<p>Dans le cas linéaire <span class="math inline">\dot{x}(t) = A x(t)</span>, la solution de l’équation variationnelle pour <span class="math inline">X(t) = \frac{\partial x}{\partial x_0}(t, x_0)</span> est donnée par :</p>
 <p><span class="math display">
-\frac{\partial x}{\partial x_0}(t, x_0) = e^{tA}
-</span></p></li>
-</ul></li>
-<li><strong>Schémas de Runge-Kutta</strong> :
-<ul>
-<li>Pour des systèmes plus complexes ou lorsque <span class="math inline">A</span> dépend de paramètres, les méthodes de Runge-Kutta peuvent être utilisées pour résoudre numériquement les équations variationnelles.</li>
-<li>Par exemple, pour le cas affine <span class="math inline">\dot{x}(t) = Ax(t) + b(t)</span>, les schémas de Runge-Kutta peuvent être appliqués directement aux équations variationnelles.</li>
-</ul></li>
-</ol>
+X(t) = e^{tA}
+</span></p>
 </section>
-<section id="application-au-cas-affine" class="level2">
-<h2 class="anchored" data-anchor-id="application-au-cas-affine">Application au Cas Affine</h2>
-<p>Considérons le cas affine <span class="math inline">\dot{x}(t) = Ax(t) + b(t)</span> avec <span class="math inline">x(t_0) = x_0</span>.</p>
-<ol type="1">
-<li><strong>Dérivée par Rapport à <span class="math inline">x_0</span></strong> :
-<ul>
-<li><p>L’équation variationnelle est :</p>
-<p><span class="math display">
-\frac{d}{dt} \left( \frac{\partial x}{\partial x_0}(t, x_0) \right) = A \frac{\partial x}{\partial x_0}(t, x_0)
-</span></p></li>
-<li><p>Avec la condition initiale <span class="math inline">\frac{\partial x}{\partial x_0}(t_0, x_0) = I</span>.</p></li>
-<li><p>La solution est donnée par :</p>
-<p><span class="math display">
-\frac{\partial x}{\partial x_0}(t, x_0) = e^{tA}
-</span></p></li>
-</ul></li>
-<li><strong>Dérivée par Rapport à <span class="math inline">A</span></strong> :
-<ul>
-<li>Si <span class="math inline">A</span> dépend de paramètres, la dérivée par rapport à ces paramètres peut être trouvée en résolvant l’équation variationnelle correspondante.</li>
-</ul></li>
-</ol>
-<p>En utilisant ces méthodes, nous pouvons analyser la sensibilité des solutions des EDO par rapport aux conditions initiales et aux paramètres, ce qui est crucial dans de nombreuses applications pratiques.</p>
+<section id="schémas-de-runge-kutta" class="level3">
+<h3 class="anchored" data-anchor-id="schémas-de-runge-kutta">2. Schémas de Runge-Kutta :</h3>
+<p>Pour des systèmes plus complexes ou lorsque <span class="math inline">A</span> dépend de paramètres, les méthodes de Runge-Kutta peuvent être utilisées pour résoudre numériquement les équations variationnelles.</p>
+<p>Par exemple, pour l’EDO <span class="math inline">\dot{x}(t) = A x(t) + b(t)</span>, les schémas de Runge-Kutta peuvent être appliqués directement aux équations variationnelles.</p>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

@@ -10,21 +10,21 @@ page-layout: article
 Considérons le schéma de Runge-Kutta suivant :
 
 $$
-\begin{align*}
+\begin{aligned}
 k_1 &= f(t_0, x_0) \\
 k_2 &= f(t_0 + c_2h, x_0 + a_{21}hk_1) \\
 x_1 &= x_0 + h(b_1k_1 + b_2k_2)
-\end{align*}
+\end{aligned}
 $$
 
-1. **Montrer que $c_2 = a_{21}$** :
-   - En utilisant le développement de Taylor pour $f$ autour de $(t_0, x_0)$, nous avons :
+1. **Montrer que \(c_2 = a_{21}\)** :
+   - En utilisant le développement de Taylor pour \(f\) autour de \((t_0, x_0)\), nous avons :
 
      $$
      f(t_0 + c_2h, x_0 + a_{21}hk_1) = f(t_0, x_0) + c_2h \frac{\partial f}{\partial t} + a_{21}hk_1 \frac{\partial f}{\partial x} + O(h^2)
      $$
 
-   - Pour que le schéma soit d'ordre 2, les termes d'ordre 1 doivent correspondre, ce qui implique $c_2 = a_{21}$.
+   - Pour que le schéma soit d'ordre 2, les termes d'ordre 1 doivent correspondre, ce qui implique \(c_2 = a_{21}\).
 
 2. **Relations pour l'Ordre 2** :
    - Pour que le schéma soit d'ordre 2, les coefficients doivent satisfaire les conditions suivantes :
@@ -37,14 +37,14 @@ $$
      b_2 c_2 = \frac{1}{2}
      $$
 
-   - En substituant $c_2 = a_{21}$ dans la deuxième équation, nous obtenons :
+   - En substituant \(c_2 = a_{21}\) dans la deuxième équation, nous obtenons :
 
      $$
      b_2 a_{21} = \frac{1}{2}
      $$
 
 3. **Conclusion** :
-   - En résolvant ces équations, nous trouvons que $b_1 = 0$, $b_2 = 1$, et $a_{21} = \frac{1}{2}$.
+   - En résolvant ces équations, nous trouvons que \(b_1 = 0\), \(b_2 = 1\), et \(a_{21} = \frac{1}{2}\).
    - Ces valeurs correspondent à la méthode de Runge-Kutta d'ordre 2, également connue sous le nom de méthode du point milieu.
 
 # Schémas de Runge-Kutta Explicites
@@ -128,11 +128,11 @@ $$
 # TP : Vérification Numérique des Ordres
 
 **Objectif :**
-- Implémentez les méthodes de Runge-Kutta ci-dessus et vérifiez numériquement leurs ordres en comparant les erreurs pour différents pas de temps $h$.
+- Implémentez les méthodes de Runge-Kutta ci-dessus et vérifiez numériquement leurs ordres en comparant les erreurs pour différents pas de temps \(h\).
 
 **Instructions :**
-- Choisissez une équation différentielle test, par exemple $\dot{x}(t) = -x(t)$ avec $x(0) = 1$.
-- Calculez les solutions numériques pour différents pas de temps $h$ et comparez les erreurs avec la solution exacte $x(t) = e^{-t}$.
-- Vérifiez que l'erreur décroît comme $O(h^p)$, où $p$ est l'ordre attendu de la méthode.
+- Choisissez une équation différentielle test, par exemple \(\dot{x}(t) = -x(t)\) avec \(x(0) = 1\).
+- Calculez les solutions numériques pour différents pas de temps \(h\) et comparez les erreurs avec la solution exacte \(x(t) = e^{-t}\).
+- Vérifiez que l'erreur décroît comme \(O(h^p)\), où \(p\) est l'ordre attendu de la méthode.
 
 Ces exercices et exemples permettent de comprendre les schémas de Runge-Kutta et de vérifier leur précision numérique.

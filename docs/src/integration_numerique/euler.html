@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../src/integration_numerique/runge_kutta.html" rel="next">
-<link href="../../src/edo_affines/exemples.html" rel="prev">
+<link href="../../src/edo_lineaires/exemples.html" rel="prev">
 <link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -191,7 +191,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations différentielles ordinaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">EDO linéaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,25 +219,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/definition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définition</span></a>
+  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exponentielle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponentielle de matrice</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/solution.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solution générale</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exemples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exemples</span></a>
   </div>
 </li>
@@ -303,7 +303,6 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction-à-la-méthode-deuler" id="toc-introduction-à-la-méthode-deuler" class="nav-link active" data-scroll-target="#introduction-à-la-méthode-deuler">Introduction à la Méthode d’Euler</a></li>
   <li><a href="#schéma-deuler" id="toc-schéma-deuler" class="nav-link" data-scroll-target="#schéma-deuler">Schéma d’Euler</a></li>
-  <li><a href="#application-au-cas-linéaire" id="toc-application-au-cas-linéaire" class="nav-link" data-scroll-target="#application-au-cas-linéaire">Application au Cas Linéaire</a></li>
   <li><a href="#consistance-stabilité-et-convergence-de-la-méthode-deuler" id="toc-consistance-stabilité-et-convergence-de-la-méthode-deuler" class="nav-link" data-scroll-target="#consistance-stabilité-et-convergence-de-la-méthode-deuler">Consistance, Stabilité et Convergence de la Méthode d’Euler</a>
   <ul class="collapse">
   <li><a href="#consistance" id="toc-consistance" class="nav-link" data-scroll-target="#consistance">Consistance</a></li>
@@ -335,69 +334,73 @@ window.Quarto = {
 </header>
 
 
-<p>La méthode d’Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est particulièrement utile pour les systèmes linéaires et affines.</p>
+<p>La méthode d’Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est souvent utilisée pour les systèmes linéaires et permet de trouver des approximations de la solution au fil du temps.</p>
 <section id="introduction-à-la-méthode-deuler" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-à-la-méthode-deuler">Introduction à la Méthode d’Euler</h2>
-<p>Considérons l’équation différentielle générale :</p>
+<p>Considérons une équation différentielle du premier ordre :</p>
 <p><span class="math display">
 \dot{x}(t) = f(t, x(t))
 </span></p>
-<p>où <span class="math inline">f(t, x(t))</span> décrit la dynamique du système. Dans le cas linéaire, <span class="math inline">f(t, x(t)) = Ax(t)</span>, et dans le cas affine, <span class="math inline">f(t, x(t)) = Ax(t) + b(t)</span>.</p>
+<p>où ( f(t, x(t)) ) est une fonction qui décrit l’évolution du système à un instant donné. Dans le cas d’un système linéaire, la fonction ( f ) est souvent de la forme :</p>
+<p><span class="math display">
+f(t, x(t)) = A x(t)
+</span></p>
+<p>où ( A ) est une matrice constante et ( x(t) ) est un vecteur d’état.</p>
 </section>
 <section id="schéma-deuler" class="level2">
 <h2 class="anchored" data-anchor-id="schéma-deuler">Schéma d’Euler</h2>
-<p>La méthode d’Euler discrétise le temps en utilisant une grille uniforme <span class="math inline">t_i = t_0 + ih</span>, où <span class="math inline">h</span> est le pas de temps. L’approximation de la solution <span class="math inline">x(t_i)</span> est notée <span class="math inline">x_i</span>. Le schéma d’Euler est donné par :</p>
+<p>La méthode d’Euler consiste à discrétiser le temps en utilisant une grille uniforme ( t_i = t_0 + ih ), où ( h ) est le pas de temps. À chaque instant ( t_i ), on obtient une approximation de la solution ( x(t_i) ), notée ( x_i ). Le schéma d’Euler est donné par :</p>
 <p><span class="math display">
-x_{i+1} = x_i + hf(t_i, x_i)
+x_{i+1} = x_i + h f(t_i, x_i)
 </span></p>
+<p>Dans le cas d’un système linéaire, cela devient :</p>
+<p><span class="math display">
+x_{i+1} = x_i + h A x_i = (I + h A) x_i
+</span></p>
+<p>où ( I ) est la matrice identité de taille appropriée.</p>
 </section>
-<section id="application-au-cas-linéaire" class="level2">
-<h2 class="anchored" data-anchor-id="application-au-cas-linéaire">Application au Cas Linéaire</h2>
-<p>Pour un système linéaire <span class="math inline">\dot{x}(t) = Ax(t)</span>, le schéma d’Euler devient :</p>
+<section id="consistance-stabilité-et-convergence-de-la-méthode-deuler" class="level2">
+<h2 class="anchored" data-anchor-id="consistance-stabilité-et-convergence-de-la-méthode-deuler">Consistance, Stabilité et Convergence de la Méthode d’Euler</h2>
+<section id="consistance" class="level3">
+<h3 class="anchored" data-anchor-id="consistance">Consistance</h3>
+<p>La consistance d’un schéma numérique mesure à quel point la solution numérique se rapproche de la solution exacte lorsque le pas de temps ( h ) devient petit.</p>
+<p>Pour la méthode d’Euler appliquée à l’équation différentielle linéaire ( (t) = A x(t) ), l’erreur locale ( e_i ) à chaque étape est donnée par :</p>
 <p><span class="math display">
-x_{i+1} = x_i + hAx_i = (I + hA)x_i
+e_i = x(t_{i+1}) - x(t_i) - h A x(t_i)
 </span></p>
-<p>où <span class="math inline">I</span> est la matrice identité.</p>
+<p>En utilisant le développement en série de Taylor de ( x(t) ) autour de ( t_i ), nous avons :</p>
+<p><span class="math display">
+x(t_{i+1}) = x(t_i) + h \dot{x}(t_i) + \frac{h^2}{2} \ddot{x}(\xi)
+</span></p>
+<p>pour un certain ( (t_i, t_{i+1}) ). Comme ( (t_i) = A x(t_i) ), cela donne :</p>
+<p><span class="math display">
+e_i = h A x(t_i) + \frac{h^2}{2} \ddot{x}(\xi) - h A x(t_i) = \frac{h^2}{2} \ddot{x}(\xi)
+</span></p>
+<p>Ainsi, l’erreur locale est d’ordre ( O(h^2) ), ce qui signifie que la méthode d’Euler est <strong>consistante d’ordre 1</strong>.</p>
 </section>
-<section id="consistance-stabilité-et-convergence-de-la-méthode-deuler" class="level1">
-<h1>Consistance, Stabilité et Convergence de la Méthode d’Euler</h1>
-<section id="consistance" class="level2">
-<h2 class="anchored" data-anchor-id="consistance">Consistance</h2>
-<p>La consistance d’un schéma numérique mesure à quel point le schéma approche bien l’équation différentielle continue lorsque le pas de temps <span class="math inline">h</span> tend vers zéro.</p>
-<p>Pour la méthode d’Euler appliquée à l’équation différentielle linéaire <span class="math inline">\dot{x}(t) = Ax(t)</span>, considérons l’erreur locale <span class="math inline">e_i</span> à chaque étape :</p>
+<section id="stabilité" class="level3">
+<h3 class="anchored" data-anchor-id="stabilité">Stabilité</h3>
+<p>La stabilité d’un schéma numérique garantit que les erreurs d’approximation ne s’amplifient pas au cours du temps. Pour la méthode d’Euler appliquée à ( (t) = A x(t) ), considérons deux suites ( (x_i) ) et ( (y_i) ) définies par :</p>
 <p><span class="math display">
-e_i = x(t_{i+1}) - x(t_i) - hAx(t_i)
+x_{i+1} = x_i + h A x_i
 </span></p>
-<p>En utilisant le développement de Taylor de <span class="math inline">x(t)</span> autour de <span class="math inline">t_i</span>, nous avons :</p>
 <p><span class="math display">
-x(t_{i+1}) = x(t_i) + h\dot{x}(t_i) + \frac{h^2}{2}\ddot{x}(\xi)
+y_{i+1} = y_i + h A y_i + \epsilon_i
 </span></p>
-<p>pour un certain <span class="math inline">\xi \in (t_i, t_{i+1})</span>. Puisque <span class="math inline">\dot{x}(t_i) = Ax(t_i)</span>, nous obtenons :</p>
+<p>où ( _i ) est une perturbation. Le schéma est stable s’il existe une constante ( S &gt; 0 ) indépendante de ( h ) telle que :</p>
 <p><span class="math display">
-e_i = hAx(t_i) + \frac{h^2}{2}\ddot{x}(\xi) - hAx(t_i) = \frac{h^2}{2}\ddot{x}(\xi)
+\| x_i - y_i \| \leq S \| x_0 - y_0 \| + S \max_{0 \leq j \leq i} \| \epsilon_j \|
 </span></p>
-<p>Ainsi, l’erreur locale est d’ordre <span class="math inline">O(h^2)</span>, ce qui signifie que la méthode d’Euler est <strong>consistante d’ordre 1</strong>.</p>
+<p>Cela signifie que de petites perturbations ne conduisent pas à des erreurs de plus en plus grandes, indépendamment de la taille du pas de temps.</p>
 </section>
-<section id="stabilité" class="level2">
-<h2 class="anchored" data-anchor-id="stabilité">Stabilité</h2>
-<p>La stabilité d’un schéma numérique garantit que les erreurs d’approximation ne s’amplifient pas au cours du temps. Pour la méthode d’Euler appliquée à <span class="math inline">\dot{x}(t) = Ax(t)</span>, considérons deux suites <span class="math inline">(x_i)</span> et <span class="math inline">(y_i)</span> définies par :</p>
+<section id="convergence" class="level3">
+<h3 class="anchored" data-anchor-id="convergence">Convergence</h3>
+<p>La convergence d’un schéma numérique signifie que la solution numérique ( x_i ) se rapproche de la solution exacte ( x(t_i) ) lorsque ( h ).</p>
+<p>La convergence de la méthode d’Euler repose sur les théorèmes de consistance et de stabilité (Théorème de Lax-Richtmyer). Comme nous avons montré que la méthode est consistante d’ordre 1 et stable, elle est également convergente. Cela implique que :</p>
 <p><span class="math display">
-x_{i+1} = x_i + hAx_i
+x_i \to x(t_i) \quad \text{lorsque} \quad h \to 0
 </span></p>
-<p><span class="math display">
-y_{i+1} = y_i + hAy_i + \epsilon_i
-</span></p>
-<p>où <span class="math inline">\epsilon_i</span> est une perturbation. Le schéma est dit stable s’il existe une constante <span class="math inline">S &gt; 0</span> indépendante de <span class="math inline">h</span> telle que :</p>
-<p><span class="math display">
-\|x_i - y_i\| \leq S \|x_0 - y_0\| + S \max_{0 \leq j \leq i} \|\epsilon_j\|
-</span></p>
-<p>pour tout <span class="math inline">i</span>. Cela signifie que de petites perturbations mènent à de petites erreurs, indépendamment de la subdivision du temps.</p>
-</section>
-<section id="convergence" class="level2">
-<h2 class="anchored" data-anchor-id="convergence">Convergence</h2>
-<p>La convergence d’un schéma numérique signifie que la solution numérique <span class="math inline">x_i</span> approche la solution exacte <span class="math inline">x(t_i)</span> lorsque <span class="math inline">h \to 0</span>.</p>
-<p>Pour la méthode d’Euler, la convergence est assurée par la consistance et la stabilité (Théorème de Lax-Richtmyer). Puisque nous avons montré que la méthode d’Euler est consistante d’ordre 1 et stable, elle est également convergente.</p>
-<p>En résumé, pour un système linéaire <span class="math inline">\dot{x}(t) = Ax(t)</span> avec des valeurs propres à parties réelles négatives, la méthode d’Euler est convergente, ce qui signifie que <span class="math inline">x_i \to x(t_i)</span> lorsque <span class="math inline">h \to 0</span>.</p>
+<p>En résumé, pour un système linéaire ( (t) = A x(t) ), la méthode d’Euler est convergente si les valeurs propres de ( A ) ont des parties réelles négatives, ce qui assure que ( x_i ) approche ( x(t_i) ) lorsque ( h ) devient petit.</p>
 
 
 </section>
@@ -823,7 +826,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/edo_affines/exemples.html" class="pagination-link" aria-label="Exemples">
+      <a href="../../src/edo_lineaires/exemples.html" class="pagination-link" aria-label="Exemples">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exemples</span>
       </a>          
   </div>

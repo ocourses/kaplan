@@ -191,7 +191,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations différentielles ordinaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">EDO linéaires</span></a>
+ <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,25 +219,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/definition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définition</span></a>
+  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exponentielle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponentielle de matrice</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/solution.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solution générale</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_affines/exemples.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exemples</span></a>
   </div>
 </li>
@@ -302,11 +302,18 @@ window.Quarto = {
    
   <ul>
   <li><a href="#fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo" id="toc-fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo" class="nav-link active" data-scroll-target="#fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo">Fonctions Dérivées pour une Équation Différentielle Ordinaire (EDO)</a></li>
-  <li><a href="#dérivée-par-rapport-à-la-condition-initiale" id="toc-dérivée-par-rapport-à-la-condition-initiale" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-la-condition-initiale">Dérivée par Rapport à la Condition Initiale</a></li>
-  <li><a href="#introduction-de-paramètres" id="toc-introduction-de-paramètres" class="nav-link" data-scroll-target="#introduction-de-paramètres">Introduction de Paramètres</a></li>
-  <li><a href="#exercice-dérivée-par-rapport-aux-paramètres" id="toc-exercice-dérivée-par-rapport-aux-paramètres" class="nav-link" data-scroll-target="#exercice-dérivée-par-rapport-aux-paramètres">Exercice : Dérivée par Rapport aux Paramètres</a></li>
+  <li><a href="#dérivée-par-rapport-à-la-condition-initiale" id="toc-dérivée-par-rapport-à-la-condition-initiale" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-la-condition-initiale">Dérivée par Rapport à la Condition Initiale</a>
+  <ul class="collapse">
+  <li><a href="#équation-intégrale" id="toc-équation-intégrale" class="nav-link" data-scroll-target="#équation-intégrale">1. Équation Intégrale</a></li>
+  <li><a href="#dérivation-par-rapport-à-x_0" id="toc-dérivation-par-rapport-à-x_0" class="nav-link" data-scroll-target="#dérivation-par-rapport-à-x_0">2. Dérivation par Rapport à <span class="math inline">x_0</span></a></li>
+  <li><a href="#équation-variationnelle" id="toc-équation-variationnelle" class="nav-link" data-scroll-target="#équation-variationnelle">3. Équation Variationnelle</a></li>
+  </ul></li>
+  <li><a href="#introduction-de-paramètres" id="toc-introduction-de-paramètres" class="nav-link" data-scroll-target="#introduction-de-paramètres">Introduction de Paramètres</a>
+  <ul class="collapse">
+  <li><a href="#équation-intégrale-avec-paramètres" id="toc-équation-intégrale-avec-paramètres" class="nav-link" data-scroll-target="#équation-intégrale-avec-paramètres">4. Équation Intégrale avec Paramètres</a></li>
+  <li><a href="#dérivation-par-rapport-à-theta" id="toc-dérivation-par-rapport-à-theta" class="nav-link" data-scroll-target="#dérivation-par-rapport-à-theta">5. Dérivation par Rapport à <span class="math inline">\theta</span></a></li>
+  </ul></li>
   <li><a href="#combinaison-des-dérivées" id="toc-combinaison-des-dérivées" class="nav-link" data-scroll-target="#combinaison-des-dérivées">Combinaison des Dérivées</a></li>
-  <li><a href="#application-aux-cas-affine-et-linéaire" id="toc-application-aux-cas-affine-et-linéaire" class="nav-link" data-scroll-target="#application-aux-cas-affine-et-linéaire">Application aux Cas Affine et Linéaire</a></li>
   </ul>
 </nav>
     </div>
@@ -338,36 +345,42 @@ window.Quarto = {
 <p><span class="math display">
 \dot{x}(t) = f(t, x(t)), \quad x(t_0) = x_0
 </span></p>
-<p>Nous souhaitons étudier comment la solution <span class="math inline">x(t, x_0)</span> varie en fonction de la condition initiale <span class="math inline">x_0</span>.</p>
+<p>Nous souhaitons étudier comment la solution <span class="math inline">x(t)</span> varie en fonction de la condition initiale <span class="math inline">x_0</span>.</p>
 </section>
 <section id="dérivée-par-rapport-à-la-condition-initiale" class="level2">
 <h2 class="anchored" data-anchor-id="dérivée-par-rapport-à-la-condition-initiale">Dérivée par Rapport à la Condition Initiale</h2>
-<p>Supposons que la solution <span class="math inline">x(t, x_0)</span> est dérivable par rapport à <span class="math inline">x_0</span>. Nous voulons trouver la dérivée <span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0)</span>.</p>
-<ol type="1">
-<li><strong>Équation Intégrale</strong> :
-<ul>
-<li><p>La solution de l’EDO peut être exprimée sous forme intégrale :</p>
+<p>Soit <span class="math inline">X(t) = \frac{\partial x(t)}{\partial x_0}</span>, la dérivée de la solution <span class="math inline">x(t)</span> par rapport à la condition initiale <span class="math inline">x_0</span>. Nous cherchons à déterminer l’équation différentielle satisfaite par <span class="math inline">X(t)</span>.</p>
+<section id="équation-intégrale" class="level3">
+<h3 class="anchored" data-anchor-id="équation-intégrale">1. Équation Intégrale</h3>
+<p>La solution de l’EDO peut être écrite sous la forme intégrale suivante :</p>
 <p><span class="math display">
-x(t, x_0) = x_0 + \int_{t_0}^{t} f(s, x(s, x_0)) \, ds
-</span></p></li>
-</ul></li>
-<li><strong>Dérivation par Rapport à <span class="math inline">x_0</span></strong> :
-<ul>
-<li><p>En dérivant cette équation par rapport à <span class="math inline">x_0</span>, nous obtenons :</p>
+x(t) = x_0 + \int_{t_0}^{t} f(s, x(s)) \, ds
+</span></p>
+</section>
+<section id="dérivation-par-rapport-à-x_0" class="level3">
+<h3 class="anchored" data-anchor-id="dérivation-par-rapport-à-x_0">2. Dérivation par Rapport à <span class="math inline">x_0</span></h3>
+<p>En dérivant cette équation par rapport à <span class="math inline">x_0</span>, nous obtenons l’équation suivante pour <span class="math inline">X(t)</span> :</p>
 <p><span class="math display">
-\frac{\partial x}{\partial x_0}(t, x_0) = I + \int_{t_0}^{t} \frac{\partial f}{\partial x}(s, x(s, x_0)) \frac{\partial x}{\partial x_0}(s, x_0) \, ds
-</span></p></li>
-<li><p>Ici, <span class="math inline">I</span> est la matrice identité, et <span class="math inline">\frac{\partial f}{\partial x}</span> est la jacobienne de <span class="math inline">f</span> par rapport à <span class="math inline">x</span>.</p></li>
-</ul></li>
-<li><strong>Équation Variationnelle</strong> :
-<ul>
-<li><p>La fonction <span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0)</span> satisfait une équation différentielle linéaire appelée <strong>équation variationnelle</strong> :</p>
+X'(t) = \frac{\partial f}{\partial x}(t, x(t)) \, X(t)
+</span></p>
+<p>Avec la condition initiale :</p>
 <p><span class="math display">
-\frac{d}{dt} \left( \frac{\partial x}{\partial x_0}(t, x_0) \right) = \frac{\partial f}{\partial x}(t, x(t, x_0)) \frac{\partial x}{\partial x_0}(t, x_0)
-</span></p></li>
-<li><p>Avec la condition initiale <span class="math inline">\frac{\partial x}{\partial x_0}(t_0, x_0) = I</span>.</p></li>
-</ul></li>
-</ol>
+X(t_0) = I
+</span></p>
+<p>Où <span class="math inline">I</span> est la matrice identité (si <span class="math inline">x(t)</span> est un vecteur, ou simplement 1 si <span class="math inline">x(t)</span> est un scalaire), et <span class="math inline">\frac{\partial f}{\partial x}</span> est la jacobienne de <span class="math inline">f</span> par rapport à <span class="math inline">x</span>.</p>
+</section>
+<section id="équation-variationnelle" class="level3">
+<h3 class="anchored" data-anchor-id="équation-variationnelle">3. Équation Variationnelle</h3>
+<p>La fonction <span class="math inline">X(t)</span> satisfait ainsi une équation différentielle linéaire appelée <strong>équation variationnelle</strong> :</p>
+<p><span class="math display">
+X'(t) = \frac{\partial f}{\partial x}(t, x(t)) \, X(t)
+</span></p>
+<p>Avec la condition initiale :</p>
+<p><span class="math display">
+X(t_0) = I
+</span></p>
+<p>Cette équation décrit comment les petites variations de la condition initiale <span class="math inline">x_0</span> influencent l’évolution de la solution <span class="math inline">x(t)</span> dans le temps.</p>
+</section>
 </section>
 <section id="introduction-de-paramètres" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-de-paramètres">Introduction de Paramètres</h2>
@@ -375,62 +388,35 @@ x(t, x_0) = x_0 + \int_{t_0}^{t} f(s, x(s, x_0)) \, ds
 <p><span class="math display">
 \dot{x}(t) = f(t, x(t), \theta), \quad x(t_0) = x_0
 </span></p>
-<p>Nous souhaitons trouver la dérivée de la solution <span class="math inline">x(t, x_0, \theta)</span> par rapport aux paramètres <span class="math inline">\theta</span>.</p>
-</section>
-<section id="exercice-dérivée-par-rapport-aux-paramètres" class="level2">
-<h2 class="anchored" data-anchor-id="exercice-dérivée-par-rapport-aux-paramètres">Exercice : Dérivée par Rapport aux Paramètres</h2>
-<p><strong>Exercice :</strong></p>
-<ol type="1">
-<li><strong>Équation Intégrale avec Paramètres</strong> :
-<ul>
-<li><p>Écrivez la solution sous forme intégrale en incluant les paramètres <span class="math inline">\theta</span> :</p>
+<p>Nous souhaitons trouver la dérivée de la solution <span class="math inline">x(t)</span> par rapport aux paramètres <span class="math inline">\theta</span>.</p>
+<section id="équation-intégrale-avec-paramètres" class="level3">
+<h3 class="anchored" data-anchor-id="équation-intégrale-avec-paramètres">4. Équation Intégrale avec Paramètres</h3>
+<p>La solution de cette EDO avec les paramètres <span class="math inline">\theta</span> peut être écrite sous la forme intégrale :</p>
 <p><span class="math display">
-x(t, x_0, \theta) = x_0 + \int_{t_0}^{t} f(s, x(s, x_0, \theta), \theta) \, ds
-</span></p></li>
-</ul></li>
-<li><strong>Dérivation par Rapport à <span class="math inline">\theta</span></strong> :
-<ul>
-<li>Dérivez cette équation par rapport à <span class="math inline">\theta</span> pour obtenir une équation variationnelle pour <span class="math inline">\frac{\partial x}{\partial \theta}(t, x_0, \theta)</span>.</li>
-</ul></li>
-<li><strong>Équation Variationnelle</strong> :
-<ul>
-<li>Montrez que <span class="math inline">\frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> satisfait une équation différentielle linéaire et donnez sa condition initiale.</li>
-</ul></li>
-</ol>
+x(t, \theta) = x_0 + \int_{t_0}^{t} f(s, x(s, \theta), \theta) \, ds
+</span></p>
+</section>
+<section id="dérivation-par-rapport-à-theta" class="level3">
+<h3 class="anchored" data-anchor-id="dérivation-par-rapport-à-theta">5. Dérivation par Rapport à <span class="math inline">\theta</span></h3>
+<p>La dérivée de <span class="math inline">x(t)</span> par rapport à <span class="math inline">\theta</span> donne une équation variationnelle pour <span class="math inline">\frac{\partial x}{\partial \theta}(t, \theta)</span>, et peut être obtenue en différentiant l’équation intégrale par rapport à <span class="math inline">\theta</span> :</p>
+<p><span class="math display">
+\frac{\partial x}{\partial \theta}(t, \theta) = \int_{t_0}^{t} \frac{\partial f}{\partial \theta}(s, x(s, \theta), \theta) \, ds
+</span></p>
+<p>Cette dérivation permet d’obtenir une sensibilité de la solution <span class="math inline">x(t)</span> par rapport aux paramètres <span class="math inline">\theta</span>.</p>
+</section>
 </section>
 <section id="combinaison-des-dérivées" class="level2">
 <h2 class="anchored" data-anchor-id="combinaison-des-dérivées">Combinaison des Dérivées</h2>
-<p>Lorsque la solution <span class="math inline">x(t, x_0, \theta)</span> dépend à la fois de la condition initiale <span class="math inline">x_0</span> et des paramètres <span class="math inline">\theta</span>, la dérivée totale par rapport à <span class="math inline">t</span> est donnée par la somme des dérivées partielles :</p>
+<p>Lorsque la solution <span class="math inline">x(t, x_0, \theta)</span> dépend à la fois de la condition initiale <span class="math inline">x_0</span> et des paramètres <span class="math inline">\theta</span>, la dérivée totale de <span class="math inline">x(t, x_0, \theta)</span> par rapport à <span class="math inline">t</span> est donnée par :</p>
 <p><span class="math display">
-\frac{d}{dt} x(t, x_0, \theta) = \frac{\partial x}{\partial t}(t, x_0, \theta) + \frac{\partial x}{\partial x_0}(t, x_0, \theta) \dot{x}_0 + \frac{\partial x}{\partial \theta}(t, x_0, \theta) \dot{\theta}
+\frac{d}{dt} x(t, x_0, \theta) = \frac{\partial x}{\partial t}(t, x_0, \theta) + \frac{\partial x}{\partial x_0}(t, x_0, \theta) \dot{x_0} + \frac{\partial x}{\partial \theta}(t, x_0, \theta) \dot{\theta}
 </span></p>
 <ul>
 <li><span class="math inline">\frac{\partial x}{\partial t}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">t</span>.</li>
 <li><span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">x_0</span>.</li>
 <li><span class="math inline">\frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">\theta</span>.</li>
 </ul>
-<p>Cette relation montre comment les variations de la condition initiale et des paramètres affectent la dynamique du système.</p>
-</section>
-<section id="application-aux-cas-affine-et-linéaire" class="level2">
-<h2 class="anchored" data-anchor-id="application-aux-cas-affine-et-linéaire">Application aux Cas Affine et Linéaire</h2>
-<ol type="1">
-<li><strong>Cas Linéaire</strong> :
-<ul>
-<li><p>Pour <span class="math inline">\dot{x}(t) = Ax(t)</span>, la dérivée par rapport à <span class="math inline">x_0</span> est donnée par :</p>
-<p><span class="math display">
-\frac{\partial x}{\partial x_0}(t, x_0) = e^{tA}
-</span></p></li>
-</ul></li>
-<li><strong>Cas Affine</strong> :
-<ul>
-<li>Pour <span class="math inline">\dot{x}(t) = Ax(t) + b(t)</span>, la dérivée par rapport à <span class="math inline">x_0</span> reste la même que dans le cas linéaire, car <span class="math inline">b(t)</span> n’affecte pas la dérivée par rapport à <span class="math inline">x_0</span>.</li>
-</ul></li>
-<li><strong>Dérivée par Rapport à <span class="math inline">A</span></strong> :
-<ul>
-<li>Pour le cas affine, si <span class="math inline">A</span> dépend de paramètres, la dérivée par rapport à ces paramètres peut être trouvée en utilisant l’équation variationnelle.</li>
-</ul></li>
-</ol>
-<p>Ces concepts permettent d’analyser la sensibilité des solutions des EDO par rapport aux conditions initiales et aux paramètres, ce qui est crucial dans de nombreuses applications pratiques.</p>
+<p>Cette relation montre comment les variations de la condition initiale <span class="math inline">x_0</span> et des paramètres <span class="math inline">\theta</span> affectent la dynamique du système.</p>
 
 
 </section>

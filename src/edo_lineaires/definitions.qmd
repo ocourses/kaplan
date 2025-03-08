@@ -1,0 +1,95 @@
+---
+title: "Équations Différentielles Ordinaires Linéaires"
+page-layout: article
+---
+
+## Définition d'un Problème de Cauchy Linéaire
+
+Un **problème de Cauchy linéaire** consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d'une condition initiale. Il s'écrit sous la forme :
+
+$$
+x'(t) = A(t) x(t) + b(t), \quad x(t_0) = x_0
+$$
+
+où :
+
+- $x: I \to \mathbb{R}^n$ est la fonction inconnue définie sur un intervalle $I$,
+- $A(t) \in \mathrm{M}_{n}(\mathbb{R})$ est une matrice donnée, dépendant du temps $t$,
+- $b(t) \in \mathbb{R}^n$ est un vecteur donné, dépendant du temps $t$,
+- $t_0 \in I$ est l’instant initial,
+- $x_0 \in \mathbb{R}^n$ est la condition initiale.
+
+Nous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où $A(t)$ est constant. Cela simplifie les calculs et permet de mieux comprendre les solutions sans la complication de la dépendance temporelle de $A(t)$.
+
+## Terminologie
+
+Une équation différentielle ordinaire (EDO) linéaire s’écrit sous la forme matricielle :
+
+$$
+x'(t) = A(t) x(t) + b(t),
+$$
+
+où :
+
+- $A(t) \in \mathrm{M}_{n}(\mathbb{R})$ est une matrice de taille $n \times n$,
+- $b(t) \in \mathbb{R}^n$ est un vecteur de taille $n$.
+
+On distingue plusieurs cas :
+
+- **Équation linéaire homogène** : lorsque $b(t) = 0$, l’équation devient :
+
+  $$
+  x'(t) = A(t) x(t).
+  $$
+
+- **Équation linéaire non homogène (avec second membre)** : lorsque $b(t) \neq 0$.
+
+- **Équation autonome** : lorsque $A(t)$ et $b(t)$ sont constants, c'est-à-dire indépendants de $t$.
+
+## Définition d'une Solution
+
+Une **solution** d'une EDO sur un intervalle $I$ est une fonction vectorielle $x: I \to \mathbb{R}^n$ qui est dérivable et qui satisfait l’équation différentielle pour tout $t \in I$.
+
+Pour un problème de Cauchy $x'(t) = A(t) x(t) + b(t)$ avec condition initiale $x(t_0) = x_0$, une solution est une fonction $x(t)$ telle que :
+
+$$
+x'(t) = A(t) x(t) + b(t), \quad \text{et} \quad x(t_0) = x_0.
+$$
+
+::: {.callout-note}
+Il est courant d'utiliser des notations différentes pour la solution et la variable inconnue du problème. Par exemple, au lieu d'écrire $x(t)$ pour la solution du problème de Cauchy, on peut choisir d'utiliser une autre lettre, comme $\varphi(t)$, afin de distinguer clairement la fonction inconnue de la solution elle-même. Cela peut être utile pour éviter toute confusion, notamment dans les contextes où plusieurs équations différentielles sont traitées simultanément.
+:::
+
+## Solution dans le Cas Scalaire
+
+Dans le cas d’une équation linéaire homogène scalaire autonome, où $a$ est une fonction constante, et en considérant le problème de Cauchy avec la condition initiale $x(0) = x_0$, l'équation est donnée par :
+
+$$
+x'(t) = a x(t), \quad x(0) = x_0.
+$$
+
+La solution générale de cette équation est :
+
+$$
+x(t) = C e^{a t},
+$$
+
+où $C$ est une constante déterminée par la condition initiale. En imposant $x(0) = x_0$, on trouve :
+
+$$
+C = x_0.
+$$
+
+Ainsi, la solution particulière du problème de Cauchy est :
+
+$$
+x(t) = x_0 e^{a t}.
+$$
+
+Le fait que $a$ soit constant simplifie les calculs, car l'intégrale de $a$ devient simplement $a t$, ce qui donne une solution exponentielle simple en fonction du temps $t$.
+
+::: {.callout-note}
+### Commentaire sur le Cas Vectoriel
+
+Le cas scalaire fait intervenir l'exponentielle sur $\mathbb{R}$, c'est-à-dire la fonction $e^x$. Dans le cas vectoriel, où $x(t) \in \mathbb{R}^n$, nous aurons besoin de l'exponentielle de matrices, qui est une généralisation de l'exponentielle scalaire. Cette exponentielle de matrices sera définie et explorée plus tard dans le cours.
+:::

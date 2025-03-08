@@ -1,0 +1,135 @@
+---
+title: "Solution du Problème Linéaire"
+page-layout: article
+---
+
+Considérons le problème de Cauchy linéaire suivant :
+
+$$
+\dot{x}(t) = A x(t), \quad x(0) = x_0
+$$
+
+où $A \in M_n(\mathbb{R})$ est une matrice constante et $x_0 \in \mathbb{R}^n$ est le vecteur d'état initial.
+
+## Théorème
+
+La solution du problème de Cauchy linéaire est donnée par :
+
+$$
+x(t, x_0) = e^{tA} x_0
+$$
+
+### Preuve de l'Existence
+
+Montrons que $x(t, x_0) = e^{tA} x_0$ vérifie les propriétés d'une solution pour le problème de Cauchy.
+
+::: {.callout-caution collapse="true" icon=false}
+### Vérification de la Condition Initiale
+À $t = 0$, nous avons :
+$$
+x(0, x_0) = e^{0 \cdot A} x_0 = I x_0 = x_0
+$$
+Donc, la condition initiale est satisfaite.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### Vérification de l'Équation Différentielle
+Calculons la dérivée de $x(t, x_0)$ par rapport à $t$ :
+$$
+\frac{d}{dt} x(t, x_0) = \frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)
+$$
+Donc, $x(t, x_0)$ satisfait l'équation différentielle $\dot{x}(t) = A x(t)$.
+:::
+
+Ainsi, $x(t, x_0) = e^{tA} x_0$ est bien une solution du problème de Cauchy, ce qui prouve l'existence.
+
+### Preuve de l'Unicité
+
+Supposons qu'il existe une autre solution $y(t)$ du problème de Cauchy. Définissons $z(t) = y(t) - x(t, x_0)$. Alors,
+
+$$
+\dot{z}(t) = \dot{y}(t) - \dot{x}(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)
+$$
+
+Avec la condition initiale $z(0) = y(0) - x(0, x_0) = 0$.
+
+Considérons maintenant le changement de variable $w(t) = e^{-tA} z(t)$. Alors,
+
+$$
+\dot{w}(t) = \frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} \dot{z}(t) = -A w(t) + e^{-tA} A z(t) = 0
+$$
+
+Puisque $\dot{w}(t) = 0$, $w(t)$ est constante (d'après le TAF). Donc, $w(t) = w(0) = e^{-0 \cdot A} z(0) = 0$.
+
+Ainsi, $z(t) = e^{tA} w(t) = 0$ pour tout $t$, ce qui implique que $y(t) = x(t, x_0)$. Cela prouve l'unicité de la solution.
+
+## Solution du Problème Linéaire Non Homogène
+
+Considérons maintenant le problème de Cauchy linéaire non homogène :
+
+$$
+\dot{x}(t) = A x(t) + b(t), \quad x(0) = x_0
+$$
+
+où $A \in M_n(\mathbb{R})$ est une matrice constante et $b(t)$ est un vecteur dépendant du temps.
+
+### Théorème
+
+Supposons l'existence d'une solution maximale et l'unicité. La solution du problème de Cauchy linéaire non homogène est donnée par :
+
+$$
+x(t) = e^{tA} x_0 + \int_{0}^{t} e^{(t-s)A} b(s) \, ds
+$$
+
+::: {.callout-caution collapse="true" icon=false}
+### Exercice
+Vérifiez que cette fonction est bien une solution du problème de Cauchy en utilisant les propriétés de l'exponentielle de matrice et en montrant qu'elle satisfait à la fois l'équation différentielle et la condition initiale.
+:::
+
+## Cas Particulier : $b$ Constant
+
+Si $b$ est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable.
+
+### Changement de Variable
+
+Posons $z(t) = x(t) - x_p(t)$, où $x_p(t)$ est une solution particulière de l'équation $\dot{x}(t) = A x(t) + b$.
+
+::: {.callout-caution collapse="true" icon=false}
+### 1. Équation pour $z(t)$
+En substituant $x(t) = z(t) + x_p(t)$ dans l'équation originale, nous obtenons :
+$$
+\dot{z}(t) + \dot{x}_p(t) = A(z(t) + x_p(t)) + b
+$$  
+Puisque $x_p(t)$ est une solution particulière, $\dot{x}_p(t) = A x_p(t) + b$. Donc,
+$$
+\dot{z}(t) = A z(t)
+$$  
+Ainsi, $z(t)$ satisfait une équation différentielle linéaire homogène.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### 2. Solution de $z(t)$
+La solution de $\dot{z}(t) = A z(t)$ avec la condition initiale $z(0) = x_0 - x_p(0)$ est donnée par :
+$$
+z(t) = e^{tA} (x_0 - x_p(0))
+$$
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### 3. Solution de $x(t)$
+En revenant à la variable originale, nous avons :
+$$
+x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t)
+$$
+:::
+
+Ce changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.
+
+### Remarque
+
+Si $b$ appartient à l'image de $A$, c'est-à-dire s'il existe un vecteur $x_e$ tel que $A x_e = -b$, alors nous pouvons choisir $x_p(t) = x_e$. En effet, dans ce cas, $x_e$ est une solution particulière constante de l'équation $\dot{x}(t) = A x(t) + b$, car :
+$$
+A x_e + b = -b + b = 0
+$$
+
+Ainsi, $x_p(t) = x_e$ est une solution particulière constante, simplifiant encore le changement de variable.
