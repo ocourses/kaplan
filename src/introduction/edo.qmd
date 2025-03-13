@@ -1,11 +1,11 @@
 ---
-title: "Introduction aux Équations Différentielles Ordinaires"
+title: "Introduction"
 page-layout: article
 ---
 
-## EDO d'Ordre 1 Scalaire Autonome et Linéaire
+## Équations Différentielles d'Ordre 1 Scalaire
 
-Commençons par considérer une équation différentielle ordinaire d'ordre 1, scalaire, autonome et linéaire (homogène) :
+Considérons pour commencer une équation différentielle ordinaire (EDO) d'ordre 1, scalaire, autonome et linéaire (homogène) :
 
 $$
 x'(t) = a x(t)
@@ -20,6 +20,7 @@ où :
 
 Donnons de explications sur la terminologie employée.
 
+- Le terme **ordinaire** est utilisé par opposition au terme équation différentielle partielle (plus communément équation aux dérivées partielles, ou EDP).
 - Dans ce cas, l'équation différentielle est **scalaire** car elle ne fait intervenir qu'une seule fonction inconnue $t \mapsto x(t) \in \mathbb{R}$. 
 - Elle est **autonome** car elle ne dépend pas explicitement du temps $t$. 
 - Enfin, elle est **linéaire** (homogène) car elle est linéaire en $x(t)$.
@@ -62,7 +63,7 @@ Pour une équation différentielle, comme pour toute équation, il est crucial d
 - Dérivable
 - Définie sur un intervalle de temps ouvert contenant 0 (car la condition initiale est donnée en $t = 0$).
 
-## Équation Différentielle d'Ordre 2
+## Équation Différentielle d'Ordre 2 Scalaire
 
 Considérons maintenant une équation différentielle d'ordre 2 :
 
@@ -143,23 +144,23 @@ $$
 
 Cet exemple illustre comment une équation différentielle d'ordre 2 peut être transformée en un système d'ordre 1 pour faciliter sa résolution.
 
-## EDO Linéaire Générale
+## Équations Différentielles d'Ordre 1 Vectorielle
 
-Considérons maintenant une équation différentielle (ordinaire) d'ordre 1 **linéaire non homogène** :
+Considérons maintenant une équation différentielle ordinaire d'ordre 1 **linéaire non homogène** :
 
 $$
-x'(t) = A x(t) + B(t)
+x'(t) = A x(t) + b(t)
 $$
 
-où $A$ est une matrice constante de taille $n \times n$ et $B(t)$ est un vecteur de taille $n$ dépendant du temps $t$.
+où $A$ est une matrice constante de taille $n \times n$ et $b(t)$ est un vecteur de taille $n$ dépendant du temps $t$.
 
-Cette équation n'est pas autonome car elle dépend explicitement du temps $t$ à travers $B(t)$. Cette équation est affine en $x(t)$, car elle contient un terme linéaire $A x(t)$ et un terme constant $B(t)$. Nous parlerons d'équation différentielle linéaire non homogène. C'est une équation d'ordre 1 car elle ne fait intervenir que la dérivée première de $x(t)$, mais c'est une équation vectorielle car $x(t)$ est un vecteur de taille $n$.
+Cette équation n'est pas autonome car elle dépend explicitement du temps $t$ à travers $b(t)$. Cette équation est affine en $x(t)$, car elle contient un terme linéaire $A x(t)$ et un terme constant $b(t)$. Nous parlerons d'équation différentielle linéaire non homogène. C'est une équation d'ordre 1 car elle ne fait intervenir que la dérivée première de $x(t)$, mais c'est une équation vectorielle car $x(t)$ est un vecteur de taille $n$.
 
 ::: {.callout-note}
 Toutes les équations différentielles que nous considérons seront linéaires et auront une matrice $A$ constante. Cela simplifie la résolution.
 :::
 
-Pour mieux comprendre que le temps $t$ intervient explicitement seulement dans $B(t)$, nous pouvons réécrire l'équation à l'aide d'une fonction $f$ (appelée **second membre**) dépendant du temps $t$ et de la variable $x$ :
+Pour mieux comprendre que le temps $t$ intervient explicitement seulement dans $b(t)$, nous pouvons réécrire l'équation à l'aide d'une fonction $f$ (appelée **second membre**) dépendant du temps $t$ et de la variable $x$ :
 
 $$
 x'(t) = f(t, x(t))
@@ -168,12 +169,12 @@ $$
 où $f$ est une fonction de $\mathbb{R} \times \mathbb{R}^n$ dans $\mathbb{R}^n$ définie par
 
 $$
-f(t, x) = A x + B(t).
+f(t, x) = A x + b(t).
 $$
 
 ::: {.callout-note}
 - On dira que l'équation différentielle est autonome si $f$ ne dépend pas explicitement du temps $t$ et non autonome sinon.
-- Dans la littérature, on parle d'équation différentielle linéaire homogène lorsque $B(t) = 0$ et d'équation différentielle linéaire non homogène (ou avec second membre) sinon.
+- Dans la littérature, on parle d'équation différentielle linéaire homogène lorsque $b(t) = 0$ et d'équation différentielle linéaire non homogène (ou avec second membre) sinon.
 :::
 
 ## Importance des Équations Différentielles

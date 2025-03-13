@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Équations Différentielles Ordinaires Linéaires – Cours EDO</title>
+<title>Problème de Cauchy Linéaire – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,11 +115,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Équations Différentielles Ordinaires Linéaires – Cours EDO">
+<meta property="og:title" content="Problème de Cauchy Linéaire – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="assets/images/trajectory.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Équations Différentielles Ordinaires Linéaires – Cours EDO">
+<meta name="twitter:title" content="Problème de Cauchy Linéaire – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="assets/images/trajectory.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -158,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Définitions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Définitions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -232,7 +232,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solution générale</span></a>
+ <span class="menu-text">Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,7 +301,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problème-de-cauchy-linéaire" id="toc-problème-de-cauchy-linéaire" class="nav-link active" data-scroll-target="#problème-de-cauchy-linéaire">Problème de Cauchy Linéaire</a></li>
+  <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
   <li><a href="#terminologie" id="toc-terminologie" class="nav-link" data-scroll-target="#terminologie">Terminologie</a></li>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#formulation-intégrale" id="toc-formulation-intégrale" class="nav-link" data-scroll-target="#formulation-intégrale">Formulation Intégrale</a></li>
@@ -312,9 +312,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Définitions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Définitions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Équations Différentielles Ordinaires Linéaires</h1>
+<h1 class="title">Problème de Cauchy Linéaire</h1>
 </div>
 
 
@@ -331,8 +331,8 @@ window.Quarto = {
 </header>
 
 
-<section id="problème-de-cauchy-linéaire" class="level2">
-<h2 class="anchored" data-anchor-id="problème-de-cauchy-linéaire">Problème de Cauchy Linéaire</h2>
+<section id="définition" class="level2">
+<h2 class="anchored" data-anchor-id="définition">Définition</h2>
 <p>Un <strong>problème de Cauchy linéaire</strong> consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :</p>
 <p><span class="math display">
 x'(t) = A(t)\, x(t) + b(t), \quad x(t_0) = x_0

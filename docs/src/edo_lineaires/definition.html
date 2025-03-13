@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Équations Différentielles Ordinaires Linéaires – Cours EDO</title>
+<title>Problème de Cauchy Linéaire – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,11 +115,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Équations Différentielles Ordinaires Linéaires – Cours EDO">
+<meta property="og:title" content="Problème de Cauchy Linéaire – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="assets/images/trajectory.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Équations Différentielles Ordinaires Linéaires – Cours EDO">
+<meta name="twitter:title" content="Problème de Cauchy Linéaire – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="assets/images/trajectory.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -158,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">EDO linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Définitions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Définition</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -197,7 +197,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modèle de Kaplan</span></a>
+ <span class="menu-text">Problème de Kaplan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">EDO linéaires</span></a>
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -220,7 +220,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Définitions</span></a>
+ <span class="menu-text">Définition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -232,7 +232,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solution générale</span></a>
+ <span class="menu-text">Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,19 +301,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#définition-dun-problème-de-cauchy" id="toc-définition-dun-problème-de-cauchy" class="nav-link active" data-scroll-target="#définition-dun-problème-de-cauchy">Définition d’un Problème de Cauchy</a></li>
+  <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
   <li><a href="#terminologie" id="toc-terminologie" class="nav-link" data-scroll-target="#terminologie">Terminologie</a></li>
-  <li><a href="#définition-dune-solution" id="toc-définition-dune-solution" class="nav-link" data-scroll-target="#définition-dune-solution">Définition d’une Solution</a></li>
-  <li><a href="#solution-dans-le-cas-scalaire" id="toc-solution-dans-le-cas-scalaire" class="nav-link" data-scroll-target="#solution-dans-le-cas-scalaire">Solution dans le Cas Scalaire</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#formulation-intégrale" id="toc-formulation-intégrale" class="nav-link" data-scroll-target="#formulation-intégrale">Formulation Intégrale</a></li>
+  <li><a href="#cas-scalaire" id="toc-cas-scalaire" class="nav-link" data-scroll-target="#cas-scalaire">Cas Scalaire</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">EDO linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Définitions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Définition</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Équations Différentielles Ordinaires Linéaires</h1>
+<h1 class="title">Problème de Cauchy Linéaire</h1>
 </div>
 
 
@@ -330,58 +331,186 @@ window.Quarto = {
 </header>
 
 
-<section id="définition-dun-problème-de-cauchy" class="level2">
-<h2 class="anchored" data-anchor-id="définition-dun-problème-de-cauchy">Définition d’un Problème de Cauchy</h2>
-<p>Un <strong>problème de Cauchy</strong> consiste à résoudre une équation différentielle ordinaire (EDO) accompagnée d’une condition initiale. Il s’écrit sous la forme :</p>
+<section id="définition" class="level2">
+<h2 class="anchored" data-anchor-id="définition">Définition</h2>
+<p>Un <strong>problème de Cauchy linéaire</strong> consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :</p>
 <p><span class="math display">
-x'(t) = f(t,x(t)), \quad x(t_0) = x_0
+x'(t) = A(t)\, x(t) + b(t), \quad x(t_0) = x_0
 </span></p>
-<p>où : - <span class="math inline">x:I \to \mathbb{R}^n</span> est la fonction inconnue définie sur un intervalle <span class="math inline">I</span>, - <span class="math inline">f:I \times \mathbb{R}^n \to \mathbb{R}^n</span> est une fonction donnée, - <span class="math inline">t_0 \in I</span> est l’instant initial, - <span class="math inline">x_0 \in \mathbb{R}^n</span> est la condition initiale.</p>
-<p>Dans le cas où <span class="math inline">f</span> est une fonction affine en <span class="math inline">x</span>, on obtient une équation différentielle <strong>linéaire</strong>.</p>
+<p>où :</p>
+<ul>
+<li><span class="math inline">x\colon I \to \mathbb{R}^n</span> est la fonction inconnue définie sur un intervalle <span class="math inline">I</span> contenant <span class="math inline">t_0</span>,</li>
+<li><span class="math inline">A(t) \in \mathrm{M}_{n}(\mathbb{R})</span> est une matrice donnée, dépendant du temps <span class="math inline">t</span>,</li>
+<li><span class="math inline">b(t) \in \mathbb{R}^n</span> est un vecteur donné, dépendant du temps <span class="math inline">t</span>,</li>
+<li><span class="math inline">t_0 \in I</span> est l’instant initial,</li>
+<li><span class="math inline">x_0 \in \mathbb{R}^n</span> est la condition initiale.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où <span class="math inline">A(t)</span> est constant.</p>
+</div>
+</div>
 </section>
 <section id="terminologie" class="level2">
 <h2 class="anchored" data-anchor-id="terminologie">Terminologie</h2>
-<p>Une équation différentielle ordinaire (EDO) linéaire s’écrit sous la forme :</p>
+<p>Soit l’équation différentielle ordinaire linéaire :</p>
 <p><span class="math display">
-x'(t) + a(t)x(t) = b(t),
+x'(t) = A(t)\, x(t) + b(t),
 </span></p>
-<p>où : - <span class="math inline">a(t)</span> et <span class="math inline">b(t)</span> sont des fonctions définies sur un intervalle <span class="math inline">I</span>, - <span class="math inline">x(t)</span> est l’inconnue.</p>
-<p>On distingue plusieurs cas : - <strong>Équation linéaire homogène</strong> : lorsque <span class="math inline">b(t) = 0</span>, l’équation devient :</p>
-<p><span class="math display">
-  x'(t) + a(t)x(t) = 0.
-  </span></p>
+<p>où <span class="math inline">A(t) \in \mathrm{M}_{n}(\mathbb{R})</span> et <span class="math inline">b(t) \in \mathbb{R}^n</span>. On distingue plusieurs cas :</p>
 <ul>
-<li><p><strong>Équation linéaire non homogène (avec second membre)</strong> : lorsque <span class="math inline">b(t) \neq 0</span>.</p></li>
-<li><p><strong>Équation autonome</strong> : lorsque <span class="math inline">a(t)</span> et <span class="math inline">b(t)</span> sont constantes, c’est-à-dire indépendantes de <span class="math inline">t</span>.</p></li>
+<li><strong>Équation linéaire homogène</strong> : lorsque <span class="math inline">b(t) = 0</span>, l’équation devient <span class="math inline">x'(t) = A(t)\, x(t)</span>.</li>
+<li><strong>Équation linéaire non homogène (ou avec second membre)</strong> : lorsque <span class="math inline">b(t) \neq 0</span>.</li>
+<li><strong>Équation autonome</strong> : lorsque <span class="math inline">A(t)</span> et <span class="math inline">b(t)</span> sont constants, c’est-à-dire indépendants de <span class="math inline">t</span>.</li>
 </ul>
 </section>
-<section id="définition-dune-solution" class="level2">
-<h2 class="anchored" data-anchor-id="définition-dune-solution">Définition d’une Solution</h2>
-<p>Une <strong>solution</strong> d’une EDO sur un intervalle <span class="math inline">I</span> est une fonction <span class="math inline">x:I \to \mathbb{R}</span> qui est dérivable et qui satisfait l’équation différentielle pour tout <span class="math inline">t \in I</span>.</p>
-<p>Pour un problème de Cauchy <span class="math inline">x'(t) = f(t,x)</span> avec condition initiale <span class="math inline">x(t_0) = x_0</span>, une solution est une fonction <span class="math inline">x(t)</span> telle que :</p>
-<p><span class="math display">
-x'(t) = f(t,x(t)), \quad \text{et} \quad x(t_0) = x_0.
-</span></p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On suppose les fonctions <span class="math inline">t \mapsto A(t)</span> et <span class="math inline">t \mapsto b(t)</span> définies et <strong>continues</strong> sur un intervalle ouvert <span class="math inline">\mathcal{I}</span> contenant <span class="math inline">t_0</span>.</p>
+<p>On appelle <strong>solution</strong> du problème de Cauchy associé, tout couple <span class="math inline">(I, \varphi)</span>, où <span class="math inline">I</span> est un intervalle ouvert de <span class="math inline">\mathcal{I}</span> contenant <span class="math inline">t_0</span> et <span class="math inline">\varphi \colon I \to \mathbb{R}^n</span> est une fonction dérivable sur <span class="math inline">I</span>, tel que pour tout <span class="math inline">t \in I</span>, <span class="math inline">\varphi'(t) = A(t)\, \varphi(t) + b(t)</span> et <span class="math inline">\varphi(t_0) = x_0</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il est courant d’utiliser la même notation pour la solution <span class="math inline">\varphi</span> et l’inconnue <span class="math inline">x</span>.</p>
+</div>
+</div>
+<p>Une solution <span class="math inline">(I,\varphi)</span> est dite <strong>maximale</strong> si, pour toute autre solution <span class="math inline">(J,\psi)</span>, on a <span class="math inline">J \subset I</span> et <span class="math inline">\varphi = \psi</span> sur <span class="math inline">J</span>. On dit que qu’une solution <span class="math inline">(I,\varphi)</span> est un <strong>prolongement</strong> d’une autre solution <span class="math inline">(J,\psi)</span>, si <span class="math inline">J \subset I</span> et <span class="math inline">\varphi = \psi</span> sur <span class="math inline">J</span>. On parle de solution <strong>globale</strong> si ell est définie sur tout l’intervalle <span class="math inline">\mathcal{I}</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Toute solution se prolonge en une solution maximale (pas nécessairement unique).</li>
+<li>Tout solution globale est maximale mais pas l’inverse.</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="solution-dans-le-cas-scalaire" class="level2">
-<h2 class="anchored" data-anchor-id="solution-dans-le-cas-scalaire">Solution dans le Cas Scalaire</h2>
-<p>Dans le cas d’une équation linéaire homogène scalaire :</p>
+<section id="formulation-intégrale" class="level2">
+<h2 class="anchored" data-anchor-id="formulation-intégrale">Formulation Intégrale</h2>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Théorème
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Soit un couple <span class="math inline">(I, \varphi)</span>, avec <span class="math inline">I</span> un intervalle ouvert de <span class="math inline">\mathcal{I}</span> et <span class="math inline">\varphi \colon I \to \mathbb{R}^n</span> une fonction dérivable sur <span class="math inline">I</span>.</p>
+<p>Alors, le couple <span class="math inline">(I, \varphi)</span> est solution du problème de Cauchy si et seulement si pour tout <span class="math inline">t \in I</span> on a :</p>
 <p><span class="math display">
-x'(t) + a(t)x(t) = 0,
+\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s)\, \varphi(s) + b(s) \right) \, \mathrm{d}s.
 </span></p>
-<p>on peut résoudre l’équation en utilisant la méthode du facteur intégrant. La solution générale est donnée par :</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Preuve
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notons <span class="math inline">f \colon \mathcal{I} \times \mathbb{R}^n \to \mathbb{R}^n</span>, <span class="math inline">(t, x) \mapsto f(t, x) \coloneqq A(t)\, x + b(t)</span>.</p>
+<p><strong><span class="math inline">\Rightarrow</span></strong> Puisque <span class="math inline">\varphi</span> est dérivable sur <span class="math inline">I</span>, l’application <span class="math inline">t \mapsto g(t) \coloneqq f(t, \varphi(t))</span> est continue sur <span class="math inline">I</span>, donc intégrable sur tout compact de <span class="math inline">I</span>. De plus, <span class="math inline">\varphi</span> est une primitive de <span class="math inline">g</span> sur <span class="math inline">I</span>, et d’après le second théorème fondamental de l’analyse, on obtient : <span class="math display">
+  \int_{t_0}^{t} g(s) \, \mathrm{d}s = \varphi(t) - \varphi(t_0),
+</span> ce qui entraîne : <span class="math display">
+  \int_{t_0}^{t} f(s, \varphi(s)) \, \mathrm{d}s = \varphi(t) - x_0.
+</span></p>
+<p><strong><span class="math inline">\Leftarrow</span></strong> L’application <span class="math inline">g</span> est intégrable sur tout compact de <span class="math inline">I</span>, donc la fonction <span class="math display">
+G(t) \coloneqq \int_{t_0}^{t} g(s) \, \mathrm{d}s
+</span> est bien définie pour tout <span class="math inline">t \in I</span>. Comme <span class="math inline">g</span> est continue, <span class="math inline">G</span> est l’unique primitive de <span class="math inline">g</span> s’annulant en <span class="math inline">t_0</span> (d’après le premier théorème fondamental de l’analyse). Ainsi, si pour tout <span class="math inline">t \in I</span> : <span class="math display">
+\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s)\, \varphi(s) + b(s) \right) \, \mathrm{d}s = x_0 + G(t),
+</span> alors on a <span class="math inline">\varphi(t_0) = x_0</span> (puisque <span class="math inline">G(t_0) = 0</span>). En différenciant les deux membres de cette expression, on obtient : <span class="math display">
+\varphi'(t) = G'(t) = f(t, \varphi(t)),
+</span> ce qui achève la démonstration.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l’inconnue est la fonction <span class="math inline">x(\cdot)</span> avec l’intervalle <span class="math inline">I</span> de définition.</p>
+</div>
+</div>
+</section>
+<section id="cas-scalaire" class="level2">
+<h2 class="anchored" data-anchor-id="cas-scalaire">Cas Scalaire</h2>
+<p>Dans le cas d’une équation linéaire homogène scalaire autonome, où <span class="math inline">a</span> est une fonction constante, et en considérant le problème de Cauchy avec la condition initiale <span class="math inline">x(0) = x_0</span>, l’équation est donnée par :</p>
 <p><span class="math display">
-x(t) = C e^{-\int a(t)dt},
+x'(t) = a x(t), \quad x(0) = x_0.
 </span></p>
-<p>où <span class="math inline">C</span> est une constante déterminée par la condition initiale <span class="math inline">x(t_0) = x_0</span>, ce qui donne :</p>
+<p>La solution générale de l’équation différentielle est :</p>
 <p><span class="math display">
-C = x_0 e^{\int_{t_0}^{t} a(s)ds}.
+x(t) = C e^{a t},
 </span></p>
-<p>Dans le cas non homogène :</p>
+<p>où <span class="math inline">C</span> est une constante déterminée par la condition initiale. En imposant <span class="math inline">x(0) = x_0</span>, on trouve :</p>
 <p><span class="math display">
-x'(t) + a(t)x(t) = b(t),
+C = x_0.
 </span></p>
-<p>on utilise la <strong>variation de la constante</strong> pour obtenir une solution particulière.</p>
+<p>Ainsi, la solution du problème de Cauchy est :</p>
+<p><span class="math display">
+x(t) = x_0 e^{a t}.
+</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Commentaire sur le Cas Vectoriel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le cas scalaire fait intervenir la fonction exponentielle sur <span class="math inline">\mathbb{R}</span>. Dans le cas vectoriel, où <span class="math inline">x(t) \in \mathbb{R}^n</span>, nous aurons besoin de l’exponentielle de matrice, qui est une généralisation de l’exponentielle scalaire.</p>
+</div>
+</div>
 
 
 </section>

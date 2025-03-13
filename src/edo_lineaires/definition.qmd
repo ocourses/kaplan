@@ -1,9 +1,9 @@
 ---
-title: "Équations Différentielles Ordinaires Linéaires"
+title: "Problème de Cauchy Linéaire"
 page-layout: article
 ---
 
-## Problème de Cauchy Linéaire
+## Définition
 
 Un **problème de Cauchy linéaire** consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d'une condition initiale. Il s'écrit sous la forme :
 

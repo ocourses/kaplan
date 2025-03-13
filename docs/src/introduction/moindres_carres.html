@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/edo_lineaires/definitions.html" rel="next">
+<link href="../../src/edo_lineaires/definition.html" rel="next">
 <link href="../../src/introduction/kaplan.html" rel="prev">
 <link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -197,7 +197,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modèle de Kaplan</span></a>
+ <span class="menu-text">Problème de Kaplan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,8 +219,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définitions</span></a>
+  <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -232,7 +232,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solution générale</span></a>
+ <span class="menu-text">Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -381,7 +381,7 @@ Note
 </div>
 <p>Les matrices <span class="math inline">A</span> et <span class="math inline">B</span> et le vecteur <span class="math inline">x_0</span> sont ici considérés comme des paramètres à estimer. Dans certains cas, seuls certains paramètres peuvent être inconnus. Il est aussi possible de ne chercher qu’à estimer une partie des paramètres. Dans ce cas, si nous notons <span class="math inline">\theta \in \mathbb{R}^l</span> les paramètres à estimer, nous pouvons écrire la dépendance de <span class="math inline">A</span>, <span class="math inline">B</span> et <span class="math inline">x_0</span> en fonction de <span class="math inline">\theta</span>, et le problème de Cauchy devient :</p>
 <p><span class="math display">
-x'(t) = A(\theta)x(t) + B(\theta)u(t), \quad x(0) = x_0(\theta).
+x'(t) = A(\theta)\, x(t) + B(\theta)\, u(t), \quad x(0) = x_0(\theta).
 </span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -600,23 +600,6 @@ J_{i,0} = \begin{pmatrix}
 \end{pmatrix}
 </span> Donc, <span class="math display">
 J_{1,0} = \begin{pmatrix} 1 &amp; 1 \end{pmatrix}, \quad J_{2,0} = \begin{pmatrix} 1 &amp; 2 \end{pmatrix}, \quad J_{3,0} = \begin{pmatrix} 1 &amp; 3 \end{pmatrix}
-</span></p></li>
-<li><p>Calculons le vecteur des résidus <span class="math inline">r</span> : <span class="math display">
-r = \begin{pmatrix}
-x_1 - x(1, \theta_0) \\
-x_2 - x(2, \theta_0) \\
-x_3 - x(3, \theta_0)
-\end{pmatrix}
-= \begin{pmatrix}
-2 - 2 \\
-3 - 3 \\
-5 - 4
-\end{pmatrix}
-= \begin{pmatrix}
-0 \\
-0 \\
-1
-\end{pmatrix}
 </span></p></li>
 <li><p>Résolvons le système linéaire pour obtenir <span class="math inline">\Delta \theta_0</span> : <span class="math display">
 A_0 \Delta \theta = b_0
@@ -1131,13 +1114,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/introduction/kaplan.html" class="pagination-link" aria-label="Modèle de Kaplan">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modèle de Kaplan</span>
+      <a href="../../src/introduction/kaplan.html" class="pagination-link" aria-label="Problème de Kaplan">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Problème de Kaplan</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/edo_lineaires/definitions.html" class="pagination-link" aria-label="Définitions">
-        <span class="nav-page-text">Définitions</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/edo_lineaires/definition.html" class="pagination-link" aria-label="Définition">
+        <span class="nav-page-text">Définition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

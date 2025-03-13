@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Solution du Problème Linéaire – Cours EDO</title>
+<title>Solution du Problème de Cauchy Linéaire – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,11 +115,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Solution du Problème Linéaire – Cours EDO">
+<meta property="og:title" content="Solution du Problème de Cauchy Linéaire – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="assets/images/trajectory.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Solution du Problème Linéaire – Cours EDO">
+<meta name="twitter:title" content="Solution du Problème de Cauchy Linéaire – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="assets/images/trajectory.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -158,7 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/solution.html">Solution générale</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/solution.html">Solution</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -197,7 +197,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modèle de Kaplan</span></a>
+ <span class="menu-text">Problème de Kaplan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,7 +211,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,8 +219,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définitions</span></a>
+  <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -232,7 +232,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Solution générale</span></a>
+ <span class="menu-text">Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,29 +301,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#théorème" id="toc-théorème" class="nav-link active" data-scroll-target="#théorème">Théorème</a>
-  <ul class="collapse">
-  <li><a href="#preuve-de-lexistence" id="toc-preuve-de-lexistence" class="nav-link" data-scroll-target="#preuve-de-lexistence">Preuve de l’Existence</a></li>
-  <li><a href="#preuve-de-lunicité" id="toc-preuve-de-lunicité" class="nav-link" data-scroll-target="#preuve-de-lunicité">Preuve de l’Unicité</a></li>
-  </ul></li>
-  <li><a href="#solution-du-problème-linéaire-non-homogène" id="toc-solution-du-problème-linéaire-non-homogène" class="nav-link" data-scroll-target="#solution-du-problème-linéaire-non-homogène">Solution du Problème Linéaire Non Homogène</a>
-  <ul class="collapse">
-  <li><a href="#théorème-1" id="toc-théorème-1" class="nav-link" data-scroll-target="#théorème-1">Théorème</a></li>
-  </ul></li>
-  <li><a href="#cas-particulier-b-constant" id="toc-cas-particulier-b-constant" class="nav-link" data-scroll-target="#cas-particulier-b-constant">Cas Particulier : <span class="math inline">b</span> Constant</a>
-  <ul class="collapse">
-  <li><a href="#changement-de-variable" id="toc-changement-de-variable" class="nav-link" data-scroll-target="#changement-de-variable">Changement de Variable</a></li>
-  <li><a href="#remarque" id="toc-remarque" class="nav-link" data-scroll-target="#remarque">Remarque</a></li>
-  </ul></li>
+  <li><a href="#cas-homogène" id="toc-cas-homogène" class="nav-link active" data-scroll-target="#cas-homogène">Cas Homogène</a></li>
+  <li><a href="#cas-non-homogène" id="toc-cas-non-homogène" class="nav-link" data-scroll-target="#cas-non-homogène">Cas Non Homogène</a></li>
+  <li><a href="#cas-particulier-b-constant" id="toc-cas-particulier-b-constant" class="nav-link" data-scroll-target="#cas-particulier-b-constant">Cas Particulier : <span class="math inline">b</span> Constant</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definitions.html">Équations différentielles ordinaires linéaires</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/solution.html">Solution générale</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/solution.html">Solution</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Solution du Problème Linéaire</h1>
+<h1 class="title">Solution du Problème de Cauchy Linéaire</h1>
 </div>
 
 
@@ -340,36 +329,27 @@ window.Quarto = {
 </header>
 
 
-<p>Considérons le problème de Cauchy linéaire suivant :</p>
+<section id="cas-homogène" class="level2">
+<h2 class="anchored" data-anchor-id="cas-homogène">Cas Homogène</h2>
+<p>Considérons le problème de Cauchy linéaire homogène suivant :</p>
 <p><span class="math display">
-\dot{x}(t) = A x(t), \quad x(0) = x_0
+    \dot{x}(t) = A\, x(t), \quad x(0) = x_0
 </span></p>
 <p>où <span class="math inline">A \in M_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">x_0 \in \mathbb{R}^n</span> est le vecteur d’état initial.</p>
-<section id="théorème" class="level2">
-<h2 class="anchored" data-anchor-id="théorème">Théorème</h2>
-<p>La solution du problème de Cauchy linéaire est donnée par :</p>
-<p><span class="math display">
-x(t, x_0) = e^{tA} x_0
-</span></p>
-<section id="preuve-de-lexistence" class="level3">
-<h3 class="anchored" data-anchor-id="preuve-de-lexistence">Preuve de l’Existence</h3>
-<p>Montrons que <span class="math inline">x(t, x_0) = e^{tA} x_0</span> vérifie les propriétés d’une solution pour le problème de Cauchy.</p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Vérification de la Condition Initiale
+Théorème
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>À <span class="math inline">t = 0</span>, nous avons : <span class="math display">
-x(0, x_0) = e^{0 \cdot A} x_0 = I x_0 = x_0
-</span> Donc, la condition initiale est satisfaite.</p>
-</div>
+<p>La solution du problème de Cauchy linéaire homogène est donnée par :</p>
+<p><span class="math display">
+    x(t, x_0) = e^{tA} x_0
+</span></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
@@ -378,92 +358,70 @@ x(0, x_0) = e^{0 \cdot A} x_0 = I x_0 = x_0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Vérification de l’Équation Différentielle
+Preuve
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Calculons la dérivée de <span class="math inline">x(t, x_0)</span> par rapport à <span class="math inline">t</span> : <span class="math display">
-\frac{d}{dt} x(t, x_0) = \frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)
-</span> Donc, <span class="math inline">x(t, x_0)</span> satisfait l’équation différentielle <span class="math inline">\dot{x}(t) = A x(t)</span>.</p>
-</div>
-</div>
-</div>
+<p><strong>Existence.</strong> Montrons que <span class="math inline">x(t, x_0) = e^{tA} x_0</span> vérifie les propriétés d’une solution pour le problème de Cauchy.</p>
+<ul>
+<li><p><strong>Vérification de la Condition Initiale.</strong> À <span class="math inline">t = 0</span>, nous avons : <span class="math display">
+      x(0, x_0) = e^{0 \cdot A} x_0 = I x_0 = x_0
+  </span> Donc, la condition initiale est satisfaite.</p></li>
+<li><p><strong>Vérification de l’Équation Différentielle.</strong> Calculons la dérivée de <span class="math inline">x(t, x_0)</span> par rapport à <span class="math inline">t</span> : <span class="math display">
+      \frac{d}{dt} x(t, x_0) = \frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)
+  </span> Donc, <span class="math inline">x(t, x_0)</span> satisfait l’équation différentielle <span class="math inline">\dot{x}(t) = A x(t)</span>.</p></li>
+</ul>
 <p>Ainsi, <span class="math inline">x(t, x_0) = e^{tA} x_0</span> est bien une solution du problème de Cauchy, ce qui prouve l’existence.</p>
-</section>
-<section id="preuve-de-lunicité" class="level3">
-<h3 class="anchored" data-anchor-id="preuve-de-lunicité">Preuve de l’Unicité</h3>
-<p>Supposons qu’il existe une autre solution <span class="math inline">y(t)</span> du problème de Cauchy. Définissons <span class="math inline">z(t) = y(t) - x(t, x_0)</span>. Alors,</p>
+<p><strong>Unicité.</strong> Supposons qu’il existe une autre solution <span class="math inline">y(t)</span> du problème de Cauchy. Définissons <span class="math inline">z(t) = y(t) - x(t, x_0)</span>. Alors,</p>
 <p><span class="math display">
-\dot{z}(t) = \dot{y}(t) - \dot{x}(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)
+    \dot{z}(t) = \dot{y}(t) - \dot{x}(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)
 </span></p>
 <p>Avec la condition initiale <span class="math inline">z(0) = y(0) - x(0, x_0) = 0</span>.</p>
 <p>Considérons maintenant le changement de variable <span class="math inline">w(t) = e^{-tA} z(t)</span>. Alors,</p>
 <p><span class="math display">
-\dot{w}(t) = \frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} \dot{z}(t) = -A w(t) + e^{-tA} A z(t) = 0
+    \dot{w}(t) = \frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} \dot{z}(t) = -A w(t) + e^{-tA} A z(t) = 0
 </span></p>
 <p>Puisque <span class="math inline">\dot{w}(t) = 0</span>, <span class="math inline">w(t)</span> est constante (d’après le TAF). Donc, <span class="math inline">w(t) = w(0) = e^{-0 \cdot A} z(0) = 0</span>.</p>
 <p>Ainsi, <span class="math inline">z(t) = e^{tA} w(t) = 0</span> pour tout <span class="math inline">t</span>, ce qui implique que <span class="math inline">y(t) = x(t, x_0)</span>. Cela prouve l’unicité de la solution.</p>
+</div>
+</div>
+</div>
 </section>
-</section>
-<section id="solution-du-problème-linéaire-non-homogène" class="level2">
-<h2 class="anchored" data-anchor-id="solution-du-problème-linéaire-non-homogène">Solution du Problème Linéaire Non Homogène</h2>
+<section id="cas-non-homogène" class="level2">
+<h2 class="anchored" data-anchor-id="cas-non-homogène">Cas Non Homogène</h2>
 <p>Considérons maintenant le problème de Cauchy linéaire non homogène :</p>
 <p><span class="math display">
-\dot{x}(t) = A x(t) + b(t), \quad x(0) = x_0
+    \dot{x}(t) = A x(t) + b(t), \quad x(t_0) = x_0,
 </span></p>
-<p>où <span class="math inline">A \in M_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">b(t)</span> est un vecteur dépendant du temps.</p>
-<section id="théorème-1" class="level3">
-<h3 class="anchored" data-anchor-id="théorème-1">Théorème</h3>
-<p>Supposons l’existence d’une solution maximale et l’unicité. La solution du problème de Cauchy linéaire non homogène est donnée par :</p>
-<p><span class="math display">
+<p>où <span class="math inline">A \in M_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">t \mapsto b(t) \in \mathbb{R}^n</span> est définie et continue sur un intervalle ouvert <span class="math inline">\mathcal{I}</span> contenant <span class="math inline">t_0</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nous supposons acquis l’existence d’une unique solution globale.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Théorème
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La solution du problème de Cauchy linéaire non homogène est donnée par : <span class="math display">
 x(t) = e^{tA} x_0 + \int_{0}^{t} e^{(t-s)A} b(s) \, ds
 </span></p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercice
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Vérifiez que cette fonction est bien une solution du problème de Cauchy en utilisant les propriétés de l’exponentielle de matrice et en montrant qu’elle satisfait à la fois l’équation différentielle et la condition initiale.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="cas-particulier-b-constant" class="level2">
-<h2 class="anchored" data-anchor-id="cas-particulier-b-constant">Cas Particulier : <span class="math inline">b</span> Constant</h2>
-<p>Si <span class="math inline">b</span> est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable.</p>
-<section id="changement-de-variable" class="level3">
-<h3 class="anchored" data-anchor-id="changement-de-variable">Changement de Variable</h3>
-<p>Posons <span class="math inline">z(t) = x(t) - x_p(t)</span>, où <span class="math inline">x_p(t)</span> est une solution particulière de l’équation <span class="math inline">\dot{x}(t) = A x(t) + b</span>.</p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-1. Équation pour <span class="math inline">z(t)</span>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>En substituant <span class="math inline">x(t) = z(t) + x_p(t)</span> dans l’équation originale, nous obtenons : <span class="math display">
-\dot{z}(t) + \dot{x}_p(t) = A(z(t) + x_p(t)) + b
-</span><br>
-Puisque <span class="math inline">x_p(t)</span> est une solution particulière, <span class="math inline">\dot{x}_p(t) = A x_p(t) + b</span>. Donc, <span class="math display">
-\dot{z}(t) = A z(t)
-</span><br>
-Ainsi, <span class="math inline">z(t)</span> satisfait une équation différentielle linéaire homogène.</p>
-</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
@@ -472,47 +430,53 @@ Ainsi, <span class="math inline">z(t)</span> satisfait une équation différenti
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-2. Solution de <span class="math inline">z(t)</span>
+Preuve
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>La solution de <span class="math inline">\dot{z}(t) = A z(t)</span> avec la condition initiale <span class="math inline">z(0) = x_0 - x_p(0)</span> est donnée par : <span class="math display">
-z(t) = e^{tA} (x_0 - x_p(0))
+<p>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cas-particulier-b-constant" class="level2">
+<h2 class="anchored" data-anchor-id="cas-particulier-b-constant">Cas Particulier : <span class="math inline">b</span> Constant</h2>
+<p>Si <span class="math inline">b</span> est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable.</p>
+<p>Posons <span class="math inline">z(t) = x(t) - x_p(t)</span>, où <span class="math inline">x_p(t)</span> est une solution particulière de l’équation <span class="math inline">\dot{x}(t) = A x(t) + b</span>. En substituant <span class="math inline">x(t) = z(t) + x_p(t)</span> dans l’équation originale, nous obtenons : <span class="math display">
+    \dot{z}(t) + \dot{x}_p(t) = A(z(t) + x_p(t)) + b.
 </span></p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<p>Puisque <span class="math inline">x_p(t)</span> est une solution particulière, <span class="math inline">\dot{x}_p(t) = A x_p(t) + b</span>. Donc, <span class="math display">
+    \dot{z}(t) = A z(t).
+</span></p>
+<p>Ainsi, <span class="math inline">z(t)</span> satisfait une équation différentielle linéaire homogène. La solution de <span class="math inline">\dot{z}(t) = A z(t)</span> avec la condition initiale <span class="math inline">z(0) = x_0 - x_p(0)</span> est donnée par : <span class="math display">
+    z(t) = e^{tA} (x_0 - x_p(0)).
+</span></p>
+<p>En revenant à la variable originale, nous avons : <span class="math display">
+    x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t).
+</span></p>
+<p>Ce changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-3. Solution de <span class="math inline">x(t)</span>
+Note
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>En revenant à la variable originale, nous avons : <span class="math display">
-x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t)
-</span></p>
-</div>
-</div>
-</div>
-<p>Ce changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.</p>
-</section>
-<section id="remarque" class="level3">
-<h3 class="anchored" data-anchor-id="remarque">Remarque</h3>
 <p>Si <span class="math inline">b</span> appartient à l’image de <span class="math inline">A</span>, c’est-à-dire s’il existe un vecteur <span class="math inline">x_e</span> tel que <span class="math inline">A x_e = -b</span>, alors nous pouvons choisir <span class="math inline">x_p(t) = x_e</span>. En effet, dans ce cas, <span class="math inline">x_e</span> est une solution particulière constante de l’équation <span class="math inline">\dot{x}(t) = A x(t) + b</span>, car : <span class="math display">
 A x_e + b = -b + b = 0
 </span></p>
-<p>Ainsi, <span class="math inline">x_p(t) = x_e</span> est une solution particulière constante, simplifiant encore le changement de variable.</p>
+<p>Ainsi, <span class="math inline">x_p(t) = x_e</span> est une solution particulière constante, simplifiant encore le changement de variable et nous obtenons <span class="math display">
+    x(t) = e^{tA} (x_0 - x_e) + x_e.
+</span></p>
+</div>
+</div>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
