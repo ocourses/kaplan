@@ -350,24 +350,13 @@ x'(t) = a x(t)
 <li><span class="math inline">t \mapsto x'(t)</span> est la dérivée de <span class="math inline">t \mapsto x(t)</span> par rapport au temps <span class="math inline">t</span>.</li>
 <li><span class="math inline">a \in \mathbb{R}</span> est un paramètre constant.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Donnons de explications sur la terminologie employée.</p>
 <ul>
 <li>Dans ce cas, l’équation différentielle est <strong>scalaire</strong> car elle ne fait intervenir qu’une seule fonction inconnue <span class="math inline">t \mapsto x(t) \in \mathbb{R}</span>.</li>
 <li>Elle est <strong>autonome</strong> car elle ne dépend pas explicitement du temps <span class="math inline">t</span>.</li>
 <li>Enfin, elle est <strong>linéaire</strong> (homogène) car elle est linéaire en <span class="math inline">x(t)</span>.</li>
-<li>La dérivée est notée <span class="math inline">x'(t)</span>, <span class="math inline">\frac{\mathrm{d}x}{\mathrm{d}t}(t)</span> ou <span class="math inline">\dot{x}(t)</span>.</li>
+<li>Elle est <strong>d’ordre 1</strong> car elle ne fait intervenir que la dérivée première de <span class="math inline">x</span> notée <span class="math inline">x'(t)</span>, ou <span class="math inline">\dot{x}(t)</span> à la physicienne.</li>
 </ul>
-</div>
-</div>
 </section>
 <section id="condition-initiale-et-problème-de-cauchy" class="level2">
 <h2 class="anchored" data-anchor-id="condition-initiale-et-problème-de-cauchy">Condition Initiale et Problème de Cauchy</h2>
@@ -396,11 +385,11 @@ Note
 </section>
 <section id="lien-avec-la-formulation-intégrale" class="level2">
 <h2 class="anchored" data-anchor-id="lien-avec-la-formulation-intégrale">Lien avec la Formulation Intégrale</h2>
-<p>Le problème de Cauchy peut également être formulé sous forme intégrale. En intégrant les deux côtés de l’équation différentielle entre 0 et <span class="math inline">t</span>, nous obtenons :</p>
+<p>Le problème de Cauchy peut également être formulé sous la forme intégrale suivante :</p>
 <p><span class="math display">
 x(t) = x_0 + \int_{0}^{t} a x(s) \, \mathrm{d}s.
 </span></p>
-<p>Cette formulation intégrale est équivalente à la formulation différentielle et montre que la solution <span class="math inline">x(\cdot)</span> peut être vue comme l’intégrale de la fonction <span class="math inline">ax(\cdot)</span> sur l’intervalle <span class="math inline">[0, t]</span>, ajoutée à la condition initiale <span class="math inline">x_0</span>.</p>
+<p>Cette formulation intégrale est équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l’inconnue est la fonction <span class="math inline">x(\cdot)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -411,7 +400,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pour montrer qu’une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème">second théorème fondamental</a> de l’analyse. Pour la réciproque, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème">premier théorème fondamental</a> de l’analyse.</p>
+<p>De manière générale, pour montrer qu’une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème">second théorème fondamental</a> de l’analyse. Pour la réciproque, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème">premier théorème fondamental</a> de l’analyse.</p>
 </div>
 </div>
 </section>

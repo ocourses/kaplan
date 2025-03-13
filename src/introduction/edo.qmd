@@ -18,12 +18,12 @@ où :
 - $t \mapsto x'(t)$ est la dérivée de $t \mapsto x(t)$ par rapport au temps $t$.
 - $a \in \mathbb{R}$ est un paramètre constant.
 
-::: {.callout-note}
+Donnons de explications sur la terminologie employée.
+
 - Dans ce cas, l'équation différentielle est **scalaire** car elle ne fait intervenir qu'une seule fonction inconnue $t \mapsto x(t) \in \mathbb{R}$. 
 - Elle est **autonome** car elle ne dépend pas explicitement du temps $t$. 
 - Enfin, elle est **linéaire** (homogène) car elle est linéaire en $x(t)$.
-- La dérivée est notée $x'(t)$, $\frac{\mathrm{d}x}{\mathrm{d}t}(t)$ ou $\dot{x}(t)$.
-:::
+- Elle est **d'ordre 1** car elle ne fait intervenir que la dérivée première de $x$ notée $x'(t)$, ou $\dot{x}(t)$ à la physicienne.
 
 ## Condition Initiale et Problème de Cauchy
 
@@ -43,16 +43,16 @@ Le couple formé par l'équation différentielle et la condition initiale consti
 
 ## Lien avec la Formulation Intégrale
 
-Le problème de Cauchy peut également être formulé sous forme intégrale. En intégrant les deux côtés de l'équation différentielle entre 0 et $t$, nous obtenons :
+Le problème de Cauchy peut également être formulé sous la forme intégrale suivante :
 
 $$
 x(t) = x_0 + \int_{0}^{t} a x(s) \, \mathrm{d}s.
 $$
 
-Cette formulation intégrale est équivalente à la formulation différentielle et montre que la solution $x(\cdot)$ peut être vue comme l'intégrale de la fonction $ax(\cdot)$ sur l'intervalle $[0, t]$, ajoutée à la condition initiale $x_0$.
+Cette formulation intégrale est équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l'inconnue est la fonction $x(\cdot)$.
 
 ::: {.callout-note}
-Pour montrer qu'une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du [second théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème) de l'analyse. Pour la réciproque, nous avons besoin du [premier théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème) de l'analyse.
+De manière générale, pour montrer qu'une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du [second théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème) de l'analyse. Pour la réciproque, nous avons besoin du [premier théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème) de l'analyse.
 :::
 
 ## Espace des Solutions
