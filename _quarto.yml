@@ -55,20 +55,20 @@ website:
   navbar:
     background: light
     logo: assets/images/trajectory.svg
-    logo-alt: "Julia course."
+    logo-alt: "EDO course."
     title: false
     tools:
       - icon: github
         href: https://github.com/ocots
     left:
-      - text: "Cours"
+      - text: "Plan du cours"
         href: src/index.qmd
   sidebar:
     - id: src
       style: "floating"
       collapse-level: 2
       contents:
-        - section: "Cours"
+        - section: "Plan du cours"
           href: src/index.qmd
           contents:
             - section: "Introduction"
