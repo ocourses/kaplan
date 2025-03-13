@@ -75,17 +75,17 @@ website:
               contents: 
                 - text: "Équations différentielles ordinaires"
                   href: src/introduction/edo.qmd
-                - text: "Modèle de Kaplan"
+                - text: "Problème de Kaplan"
                   href: src/introduction/kaplan.qmd
                 - text: "Problème aux moindres carrés"
                   href: src/introduction/moindres_carres.qmd
-            - section: "Équations différentielles ordinaires linéaires"
+            - section: "Problème de Cauchy linéaire"
               contents: 
-                - text: "Définitions"
-                  href: src/edo_lineaires/definitions.qmd
+                - text: "Définition"
+                  href: src/edo_lineaires/definition.qmd
                 - text: "Exponentielle de matrice"
                   href: src/edo_lineaires/exponentielle.qmd
-                - text: "Solution générale"
+                - text: "Solution"
                   href: src/edo_lineaires/solution.qmd
                 - text: "Exemples"
                   href: src/edo_lineaires/exemples.qmd
