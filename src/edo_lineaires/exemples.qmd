@@ -3,150 +3,132 @@ title: "Exemples et Exercices"
 page-layout: article
 ---
 
-## Exemple 1 : Système Linéaire avec Convergence
+## Exemple 1 : Convergence
 
 Considérons le système linéaire suivant :
 
 $$
-\dot{x}(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+   x'(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
 
 1. **Calcul de l'Exponentielle de la Matrice** :
-   - La matrice $A = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ est diagonale.
-   - L'exponentielle de $A$ est :
-
-     $$
-     e^{tA} = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix}
-     $$
+   
+    - La matrice $A = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ est diagonale.
+    - L'exponentielle de $A$ est :
+    $$
+        e^{tA} = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix}
+    $$
 
 2. **Solution du Système** :
-   - La solution est donnée par :
 
-     $$
-     x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
-     $$
+    - La solution est donnée par :
+    $$
+        x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+    $$
 
 3. **Comportement à l'Infini** :
-   - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ car les valeurs propres $-1$ et $-2$ sont négatives.
+   
+    - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ car les valeurs propres $-1$ et $-2$ sont négatives.
 
-## Exemple 2 : Système Linéaire avec Divergence
+## Exemple 2 : Divergence
 
 Considérons le système linéaire suivant :
 
 $$
-\dot{x}(t) = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 $$
 
 1. **Calcul de l'Exponentielle de la Matrice** :
-   - La matrice $A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$ a des valeurs propres complexes conjuguées $1 \pm i$.
-   - L'exponentielle de $A$ est :
 
-     $$
-     e^{tA} = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
-     $$
+    - La matrice $A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$ a des valeurs propres complexes conjuguées $1 \pm i$.
+    - L'exponentielle de $A$ est :
+    $$
+        e^{tA} = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
+    $$
 
 2. **Solution du Système** :
-   - La solution est donnée par :
 
-     $$
-     x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
-     $$
+    - La solution est donnée par :
+    $$
+        x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
+    $$
 
 3. **Comportement à l'Infini** :
-   - Lorsque $t \to \infty$, $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
 
-## Exemple 3 : Système Linéaire avec Second Membre Constant
+    - Lorsque $t \to \infty$, $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
+
+## Exemple 3 : Second Membre Constant
 
 Considérons le système linéaire suivant avec un second membre constant :
 
 $$
-\dot{x}(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 $$
 
 1. **Solution du Système** :
-   - La solution est donnée par :
 
-     $$
-     x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
-     $$
+    - La solution est donnée par :
+    $$
+        x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mathrm{d}s
+    $$
 
    - Calculons l'intégrale :
-
-     $$
-     x(t) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
-     $$
+    $$
+        x(t) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, \mathrm{d}s
+    $$
 
    - Ce qui donne :
-
-     $$
-     x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
-     $$
+    $$
+        x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
+    $$
 
 2. **Comportement à l'Infini** :
-   - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}$.
+
+    - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}$.
 
 # Exercices
 
-1. **Exercice 1** :
-   - Résolvez le système linéaire suivant et déterminez son comportement à l'infini :
+::: {.callout-tip icon=false}
+### Question
+Résolvez le problème de Cauchy linéaire homogène suivant et déterminez le comportement de la trajectoire solution quand $t \to \infty$ :
 
-     $$
-     \dot{x}(t) = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
-     $$
+$$
+    x'(t) = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+$$
+:::
 
-   ::: {.callout-tip icon=false}
-   ### Question
-   Résoudre ce système et analyser son comportement à long terme.
-   :::
+::: {.callout-tip icon=false}
+### Question
+Résolvez le problème de Cauchy linéaire suivant avec un second membre constant et déterminez le comportement de la trajectoire solution quand $t \to \infty$ :
 
-   ::: {.callout-caution collapse="true" icon=false}
-   ### Correction
-   1. Calcul de l'exponentielle de la matrice $A = \begin{pmatrix} -3 & 1 \\ 2 & -4 \end{pmatrix}$.
-   2. Solution du système en utilisant $x(t) = e^{tA} x(0)$.
-   3. Comportement à l'infini : analyse des valeurs propres et conclusion sur le comportement asymptotique.
-   :::
+$$
+    x'(t) = \begin{pmatrix} -1 & 1 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
+$$
+:::
 
-2. **Exercice 2** :
-   - Calculez l'exponentielle de la matrice $A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ et décrivez le comportement du système associé.
+::: {.callout-tip icon=false}
+### Question
+Résolvez le problème de Cauchy linéaire suivant avec un second membre non constant et déterminez le comportement de la trajectoire solution quand $t \to \infty$ :
 
-   ::: {.callout-tip icon=false}
-   ### Question
-   Trouvez l'exponentielle de la matrice et analysez son comportement.
-   :::
+$$
+    x'(t) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} x(t) + \begin{pmatrix} 0 \\ 3e^{-2t} \end{pmatrix}, \quad x(0) = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+$$
+:::
 
-   ::: {.callout-caution collapse="true" icon=false}
-   ### Correction
-   La matrice $A$ est de type rotation. Son exponentielle est :
+::: {.callout-tip icon=false}
+### Question
+On considère un problème de Cauchy linéaire homogène $x'(t) = A x(t)$, $x(0) = x_0$. 
+Pour chaque matrice $A$ ci-dessous, résolvez le problème et discuter du comportement quand $t \to \infty$ des trajectoires en fonction de $x_0$ et des éventuels paramètres :
 
-   $$
-   e^{tA} = \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
-   $$
-
-   Ce système représente une rotation dans le plan, donc les solutions sont périodiques.
-   :::
-
-3. **Exercice 3** :
-   - Considérez le système linéaire suivant avec un second membre constant et trouvez sa solution :
-
-     $$
-     \dot{x}(t) = \begin{pmatrix} -1 & 1 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-     $$
-
-4. **Exercice 4** :
-   - Étudiez le comportement à l'infini du système suivant :
-
-     $$
-     \dot{x}(t) = \begin{pmatrix} 2 & -1 \\ 1 & 2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
-     $$
-
-   ::: {.callout-tip icon=false}
-   ### Question
-   Analyser le comportement à l'infini du système.
-   :::
-
-   ::: {.callout-caution collapse="true" icon=false}
-   ### Correction
-   Ce système a des valeurs propres positives, donc les solutions divergeront à l'infini.
-   :::
-
-Ces exemples et exercices permettent de pratiquer le calcul de l'exponentielle de matrices et d'analyser le comportement des systèmes dynamiques linéaires, avec ou sans second membre constant.
+$$
+    \begin{aligned}
+        A &= \begin{pmatrix}  0 &  1 \\ -1 & 0 \end{pmatrix}, \\[1em]
+        A &= \begin{pmatrix}  2 & -1 \\  1 & 2 \end{pmatrix}, \\[1em]
+        A &= \begin{pmatrix} -1 &  1 \\  0 & 1 \end{pmatrix}, \\[1em]
+        A &= \begin{pmatrix}  0 &  1 \\  1 & 0 \end{pmatrix}, \\[1em]
+        A &= \begin{pmatrix}  1 &  1 \\  1 & 1 \end{pmatrix}, \\[1em]
+        A &= \begin{pmatrix}  \alpha & \beta \\ -\beta & \alpha \end{pmatrix}, \quad \alpha, \beta \in \mathbb{R},\\[1em]
+        A &= \begin{pmatrix}  \lambda &  1 \\  0 & \lambda \end{pmatrix}, \quad \lambda \in \mathbb{R}.\\[1em]
+    \end{aligned}
+$$
+:::

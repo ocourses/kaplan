@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <link href="../../src/integration_numerique/euler.html" rel="next">
 <link href="../../src/edo_lineaires/solution.html" rel="prev">
-<link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
+<link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,6 +69,30 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'h') {
+            // Sélection des éléments par leur ID
+            const sidebar = document.getElementById('quarto-sidebar');
+            const marginSidebar = document.getElementById('quarto-margin-sidebar');
+            const documentContent = document.getElementById('quarto-document-content');
+
+            // Vérification de l'état actuel de la visibilité
+            if (sidebar.style.visibility === 'hidden') {
+                // Si les éléments sont cachés, les rendre visibles
+                sidebar.style.visibility = 'visible';
+                marginSidebar.style.visibility = 'visible';
+                documentContent.className = 'content';
+            } else {
+                // Si les éléments sont visibles, les cacher
+                sidebar.style.visibility = 'hidden';
+                marginSidebar.style.visibility = 'hidden';
+                documentContent.className = 'content column-page';
+            }
+        }
+    });
+</script> 
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -117,11 +141,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Exemples et Exercices – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="assets/images/trajectory.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Exemples et Exercices – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="assets/images/trajectory.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -133,7 +157,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/images/trajectory.svg" alt="Julia course." class="navbar-logo">
+    <img src="../../assets/images/edo-favicon.png" alt="EDO course." class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -144,12 +168,12 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../src/index.html" aria-current="page"> 
-<span class="menu-text">Cours</span></a>
+<span class="menu-text">Plan du cours</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/ocots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ocourses" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -158,7 +182,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -173,7 +197,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../src/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cours</span></a>
+ <span class="menu-text">Plan du cours</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -301,17 +325,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exemple-1-système-linéaire-avec-convergence" id="toc-exemple-1-système-linéaire-avec-convergence" class="nav-link active" data-scroll-target="#exemple-1-système-linéaire-avec-convergence">Exemple 1 : Système Linéaire avec Convergence</a></li>
-  <li><a href="#exemple-2-système-linéaire-avec-divergence" id="toc-exemple-2-système-linéaire-avec-divergence" class="nav-link" data-scroll-target="#exemple-2-système-linéaire-avec-divergence">Exemple 2 : Système Linéaire avec Divergence</a></li>
-  <li><a href="#exemple-3-système-linéaire-avec-second-membre-constant" id="toc-exemple-3-système-linéaire-avec-second-membre-constant" class="nav-link" data-scroll-target="#exemple-3-système-linéaire-avec-second-membre-constant">Exemple 3 : Système Linéaire avec Second Membre Constant</a></li>
+  <li><a href="#exemple-1-convergence" id="toc-exemple-1-convergence" class="nav-link active" data-scroll-target="#exemple-1-convergence">Exemple 1 : Convergence</a></li>
+  <li><a href="#exemple-2-divergence" id="toc-exemple-2-divergence" class="nav-link" data-scroll-target="#exemple-2-divergence">Exemple 2 : Divergence</a></li>
+  <li><a href="#exemple-3-second-membre-constant" id="toc-exemple-3-second-membre-constant" class="nav-link" data-scroll-target="#exemple-3-second-membre-constant">Exemple 3 : Second Membre Constant</a></li>
   <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/edo_lineaires/exemples.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/edo_lineaires/exemples.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exemples.html">Exemples</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Exemples et Exercices</h1>
 </div>
@@ -330,85 +354,78 @@ window.Quarto = {
 </header>
 
 
-<section id="exemple-1-système-linéaire-avec-convergence" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-1-système-linéaire-avec-convergence">Exemple 1 : Système Linéaire avec Convergence</h2>
+<section id="exemple-1-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-1-convergence">Exemple 1 : Convergence</h2>
 <p>Considérons le système linéaire suivant :</p>
 <p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+   x'(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 </span></p>
 <ol type="1">
-<li><strong>Calcul de l’Exponentielle de la Matrice</strong> :
+<li><p><strong>Calcul de l’Exponentielle de la Matrice</strong> :</p>
 <ul>
-<li><p>La matrice <span class="math inline">A = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix}</span> est diagonale.</p></li>
-<li><p>L’exponentielle de <span class="math inline">A</span> est :</p>
-<p><span class="math display">
-e^{tA} = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix}
-</span></p></li>
+<li>La matrice <span class="math inline">A = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix}</span> est diagonale.</li>
+<li>L’exponentielle de <span class="math inline">A</span> est : <span class="math display">
+  e^{tA} = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix}
+</span></li>
 </ul></li>
-<li><strong>Solution du Système</strong> :
+<li><p><strong>Solution du Système</strong> :</p>
 <ul>
-<li><p>La solution est donnée par :</p>
-<p><span class="math display">
-x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
-</span></p></li>
+<li>La solution est donnée par : <span class="math display">
+  x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+</span></li>
 </ul></li>
-<li><strong>Comportement à l’Infini</strong> :
+<li><p><strong>Comportement à l’Infini</strong> :</p>
 <ul>
 <li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}</span> car les valeurs propres <span class="math inline">-1</span> et <span class="math inline">-2</span> sont négatives.</li>
 </ul></li>
 </ol>
 </section>
-<section id="exemple-2-système-linéaire-avec-divergence" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-2-système-linéaire-avec-divergence">Exemple 2 : Système Linéaire avec Divergence</h2>
+<section id="exemple-2-divergence" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-2-divergence">Exemple 2 : Divergence</h2>
 <p>Considérons le système linéaire suivant :</p>
 <p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 </span></p>
 <ol type="1">
-<li><strong>Calcul de l’Exponentielle de la Matrice</strong> :
+<li><p><strong>Calcul de l’Exponentielle de la Matrice</strong> :</p>
 <ul>
-<li><p>La matrice <span class="math inline">A = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix}</span> a des valeurs propres complexes conjuguées <span class="math inline">1 \pm i</span>.</p></li>
-<li><p>L’exponentielle de <span class="math inline">A</span> est :</p>
-<p><span class="math display">
-e^{tA} = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
-</span></p></li>
+<li>La matrice <span class="math inline">A = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix}</span> a des valeurs propres complexes conjuguées <span class="math inline">1 \pm i</span>.</li>
+<li>L’exponentielle de <span class="math inline">A</span> est : <span class="math display">
+  e^{tA} = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
+</span></li>
 </ul></li>
-<li><strong>Solution du Système</strong> :
+<li><p><strong>Solution du Système</strong> :</p>
 <ul>
-<li><p>La solution est donnée par :</p>
-<p><span class="math display">
-x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
-</span></p></li>
+<li>La solution est donnée par : <span class="math display">
+  x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
+</span></li>
 </ul></li>
-<li><strong>Comportement à l’Infini</strong> :
+<li><p><strong>Comportement à l’Infini</strong> :</p>
 <ul>
 <li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">\|x(t)\| \to \infty</span> car la partie réelle des valeurs propres est positive.</li>
 </ul></li>
 </ol>
 </section>
-<section id="exemple-3-système-linéaire-avec-second-membre-constant" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-3-système-linéaire-avec-second-membre-constant">Exemple 3 : Système Linéaire avec Second Membre Constant</h2>
+<section id="exemple-3-second-membre-constant" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-3-second-membre-constant">Exemple 3 : Second Membre Constant</h2>
 <p>Considérons le système linéaire suivant avec un second membre constant :</p>
 <p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 </span></p>
 <ol type="1">
-<li><strong>Solution du Système</strong> :
+<li><p><strong>Solution du Système</strong> :</p>
 <ul>
-<li><p>La solution est donnée par :</p>
-<p><span class="math display">
-x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+<li><p>La solution est donnée par : <span class="math display">
+  x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mathrm{d}s
 </span></p></li>
-<li><p>Calculons l’intégrale :</p>
-<p><span class="math display">
-x(t) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} &amp; 0 \\ 0 &amp; e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, ds
+<li><p>Calculons l’intégrale : <span class="math display">
+   x(t) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} &amp; 0 \\ 0 &amp; e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, \mathrm{d}s
 </span></p></li>
-<li><p>Ce qui donne :</p>
-<p><span class="math display">
-x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
+<li><p>Ce qui donne : <span class="math display">
+   x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
 </span></p></li>
 </ul></li>
-<li><strong>Comportement à l’Infini</strong> :
+<li><p><strong>Comportement à l’Infini</strong> :</p>
 <ul>
 <li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}</span>.</li>
 </ul></li>
@@ -416,14 +433,6 @@ x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
 </section>
 <section id="exercices" class="level1">
 <h1>Exercices</h1>
-<ol type="1">
-<li><strong>Exercice 1</strong> :
-<ul>
-<li><p>Résolvez le système linéaire suivant et déterminez son comportement à l’infini :</p>
-<p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
-</span></p></li>
-</ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -434,80 +443,12 @@ Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Résoudre ce système et analyser son comportement à long terme.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Correction
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Calcul de l’exponentielle de la matrice <span class="math inline">A = \begin{pmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{pmatrix}</span>.</li>
-<li>Solution du système en utilisant <span class="math inline">x(t) = e^{tA} x(0)</span>.</li>
-<li>Comportement à l’infini : analyse des valeurs propres et conclusion sur le comportement asymptotique.</li>
-</ol>
-</div>
-</div>
-</div></li>
-<li><strong>Exercice 2</strong> :
-<ul>
-<li>Calculez l’exponentielle de la matrice <span class="math inline">A = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}</span> et décrivez le comportement du système associé.</li>
-</ul>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Trouvez l’exponentielle de la matrice et analysez son comportement.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Correction
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>La matrice <span class="math inline">A</span> est de type rotation. Son exponentielle est :</p>
+<p>Résolvez le problème de Cauchy linéaire homogène suivant et déterminez le comportement de la trajectoire solution quand <span class="math inline">t \to \infty</span> :</p>
 <p><span class="math display">
-e^{tA} = \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
+    x'(t) = \begin{pmatrix} -3 &amp; 1 \\ 2 &amp; -4 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
 </span></p>
-<p>Ce système représente une rotation dans le plan, donc les solutions sont périodiques.</p>
 </div>
 </div>
-</div></li>
-<li><strong>Exercice 3</strong> :
-<ul>
-<li><p>Considérez le système linéaire suivant avec un second membre constant et trouvez sa solution :</p>
-<p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} -1 &amp; 1 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
-</span></p></li>
-</ul></li>
-<li><strong>Exercice 4</strong> :
-<ul>
-<li><p>Étudiez le comportement à l’infini du système suivant :</p>
-<p><span class="math display">
-\dot{x}(t) = \begin{pmatrix} 2 &amp; -1 \\ 1 &amp; 2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
-</span></p></li>
-</ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -518,27 +459,52 @@ Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Analyser le comportement à l’infini du système.</p>
+<p>Résolvez le problème de Cauchy linéaire suivant avec un second membre constant et déterminez le comportement de la trajectoire solution quand <span class="math inline">t \to \infty</span> :</p>
+<p><span class="math display">
+    x'(t) = \begin{pmatrix} -1 &amp; 1 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
+</span></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Correction
+Question
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Ce système a des valeurs propres positives, donc les solutions divergeront à l’infini.</p>
+<p>Résolvez le problème de Cauchy linéaire suivant avec un second membre non constant et déterminez le comportement de la trajectoire solution quand <span class="math inline">t \to \infty</span> :</p>
+<p><span class="math display">
+    x'(t) = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} x(t) + \begin{pmatrix} 0 \\ 3e^{-2t} \end{pmatrix}, \quad x(0) = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+</span></p>
 </div>
 </div>
-</div></li>
-</ol>
-<p>Ces exemples et exercices permettent de pratiquer le calcul de l’exponentielle de matrices et d’analyser le comportement des systèmes dynamiques linéaires, avec ou sans second membre constant.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On considère un problème de Cauchy linéaire homogène <span class="math inline">x'(t) = A x(t)</span>, <span class="math inline">x(0) = x_0</span>. Pour chaque matrice <span class="math inline">A</span> ci-dessous, résolvez le problème et discuter du comportement quand <span class="math inline">t \to \infty</span> des trajectoires en fonction de <span class="math inline">x_0</span> et des éventuels paramètres :</p>
+<p><span class="math display">
+    \begin{aligned}
+        A &amp;= \begin{pmatrix}  0 &amp;  1 \\ -1 &amp; 0 \end{pmatrix}, \\[1em]
+        A &amp;= \begin{pmatrix}  2 &amp; -1 \\  1 &amp; 2 \end{pmatrix}, \\[1em]
+        A &amp;= \begin{pmatrix} -1 &amp;  1 \\  0 &amp; 1 \end{pmatrix}, \\[1em]
+        A &amp;= \begin{pmatrix}  0 &amp;  1 \\  1 &amp; 0 \end{pmatrix}, \\[1em]
+        A &amp;= \begin{pmatrix}  1 &amp;  1 \\  1 &amp; 1 \end{pmatrix}, \\[1em]
+        A &amp;= \begin{pmatrix}  \alpha &amp; \beta \\ -\beta &amp; \alpha \end{pmatrix}, \quad \alpha, \beta \in \mathbb{R},\\[1em]
+        A &amp;= \begin{pmatrix}  \lambda &amp;  1 \\  0 &amp; \lambda \end{pmatrix}, \quad \lambda \in \mathbb{R}.\\[1em]
+    \end{aligned}
+</span></p>
+</div>
+</div>
 
 
 </section>
@@ -634,7 +600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ocourses\.github\.io\/kaplan\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -981,7 +947,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2025, Olivier Cots</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/edo_lineaires/exemples.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/edo_lineaires/exemples.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
@@ -991,4 +957,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
