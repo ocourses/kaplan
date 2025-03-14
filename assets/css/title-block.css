@@ -38,14 +38,16 @@ main.content #title-block-header{
 
 .logo {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .title-block-content .logo .img-inp{
-    height: 140px;
+    height: 120px;
 }
 
 .title-block-content .logo .img-tse{
-    height: 160px;
+    height: 140px;
 }
 
 @media (max-width: 1000px) {

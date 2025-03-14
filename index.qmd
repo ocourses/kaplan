@@ -1,7 +1,7 @@
 ---
 title-block-banner: true
-title: "EDO"
-subtitle: "Introduction aux équations différentielles ordinaires"
+title: "Introduction aux équations différentielles ordinaires"
+subtitle: "Estimation de paramètres dans les edo linéaires"
 author: "[Olivier Cots](https://github.com/ocots)"
 date: last-modified
 page-layout: custom
