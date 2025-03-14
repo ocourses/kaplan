@@ -1,19 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ocourses.github.io/kaplan/index.html</loc>
-    <lastmod>2025-03-14T09:18:07.133Z</lastmod>
+    <loc>https://ocourses.github.io/kaplan/src/derivees/equations.html</loc>
+    <lastmod>2025-03-08T11:04:59.811Z</lastmod>
   </url>
   <url>
-    <loc>https://ocourses.github.io/kaplan/src/index.html</loc>
-    <lastmod>2025-03-03T12:27:34.462Z</lastmod>
+    <loc>https://ocourses.github.io/kaplan/src/integration_numerique/runge_kutta.html</loc>
+    <lastmod>2025-03-08T11:00:49.684Z</lastmod>
   </url>
   <url>
     <loc>https://ocourses.github.io/kaplan/src/edo_lineaires/exemples.html</loc>
     <lastmod>2025-03-14T15:13:08.560Z</lastmod>
   </url>
   <url>
+    <loc>https://ocourses.github.io/kaplan/src/edo_lineaires/exponentielle.html</loc>
+    <lastmod>2025-03-13T23:07:59.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/index.html</loc>
+    <lastmod>2025-03-03T12:27:34.462Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/introduction/kaplan.html</loc>
+    <lastmod>2025-03-04T14:05:03.767Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/introduction/quiz.html</loc>
+    <lastmod>2025-03-04T21:59:23.369Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/index.html</loc>
+    <lastmod>2025-03-14T09:18:07.133Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/about.html</loc>
+    <lastmod>2024-11-20T21:52:41.098Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/introduction/edo.html</loc>
+    <lastmod>2025-03-14T10:10:37.171Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/introduction/moindres_carres.html</loc>
+    <lastmod>2025-03-13T23:07:59.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/edo_lineaires/definition.html</loc>
+    <lastmod>2025-03-13T23:07:59.472Z</lastmod>
+  </url>
+  <url>
     <loc>https://ocourses.github.io/kaplan/src/edo_lineaires/solution.html</loc>
     <lastmod>2025-03-14T15:28:59.144Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/integration_numerique/euler.html</loc>
+    <lastmod>2025-03-08T10:59:44.133Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ocourses.github.io/kaplan/src/derivees/fonctions.html</loc>
+    <lastmod>2025-03-08T11:04:27.714Z</lastmod>
   </url>
 </urlset>

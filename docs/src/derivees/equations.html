@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../src/derivees/fonctions.html" rel="prev">
-<link href="../../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
+<link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,6 +68,30 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'h') {
+            // Sélection des éléments par leur ID
+            const sidebar = document.getElementById('quarto-sidebar');
+            const marginSidebar = document.getElementById('quarto-margin-sidebar');
+            const documentContent = document.getElementById('quarto-document-content');
+
+            // Vérification de l'état actuel de la visibilité
+            if (sidebar.style.visibility === 'hidden') {
+                // Si les éléments sont cachés, les rendre visibles
+                sidebar.style.visibility = 'visible';
+                marginSidebar.style.visibility = 'visible';
+                documentContent.className = 'content';
+            } else {
+                // Si les éléments sont visibles, les cacher
+                sidebar.style.visibility = 'hidden';
+                marginSidebar.style.visibility = 'hidden';
+                documentContent.className = 'content column-page';
+            }
+        }
+    });
+</script> 
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -116,11 +140,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Équations Variationnelles – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="assets/images/trajectory.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Équations Variationnelles – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="assets/images/trajectory.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -132,7 +156,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/images/trajectory.svg" alt="Julia course." class="navbar-logo">
+    <img src="../../assets/images/edo-favicon.png" alt="EDO course." class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -143,12 +167,12 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../src/index.html" aria-current="page"> 
-<span class="menu-text">Cours</span></a>
+<span class="menu-text">Plan du cours</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/ocots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ocourses" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -157,7 +181,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -172,7 +196,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../src/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cours</span></a>
+ <span class="menu-text">Plan du cours</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -196,7 +220,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modèle de Kaplan</span></a>
+ <span class="menu-text">Problème de Kaplan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -210,7 +234,7 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Équations différentielles ordinaires linéaires</span></a>
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,8 +242,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/definitions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définitions</span></a>
+  <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -231,7 +255,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solution générale</span></a>
+ <span class="menu-text">Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -311,12 +335,12 @@ window.Quarto = {
   <li><a href="#schémas-de-runge-kutta" id="toc-schémas-de-runge-kutta" class="nav-link" data-scroll-target="#schémas-de-runge-kutta">2. Schémas de Runge-Kutta :</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/equations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/equations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Équations Variationnelles</h1>
 </div>
@@ -476,7 +500,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ocourses\.github\.io\/kaplan\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -820,7 +844,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2025, Olivier Cots</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/equations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/equations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
@@ -830,4 +854,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
