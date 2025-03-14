@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../src/introduction/edo.html" rel="next">
-<link href="../assets/images/trajectory.svg" rel="icon" type="image/svg+xml">
+<link href="../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -99,6 +99,30 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'h') {
+            // Sélection des éléments par leur ID
+            const sidebar = document.getElementById('quarto-sidebar');
+            const marginSidebar = document.getElementById('quarto-margin-sidebar');
+            const documentContent = document.getElementById('quarto-document-content');
+
+            // Vérification de l'état actuel de la visibilité
+            if (sidebar.style.visibility === 'hidden') {
+                // Si les éléments sont cachés, les rendre visibles
+                sidebar.style.visibility = 'visible';
+                marginSidebar.style.visibility = 'visible';
+                documentContent.className = 'content';
+            } else {
+                // Si les éléments sont visibles, les cacher
+                sidebar.style.visibility = 'hidden';
+                marginSidebar.style.visibility = 'hidden';
+                documentContent.className = 'content column-page';
+            }
+        }
+    });
+</script> 
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -147,11 +171,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../assets/css/styles.css">
 <meta property="og:title" content="Cours Prépa INP – Cours EDO">
 <meta property="og:description" content="Introduction aux équations différentielles ordinaires">
-<meta property="og:image" content="assets/images/trajectory.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Cours Prépa INP – Cours EDO">
 <meta name="twitter:description" content="Introduction aux équations différentielles ordinaires">
-<meta name="twitter:image" content="assets/images/trajectory.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -163,7 +187,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/images/trajectory.svg" alt="EDO course." class="navbar-logo">
+    <img src="../assets/images/edo-favicon.png" alt="EDO course." class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -179,7 +203,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/ocots" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ocourses" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -501,7 +525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ocourses\.github\.io\/kaplan\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -845,7 +869,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2025, Olivier Cots</p>
-</div>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
@@ -855,4 +879,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

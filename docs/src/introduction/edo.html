@@ -69,6 +69,30 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'h') {
+            // Sélection des éléments par leur ID
+            const sidebar = document.getElementById('quarto-sidebar');
+            const marginSidebar = document.getElementById('quarto-margin-sidebar');
+            const documentContent = document.getElementById('quarto-document-content');
+
+            // Vérification de l'état actuel de la visibilité
+            if (sidebar.style.visibility === 'hidden') {
+                // Si les éléments sont cachés, les rendre visibles
+                sidebar.style.visibility = 'visible';
+                marginSidebar.style.visibility = 'visible';
+                documentContent.className = 'content';
+            } else {
+                // Si les éléments sont visibles, les cacher
+                sidebar.style.visibility = 'hidden';
+                marginSidebar.style.visibility = 'hidden';
+                documentContent.className = 'content column-page';
+            }
+        }
+    });
+</script> 
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -133,7 +157,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/images/trajectory.svg" alt="Julia course." class="navbar-logo">
+    <img src="../../assets/images/trajectory.svg" alt="EDO course." class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -144,7 +168,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="../../src/index.html" aria-current="page"> 
-<span class="menu-text">Cours</span></a>
+<span class="menu-text">Plan du cours</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -158,7 +182,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -173,7 +197,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../src/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cours</span></a>
+ <span class="menu-text">Plan du cours</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -318,7 +342,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Introduction</h1>
 </div>
@@ -964,8 +988,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/index.html" class="pagination-link" aria-label="Cours">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cours</span>
+      <a href="../../src/index.html" class="pagination-link" aria-label="Plan du cours">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plan du cours</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -992,4 +1016,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

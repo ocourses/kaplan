@@ -1,0 +1,21 @@
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'h') {
+        // Sélection des éléments par leur ID
+        const sidebar = document.getElementById('quarto-sidebar');
+        const marginSidebar = document.getElementById('quarto-margin-sidebar');
+        const documentContent = document.getElementById('quarto-document-content');
+
+        // Vérification de l'état actuel de la visibilité
+        if (sidebar.style.visibility === 'hidden') {
+            // Si les éléments sont cachés, les rendre visibles
+            sidebar.style.visibility = 'visible';
+            marginSidebar.style.visibility = 'visible';
+            documentContent.className = 'content';
+        } else {
+            // Si les éléments sont visibles, les cacher
+            sidebar.style.visibility = 'hidden';
+            marginSidebar.style.visibility = 'hidden';
+            documentContent.className = 'content column-page';
+        }
+    }
+});
