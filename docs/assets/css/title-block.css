@@ -21,6 +21,7 @@ main.content #title-block-header{
     align-items: center;
     margin: auto;
     z-index:100;
+    text-align: center;
 }
 
 #particles-js {
