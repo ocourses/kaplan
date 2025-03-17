@@ -39,6 +39,7 @@ website:
   title: "Cours EDO"
   image: assets/images/edo-favicon.png
   favicon: assets/images/edo-favicon.png
+  reader-mode: true
   open-graph: true
   twitter-card: true
   site-url: https://ocourses.github.io/kaplan/
@@ -54,7 +55,7 @@ website:
     type: overlay
     keyboard-shortcut: ["?", "H"]
   page-footer: 
-    center: "Copyright 2025, Olivier Cots"
+    left: "Copyright 2025, Olivier Cots"
   navbar:
     background: light
     logo: assets/images/edo-favicon.png
