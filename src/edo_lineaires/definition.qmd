@@ -99,7 +99,7 @@ ce qui achève la démonstration.
 :::
 
 ::: {.callout-note}
-Cette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l'inconnue est la fonction $x(\cdot)$ avec l'intervalle $I$ de définition.
+Cette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre.
 :::
 
 ## Cas Scalaire
