@@ -159,7 +159,7 @@ $$
 e^A = I + A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
 $$
 
-### Somme de Matrices Commutantes
+### Matrices Commutantes
 
 Si les matrices $A$ et $B$ commutent, c'est-à-dire si $AB = BA$, alors l'exponentielle de leur somme est le produit des exponentielles :
 
