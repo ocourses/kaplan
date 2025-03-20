@@ -7,10 +7,10 @@ L'exponentielle d'une matrice est un outil fondamental pour résoudre les équat
 
 ## Définition
 
-On définit l'exponentielle d'une matrice $A \in \mathrm{M}_n(\mathbb{R})$ par :
+On définit l'exponentielle d'une matrice $A \in \mathcal{M}_n(\mathbb{R})$ par :
 
 $$
-e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathrm{M}_n(\mathbb{R}).
+e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
 $$
 
 ::: {.callout-note}
@@ -20,7 +20,7 @@ L'exponentielle de $A$ s'écrit aussi $\exp(A)$.
 ::: {.callout-caution collapse="true" icon=false}
 ### Preuve de la convergence de la série
 
-Pour montrer que cette série converge absolument pour toute matrice $A \in \mathrm{M}_n(\mathbb{R})$, nous allons utiliser une norme sous-multiplicative. Soit $\|\cdot\|$ une norme sous-multiplicative sur $\mathrm{M}_n(\mathbb{R})$, par exemple la [norme de Frobenius](https://fr.wikipedia.org/wiki/Norme_matricielle#Norme_de_Frobenius) ou n'importe quelle norme subordonnée (ou norme d'algèbre). Une norme sous-multiplicative satisfait pour toutes matrices $\ A, B \in \mathrm{M}_n(\mathbb{R})$ la propriété suivante :
+Pour montrer que cette série converge absolument pour toute matrice $A \in \mathcal{M}_n(\mathbb{R})$, nous allons utiliser une norme sous-multiplicative. Soit $\|\cdot\|$ une norme sous-multiplicative sur $\mathcal{M}_n(\mathbb{R})$, par exemple la [norme de Frobenius](https://fr.wikipedia.org/wiki/Norme_matricielle#Norme_de_Frobenius) ou n'importe quelle norme subordonnée (ou norme d'algèbre). Une norme sous-multiplicative satisfait pour toutes matrices $\ A, B \in \mathcal{M}_n(\mathbb{R})$ la propriété suivante :
 
 $$
     \|A B\| \leq \|A\| \|B\|.
@@ -45,7 +45,7 @@ Puisque la série de droite converge, il en découle que la série de matrices $
 
 ### Matrice Nulle
 
-On note $0_n$ la matrice nulle de $\mathrm{M}_n(\mathbb{R})$ et $I_n$ la matrice identité. On a alors :
+On note $0_n$ la matrice nulle de $\mathcal{M}_n(\mathbb{R})$ et $I_n$ la matrice identité. On a alors :
 $$
     e^{0_n} = I_n.
 $$
@@ -55,18 +55,30 @@ $$
 Si $\Sigma$ est une matrice diagonale avec des éléments diagonaux $\lambda_1, \lambda_2, \dots, \lambda_n$, c'est-à-dire :
 
 $$
-    \Sigma = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n),
+    \Sigma = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n) = 
+    \begin{pmatrix}
+        \lambda_1 & 0 & \cdots & 0 \\
+        0 & \lambda_2 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \lambda_n
+    \end{pmatrix},
 $$
 
 alors l'exponentielle de $\Sigma$ est simplement la matrice diagonale des exponentielles des éléments diagonaux :
 
 $$
-    e^\Sigma = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).
+    e^\Sigma = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}) =
+    \begin{pmatrix}
+        e^{\lambda_1} & 0 & \cdots & 0 \\
+        0 & e^{\lambda_2} & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & e^{\lambda_n}
+    \end{pmatrix}.
 $$
 
 ### Matrice Semblable
 
-Soit $A \in \mathrm{M}_n(\mathbb{R})$ et $P \in \mathrm{GL}_n(\mathbb{R})$, c'est-à-dire $P$ est inversible. Alors
+Soit $A \in \mathcal{M}_n(\mathbb{R})$ et $P \in \mathrm{GL}_n(\mathbb{R})$, c'est-à-dire $P$ est inversible. Alors
 
 $$
     e^{PAP^{-1}} = P e^A P^{-1}.
@@ -94,12 +106,58 @@ $$
 et donc la propriété est vraie pour $k+1$.
 
 Ainsi, on a :
-$$
-    e^{PAP^{-1}} = \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!} = 
-    \sum_{k=0}^{\infty} \left( P \frac{A^k}{k!} P^{-1} \right) =
-    P \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) P^{-1} = P e^A P^{-1}.
-$$
+\begin{align}
+    e^{PAP^{-1}} &= \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!} = 
+    \sum_{k=0}^{\infty} \left( P \frac{A^k}{k!} P^{-1} \right) \notag \\[1.5em]
+    &= P \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) P^{-1} 
+    \tag*{(par continuité de la conjugaison)} \\[1.5em]
+    &= P e^A P^{-1}. \notag
+\end{align}
 :::
+
+### Matrice Transposée
+
+La transposée d'une matrice $A$ de taille $m \times n$ est notée $A^T$ et s'obtient en échangeant les lignes et les colonnes de $A$. Autrement dit, l'élément $(i, j)$ de $A^T$ est l'élément $(j, i)$ de $A$ :
+
+$$
+(A^T)_{ij} = A_{ji}
+$$
+
+Concernant l'exponentielle de matrice, nous avons :
+
+$$
+e^{A^T} = (e^A)^T.
+$$
+
+::: {.callout-note}
+La preuve est laissée en exercice. On pourra s'inspirée de la preuve ci-avant.
+:::
+
+### Matrice Nilpotente
+
+Une matrice carrée $A$ est dite nilpotente s'il existe un entier $k$ tel que :
+
+$$
+A^k = 0.
+$$
+
+Dans ce cas, l'exponentielle de $A$ s'écrit sous forme de somme finie :
+
+$$
+e^A = \sum_{n=0}^{k-1} \frac{A^n}{n!}.
+$$
+
+Par exemple, pour la matrice 
+
+$$
+A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},
+$$
+
+on a $A^2 = 0$, donc son exponentielle est :
+
+$$
+e^A = I + A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
+$$
 
 ### Somme de Matrices Commutantes
 
@@ -112,7 +170,7 @@ $$
 ::: {.callout-caution collapse="true" icon=false}
 ### Preuve
 
-Soit $A$ et $B$ deux matrices dans $\mathrm{M}_n(\mathbb{R})$ qui commutent, c'est-à-dire telle que $AB = BA$.
+Soit $A$ et $B$ deux matrices dans $\mathcal{M}_n(\mathbb{R})$ qui commutent, c'est-à-dire telle que $AB = BA$.
 
 En développant $(A+B)^k$ à l'aide du binôme de Newton, on obtient puisque $A$ et $B$ commutent :
 $$
@@ -134,11 +192,29 @@ Cela conclut la démonstration.
 
 ::: {.callout-important}
 La commutativité des matrices $A$ et $B$ est une condition nécessaire pour que cette propriété soit vraie. Voir la [formule de Baker-Campbell-Hausdorff](https://fr.wikipedia.org/wiki/Formule_de_Baker-Campbell-Hausdorff) pour plus de détails.
+
+**Contre-exemple.** Soient
+$$
+    A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
+$$
+
+Alors, pusique $A^2 = B^2 = 0_2$, on a :
+$$
+    e^A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
+$$
+mais par ailleursn $(A + B)^2 = I_2$ donc
+$$
+    \begin{aligned}
+        e^{A+B} &= \left( \sum_{k=0}^{\infty} \frac{1}{2k!} \right) I_2 + \left( \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \right) (A+B) = 
+        \cosh(1) I_2 + \sinh(1) (A + B) \\
+        &\ne e^A e^B = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}.
+    \end{aligned}
+$$
 :::
 
 ### Inversibilité et Dérivabilité
 
-Soit $A \in \mathrm{M}_n(\mathbb{R})$. On a les propriétés suivantes :
+Soit $A \in \mathcal{M}_n(\mathbb{R})$. En corollaire de ce qui précède, nous avons les propriétés suivantes :
 
 1. **Inversibilité** : $e^A$ est toujours une matrice inversible et son inverse est donné par :
 
@@ -210,9 +286,9 @@ Cela conclut la démonstration des deux propriétés.
 :::
 
 ::: {.callout-note}
-On pourra préférer la notation $\exp$. Ces deux derniers résultats nous indique que l'on a $\exp \colon \mathrm{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})$ et que 
+On pourra préférer la notation $\exp$. Ces deux derniers résultats nous indique que l'on a $\exp \colon \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})$ et que 
 $$
     \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.
 $$
-**Attention**, nous n'avons rien prouvé quant à la régularité de l'application $\exp$, rien au sujet ni de sa continuité sur $\mathrm{M}_n(\mathbb{R})$, ni de sa dérivabilité.
+**Attention**, nous n'avons rien prouvé quant à la régularité de l'application $\exp$, rien au sujet ni de sa continuité sur $\mathcal{M}_n(\mathbb{R})$, ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même $\mathscr{C}^\infty$. L'application exponentielle est même surjective.
 :::

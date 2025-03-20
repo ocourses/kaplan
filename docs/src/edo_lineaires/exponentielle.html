@@ -336,6 +336,8 @@ window.Quarto = {
   <li><a href="#matrice-nulle" id="toc-matrice-nulle" class="nav-link" data-scroll-target="#matrice-nulle">Matrice Nulle</a></li>
   <li><a href="#matrice-diagonale" id="toc-matrice-diagonale" class="nav-link" data-scroll-target="#matrice-diagonale">Matrice Diagonale</a></li>
   <li><a href="#matrice-semblable" id="toc-matrice-semblable" class="nav-link" data-scroll-target="#matrice-semblable">Matrice Semblable</a></li>
+  <li><a href="#matrice-transposée" id="toc-matrice-transposée" class="nav-link" data-scroll-target="#matrice-transposée">Matrice Transposée</a></li>
+  <li><a href="#matrice-nilpotente" id="toc-matrice-nilpotente" class="nav-link" data-scroll-target="#matrice-nilpotente">Matrice Nilpotente</a></li>
   <li><a href="#somme-de-matrices-commutantes" id="toc-somme-de-matrices-commutantes" class="nav-link" data-scroll-target="#somme-de-matrices-commutantes">Somme de Matrices Commutantes</a></li>
   <li><a href="#inversibilité-et-dérivabilité" id="toc-inversibilité-et-dérivabilité" class="nav-link" data-scroll-target="#inversibilité-et-dérivabilité">Inversibilité et Dérivabilité</a></li>
   </ul></li>
@@ -367,9 +369,9 @@ window.Quarto = {
 <p>L’exponentielle d’une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d’exponentielle des nombres réels aux matrices.</p>
 <section id="définition" class="level2">
 <h2 class="anchored" data-anchor-id="définition">Définition</h2>
-<p>On définit l’exponentielle d’une matrice <span class="math inline">A \in \mathrm{M}_n(\mathbb{R})</span> par :</p>
+<p>On définit l’exponentielle d’une matrice <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> par :</p>
 <p><span class="math display">
-e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathrm{M}_n(\mathbb{R}).
+e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
 </span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -396,7 +398,7 @@ Preuve de la convergence de la série
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Pour montrer que cette série converge absolument pour toute matrice <span class="math inline">A \in \mathrm{M}_n(\mathbb{R})</span>, nous allons utiliser une norme sous-multiplicative. Soit <span class="math inline">\|\cdot\|</span> une norme sous-multiplicative sur <span class="math inline">\mathrm{M}_n(\mathbb{R})</span>, par exemple la <a href="https://fr.wikipedia.org/wiki/Norme_matricielle#Norme_de_Frobenius">norme de Frobenius</a> ou n’importe quelle norme subordonnée (ou norme d’algèbre). Une norme sous-multiplicative satisfait pour toutes matrices <span class="math inline">\ A, B \in \mathrm{M}_n(\mathbb{R})</span> la propriété suivante :</p>
+<p>Pour montrer que cette série converge absolument pour toute matrice <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span>, nous allons utiliser une norme sous-multiplicative. Soit <span class="math inline">\|\cdot\|</span> une norme sous-multiplicative sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>, par exemple la <a href="https://fr.wikipedia.org/wiki/Norme_matricielle#Norme_de_Frobenius">norme de Frobenius</a> ou n’importe quelle norme subordonnée (ou norme d’algèbre). Une norme sous-multiplicative satisfait pour toutes matrices <span class="math inline">\ A, B \in \mathcal{M}_n(\mathbb{R})</span> la propriété suivante :</p>
 <p><span class="math display">
     \|A B\| \leq \|A\| \|B\|.
 </span></p>
@@ -417,7 +419,7 @@ Preuve de la convergence de la série
 <h2 class="anchored" data-anchor-id="propriétés">Propriétés</h2>
 <section id="matrice-nulle" class="level3">
 <h3 class="anchored" data-anchor-id="matrice-nulle">Matrice Nulle</h3>
-<p>On note <span class="math inline">0_n</span> la matrice nulle de <span class="math inline">\mathrm{M}_n(\mathbb{R})</span> et <span class="math inline">I_n</span> la matrice identité. On a alors : <span class="math display">
+<p>On note <span class="math inline">0_n</span> la matrice nulle de <span class="math inline">\mathcal{M}_n(\mathbb{R})</span> et <span class="math inline">I_n</span> la matrice identité. On a alors : <span class="math display">
     e^{0_n} = I_n.
 </span></p>
 </section>
@@ -425,16 +427,28 @@ Preuve de la convergence de la série
 <h3 class="anchored" data-anchor-id="matrice-diagonale">Matrice Diagonale</h3>
 <p>Si <span class="math inline">\Sigma</span> est une matrice diagonale avec des éléments diagonaux <span class="math inline">\lambda_1, \lambda_2, \dots, \lambda_n</span>, c’est-à-dire :</p>
 <p><span class="math display">
-    \Sigma = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n),
+    \Sigma = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n) =
+    \begin{pmatrix}
+        \lambda_1 &amp; 0 &amp; \cdots &amp; 0 \\
+        0 &amp; \lambda_2 &amp; \cdots &amp; 0 \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        0 &amp; 0 &amp; \cdots &amp; \lambda_n
+    \end{pmatrix},
 </span></p>
 <p>alors l’exponentielle de <span class="math inline">\Sigma</span> est simplement la matrice diagonale des exponentielles des éléments diagonaux :</p>
 <p><span class="math display">
-    e^\Sigma = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}).
+    e^\Sigma = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}) =
+    \begin{pmatrix}
+        e^{\lambda_1} &amp; 0 &amp; \cdots &amp; 0 \\
+        0 &amp; e^{\lambda_2} &amp; \cdots &amp; 0 \\
+        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+        0 &amp; 0 &amp; \cdots &amp; e^{\lambda_n}
+    \end{pmatrix}.
 </span></p>
 </section>
 <section id="matrice-semblable" class="level3">
 <h3 class="anchored" data-anchor-id="matrice-semblable">Matrice Semblable</h3>
-<p>Soit <span class="math inline">A \in \mathrm{M}_n(\mathbb{R})</span> et <span class="math inline">P \in \mathrm{GL}_n(\mathbb{R})</span>, c’est-à-dire <span class="math inline">P</span> est inversible. Alors</p>
+<p>Soit <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> et <span class="math inline">P \in \mathrm{GL}_n(\mathbb{R})</span>, c’est-à-dire <span class="math inline">P</span> est inversible. Alors</p>
 <p><span class="math display">
     e^{PAP^{-1}} = P e^A P^{-1}.
 </span></p>
@@ -473,14 +487,59 @@ Preuve
   \left(PAP^{-1}\right)^{k+1} = \left(PAP^{-1}\right)^k PAP^{-1} = P A^k P^{-1} PAP^{-1} = P A^{k+1} P^{-1}
 </span> et donc la propriété est vraie pour <span class="math inline">k+1</span>.</li>
 </ul>
-<p>Ainsi, on a : <span class="math display">
-    e^{PAP^{-1}} = \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!} =
-    \sum_{k=0}^{\infty} \left( P \frac{A^k}{k!} P^{-1} \right) =
-    P \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) P^{-1} = P e^A P^{-1}.
+<p>Ainsi, on a : <span class="math display">\begin{align}
+    e^{PAP^{-1}} &amp;= \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!} =
+    \sum_{k=0}^{\infty} \left( P \frac{A^k}{k!} P^{-1} \right) \notag \\[1.5em]
+    &amp;= P \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) P^{-1}
+    \tag*{(par continuité de la conjugaison)} \\[1.5em]
+    &amp;= P e^A P^{-1}. \notag
+\end{align}</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="matrice-transposée" class="level3">
+<h3 class="anchored" data-anchor-id="matrice-transposée">Matrice Transposée</h3>
+<p>La transposée d’une matrice <span class="math inline">A</span> de taille <span class="math inline">m \times n</span> est notée <span class="math inline">A^T</span> et s’obtient en échangeant les lignes et les colonnes de <span class="math inline">A</span>. Autrement dit, l’élément <span class="math inline">(i, j)</span> de <span class="math inline">A^T</span> est l’élément <span class="math inline">(j, i)</span> de <span class="math inline">A</span> :</p>
+<p><span class="math display">
+(A^T)_{ij} = A_{ji}
 </span></p>
+<p>Concernant l’exponentielle de matrice, nous avons :</p>
+<p><span class="math display">
+e^{A^T} = (e^A)^T.
+</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>La preuve est laissée en exercice. On pourra s’inspirée de la preuve ci-avant.</p>
 </div>
+</div>
+</section>
+<section id="matrice-nilpotente" class="level3">
+<h3 class="anchored" data-anchor-id="matrice-nilpotente">Matrice Nilpotente</h3>
+<p>Une matrice carrée <span class="math inline">A</span> est dite nilpotente s’il existe un entier <span class="math inline">k</span> tel que :</p>
+<p><span class="math display">
+A^k = 0.
+</span></p>
+<p>Dans ce cas, l’exponentielle de <span class="math inline">A</span> s’écrit sous forme de somme finie :</p>
+<p><span class="math display">
+e^A = \sum_{n=0}^{k-1} \frac{A^n}{n!}.
+</span></p>
+<p>Par exemple, pour la matrice</p>
+<p><span class="math display">
+A = \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix},
+</span></p>
+<p>on a <span class="math inline">A^2 = 0</span>, donc son exponentielle est :</p>
+<p><span class="math display">
+e^A = I + A = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}.
+</span></p>
 </section>
 <section id="somme-de-matrices-commutantes" class="level3">
 <h3 class="anchored" data-anchor-id="somme-de-matrices-commutantes">Somme de Matrices Commutantes</h3>
@@ -489,7 +548,7 @@ Preuve
     e^{A + B} = e^A\, e^B.
 </span></p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -498,9 +557,9 @@ Preuve
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Soit <span class="math inline">A</span> et <span class="math inline">B</span> deux matrices dans <span class="math inline">\mathrm{M}_n(\mathbb{R})</span> qui commutent, c’est-à-dire telle que <span class="math inline">AB = BA</span>.</p>
+<p>Soit <span class="math inline">A</span> et <span class="math inline">B</span> deux matrices dans <span class="math inline">\mathcal{M}_n(\mathbb{R})</span> qui commutent, c’est-à-dire telle que <span class="math inline">AB = BA</span>.</p>
 <p>En développant <span class="math inline">(A+B)^k</span> à l’aide du binôme de Newton, on obtient puisque <span class="math inline">A</span> et <span class="math inline">B</span> commutent : <span class="math display">
     (A + B)^k = \sum_{j=0}^{k} \binom{k}{j} A^j B^{k-j}.
 </span></p>
@@ -525,12 +584,24 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <p>La commutativité des matrices <span class="math inline">A</span> et <span class="math inline">B</span> est une condition nécessaire pour que cette propriété soit vraie. Voir la <a href="https://fr.wikipedia.org/wiki/Formule_de_Baker-Campbell-Hausdorff">formule de Baker-Campbell-Hausdorff</a> pour plus de détails.</p>
+<p><strong>Contre-exemple.</strong> Soient <span class="math display">
+    A = \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}.
+</span></p>
+<p>Alors, pusique <span class="math inline">A^2 = B^2 = 0_2</span>, on a : <span class="math display">
+    e^A = \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 &amp; 0 \\ 1 &amp; 1 \end{pmatrix}
+</span> mais par ailleursn <span class="math inline">(A + B)^2 = I_2</span> donc <span class="math display">
+    \begin{aligned}
+        e^{A+B} &amp;= \left( \sum_{k=0}^{\infty} \frac{1}{2k!} \right) I_2 + \left( \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \right) (A+B) =
+        \cosh(1) I_2 + \sinh(1) (A + B) \\
+        &amp;\ne e^A e^B = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}.
+    \end{aligned}
+</span></p>
 </div>
 </div>
 </section>
 <section id="inversibilité-et-dérivabilité" class="level3">
 <h3 class="anchored" data-anchor-id="inversibilité-et-dérivabilité">Inversibilité et Dérivabilité</h3>
-<p>Soit <span class="math inline">A \in \mathrm{M}_n(\mathbb{R})</span>. On a les propriétés suivantes :</p>
+<p>Soit <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span>. En corollaire de ce qui précède, nous avons les propriétés suivantes :</p>
 <ol type="1">
 <li><p><strong>Inversibilité</strong> : <span class="math inline">e^A</span> est toujours une matrice inversible et son inverse est donné par :</p>
 <p><span class="math display">
@@ -542,7 +613,7 @@ Important
 </span></p></li>
 </ol>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -551,7 +622,7 @@ Preuve
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><strong>Inversibilité</strong> :</p>
@@ -601,9 +672,9 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On pourra préférer la notation <span class="math inline">\exp</span>. Ces deux derniers résultats nous indique que l’on a <span class="math inline">\exp \colon \mathrm{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})</span> et que <span class="math display">
+<p>On pourra préférer la notation <span class="math inline">\exp</span>. Ces deux derniers résultats nous indique que l’on a <span class="math inline">\exp \colon \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})</span> et que <span class="math display">
     \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.
-</span> <strong>Attention</strong>, nous n’avons rien prouvé quant à la régularité de l’application <span class="math inline">\exp</span>, rien au sujet ni de sa continuité sur <span class="math inline">\mathrm{M}_n(\mathbb{R})</span>, ni de sa dérivabilité.</p>
+</span> <strong>Attention</strong>, nous n’avons rien prouvé quant à la régularité de l’application <span class="math inline">\exp</span>, rien au sujet ni de sa continuité sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>, ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même <span class="math inline">\mathscr{C}^\infty</span>. L’application exponentielle est même surjective.</p>
 </div>
 </div>
 
