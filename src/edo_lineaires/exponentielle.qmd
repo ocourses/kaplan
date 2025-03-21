@@ -130,7 +130,7 @@ e^{A^T} = (e^A)^T.
 $$
 
 ::: {.callout-note}
-La preuve est laissée en exercice. On pourra s'inspirée de la preuve ci-avant.
+La preuve est laissée en exercice. On pourra s'inspirer de la preuve ci-avant.
 :::
 
 ### Matrice Nilpotente

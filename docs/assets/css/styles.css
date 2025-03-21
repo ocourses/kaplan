@@ -215,13 +215,13 @@ iframe.reveal-demo {
 
 @media (max-width: 575px) {
   .link-cards .card {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-right: 35px;
   }
 
-  }
+}
 
-  @media (min-width: 576px) { 
+@media (min-width: 576px) { 
   .link-cards {
     display: flex;
     flex-direction: row;
@@ -229,9 +229,10 @@ iframe.reveal-demo {
   }
 
   .link-cards .card {
-    width: 260px;
-    margin: 0 20px 12px 0;
+    width: 290px;
+    margin: 0 10px 20px 0;
   }
+
 }
 
 .link-cards .card {
