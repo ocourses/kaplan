@@ -287,14 +287,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode d’Euler</span></a>
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -310,14 +328,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fonctions dérivées</span></a>
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations variationnelles</span></a>
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
   </div>
 </li>
       </ul>
@@ -383,7 +407,7 @@ x'(t) = a x(t)
 <li><span class="math inline">t \mapsto x'(t)</span> est la dérivée de <span class="math inline">t \mapsto x(t)</span> par rapport au temps <span class="math inline">t</span>.</li>
 <li><span class="math inline">a \in \mathbb{R}</span> est un paramètre constant.</li>
 </ul>
-<p>Donnons de explications sur la terminologie employée.</p>
+<p>Donnons des explications sur la terminologie employée.</p>
 <ul>
 <li>Le terme <strong>ordinaire</strong> est utilisé par opposition au terme équation différentielle partielle (plus communément équation aux dérivées partielles, ou EDP).</li>
 <li>Dans ce cas, l’équation différentielle est <strong>scalaire</strong> car elle ne fait intervenir qu’une seule fonction inconnue <span class="math inline">t \mapsto x(t) \in \mathbb{R}</span>.</li>
@@ -399,13 +423,13 @@ x'(t) = a x(t)
 x(0) = x_0.
 </span></p>
 <p>Le couple formé par l’équation différentielle et la condition initiale constitue un <strong>problème de Cauchy</strong>. La solution de ce problème est une fonction <span class="math inline">t \mapsto x(t)</span> qui satisfait à la fois l’équation différentielle et la condition initiale.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Remarques
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -424,13 +448,13 @@ Note
 x(t) = x_0 + \int_{0}^{t} a x(s) \, \mathrm{d}s.
 </span></p>
 <p>Cette formulation intégrale est équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l’inconnue est la fonction <span class="math inline">x(\cdot)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -522,13 +546,13 @@ x'(t) = A x(t) + b(t)
 </span></p>
 <p>où <span class="math inline">A</span> est une matrice constante de taille <span class="math inline">n \times n</span> et <span class="math inline">b(t)</span> est un vecteur de taille <span class="math inline">n</span> dépendant du temps <span class="math inline">t</span>.</p>
 <p>Cette équation n’est pas autonome car elle dépend explicitement du temps <span class="math inline">t</span> à travers <span class="math inline">b(t)</span>. Cette équation est affine en <span class="math inline">x(t)</span>, car elle contient un terme linéaire <span class="math inline">A x(t)</span> et un terme constant <span class="math inline">b(t)</span>. Nous parlerons d’équation différentielle linéaire non homogène. C’est une équation d’ordre 1 car elle ne fait intervenir que la dérivée première de <span class="math inline">x(t)</span>, mais c’est une équation vectorielle car <span class="math inline">x(t)</span> est un vecteur de taille <span class="math inline">n</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -543,13 +567,13 @@ x'(t) = f(t, x(t))
 <p><span class="math display">
 f(t, x) = A x + b(t).
 </span></p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Remarques
 </div>
 </div>
 <div class="callout-body-container callout-body">

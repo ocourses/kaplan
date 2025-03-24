@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Équations Variationnelles – Cours EDO</title>
+<title>macros – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/derivees/fonctions.html" rel="prev">
 <link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -93,62 +92,17 @@ ul.task-list li input[type="checkbox"] {
     });
 </script> 
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Équations Variationnelles – Cours EDO">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
+<meta property="og:title" content="Cours EDO">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/latex/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Équations Variationnelles – Cours EDO">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
+<meta name="twitter:title" content="Cours EDO">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/latex/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -166,7 +120,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../src/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../src/index.html"> 
 <span class="menu-text">Plan du cours</span></a>
   </li>  
 </ul>
@@ -181,238 +135,22 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../src/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan du cours</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Équations différentielles ordinaires</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problème de Kaplan</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/introduction/moindres_carres.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problème aux moindres carrés</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Problème de Cauchy linéaire</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Définition</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exponentielle de matrice</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Solution</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exemples</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Intégration numérique</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode d’Euler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Dérivées</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fonctions dérivées</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Equations variationnelles</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#problème-de-cauchy-pour-les-équations-variationnelles" id="toc-problème-de-cauchy-pour-les-équations-variationnelles" class="nav-link active" data-scroll-target="#problème-de-cauchy-pour-les-équations-variationnelles">Problème de Cauchy pour les Équations Variationnelles</a>
-  <ul class="collapse">
-  <li><a href="#dérivée-par-rapport-à-x_0" id="toc-dérivée-par-rapport-à-x_0" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-x_0">1. Dérivée par Rapport à <span class="math inline">x_0</span> :</a></li>
-  <li><a href="#dérivée-par-rapport-à-theta" id="toc-dérivée-par-rapport-à-theta" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-theta">2. Dérivée par Rapport à <span class="math inline">\theta</span> :</a></li>
-  </ul></li>
-  <li><a href="#résolution-des-équations-variationnelles" id="toc-résolution-des-équations-variationnelles" class="nav-link" data-scroll-target="#résolution-des-équations-variationnelles">Résolution des Équations Variationnelles</a>
-  <ul class="collapse">
-  <li><a href="#exponentielle-de-matrice" id="toc-exponentielle-de-matrice" class="nav-link" data-scroll-target="#exponentielle-de-matrice">1. Exponentielle de Matrice :</a></li>
-  <li><a href="#schémas-de-runge-kutta" id="toc-schémas-de-runge-kutta" class="nav-link" data-scroll-target="#schémas-de-runge-kutta">2. Schémas de Runge-Kutta :</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/equations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/equations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/equations.html">Equations variationnelles</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Équations Variationnelles</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
 
-
-<p>Les équations variationnelles offrent une méthode directe pour calculer les dérivées des solutions des équations différentielles par rapport aux conditions initiales et aux paramètres. Elles permettent de linéariser le problème autour de la solution nominale.</p>
-<section id="problème-de-cauchy-pour-les-équations-variationnelles" class="level2">
-<h2 class="anchored" data-anchor-id="problème-de-cauchy-pour-les-équations-variationnelles">Problème de Cauchy pour les Équations Variationnelles</h2>
-<p>Considérons une EDO dépendant de paramètres <span class="math inline">\theta</span> :</p>
-<p><span class="math display">
-\dot{x}(t) = f(t, x(t), \theta), \quad x(t_0) = x_0
-</span></p>
-<p>Pour trouver la dérivée de la solution <span class="math inline">x(t, x_0, \theta)</span> par rapport à <span class="math inline">x_0</span> ou <span class="math inline">\theta</span>, nous devons résoudre un problème de Cauchy pour les équations variationnelles.</p>
-<section id="dérivée-par-rapport-à-x_0" class="level3">
-<h3 class="anchored" data-anchor-id="dérivée-par-rapport-à-x_0">1. Dérivée par Rapport à <span class="math inline">x_0</span> :</h3>
-<p>La dérivée <span class="math inline">X(t) = \frac{\partial x}{\partial x_0}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
-<p><span class="math display">
-\frac{d}{dt} X(t) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \, X(t)
-</span></p>
-<p>Avec la condition initiale :</p>
-<p><span class="math display">
-X(t_0) = I
-</span></p>
-</section>
-<section id="dérivée-par-rapport-à-theta" class="level3">
-<h3 class="anchored" data-anchor-id="dérivée-par-rapport-à-theta">2. Dérivée par Rapport à <span class="math inline">\theta</span> :</h3>
-<p>La dérivée <span class="math inline">Y(t) = \frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> satisfait l’équation variationnelle suivante :</p>
-<p><span class="math display">
-\frac{d}{dt} Y(t) = \frac{\partial f}{\partial x}(t, x(t, x_0, \theta), \theta) \, Y(t) + \frac{\partial f}{\partial \theta}(t, x(t, x_0, \theta), \theta)
-</span></p>
-<p>Avec la condition initiale :</p>
-<p><span class="math display">
-Y(t_0) = 0
-</span></p>
-</section>
-</section>
-<section id="résolution-des-équations-variationnelles" class="level2">
-<h2 class="anchored" data-anchor-id="résolution-des-équations-variationnelles">Résolution des Équations Variationnelles</h2>
-<p>Les équations variationnelles peuvent être résolues en utilisant soit l’exponentielle de matrice (dans le cas linéaire), soit des schémas numériques comme les méthodes de Runge-Kutta.</p>
-<section id="exponentielle-de-matrice" class="level3">
-<h3 class="anchored" data-anchor-id="exponentielle-de-matrice">1. Exponentielle de Matrice :</h3>
-<p>Dans le cas linéaire <span class="math inline">\dot{x}(t) = A x(t)</span>, la solution de l’équation variationnelle pour <span class="math inline">X(t) = \frac{\partial x}{\partial x_0}(t, x_0)</span> est donnée par :</p>
-<p><span class="math display">
-X(t) = e^{tA}
-</span></p>
-</section>
-<section id="schémas-de-runge-kutta" class="level3">
-<h3 class="anchored" data-anchor-id="schémas-de-runge-kutta">2. Schémas de Runge-Kutta :</h3>
-<p>Pour des systèmes plus complexes ou lorsque <span class="math inline">A</span> dépend de paramètres, les méthodes de Runge-Kutta peuvent être utilisées pour résoudre numériquement les équations variationnelles.</p>
-<p>Par exemple, pour l’EDO <span class="math inline">\dot{x}(t) = A x(t) + b(t)</span>, les schémas de Runge-Kutta peuvent être appliqués directement aux équations variationnelles.</p>
-
-
-</section>
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -832,15 +570,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../src/derivees/fonctions.html" class="pagination-link" aria-label="Fonctions dérivées">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Fonctions dérivées</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -849,7 +578,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/equations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/equations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/assets/latex/macros.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/assets/latex/macros.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

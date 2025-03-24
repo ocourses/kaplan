@@ -283,14 +283,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode d’Euler</span></a>
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -306,14 +324,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fonctions dérivées</span></a>
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations variationnelles</span></a>
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
   </div>
 </li>
       </ul>
@@ -362,9 +386,9 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="cas-homogène">Cas Homogène</h2>
 <p>Considérons le problème de Cauchy linéaire homogène suivant :</p>
 <p><span class="math display">
-    x'(t) = A\, x(t), \quad x(0) = x_0
+    x'(t) = A x(t), \quad x(0) = x_0
 </span></p>
-<p>où <span class="math inline">A \in M_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">x_0 \in \mathbb{R}^n</span> est le vecteur d’état initial.</p>
+<p>où <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">x_0 \in \mathbb{R}^n</span> est le vecteur d’état initial.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -424,14 +448,14 @@ Preuve
 <p><span class="math display">
     x'(t) = A x(t) + b(t), \quad x(t_0) = x_0,
 </span></p>
-<p>où <span class="math inline">A \in M_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">t \mapsto b(t) \in \mathbb{R}^n</span> est définie et continue sur un intervalle ouvert <span class="math inline">\mathcal{I}</span> contenant <span class="math inline">t_0</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>où <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> est une matrice constante et <span class="math inline">t \mapsto b(t) \in \mathbb{R}^n</span> est définie et continue sur un intervalle ouvert <span class="math inline">\mathcal{I}</span> contenant <span class="math inline">t_0</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Hypothèse
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -448,7 +472,8 @@ Théorème
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La solution du problème de Cauchy linéaire non homogène est donnée par : <span class="math display">
+<p>La solution du problème de Cauchy linéaire non homogène est donnée par :</p>
+<p><span class="math display">
 x(t) = e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
 </span></p>
 </div>
@@ -466,25 +491,25 @@ Preuve
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Puisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction <span class="math inline">x(t)</span> définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Cette vérification est laissée au lecteur. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation des constantes.</p>
-<p><strong>Méthode de variation des constantes.</strong> Posons <span class="math inline">x(t) = e^{(t-t_0)A} z(t)</span> et déterminons <span class="math inline">z(t)</span>. Tout d’abord, <span class="math inline">x(\cdot)</span> doit vérifier la condition initiale :<br>
-<span class="math display">
+<p><strong>Méthode de variation des constantes.</strong> Posons <span class="math inline">x(t) = e^{(t-t_0)A} z(t)</span> et déterminons <span class="math inline">z(t)</span>. Tout d’abord, <span class="math inline">x(\cdot)</span> doit vérifier la condition initiale :</p>
+<p><span class="math display">
 x(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,
-</span><br>
-d’où <span class="math inline">z(t_0) = x_0</span>.</p>
-<p>Ensuite, <span class="math inline">x(\cdot)</span> doit satisfaire l’équation différentielle. En dérivant, on obtient :<br>
-<span class="math display">
-x'(t) = A\, x(t) + e^{(t-t_0)A} z'(t).
-</span><br>
-Il faut donc choisir <span class="math inline">z(\cdot)</span> de manière à ce que <span class="math inline">b(t) = e^{(t-t_0)A} z'(t)</span>, ce qui équivaut à <span class="math inline">z'(t) = e^{(t_0-t)A} b(t)</span>.</p>
-<p>Enfin, en intégrant :<br>
-<span class="math display">
+</span></p>
+<p>d’où <span class="math inline">z(t_0) = x_0</span>.</p>
+<p>Ensuite, <span class="math inline">x(\cdot)</span> doit satisfaire l’équation différentielle. En dérivant, on obtient :</p>
+<p><span class="math display">
+x'(t) = A x(t) + e^{(t-t_0)A} z'(t).
+</span></p>
+<p>Il faut donc choisir <span class="math inline">z(\cdot)</span> de manière à ce que <span class="math inline">b(t) = e^{(t-t_0)A} z'(t)</span>, ce qui équivaut à <span class="math inline">z'(t) = e^{(t_0-t)A} b(t)</span>.</p>
+<p>Enfin, en intégrant :</p>
+<p><span class="math display">
 z(t) = x_0 + \int_{t_0}^t e^{(t_0-s)A}\, b(s)\, \mathrm{d}s.
 </span></p>
-<p>D’où l’expression finale :<br>
-<span class="math display">
+<p>D’où l’expression finale :</p>
+<p><span class="math display">
 x(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \int_{t_0}^t e^{(t-s)A}\, b(s)\, \mathrm{d}s,
-</span><br>
-grâce à la propriété <span class="math inline">e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}</span>.</p>
+</span></p>
+<p>grâce à la propriété <span class="math inline">e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}</span>.</p>
 </div>
 </div>
 </div>
@@ -492,16 +517,20 @@ grâce à la propriété <span class="math inline">e^{(t-t_0)A} e^{(t_0-s)A} = e
 <section id="cas-particulier-b-constant" class="level2">
 <h2 class="anchored" data-anchor-id="cas-particulier-b-constant">Cas Particulier : <span class="math inline">b</span> Constant</h2>
 <p>Si <span class="math inline">b</span> est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable. On fixe pour la suite <span class="math inline">t_0 = 0</span>.</p>
-<p>Posons <span class="math inline">z(t) = x(t) - x_p(t)</span>, où <span class="math inline">x_p(t)</span> est une solution particulière de l’équation <span class="math inline">x'(t) = A x(t) + b</span>. En substituant <span class="math inline">x(t) = z(t) + x_p(t)</span> dans l’équation originale, nous obtenons : <span class="math display">
+<p>Posons <span class="math inline">z(t) = x(t) - x_p(t)</span>, où <span class="math inline">x_p(t)</span> est une solution particulière de l’équation <span class="math inline">x'(t) = A x(t) + b</span>. En substituant <span class="math inline">x(t) = z(t) + x_p(t)</span> dans l’équation originale, nous obtenons :</p>
+<p><span class="math display">
     z'(t) + x'_p(t) = A(z(t) + x_p(t)) + b.
 </span></p>
-<p>Puisque <span class="math inline">x_p(t)</span> est une solution particulière, <span class="math inline">x'_p(t) = A x_p(t) + b</span>. Donc, <span class="math display">
+<p>Puisque <span class="math inline">x_p(t)</span> est une solution particulière, <span class="math inline">x'_p(t) = A x_p(t) + b</span>. Donc,</p>
+<p><span class="math display">
     z'(t) = A z(t).
 </span></p>
-<p>Ainsi, <span class="math inline">z(t)</span> satisfait une équation différentielle linéaire homogène. La solution de <span class="math inline">z'(t) = A z(t)</span> avec la condition initiale <span class="math inline">z(0) = x_0 - x_p(0)</span> est donnée par : <span class="math display">
+<p>Ainsi, <span class="math inline">z(t)</span> satisfait une équation différentielle linéaire homogène. La solution de <span class="math inline">z'(t) = A z(t)</span> avec la condition initiale <span class="math inline">z(0) = x_0 - x_p(0)</span> est donnée par :</p>
+<p><span class="math display">
     z(t) = e^{tA} (x_0 - x_p(0)).
 </span></p>
-<p>En revenant à la variable originale, nous avons : <span class="math display">
+<p>En revenant à la variable originale, nous avons :</p>
+<p><span class="math display">
     x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t).
 </span></p>
 <p>Ce changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.</p>
@@ -515,10 +544,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si <span class="math inline">b</span> appartient à l’image de <span class="math inline">A</span>, c’est-à-dire s’il existe un vecteur <span class="math inline">x_e</span> tel que <span class="math inline">A x_e = -b</span>, alors nous pouvons choisir <span class="math inline">x_p(t) = x_e</span>. En effet, dans ce cas, <span class="math inline">x_e</span> est une solution particulière constante de l’équation <span class="math inline">x'(t) = A x(t) + b</span>, car : <span class="math display">
+<p>Si <span class="math inline">b</span> appartient à l’image de <span class="math inline">A</span>, c’est-à-dire s’il existe un vecteur <span class="math inline">x_e</span> tel que <span class="math inline">A x_e = -b</span>, alors nous pouvons choisir <span class="math inline">x_p(t) = x_e</span>. En effet, dans ce cas, <span class="math inline">x_e</span> est une solution particulière constante de l’équation <span class="math inline">x'(t) = A x(t) + b</span>, car :</p>
+<p><span class="math display">
 A x_e + b = -b + b = 0
 </span></p>
-<p>Ainsi, <span class="math inline">x_p(t) = x_e</span> est une solution particulière constante, simplifiant encore le changement de variable et nous obtenons <span class="math display">
+<p>Ainsi, <span class="math inline">x_p(t) = x_e</span> est une solution particulière constante, simplifiant encore le changement de variable et nous obtenons</p>
+<p><span class="math display">
     x(t) = e^{tA} (x_0 - x_e) + x_e.
 </span></p>
 </div>

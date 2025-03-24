@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Méthode d’Euler – Cours EDO</title>
+<title>Introduction – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,11 +139,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Méthode d’Euler – Cours EDO">
+<meta property="og:title" content="Introduction – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Méthode d’Euler – Cours EDO">
+<meta name="twitter:title" content="Introduction – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -187,7 +187,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Méthode d’Euler</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,14 +283,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Méthode d’Euler</span></a>
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -306,14 +324,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fonctions dérivées</span></a>
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations variationnelles</span></a>
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
   </div>
 </li>
       </ul>
@@ -325,28 +349,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction-à-la-méthode-deuler" id="toc-introduction-à-la-méthode-deuler" class="nav-link active" data-scroll-target="#introduction-à-la-méthode-deuler">Introduction à la Méthode d’Euler</a></li>
-  <li><a href="#schéma-deuler" id="toc-schéma-deuler" class="nav-link" data-scroll-target="#schéma-deuler">Schéma d’Euler</a></li>
-  <li><a href="#consistance-stabilité-et-convergence-de-la-méthode-deuler" id="toc-consistance-stabilité-et-convergence-de-la-méthode-deuler" class="nav-link" data-scroll-target="#consistance-stabilité-et-convergence-de-la-méthode-deuler">Consistance, Stabilité et Convergence de la Méthode d’Euler</a>
-  <ul class="collapse">
-  <li><a href="#consistance" id="toc-consistance" class="nav-link" data-scroll-target="#consistance">Consistance</a></li>
-  <li><a href="#stabilité" id="toc-stabilité" class="nav-link" data-scroll-target="#stabilité">Stabilité</a></li>
-  <li><a href="#convergence" id="toc-convergence" class="nav-link" data-scroll-target="#convergence">Convergence</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/euler.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/euler.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Méthode d’Euler</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Introduction</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Méthode d’Euler</h1>
+<h1 class="title">Introduction</h1>
 </div>
 
 
@@ -363,77 +374,121 @@ window.Quarto = {
 </header>
 
 
-<p>La méthode d’Euler est une technique simple et intuitive pour résoudre numériquement les équations différentielles. Elle est souvent utilisée pour les systèmes linéaires et permet de trouver des approximations de la solution au fil du temps.</p>
-<section id="introduction-à-la-méthode-deuler" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-à-la-méthode-deuler">Introduction à la Méthode d’Euler</h2>
-<p>Considérons une équation différentielle du premier ordre :</p>
+<p>On désire calculer une approximation de la solution, notée <span class="math inline">x(\cdot, t_0, x_0)</span>, sur l’intervalle <span class="math inline">I \coloneqq [t_0, t_f]</span> du problème de Cauchy</p>
 <p><span class="math display">
-\dot{x}(t) = f(t, x(t))
+    x'(t) = f(t, x(t)), \quad x(t_0) = x_0,
 </span></p>
-<p>où ( f(t, x(t)) ) est une fonction qui décrit l’évolution du système à un instant donné. Dans le cas d’un système linéaire, la fonction ( f ) est souvent de la forme :</p>
+<p>où <span class="math inline">f \colon \R \times \R^n \to \R^n</span> est une application <strong>suffisamment régulière</strong> (au moins <span class="math inline">\mathscr{C}^1</span>).</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dans ce cours, nous nous intéressons uniquement à des équations différentielles ordinaires <strong>linéaires</strong>. Cependant, nous présentons les méthodes numériques dans un cadre plus général. On rappelle qu’une équations différentielles ordinaires linéaire est de la forme <span class="math inline">x'(t) = A(t) x(t) + b(t)</span>, ainsi la fonction <span class="math inline">f</span> est donnée dans ce cas par <span class="math inline">f(t, x) = A(t) x + b(t)</span>.</p>
+</div>
+</div>
+<p>On considère une subdivision de l’intervalle <span class="math inline">I</span> de la forme</p>
 <p><span class="math display">
-f(t, x(t)) = A x(t)
+    t_0 &lt; t_1 &lt; \cdots &lt; t_N \coloneqq t_f.
 </span></p>
-<p>où ( A ) est une matrice constante et ( x(t) ) est un vecteur d’état.</p>
-</section>
-<section id="schéma-deuler" class="level2">
-<h2 class="anchored" data-anchor-id="schéma-deuler">Schéma d’Euler</h2>
-<p>La méthode d’Euler consiste à discrétiser le temps en utilisant une grille uniforme ( t_i = t_0 + ih ), où ( h ) est le pas de temps. À chaque instant ( t_i ), on obtient une approximation de la solution ( x(t_i) ), notée ( x_i ). Le schéma d’Euler est donné par :</p>
+<p>On note <span class="math inline">h_i \coloneqq t_{i+1} - t_i</span> pour <span class="math inline">i \in \llbracket 0, N-1 \rrbracket</span>, les pas de la subdivision et <span class="math inline">h_{\max} \coloneqq \max_i(h_i)</span> le pas le plus long.</p>
+<p>L’idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher <span class="math inline">x(t_i, t_0, x_0)</span> pour <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span>.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On appelle <strong>méthode explicite à un pas</strong>, toute méthode pour laquelle la valeur <span class="math inline">x_{i+1}</span> est calculée en fonction de <span class="math inline">t_i</span>, <span class="math inline">h_i</span> et <span class="math inline">x_i</span> de la forme :</p>
 <p><span class="math display">
-x_{i+1} = x_i + h f(t_i, x_i)
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i).
 </span></p>
-<p>Dans le cas d’un système linéaire, cela devient :</p>
+</div>
+</div>
+<p>Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas. Si on note <span class="math inline">(x_0, \ldots, x_N) \in (\R^n)^{N+1}</span> une suite finie donnée par une méthode explicite à un pas, alors on souhaite que</p>
 <p><span class="math display">
-x_{i+1} = x_i + h A x_i = (I + h A) x_i
+    x_i \approx x(t_i, t_0, x_0), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
 </span></p>
-<p>où ( I ) est la matrice identité de taille appropriée.</p>
-</section>
-<section id="consistance-stabilité-et-convergence-de-la-méthode-deuler" class="level2">
-<h2 class="anchored" data-anchor-id="consistance-stabilité-et-convergence-de-la-méthode-deuler">Consistance, Stabilité et Convergence de la Méthode d’Euler</h2>
-<section id="consistance" class="level3">
-<h3 class="anchored" data-anchor-id="consistance">Consistance</h3>
-<p>La consistance d’un schéma numérique mesure à quel point la solution numérique se rapproche de la solution exacte lorsque le pas de temps ( h ) devient petit.</p>
-<p>Pour la méthode d’Euler appliquée à l’équation différentielle linéaire ( (t) = A x(t) ), l’erreur locale ( e_i ) à chaque étape est donnée par :</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour simplifier les notations, nous ne noterons la plupart du temps que le premier pas:</p>
 <p><span class="math display">
-e_i = x(t_{i+1}) - x(t_i) - h A x(t_i)
+    x_1 = x_0 + h\, \Phi(t_0, x_0, h), \quad h \coloneqq h_0 = t_1 - t_0.
 </span></p>
-<p>En utilisant le développement en série de Taylor de ( x(t) ) autour de ( t_i ), nous avons :</p>
+</div>
+</div>
+<p>L’idée générale est donc d’avoir</p>
 <p><span class="math display">
-x(t_{i+1}) = x(t_i) + h \dot{x}(t_i) + \frac{h^2}{2} \ddot{x}(\xi)
+    x_1 \approx x(t_1, t_0, x_0) = x_0 + \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t.
 </span></p>
-<p>pour un certain ( (t_i, t_{i+1}) ). Comme ( (t_i) = A x(t_i) ), cela donne :</p>
+<p>La méthode à un pas explicite la plus simple est ce que l’on appelle la <strong>méthode d’Euler</strong> qui consiste tout simplement à approcher l’intégrale</p>
 <p><span class="math display">
-e_i = h A x(t_i) + \frac{h^2}{2} \ddot{x}(\xi) - h A x(t_i) = \frac{h^2}{2} \ddot{x}(\xi)
+    \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t
 </span></p>
-<p>Ainsi, l’erreur locale est d’ordre ( O(h^2) ), ce qui signifie que la méthode d’Euler est <strong>consistante d’ordre 1</strong>.</p>
-</section>
-<section id="stabilité" class="level3">
-<h3 class="anchored" data-anchor-id="stabilité">Stabilité</h3>
-<p>La stabilité d’un schéma numérique garantit que les erreurs d’approximation ne s’amplifient pas au cours du temps. Pour la méthode d’Euler appliquée à ( (t) = A x(t) ), considérons deux suites ( (x_i) ) et ( (y_i) ) définies par :</p>
+<p>par le rectangle</p>
 <p><span class="math display">
-x_{i+1} = x_i + h A x_i
+    h f(t_0, x_0).
 </span></p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On appelle <strong>méthode (ou schéma) d’Euler explicite</strong>, le schéma</p>
 <p><span class="math display">
-y_{i+1} = y_i + h A y_i + \epsilon_i
+    x_1 = x_0 + h f(t_0, x_0).
 </span></p>
-<p>où ( _i ) est une perturbation. Le schéma est stable s’il existe une constante ( S &gt; 0 ) indépendante de ( h ) telle que :</p>
+</div>
+</div>
+<p>L’idée évidente pour améliorer la précision numérique est d’approcher cette intégrale par une formule de quadrature ayant un ordre plus élevé. Si on exploite le point milieu, nous obtenons</p>
 <p><span class="math display">
-\| x_i - y_i \| \leq S \| x_0 - y_0 \| + S \max_{0 \leq j \leq i} \| \epsilon_j \|
+    x(t_1, t_0, x_0) \approx x_0 + h f(t_0 + \frac{h}{2}, x(t_0 + \frac{h}{2}, t_0, x_0)).
 </span></p>
-<p>Cela signifie que de petites perturbations ne conduisent pas à des erreurs de plus en plus grandes, indépendamment de la taille du pas de temps.</p>
-</section>
-<section id="convergence" class="level3">
-<h3 class="anchored" data-anchor-id="convergence">Convergence</h3>
-<p>La convergence d’un schéma numérique signifie que la solution numérique ( x_i ) se rapproche de la solution exacte ( x(t_i) ) lorsque ( h ).</p>
-<p>La convergence de la méthode d’Euler repose sur les théorèmes de consistance et de stabilité (Théorème de Lax-Richtmyer). Comme nous avons montré que la méthode est consistante d’ordre 1 et stable, elle est également convergente. Cela implique que :</p>
+<p>Le problème étant que l’on ne connait pas la valeur de <span class="math inline">x(\cdot , t_0, x_0)</span> à l’instant <span class="math inline">t_0 + {h}/{2}</span>, d’où l’idée d’approcher cette valeur par un pas d’Euler :</p>
 <p><span class="math display">
-x_i \to x(t_i) \quad \text{lorsque} \quad h \to 0
+    x(t_0 + \frac{h}{2}, t_0, x_0) \approx x_0 + \frac{h}{2} f(t_0, x_0).
 </span></p>
-<p>En résumé, pour un système linéaire ( (t) = A x(t) ), la méthode d’Euler est convergente si les valeurs propres de ( A ) ont des parties réelles négatives, ce qui assure que ( x_i ) approche ( x(t_i) ) lorsque ( h ) devient petit.</p>
+<p>Nous obtenons ainsi le <strong>schéma de Runge</strong>.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On appelle <strong>méthode (ou schéma) de Runge</strong> (explicite), le schéma</p>
+<p><span class="math display">
+    x_1 = x_0 + h f(t_0 + \frac{h}{2}, x_0 + \frac{h}{2} f(t_0, x_0)).
+</span></p>
+</div>
+</div>
 
 
-</section>
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -860,8 +915,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/integration_numerique/runge_kutta.html" class="pagination-link" aria-label="Méthode de Runge-Kutta">
-        <span class="nav-page-text">Méthode de Runge-Kutta</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/integration_numerique/runge_kutta.html" class="pagination-link" aria-label="Méthodes de Runge-Kutta">
+        <span class="nav-page-text">Méthodes de Runge-Kutta</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -873,7 +928,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/euler.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/euler.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

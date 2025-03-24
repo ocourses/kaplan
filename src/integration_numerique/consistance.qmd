@@ -1,0 +1,273 @@
+---
+title: "Consistance"
+page-layout: article
+---
+
+{{< include ../../assets/latex/macros.qmd >}}
+
+## Méthode consistante
+
+Les méthodes de Runge-Kutta sont des méthodes à un pas 
+
+$$
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i), \quad h_i = t_{i+1} - t_i,
+$$
+
+que l'on peut écrire sous la forme 
+
+$$ 
+    E_i(x_i, x_{i+1}) \coloneqq x_{i+1} - \left( x_i + h_i\, \Phi(t_i, x_i, h_i) \right) = 0.
+$$
+
+On rappelle que $x(\cdot, t_0, x_0)$ est la solution du problème de Cauchy $x'(t) = f(t, x(t))$, $x(t_0) = x_0$. Pour alléger les notations, nous écrivons simplement $x(\cdot)$ cette solution, $t_0$ et $x_0$ étant fixés.
+
+::: {.callout-warning icon=false}
+### Définition
+
+**L'erreur (locale) de consistance** $e_i$ est l'erreur locale de troncature 
+
+$$ 
+    e_i \coloneqq E_i(x(t_i), x(t_{i+1})).
+$$
+:::
+
+Nous obtenons
+
+$$ 
+    \begin{aligned}
+        e_i &= E_i(x(t_i), x(t_{i+1}))
+        = x(t_{i+1}) - x(t_i) - h_i \, \Phi(t_i, x(t_i), h_i) \\[0.5em]
+        &= \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d} t - h_i \, \Phi(t_i, x(t_i), h_i).
+    \end{aligned}
+$$
+
+::: {.callout-warning icon=false}
+### Définition
+
+On dit qu'une méthode à un pas est **consistante** si pour toute solution au problème de Cauchy, on a
+
+$$ 
+    \sum_{i=0}^{N-1} \Vert e_i\Vert \to 0 \quad \text{quand} \quad h_{\max} = \max_i h_i \to 0.
+$$
+:::
+
+::: {.callout-note icon=false}
+### Remarque
+
+Il est important de noter que les instants $t_i$ et le nombre de pas dépendent directement du vecteur de discrétisation ${(h_i)}_{i}$.
+:::
+
+Nous avons le résultat suivant.
+
+::: {.callout-important icon=false}
+### Proposition
+
+Une méthode à un pas explicite est consistante si et seulement si 
+
+$$ 
+    \forall\, (t, x) \in [t_0, t_f] \times \mathbb{R}^n, \quad \Phi(t, x, h)|_{h=0} = f(t, x).
+$$
+:::
+
+::: {.callout-important icon=false}
+### Corollaire
+
+Les méthodes de Runge-Kutta explicites sont consistantes si et seulement si 
+
+$$
+    \sum_{i=1}^s b_i = 1.
+$$
+:::
+
+## Ordre de consistance
+
+Pour évaluer l'erreur de consistance à l'indice $i$, le paramètre important est le pas $h_i$. On fixe les autres paramètres et on regarde comment se comporte l'erreur en fonction du pas. Nous aurons besoin de la **notation de Landau**. Rappelons que la notation de Landau $e(h) = O\mathopen{}\left({h^p}\right)$ signifie qu'il existe un voisinage $U$ de $0$ et une constante positive $C$ telle que pour tout $h \in U$, $\norm{e(h)} \le C \abs{h}^p$.
+
+::: {.callout-warning icon=false}
+### Définition
+
+Si l'erreur locale de consistance vérifie pour $p \ge 1$ :
+
+$$
+E_i(h) \coloneqq E_i(x(t_i), x(t_i + h)) = x(t_i + h) - x(t_i) - h \, \Phi(t_i, x(t_i), h) = O\mathopen{}\left({h^{p+1}}\right),
+$$
+
+on dit que le schéma est **d'ordre** $p$. On parle de l'ordre de consistance du schéma.
+:::
+
+Si nous avions défini $E_i$ comme étant donnée par
+
+$$
+\frac{x_{i+1}-x_i}{h_i} - \Phi(t_i, x_i, h_i),
+$$
+
+nous aurions eu $E_i(h) = \grandO{h^p}$. L'ordre de consistance est bien $p$ ce qui se verra mieux par la suite car l'ordre de convergence sera donné par l'ordre de consistance dans le cas où la méthode est consistante et stable.
+
+::: {.callout-note icon=false}
+### Remarque
+
+Une méthode d'ordre de consistance $p \ge 1$ est consistante.
+:::
+
+::: {.callout-note icon=false}
+### Remarque
+
+L'ordre de consistance ne dépend pas de l'indice $i$. Ainsi, on peut se restreindre au premier pas. Dans ce cas, on note
+
+$$
+E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h).
+$$
+
+Pour simplifier un peu plus la notation, on utilise le fait que $x(t_0) = x_0$ et on note
+
+$$
+E(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h).
+$$
+:::
+
+Le schéma d'Euler explicite est d'ordre $p=1$ car par définition de la dérivée
+
+$$
+\begin{aligned}
+E(h) &= x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h) \\
+&= x'(t_0)\, h + \grandO{h^2} - h \, f(t_0, x_0) \\
+&= h\, f(t_0, x_0) - h \, f(t_0, x_0) + \grandO{h^2} \\
+&= \grandO{h^2}.
+\end{aligned}
+$$
+
+Nous allons dans l'exercice suivant étudier les relations que doivent vérifier les coefficients $a_{ij}$, $b_i$ et $c_i$ pour qu'un schéma de Runge-Kutta explicite à 2 étages soit d'ordre 2.
+
+::: {.callout-tip icon=false}
+### Question
+
+Soit le schéma de Runge-Kutta
+
+$$
+\begin{aligned}
+k_1 &= f(t_0, x_0) \\
+k_2 &= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\
+x_1 &= x_0 + h\, (b_1 k_1 + b_2 k_2).
+\end{aligned}
+$$
+
+Retrouver que $c_2 = a_{21}$ et donner les 2 relations que doivent vérifier $b_1$, $b_2$ et $a_{21}$ pour que le schéma soit d'ordre 2. En déduire que la méthode de Runge est d'ordre 2.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### Correction
+
+Dans ce cas, nous avons
+
+$$
+e(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h)
+$$
+
+avec
+
+$$
+\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).
+$$
+
+Développons $e(h)$ à l'ordre 2 et voyons les conditions à vérifier pour avoir $e(h) = \grandO{h^3}$. Dans un premier temps, nous avons
+
+$$
+x(t_0 + h) - x_0 = hx'(t_0) + \frac{h^2}{2} x''(t_0) + \grandO{h^3}
+$$
+
+et puisque $x'(t) = f(t, x(t))$, alors
+
+$$
+x''(t) = \frp{f}{t}(t, x(t)) + \frp{f}{x}(t, x(t)) \, x'(t)
+= \frp{f}{t}(t, x(t)) + \frp{f}{x}(t, x(t)) \, f(t, x(t))
+$$
+
+donc
+
+$$
+x(t_0 + h) - x_0 = h f(t_0, x_0) + \frac{h^2}{2}
+\left( \frp{f}{t}(t_0, x_0) + \frp{f}{x}(t_0, x_0) \, f(t_0, x_0) \right) + \grandO{h^3}.
+$$
+
+D'un autre côté, nous avons
+
+$$
+k_2(h) = f(t_0, x_0) + h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) + \grandO{h^2}.
+$$
+
+Au final, nous obtenons
+
+$$
+\begin{aligned}
+e(h) &= h f(t_0, x_0) + \frac{h^2}{2}
+\left( \frp{f}{t}(t_0, x_0) + \frp{f}{x}(t_0, x_0) \, f(t_0, x_0) \right) \\[0.5em]
+& \quad - h \left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) \right)
++ \grandO{h^3} \\[0.5em]
+&= h (1-b_1-b_2) f(t_0, x_0) \\[0.5em]
+&\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \frp{f}{t}(t_0, x_0)
++ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \frp{f}{x}(t_0, x_0)\, f(t_0, x_0) + \grandO{h^3}.
+\end{aligned}
+$$
+
+Ainsi, pour que $e(h) = \grandO{h^3}$ il faut avoir $c_2 = a_{21}$ et
+
+$$
+1 = b_1 + b_2 \quad \text{et} \quad b_2 a_{21} = \frac{1}{2}.
+$$
+
+La méthode de Runge correspond à $c_2 = a_{21} = 1/2$, $b_1 = 0$ et $b_2 = 1$ donc les conditions sont vérifiées et la méthode est bien d'ordre 2.
+:::
+
+::: {.callout-important icon=false}
+### Proposition
+
+Les méthodes de Heun et Rk4 sont respectivement d'ordre 3 et 4.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### Preuve
+
+Voir le livre "Solving Ordinary Differential Equations I, Nonstiff Problem"[^1] pour les démonstrations.
+:::
+
+[^1]: E. Hairer, S. P. Nørsett & G. Wanner, Solving Ordinary Differential Equations I, Nonstiff Problems, vol 8 of Springer Serie in Computational Mathematics, Springer-Verlag, second edn (1993).
+
+::: {.callout-tip icon=false}
+### Question
+
+On considère le schéma de Runge-Kutta à 3 étages
+
+$$
+\begin{array}{c | c c c}
+0       &        &        &  \\[0.1em]
+c_2     & a_{21} &        &  \\[0.1em]
+c_3     & a_{31} & a_{32} &  \\[0.1em]
+\hline
+        & b_1 & b_2 & b_3 \\
+\end{array}
+\quad
+\text{avec}
+\quad
+c_i = \sum_{j=1}^{3} a_{ij}.
+$$
+
+Démontrer dans le cas d'un système autonome que les relations que doivent vérifier les coefficients pour avoir un schéma d'ordre 3 sont
+
+$$
+\begin{aligned}
+    1 &= b_1 + b_2 + b_3, \\[0.5em]
+    \frac{1}{2} &= b_2\, a_{21} + b_3\, a_{31} + b_3\, a_{32}, \\[0.5em]
+    \frac{1}{3} &= b_2\, a_{21}^2 + b_3\, \left( a_{31}^2 + 2\, a_{31}\, a_{32} + a_{32}^3 \right), \\[0.5em]
+    \frac{1}{6} &= b_3\, a_{32}\, a_{21}.
+\end{aligned}
+$$
+:::
+
+::: {.callout-tip icon=false}
+### Question
+
+On considère une méthode de Runge-Kutta explicite à $s$ étages.
+
+1. Appliquer un pas de la méthode à l'équation $x'(t)=x(t)$, pour la condition initiale $x(0)=1$, et montrer que $x_1$ est un polynôme en $h$ au plus de degré $s$.
+2. En déduire que l'ordre $p$ de la méthode est au plus égale à $s$.
+:::

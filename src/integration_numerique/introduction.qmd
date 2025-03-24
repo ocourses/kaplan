@@ -1,0 +1,109 @@
+---
+title: "Introduction"
+page-layout: article
+---
+
+On désire calculer une approximation de la solution, notée $x(\cdot, t_0, x_0)$, sur l'intervalle 
+$I \coloneqq [t_0, t_f]$ du problème de Cauchy
+
+$$
+    x'(t) = f(t, x(t)), \quad x(t_0) = x_0,
+$$
+
+où $f \colon \R \times \R^n \to \R^n$ est une application **suffisamment régulière** (au moins $\mathscr{C}^1$).
+
+::: {.callout-note icon=false}
+### Remarque
+
+Dans ce cours, nous nous intéressons uniquement à des équations différentielles ordinaires **linéaires**. Cependant, nous présentons les méthodes numériques dans un cadre plus général. On rappelle qu'une équations différentielles ordinaires linéaire est de la forme $x'(t) = A(t) x(t) + b(t)$, ainsi la fonction $f$ est donnée dans ce cas par $f(t, x) = A(t) x + b(t)$.
+:::
+
+On considère une subdivision de l'intervalle $I$ de la forme
+
+$$ 
+    t_0 < t_1 < \cdots < t_N \coloneqq t_f.
+$$ 
+
+On note $h_i \coloneqq t_{i+1} - t_i$ pour $i \in \llbracket 0, N-1 \rrbracket$, les pas de la subdivision et $h_{\max} \coloneqq \max_i(h_i)$ le pas le plus long. 
+
+L'idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher $x(t_i, t_0, x_0)$ pour $i \in \llbracket 0\,,\, N \rrbracket$. 
+
+::: {.callout-warning icon=false}
+### Définition
+
+On appelle **méthode explicite à un pas**, toute méthode pour laquelle la valeur $x_{i+1}$ est calculée en fonction de $t_i$, $h_i$ et $x_i$ de la forme :
+
+$$
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i).
+$$
+:::
+
+Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas. Si on note $(x_0, \ldots, x_N) \in (\R^n)^{N+1}$ une suite finie donnée par une méthode explicite à un pas, alors on souhaite que 
+
+$$
+    x_i \approx x(t_i, t_0, x_0), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
+$$
+
+
+::: {.callout-note icon=false}
+### Remarque
+
+Pour simplifier les notations, nous ne noterons la plupart du temps que le premier pas: 
+
+$$
+    x_1 = x_0 + h\, \Phi(t_0, x_0, h), \quad h \coloneqq h_0 = t_1 - t_0.
+$$
+:::
+
+L'idée générale est donc d'avoir 
+
+$$ 
+    x_1 \approx x(t_1, t_0, x_0) = x_0 + \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t.
+$$ 
+
+La méthode à un pas explicite la plus simple est ce que l'on appelle la **méthode d'Euler** qui consiste tout simplement à approcher l'intégrale 
+
+$$ 
+    \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t
+$$
+
+par le rectangle 
+
+$$ 
+    h f(t_0, x_0).
+$$
+
+::: {.callout-warning icon=false}
+### Définition
+
+On appelle **méthode (ou schéma) d'Euler explicite**, le schéma
+
+$$
+    x_1 = x_0 + h f(t_0, x_0).
+$$
+:::
+
+L'idée évidente pour améliorer la précision numérique est d'approcher cette intégrale par une formule de quadrature ayant un ordre plus élevé. Si on exploite le point milieu, nous obtenons
+
+$$
+    x(t_1, t_0, x_0) \approx x_0 + h f(t_0 + \frac{h}{2}, x(t_0 + \frac{h}{2}, t_0, x_0)).
+$$
+
+Le problème étant que l'on ne connait pas la valeur de $x(\cdot , t_0, x_0)$ à l'instant $t_0 + {h}/{2}$, d'où l'idée d'approcher cette valeur par un pas d'Euler : 
+
+$$ 
+    x(t_0 + \frac{h}{2}, t_0, x_0) \approx x_0 + \frac{h}{2} f(t_0, x_0).
+$$ 
+
+Nous obtenons ainsi le **schéma de Runge**.
+
+::: {.callout-warning icon=false}
+### Définition
+
+On appelle **méthode (ou schéma) de Runge** (explicite), le schéma
+
+$$
+    x_1 = x_0 + h f(t_0 + \frac{h}{2}, x_0 + \frac{h}{2} f(t_0, x_0)).
+$$
+:::
+

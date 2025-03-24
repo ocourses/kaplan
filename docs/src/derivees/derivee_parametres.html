@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Fonctions Dérivées – Cours EDO</title>
+<title>Paramètres – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/derivees/equations.html" rel="next">
-<link href="../../src/integration_numerique/runge_kutta.html" rel="prev">
+<link href="../../src/derivees/derivee_ci.html" rel="prev">
 <link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -94,57 +93,12 @@ ul.task-list li input[type="checkbox"] {
     });
 </script> 
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Fonctions Dérivées – Cours EDO">
-<meta property="og:description" content="">
+<meta property="og:title" content="Paramètres – Cours EDO">
 <meta property="og:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Fonctions Dérivées – Cours EDO">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Paramètres – Cours EDO">
 <meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -187,7 +141,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Fonctions dérivées</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/introduction.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/derivee_parametres.html">Dérivée par rapport aux paramètres</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,14 +237,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode d’Euler</span></a>
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -306,14 +278,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fonctions dérivées</span></a>
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations variationnelles</span></a>
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
   </div>
 </li>
       </ul>
@@ -325,33 +303,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo" id="toc-fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo" class="nav-link active" data-scroll-target="#fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo">Fonctions Dérivées pour une Équation Différentielle Ordinaire (EDO)</a></li>
-  <li><a href="#dérivée-par-rapport-à-la-condition-initiale" id="toc-dérivée-par-rapport-à-la-condition-initiale" class="nav-link" data-scroll-target="#dérivée-par-rapport-à-la-condition-initiale">Dérivée par Rapport à la Condition Initiale</a>
-  <ul class="collapse">
-  <li><a href="#équation-intégrale" id="toc-équation-intégrale" class="nav-link" data-scroll-target="#équation-intégrale">1. Équation Intégrale</a></li>
-  <li><a href="#dérivation-par-rapport-à-x_0" id="toc-dérivation-par-rapport-à-x_0" class="nav-link" data-scroll-target="#dérivation-par-rapport-à-x_0">2. Dérivation par Rapport à <span class="math inline">x_0</span></a></li>
-  <li><a href="#équation-variationnelle" id="toc-équation-variationnelle" class="nav-link" data-scroll-target="#équation-variationnelle">3. Équation Variationnelle</a></li>
-  </ul></li>
-  <li><a href="#introduction-de-paramètres" id="toc-introduction-de-paramètres" class="nav-link" data-scroll-target="#introduction-de-paramètres">Introduction de Paramètres</a>
-  <ul class="collapse">
-  <li><a href="#équation-intégrale-avec-paramètres" id="toc-équation-intégrale-avec-paramètres" class="nav-link" data-scroll-target="#équation-intégrale-avec-paramètres">4. Équation Intégrale avec Paramètres</a></li>
-  <li><a href="#dérivation-par-rapport-à-theta" id="toc-dérivation-par-rapport-à-theta" class="nav-link" data-scroll-target="#dérivation-par-rapport-à-theta">5. Dérivation par Rapport à <span class="math inline">\theta</span></a></li>
-  </ul></li>
-  <li><a href="#combinaison-des-dérivées" id="toc-combinaison-des-dérivées" class="nav-link" data-scroll-target="#combinaison-des-dérivées">Combinaison des Dérivées</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/fonctions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/fonctions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/fonctions.html">Fonctions dérivées</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/derivees/introduction.html">Dérivées</a></li><li class="breadcrumb-item"><a href="../../src/derivees/derivee_parametres.html">Dérivée par rapport aux paramètres</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Fonctions Dérivées</h1>
+<h1 class="title">Paramètres</h1>
 </div>
 
 
@@ -368,87 +328,8 @@ window.Quarto = {
 </header>
 
 
-<section id="fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo" class="level2">
-<h2 class="anchored" data-anchor-id="fonctions-dérivées-pour-une-équation-différentielle-ordinaire-edo">Fonctions Dérivées pour une Équation Différentielle Ordinaire (EDO)</h2>
-<p>Considérons une équation différentielle ordinaire dépendant d’une condition initiale :</p>
-<p><span class="math display">
-\dot{x}(t) = f(t, x(t)), \quad x(t_0) = x_0
-</span></p>
-<p>Nous souhaitons étudier comment la solution <span class="math inline">x(t)</span> varie en fonction de la condition initiale <span class="math inline">x_0</span>.</p>
-</section>
-<section id="dérivée-par-rapport-à-la-condition-initiale" class="level2">
-<h2 class="anchored" data-anchor-id="dérivée-par-rapport-à-la-condition-initiale">Dérivée par Rapport à la Condition Initiale</h2>
-<p>Soit <span class="math inline">X(t) = \frac{\partial x(t)}{\partial x_0}</span>, la dérivée de la solution <span class="math inline">x(t)</span> par rapport à la condition initiale <span class="math inline">x_0</span>. Nous cherchons à déterminer l’équation différentielle satisfaite par <span class="math inline">X(t)</span>.</p>
-<section id="équation-intégrale" class="level3">
-<h3 class="anchored" data-anchor-id="équation-intégrale">1. Équation Intégrale</h3>
-<p>La solution de l’EDO peut être écrite sous la forme intégrale suivante :</p>
-<p><span class="math display">
-x(t) = x_0 + \int_{t_0}^{t} f(s, x(s)) \, ds
-</span></p>
-</section>
-<section id="dérivation-par-rapport-à-x_0" class="level3">
-<h3 class="anchored" data-anchor-id="dérivation-par-rapport-à-x_0">2. Dérivation par Rapport à <span class="math inline">x_0</span></h3>
-<p>En dérivant cette équation par rapport à <span class="math inline">x_0</span>, nous obtenons l’équation suivante pour <span class="math inline">X(t)</span> :</p>
-<p><span class="math display">
-X'(t) = \frac{\partial f}{\partial x}(t, x(t)) \, X(t)
-</span></p>
-<p>Avec la condition initiale :</p>
-<p><span class="math display">
-X(t_0) = I
-</span></p>
-<p>Où <span class="math inline">I</span> est la matrice identité (si <span class="math inline">x(t)</span> est un vecteur, ou simplement 1 si <span class="math inline">x(t)</span> est un scalaire), et <span class="math inline">\frac{\partial f}{\partial x}</span> est la jacobienne de <span class="math inline">f</span> par rapport à <span class="math inline">x</span>.</p>
-</section>
-<section id="équation-variationnelle" class="level3">
-<h3 class="anchored" data-anchor-id="équation-variationnelle">3. Équation Variationnelle</h3>
-<p>La fonction <span class="math inline">X(t)</span> satisfait ainsi une équation différentielle linéaire appelée <strong>équation variationnelle</strong> :</p>
-<p><span class="math display">
-X'(t) = \frac{\partial f}{\partial x}(t, x(t)) \, X(t)
-</span></p>
-<p>Avec la condition initiale :</p>
-<p><span class="math display">
-X(t_0) = I
-</span></p>
-<p>Cette équation décrit comment les petites variations de la condition initiale <span class="math inline">x_0</span> influencent l’évolution de la solution <span class="math inline">x(t)</span> dans le temps.</p>
-</section>
-</section>
-<section id="introduction-de-paramètres" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-de-paramètres">Introduction de Paramètres</h2>
-<p>Considérons maintenant une EDO dépendant de paramètres <span class="math inline">\theta</span> :</p>
-<p><span class="math display">
-\dot{x}(t) = f(t, x(t), \theta), \quad x(t_0) = x_0
-</span></p>
-<p>Nous souhaitons trouver la dérivée de la solution <span class="math inline">x(t)</span> par rapport aux paramètres <span class="math inline">\theta</span>.</p>
-<section id="équation-intégrale-avec-paramètres" class="level3">
-<h3 class="anchored" data-anchor-id="équation-intégrale-avec-paramètres">4. Équation Intégrale avec Paramètres</h3>
-<p>La solution de cette EDO avec les paramètres <span class="math inline">\theta</span> peut être écrite sous la forme intégrale :</p>
-<p><span class="math display">
-x(t, \theta) = x_0 + \int_{t_0}^{t} f(s, x(s, \theta), \theta) \, ds
-</span></p>
-</section>
-<section id="dérivation-par-rapport-à-theta" class="level3">
-<h3 class="anchored" data-anchor-id="dérivation-par-rapport-à-theta">5. Dérivation par Rapport à <span class="math inline">\theta</span></h3>
-<p>La dérivée de <span class="math inline">x(t)</span> par rapport à <span class="math inline">\theta</span> donne une équation variationnelle pour <span class="math inline">\frac{\partial x}{\partial \theta}(t, \theta)</span>, et peut être obtenue en différentiant l’équation intégrale par rapport à <span class="math inline">\theta</span> :</p>
-<p><span class="math display">
-\frac{\partial x}{\partial \theta}(t, \theta) = \int_{t_0}^{t} \frac{\partial f}{\partial \theta}(s, x(s, \theta), \theta) \, ds
-</span></p>
-<p>Cette dérivation permet d’obtenir une sensibilité de la solution <span class="math inline">x(t)</span> par rapport aux paramètres <span class="math inline">\theta</span>.</p>
-</section>
-</section>
-<section id="combinaison-des-dérivées" class="level2">
-<h2 class="anchored" data-anchor-id="combinaison-des-dérivées">Combinaison des Dérivées</h2>
-<p>Lorsque la solution <span class="math inline">x(t, x_0, \theta)</span> dépend à la fois de la condition initiale <span class="math inline">x_0</span> et des paramètres <span class="math inline">\theta</span>, la dérivée totale de <span class="math inline">x(t, x_0, \theta)</span> par rapport à <span class="math inline">t</span> est donnée par :</p>
-<p><span class="math display">
-\frac{d}{dt} x(t, x_0, \theta) = \frac{\partial x}{\partial t}(t, x_0, \theta) + \frac{\partial x}{\partial x_0}(t, x_0, \theta) \dot{x_0} + \frac{\partial x}{\partial \theta}(t, x_0, \theta) \dot{\theta}
-</span></p>
-<ul>
-<li><span class="math inline">\frac{\partial x}{\partial t}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">t</span>.</li>
-<li><span class="math inline">\frac{\partial x}{\partial x_0}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">x_0</span>.</li>
-<li><span class="math inline">\frac{\partial x}{\partial \theta}(t, x_0, \theta)</span> est la dérivée partielle de <span class="math inline">x</span> par rapport à <span class="math inline">\theta</span>.</li>
-</ul>
-<p>Cette relation montre comment les variations de la condition initiale <span class="math inline">x_0</span> et des paramètres <span class="math inline">\theta</span> affectent la dynamique du système.</p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -870,14 +751,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/integration_numerique/runge_kutta.html" class="pagination-link" aria-label="Méthode de Runge-Kutta">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Méthode de Runge-Kutta</span>
+      <a href="../../src/derivees/derivee_ci.html" class="pagination-link" aria-label="Dérivée par rapport à la condition initiale">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dérivée par rapport à la condition initiale</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/derivees/equations.html" class="pagination-link" aria-label="Equations variationnelles">
-        <span class="nav-page-text">Equations variationnelles</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -888,7 +766,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/fonctions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/fonctions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

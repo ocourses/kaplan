@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Schémas de Runge-Kutta – Cours EDO</title>
+<title>Méthodes de Runge-Kutta – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/derivees/fonctions.html" rel="next">
-<link href="../../src/integration_numerique/euler.html" rel="prev">
+<link href="../../src/integration_numerique/consistance.html" rel="next">
+<link href="../../src/integration_numerique/introduction.html" rel="prev">
 <link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -139,11 +139,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Schémas de Runge-Kutta – Cours EDO">
+<meta property="og:title" content="Méthodes de Runge-Kutta – Cours EDO">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Schémas de Runge-Kutta – Cours EDO">
+<meta name="twitter:title" content="Méthodes de Runge-Kutta – Cours EDO">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -187,7 +187,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthode de Runge-Kutta</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthodes de Runge-Kutta</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -283,14 +283,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/euler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Méthode d’Euler</span></a>
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Méthode de Runge-Kutta</span></a>
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
   </div>
 </li>
       </ul>
@@ -306,14 +324,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/fonctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fonctions dérivées</span></a>
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/derivees/equations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Equations variationnelles</span></a>
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
   </div>
 </li>
       </ul>
@@ -325,27 +349,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#exercice-schéma-de-runge-kutta-dordre-2" id="toc-exercice-schéma-de-runge-kutta-dordre-2" class="nav-link active" data-scroll-target="#exercice-schéma-de-runge-kutta-dordre-2">Exercice : Schéma de Runge-Kutta d’Ordre 2</a></li>
-  <li><a href="#schémas-de-runge-kutta-explicites" id="toc-schémas-de-runge-kutta-explicites" class="nav-link" data-scroll-target="#schémas-de-runge-kutta-explicites">Schémas de Runge-Kutta Explicites</a>
-  <ul class="collapse">
-  <li><a href="#tableau-de-butcher" id="toc-tableau-de-butcher" class="nav-link" data-scroll-target="#tableau-de-butcher">Tableau de Butcher</a></li>
-  <li><a href="#exemples-de-schémas-de-runge-kutta" id="toc-exemples-de-schémas-de-runge-kutta" class="nav-link" data-scroll-target="#exemples-de-schémas-de-runge-kutta">Exemples de Schémas de Runge-Kutta</a></li>
-  </ul></li>
-  <li><a href="#tp-vérification-numérique-des-ordres" id="toc-tp-vérification-numérique-des-ordres" class="nav-link" data-scroll-target="#tp-vérification-numérique-des-ordres">TP : Vérification Numérique des Ordres</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/euler.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthode de Runge-Kutta</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/runge_kutta.html">Méthodes de Runge-Kutta</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Schémas de Runge-Kutta</h1>
+<h1 class="title">Méthodes de Runge-Kutta</h1>
 </div>
 
 
@@ -362,131 +374,123 @@ window.Quarto = {
 </header>
 
 
-<section id="exercice-schéma-de-runge-kutta-dordre-2" class="level1">
-<h1>Exercice : Schéma de Runge-Kutta d’Ordre 2</h1>
-<p><strong>Exercice :</strong></p>
-<p>Considérons le schéma de Runge-Kutta suivant :</p>
+<p>Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d’Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On appelle <strong>méthode de Runge-Kutta explicite à <span class="math inline">s</span> étages</strong>, la méthode définie par le schéma</p>
 <p><span class="math display">
 \begin{aligned}
-k_1 &amp;= f(t_0, x_0) \\
-k_2 &amp;= f(t_0 + c_2h, x_0 + a_{21}hk_1) \\
-x_1 &amp;= x_0 + h(b_1k_1 + b_2k_2)
+    k_1 &amp;= f(t_0, x_0) \\
+    k_2 &amp;= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\
+    \vdots &amp; \\[-1em]
+    k_s &amp;= f(t_0 + c_s h, x_0 + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_1 &amp;= x_0 + h \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 </span></p>
-<ol type="1">
-<li><strong>Montrer que (c_2 = a_{21})</strong> :
-<ul>
-<li><p>En utilisant le développement de Taylor pour (f) autour de ((t_0, x_0)), nous avons :</p>
+<p>où les coefficients <span class="math inline">c_i</span>, <span class="math inline">a_{ij}</span> et <span class="math inline">b_i</span> sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que <span class="math inline">c_1 = 0</span> et <span class="math inline">c_i = \sum_{j=1}^{i-1} a_{ij}</span>, pour <span class="math inline">i = 2, \ldots, s</span>.</p>
+</div>
+</div>
+<p>On représente en pratique ce schéma par le tableau de <a href="https://fr.wikipedia.org/wiki/John_Butcher">Butcher</a> suivant.</p>
 <p><span class="math display">
-f(t_0 + c_2h, x_0 + a_{21}hk_1) = f(t_0, x_0) + c_2h \frac{\partial f}{\partial t} + a_{21}hk_1 \frac{\partial f}{\partial x} + O(h^2)
-</span></p></li>
-<li><p>Pour que le schéma soit d’ordre 2, les termes d’ordre 1 doivent correspondre, ce qui implique (c_2 = a_{21}).</p></li>
-</ul></li>
-<li><strong>Relations pour l’Ordre 2</strong> :
-<ul>
-<li><p>Pour que le schéma soit d’ordre 2, les coefficients doivent satisfaire les conditions suivantes :</p>
-<p><span class="math display">
-b_1 + b_2 = 1
-</span></p>
-<p><span class="math display">
-b_2 c_2 = \frac{1}{2}
-</span></p></li>
-<li><p>En substituant (c_2 = a_{21}) dans la deuxième équation, nous obtenons :</p>
-<p><span class="math display">
-b_2 a_{21} = \frac{1}{2}
-</span></p></li>
-</ul></li>
-<li><strong>Conclusion</strong> :
-<ul>
-<li>En résolvant ces équations, nous trouvons que (b_1 = 0), (b_2 = 1), et (a_{21} = ).</li>
-<li>Ces valeurs correspondent à la méthode de Runge-Kutta d’ordre 2, également connue sous le nom de méthode du point milieu.</li>
-</ul></li>
-</ol>
-</section>
-<section id="schémas-de-runge-kutta-explicites" class="level1">
-<h1>Schémas de Runge-Kutta Explicites</h1>
-<p>Les schémas de Runge-Kutta sont des méthodes numériques utilisées pour résoudre les équations différentielles ordinaires. Ils sont définis par un tableau de Butcher qui spécifie les coefficients utilisés dans les calculs intermédiaires.</p>
-<section id="tableau-de-butcher" class="level2">
-<h2 class="anchored" data-anchor-id="tableau-de-butcher">Tableau de Butcher</h2>
-<p>Un schéma de Runge-Kutta est défini par le tableau suivant :</p>
-<p><span class="math display">
-\begin{array}{c|cccc}
-0 &amp;  &amp;  &amp;  &amp;  \\
-c_2 &amp; a_{21} &amp;  &amp;  &amp;  \\
-\vdots &amp; \vdots &amp; \ddots &amp;  &amp;  \\
-c_s &amp; a_{s1} &amp; a_{s2} &amp; \cdots &amp; a_{s,s-1} \\
-\hline
-&amp; b_1 &amp; b_2 &amp; \cdots &amp; b_s \\
+\begin{array}{c | c c c c c} % chktex 44
+    c_1     &amp; &amp; &amp; &amp; &amp; \\[0.1em]
+    c_2     &amp; a_{21} &amp; &amp; &amp; &amp; \\[0.1em]
+    c_3     &amp; a_{31} &amp; a_{32} &amp; &amp; &amp; \\[0.1em]
+    \vdots  &amp; \vdots &amp; \vdots &amp; \ddots &amp; &amp; \\[0.1em]
+    c_s     &amp; a_{s1} &amp; a_{s2} &amp; \cdots &amp; a_{ss-1} &amp; \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            &amp; b_1 &amp; b_2 &amp; \cdots &amp; b_{s-1} &amp; b_s \\
 \end{array}
 </span></p>
-</section>
-<section id="exemples-de-schémas-de-runge-kutta" class="level2">
-<h2 class="anchored" data-anchor-id="exemples-de-schémas-de-runge-kutta">Exemples de Schémas de Runge-Kutta</h2>
-<ol type="1">
-<li><strong>Méthode d’Euler</strong> :
+<p>Voici une liste d’exemples de schémas de Runge-Kutta explicites.</p>
 <ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|c}
-0 &amp; 0 \\
-\hline
-&amp; 1 \\
+<li><p>Euler (ordre 1) <span class="math display">
+\begin{array}{c | c} % chktex 44
+  0   &amp; \\[0.1em]
+  \hline % chktex 44
+  \rule{0pt}{2.6ex}
+      &amp; 1 \\
 \end{array}
 </span></p></li>
-<li><p>Ordre : 1</p></li>
-</ul></li>
-<li><strong>Méthode de Runge-Kutta d’Ordre 2 (Point Milieu)</strong> :
-<ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|cc}
-0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; \frac{1}{2} &amp; 0 \\
-\hline
-&amp; 0 &amp; 1 \\
+<li><p>Runge (ordre 2) <span class="math display">
+\begin{array}{c | c c} % chktex 44
+  0       &amp;     &amp; \\[0.1em]
+  1/2     &amp; 1/2 &amp; \\[0.1em]
+  \hline % chktex 44
+  \rule{0pt}{2.6ex}
+          &amp; 0   &amp; 1 \\
 \end{array}
 </span></p></li>
-<li><p>Ordre : 2</p></li>
-</ul></li>
-<li><strong>Méthode de Heun</strong> :
-<ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|cc}
-0 &amp; 0 &amp; 0 \\
-1 &amp; 1 &amp; 0 \\
-\hline
-&amp; \frac{1}{2} &amp; \frac{1}{2} \\
+<li><p>Heun (ordre 3) <span class="math display">
+\begin{array}{c | c c c} % chktex 44
+  0       &amp;     &amp;     &amp;  \\[0.1em]
+  1/3     &amp; 1/3 &amp;     &amp;  \\[0.1em]
+  2/3     &amp; 0   &amp; 2/3 &amp;  \\[0.1em]
+  \hline % chktex 44
+  \rule{0pt}{2.6ex}
+          &amp; 1/4 &amp; 0   &amp; 3/4 \\
 \end{array}
 </span></p></li>
-<li><p>Ordre : 2</p></li>
-</ul></li>
-<li><strong>Méthode de Runge-Kutta d’Ordre 4 (RK4)</strong> :
-<ul>
-<li><p>Tableau de Butcher :</p>
-<p><span class="math display">
-\begin{array}{c|cccc}
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; \frac{1}{2} &amp; 0 &amp; 0 &amp; 0 \\
-\frac{1}{2} &amp; 0 &amp; \frac{1}{2} &amp; 0 &amp; 0 \\
-1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
-\hline
-&amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; \frac{1}{6} \\
+<li><p>Rk4 (ordre 4) <span class="math display">
+\begin{array}{c | c c c c} % chktex 44
+  0       &amp; &amp; &amp; &amp; \\[0.1em]
+  1/2     &amp; 1/2 &amp; &amp; &amp; \\[0.1em]
+  1/2     &amp; 0 &amp; 1/2 &amp; &amp; \\[0.1em]
+  1       &amp; 0 &amp; 0 &amp; 1 &amp; \\[0.1em]
+  \hline % chktex 44
+  \rule{0pt}{2.6ex}
+          &amp; 1/6 &amp; 2/6 &amp; 2/6 &amp; 1/6 \\
 \end{array}
 </span></p></li>
-<li><p>Ordre : 4</p></li>
-</ul></li>
-</ol>
-</section>
-</section>
-<section id="tp-vérification-numérique-des-ordres" class="level1">
-<h1>TP : Vérification Numérique des Ordres</h1>
-<p><strong>Objectif :</strong> - Implémentez les méthodes de Runge-Kutta ci-dessus et vérifiez numériquement leurs ordres en comparant les erreurs pour différents pas de temps (h).</p>
-<p><strong>Instructions :</strong> - Choisissez une équation différentielle test, par exemple ((t) = -x(t)) avec (x(0) = 1). - Calculez les solutions numériques pour différents pas de temps (h) et comparez les erreurs avec la solution exacte (x(t) = e^{-t}). - Vérifiez que l’erreur décroît comme (O(h^p)), où (p) est l’ordre attendu de la méthode.</p>
-<p>Ces exercices et exemples permettent de comprendre les schémas de Runge-Kutta et de vérifier leur précision numérique.</p>
+<li><p>Rk4, règle 3/8 (ordre 4) <span class="math display">
+\begin{array}{c | c c c c} % chktex 44
+  0       &amp; &amp; &amp; &amp; \\[0.1em]
+  1/3     &amp; 1/3  &amp; &amp; &amp; \\[0.1em]
+  2/3     &amp; -1/3 &amp; 1 &amp; &amp; \\[0.1em]
+  1       &amp; 1 &amp; -1 &amp; 1 &amp; \\[0.1em]
+  \hline % chktex 44
+  \rule{0pt}{2.6ex}
+          &amp; 1/8 &amp; 3/8 &amp; 3/8 &amp; 1/8 \\
+\end{array}
+</span></p></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dans les schémas ci-dessus, nous avons indiqué l’ordre de la méthode. Celle-ci est définie par la suite.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l’application <span class="math inline">\Phi(t_0, x_0, h)</span>.</p>
+</div>
+</div>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -908,13 +912,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/integration_numerique/euler.html" class="pagination-link" aria-label="Méthode d'Euler">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Méthode d’Euler</span>
+      <a href="../../src/integration_numerique/introduction.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/derivees/fonctions.html" class="pagination-link" aria-label="Fonctions dérivées">
-        <span class="nav-page-text">Fonctions dérivées</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/integration_numerique/consistance.html" class="pagination-link" aria-label="Consistance">
+        <span class="nav-page-text">Consistance</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -926,7 +930,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

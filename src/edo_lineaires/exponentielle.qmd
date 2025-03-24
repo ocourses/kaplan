@@ -13,10 +13,6 @@ $$
 e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
 $$
 
-::: {.callout-note}
-L'exponentielle de $A$ s'écrit aussi $\exp(A)$.
-:::
-
 ::: {.callout-caution collapse="true" icon=false}
 ### Preuve de la convergence de la série
 
@@ -39,6 +35,12 @@ $$
 $$
 
 Puisque la série de droite converge, il en découle que la série de matrices $\sum_{k=0}^{\infty} \frac{A^k}{k!}$ converge absolument. Enfin, une série absolument convergente dans un espace vectoriel normé de dimension finie est convergente.
+:::
+
+::: {.callout-note icon=false}
+### Remarque
+
+L'exponentielle de $A$ s'écrit aussi $\exp(A)$.
 :::
 
 ## Propriétés
@@ -84,10 +86,6 @@ $$
     e^{PAP^{-1}} = P e^A P^{-1}.
 $$
 
-::: {.callout-note}
-Si la matrice $A$ est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l'exponentielle d'une matrice diagonale.
-:::
-
 ::: {.callout-caution collapse="true" icon=false}
 ### Preuve
 
@@ -115,6 +113,12 @@ Ainsi, on a :
 \end{align}
 :::
 
+::: {.callout-note icon=false}
+### Remarque
+
+Si la matrice $A$ est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l'exponentielle d'une matrice diagonale.
+:::
+
 ### Matrice Transposée
 
 La transposée d'une matrice $A$ de taille $m \times n$ est notée $A^T$ et s'obtient en échangeant les lignes et les colonnes de $A$. Autrement dit, l'élément $(i, j)$ de $A^T$ est l'élément $(j, i)$ de $A$ :
@@ -129,7 +133,9 @@ $$
 e^{A^T} = (e^A)^T.
 $$
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 La preuve est laissée en exercice. On pourra s'inspirer de la preuve ci-avant.
 :::
 
@@ -173,16 +179,19 @@ $$
 Soit $A$ et $B$ deux matrices dans $\mathcal{M}_n(\mathbb{R})$ qui commutent, c'est-à-dire telle que $AB = BA$.
 
 En développant $(A+B)^k$ à l'aide du binôme de Newton, on obtient puisque $A$ et $B$ commutent :
+
 $$
     (A + B)^k = \sum_{j=0}^{k} \binom{k}{j} A^j B^{k-j}.
 $$
 
 En utilisant le produit de Cauchy et le résultat précédent, nous avons :
+
 $$
     e^A\, e^B = \sum_{k=0}^{\infty} c_k, \quad c_k = \sum_{j=0}^{k} \frac{A^j}{j!} \frac{B^{k-j}}{(k-j)!} = \frac{(A + B)^k}{k!}.
 $$
 
 Ainsi, au final nous obtenons :
+
 $$
     e^A\, e^B = \sum_{k=0}^{\infty} \frac{(A + B)^k}{k!} = e^{A+B}.
 $$
@@ -194,19 +203,23 @@ Cela conclut la démonstration.
 La commutativité des matrices $A$ et $B$ est une condition nécessaire pour que cette propriété soit vraie. Voir la [formule de Baker-Campbell-Hausdorff](https://fr.wikipedia.org/wiki/Formule_de_Baker-Campbell-Hausdorff) pour plus de détails.
 
 **Contre-exemple.** Soient
+
 $$
     A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
 $$
 
 Alors, pusique $A^2 = B^2 = 0_2$, on a :
+
 $$
     e^A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
 $$
+
 mais par ailleursn $(A + B)^2 = I_2$ donc
+
 $$
     \begin{aligned}
-        e^{A+B} &= \left( \sum_{k=0}^{\infty} \frac{1}{2k!} \right) I_2 + \left( \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \right) (A+B) = 
-        \cosh(1) I_2 + \sinh(1) (A + B) \\
+        e^{A+B} &= \left( \sum_{k=0}^{\infty} \frac{1}{2k!} \right) I_2 + \left( \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \right) (A+B) \\[1.5em]
+        &= \cosh(1) I_2 + \sinh(1) (A + B) \\[0.5em]
         &\ne e^A e^B = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}.
     \end{aligned}
 $$
@@ -244,28 +257,34 @@ Soit $A \in \mathcal{M}_n(\mathbb{R})$. En corollaire de ce qui précède, nous 
 2. **Dérivabilité** :
 
     Fixons un $t \in \mathbb{R}$. Pour étudier la dérivée de $e^{tA}$ par rapport à $t$, nous commençons par utiliser la définition de la dérivée :
+    
     $$
         \frac{\mathrm{d}}{\mathrm{d}t} e^{tA} = \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h}.
     $$
 
     En remarquant que $tA$ et $hA$ commutent, nous réécrivons la différence comme suit :
+
     $$
         e^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I_n).
     $$
 
     Divisons par $h$ :
+
     $$
         \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
     $$
 
     Or,
+
     $$
         \begin{aligned}
             \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} &= A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!} \\
             &= A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
         \end{aligned}
     $$
+
     et la série de termes ${h^{k}A^k}/{(k+2)!}$ est convergente puisque ceux-ci sont majorés pas ceux de l'exponentielle de $hA$. On note $B$ la limite de la série et on obtient 
+
     $$
         \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B \right) = e^{tA} A.
     $$
@@ -285,7 +304,9 @@ Soit $A \in \mathcal{M}_n(\mathbb{R})$. En corollaire de ce qui précède, nous 
 Cela conclut la démonstration des deux propriétés.
 :::
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 On pourra préférer la notation $\exp$. Ces deux derniers résultats nous indique que l'on a $\exp \colon \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})$ et que 
 $$
     \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.

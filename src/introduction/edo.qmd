@@ -18,7 +18,7 @@ où :
 - $t \mapsto x'(t)$ est la dérivée de $t \mapsto x(t)$ par rapport au temps $t$.
 - $a \in \mathbb{R}$ est un paramètre constant.
 
-Donnons de explications sur la terminologie employée.
+Donnons des explications sur la terminologie employée.
 
 - Le terme **ordinaire** est utilisé par opposition au terme équation différentielle partielle (plus communément équation aux dérivées partielles, ou EDP).
 - Dans ce cas, l'équation différentielle est **scalaire** car elle ne fait intervenir qu'une seule fonction inconnue $t \mapsto x(t) \in \mathbb{R}$. 
@@ -36,7 +36,9 @@ $$
 
 Le couple formé par l'équation différentielle et la condition initiale constitue un **problème de Cauchy**. La solution de ce problème est une fonction $t \mapsto x(t)$ qui satisfait à la fois l'équation différentielle et la condition initiale.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarques
+
 - Nous noterons parfois $x(\cdot)$ la fonction inconnue $t \mapsto x(t)$ pour simplifier l'écriture.
 - La condition initiale $x(0) = x_0$ fixe la valeur de la fonction inconnue $x(\cdot)$ en $t = 0$. Elle permet de déterminer une solution unique au problème de Cauchy que nous considérons.
 - Nous avons fixé la condition initiale en $t = 0$ pour simplifier l'exposition. En pratique, la condition initiale peut être donnée à tout instant $t = t_0$.
@@ -52,7 +54,9 @@ $$
 
 Cette formulation intégrale est équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l'inconnue est la fonction $x(\cdot)$.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 De manière générale, pour montrer qu'une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du [second théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème) de l'analyse. Pour la réciproque, nous avons besoin du [premier théorème fondamental](https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème) de l'analyse.
 :::
 
@@ -156,7 +160,9 @@ où $A$ est une matrice constante de taille $n \times n$ et $b(t)$ est un vecteu
 
 Cette équation n'est pas autonome car elle dépend explicitement du temps $t$ à travers $b(t)$. Cette équation est affine en $x(t)$, car elle contient un terme linéaire $A x(t)$ et un terme constant $b(t)$. Nous parlerons d'équation différentielle linéaire non homogène. C'est une équation d'ordre 1 car elle ne fait intervenir que la dérivée première de $x(t)$, mais c'est une équation vectorielle car $x(t)$ est un vecteur de taille $n$.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 Toutes les équations différentielles que nous considérons seront linéaires et auront une matrice $A$ constante. Cela simplifie la résolution.
 :::
 
@@ -172,7 +178,9 @@ $$
 f(t, x) = A x + b(t).
 $$
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarques
+
 - On dira que l'équation différentielle est autonome si $f$ ne dépend pas explicitement du temps $t$ et non autonome sinon.
 - Dans la littérature, on parle d'équation différentielle linéaire homogène lorsque $b(t) = 0$ et d'équation différentielle linéaire non homogène (ou avec second membre) sinon.
 :::

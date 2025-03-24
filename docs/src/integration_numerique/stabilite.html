@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cours Prépa INP – Cours EDO</title>
+<title>Stabilité – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/images/edo-favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b8a408f8191a58825ae9d88cc0bba2d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/quarto-auto-dark-mode-1.0.0/auto-dark-mode.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../src/integration_numerique/convergence.html" rel="next">
+<link href="../../src/integration_numerique/consistance.html" rel="prev">
+<link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b8a408f8191a58825ae9d88cc0bba2d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/quarto-auto-dark-mode-1.0.0/auto-dark-mode.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-src-links .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-links',{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: ["listing-title","listing-links"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-src-links'] = new List('listing-src-links', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
     document.addEventListener('keydown', function(event) {
@@ -167,26 +138,26 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../assets/css/styles.css">
-<meta property="og:title" content="Cours Prépa INP – Cours EDO">
-<meta property="og:description" content="Introduction aux équations différentielles ordinaires">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/assets/images/edo-favicon.png">
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<meta property="og:title" content="Stabilité – Cours EDO">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Cours Prépa INP – Cours EDO">
-<meta name="twitter:description" content="Introduction aux équations différentielles ordinaires">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/assets/images/edo-favicon.png">
+<meta name="twitter:title" content="Stabilité – Cours EDO">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/images/edo-favicon.png" alt="EDO course." class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/edo-favicon.png" alt="EDO course." class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -196,7 +167,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../src/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../../src/index.html" aria-current="page"> 
 <span class="menu-text">Plan du cours</span></a>
   </li>  
 </ul>
@@ -211,21 +182,182 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/stabilite.html">Stabilité</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../src/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan du cours</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Équations différentielles ordinaires</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/introduction/kaplan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problème de Kaplan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/introduction/moindres_carres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problème aux moindres carrés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Problème de Cauchy linéaire</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Définition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exponentielle de matrice</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/edo_lineaires/solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/edo_lineaires/exemples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exemples</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Intégration numérique</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/runge_kutta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Méthodes de Runge-Kutta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/stabilite.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Stabilité</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/convergence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convergence</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Dérivées</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_ci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport à la condition initiale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/derivees/derivee_parametres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dérivée par rapport aux paramètres</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/stabilite.html">Stabilité</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Cours Prépa INP</h1>
-<p class="subtitle lead">Introduction aux équations différentielles ordinaires</p>
+<h1 class="title">Stabilité</h1>
 </div>
 
 
@@ -242,65 +374,128 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-src-links" class="column-screen-inset-right quarto-listing quarto-listing-container-custom">
-<div class="link-cards">
-<div class="card">
-<div class="card-body">
-<section id="introduction" class="level4 card-title">
-<h4 class="anchored" data-anchor-id="introduction">Introduction</h4>
-</section>
-<ul>
-<li><a href="../src/introduction/edo.html">Équations différentielles ordinaires</a></li>
-<li><a href="../src/introduction/kaplan.html">Problème de Kaplan</a></li>
-<li><a href="../src/introduction/moindres_carres.html">Problème aux moindres carrés</a></li>
-</ul>
+<p>La stabilité consiste à comparer la solution du schéma avec celle du même schéma auquel on ajoute une perturbation. Si la borne des erreurs (en norme) sur l’ensemble des points de discrétisation entre les deux solutions ne dépend que des perturbations et non pas de la subdivision, c’est-à-dire du vecteur de pas, alors on dira que la méthode est stable. En effet, pour une méthode stable de petites perturbations mènent à de petites erreurs.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
 </div>
 </div>
-<div class="card">
-<div class="card-body">
-<section id="problème-de-cauchy-linéaire" class="level4 card-title">
-<h4 class="anchored" data-anchor-id="problème-de-cauchy-linéaire">Problème de Cauchy linéaire</h4>
-</section>
-<ul>
-<li><a href="../src/edo_lineaires/definition.html">Définition</a></li>
-<li><a href="../src/edo_lineaires/exponentielle.html">Exponentielle de matrice</a></li>
-<li><a href="../src/edo_lineaires/solution.html">Solution</a></li>
-<li><a href="../src/edo_lineaires/exemples.html">Exemples</a></li>
-</ul>
+<div class="callout-body-container callout-body">
+<p>On dit qu’une méthode à un pas explicite est <strong>stable</strong> si il existe une constante <span class="math inline">S</span> positive indépendante de <span class="math inline">{(h_i)}_i</span> telle que pour toutes suites sur <span class="math inline">\llbracket 0\,,\, N-1 \rrbracket</span> :</p>
+<p><span class="math display">
+    \begin{aligned}
+        x_{i+1} &amp;= x_i + h_i\, \Phi(t_i, x_i, h_i) \\
+        y_{i+1} &amp;= y_i + h_i\, \Phi(t_i, y_i, h_i) + \varepsilon_i,
+    \end{aligned}
+</span></p>
+<p>on ait</p>
+<p><span class="math display">
+    \max_{0 \le i \le N}\, \lVert x_i - y_i\rVert
+    \le S \left( \lVert x_0 - y_0\rVert +~\sum_{i=0}^{N-1} \lVert\varepsilon_i\rVert \right).
+</span></p>
 </div>
 </div>
-<div class="card">
-<div class="card-body">
-<section id="intégration-numérique" class="level4 card-title">
-<h4 class="anchored" data-anchor-id="intégration-numérique">Intégration numérique</h4>
-</section>
-<ul>
-<li><a href="../src/integration_numerique/introduction.html">Introduction</a></li>
-<li><a href="../src/integration_numerique/runge_kutta.html">Méthodes de Runge-Kutta</a></li>
-<li><a href="../src/integration_numerique/consistance.html">Consistance</a></li>
-<li><a href="../src/integration_numerique/stabilite.html">Stabilité</a></li>
-<li><a href="../src/integration_numerique/convergence.html">Convergence</a></li>
-</ul>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
 </div>
 </div>
-<div class="card">
-<div class="card-body">
-<section id="dérivées" class="level4 card-title">
-<h4 class="anchored" data-anchor-id="dérivées">Dérivées</h4>
-</section>
-<ul>
-<li><a href="../src/derivees/introduction.html">Introduction</a></li>
-<li><a href="../src/derivees/derivee_ci.html">Condition initiale</a></li>
-<li><a href="../src/derivees/derivee_parametres.html">Paramètres</a></li>
-</ul>
+<div class="callout-body-container callout-body">
+<p>Montrer que la méthode d’Euler est stable si la fonction <span class="math inline">f</span> est de classe <span class="math inline">\mathscr{C}^{1}</span> et globalement lipschitzienne par rapport à la variable <span class="math inline">x</span>. On supposera pour simplifier que le pas d’intégration est uniforme, c’est-à-dire que <span class="math inline">h_i = h</span> pour tout <span class="math inline">i</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math inline">{(x_i)}_i</span> et <span class="math inline">{(y_i)}_i</span> des solutions de</p>
+<p><span class="math display">
+    \begin{aligned}
+        x_{i+1} &amp;= x_i + h_i\, f(t_i, x_i) \\[0.5em]
+        y_{i+1} &amp;= y_i + h_i\, f(t_i, y_i) + \varepsilon_i.
+    \end{aligned}
+</span></p>
+<p>Puisque <span class="math inline">f</span> est <span class="math inline">\mathscr{C}^{1}</span>, elle est localement lipschitzienne et puisque <span class="math inline">t</span> appartient à un intervalle compact, on peut trouver une constante de Lipschitz indépendante du temps. La fonction <span class="math inline">f</span> étant globalement lipschitzienne par rapport à la variable <span class="math inline">x</span>, on peut donc trouver une constante de Lipschitz indépendante aussi de <span class="math inline">x</span>. On note <span class="math inline">L</span> cette constante. Ainsi, on a :</p>
+<p><span class="math display">
+    \begin{aligned}
+        \lVert x_{i+1} - y_{i+1}\rVert
+        &amp;\le \lVert x_i - y_i\rVert + h_i \, \lVert f(t_i, x_i) - f(t_i, y_i)\rVert + \lVert\varepsilon_i\rVert\\[0.5em]
+        &amp;\le (1 + h_i L)\, \lVert x_i - y_i\rVert + \lVert\varepsilon_i\rVert.
+    \end{aligned}
+</span></p>
+<p>Puisque <span class="math inline">h_i = h</span> pour tout <span class="math inline">i</span>, on arrive à montrer que</p>
+<p><span class="math display">
+    \lVert x_{i+1} - y_{i+1}\rVert \le {(1 + h\, L)}^N \left( \lVert x_0-y_0\rVert + \sum_{i=0}^{N-1} \lVert e_i\rVert \right).
+</span></p>
+<p>Puisque notamment pour tout <span class="math inline">x \ge 0</span>, on a <span class="math inline">1+x \le e^x</span>, il vient que</p>
+<p><span class="math display">
+    {(1 + h\, L)}^N \le e^{hLN} = e^{(t_f-t_0)\, L}
+    \quad
+    \text{car}
+    \quad
+    N = \frac{t_f-t_0}{h},
+</span></p>
+<p>et donc pour tout <span class="math inline">i \in \llbracket 0\,,\, N-1 \rrbracket</span>, on a</p>
+<p><span class="math display">
+    \lVert x_{i} - y_{i}\rVert \le e^{(t_f-t_0)\, L} \left( \lVert x_0-y_0\rVert + \sum_{i=0}^{N-1} \lVert e_i\rVert \right)
+</span></p>
+<p>ce qui montre la stabilité de la méthode d’Euler en passant au max.</p>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
+<p>Dans l’exercice précédent, la stabilité de la méthode d’Euler découle du fait que <span class="math inline">f</span> est globalement lipschitzienne par rapport à la variable <span class="math inline">x</span> de manière uniforme sur <span class="math inline">[t_0, t_f]</span>. De manière générale, on a le résultat suivant.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proposition
 </div>
 </div>
-
+<div class="callout-body-container callout-body">
+<p>Pour que la méthode à un pas explicite soit stable il suffit que <span class="math inline">\Phi</span> soit <span class="math inline">\mathscr{C}^{1}</span> et globalement lipschitzienne par rapport à la variable <span class="math inline">x</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Preuve rapide
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Supposons <span class="math inline">\Phi</span> de classe <span class="math inline">\mathscr{C}^{1}</span> et globalement lipschitzienne par rapport à la variable <span class="math inline">x</span>. Alors, il existe <span class="math inline">K \ge 0</span> telle que :</p>
+<p><span class="math display">
+    \lVert\Phi(t, x, h) - \Phi(t, y, h)\rVert \le K \lVert x - y\rVert,
+</span></p>
+<p>pour tout <span class="math inline">t\in [t_0, t_f]</span>, <span class="math inline">0 \le h \le t_f-t_0</span> et <span class="math inline">(x, y) \in \mathbb{R}^n \times \mathbb{R}^n</span>. On peut alors prendre comme constante de stabilité</p>
+<p><span class="math display">
+S = e^{K(t_f-t_0)}.
+</span></p>
+</div>
+</div>
+</div>
 
 
 
@@ -722,6 +917,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../src/integration_numerique/consistance.html" class="pagination-link" aria-label="Consistance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Consistance</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../src/integration_numerique/convergence.html" class="pagination-link" aria-label="Convergence">
+        <span class="nav-page-text">Convergence</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -730,7 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/stabilite.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/stabilite.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
@@ -740,5 +947,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -1,138 +1,112 @@
 ---
-title: "Schémas de Runge-Kutta"
+title: "Méthodes de Runge-Kutta"
 page-layout: article
 ---
 
-# Exercice : Schéma de Runge-Kutta d'Ordre 2
+Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d'Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.
 
-**Exercice :**
+::: {.callout-warning icon=false}
+### Définition
 
-Considérons le schéma de Runge-Kutta suivant :
+On appelle **méthode de Runge-Kutta explicite à $s$ étages**, la méthode définie par le schéma
 
 $$
 \begin{aligned}
-k_1 &= f(t_0, x_0) \\
-k_2 &= f(t_0 + c_2h, x_0 + a_{21}hk_1) \\
-x_1 &= x_0 + h(b_1k_1 + b_2k_2)
+    k_1 &= f(t_0, x_0) \\
+    k_2 &= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\
+    \vdots & \\[-1em]
+    k_s &= f(t_0 + c_s h, x_0 + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_1 &= x_0 + h \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 $$
 
-1. **Montrer que \(c_2 = a_{21}\)** :
-   - En utilisant le développement de Taylor pour \(f\) autour de \((t_0, x_0)\), nous avons :
+où les coefficients $c_i$, $a_{ij}$ et $b_i$ sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que $c_1 = 0$ et $c_i = \sum_{j=1}^{i-1} a_{ij}$, pour $i = 2, \ldots, s$.
+:::
 
-     $$
-     f(t_0 + c_2h, x_0 + a_{21}hk_1) = f(t_0, x_0) + c_2h \frac{\partial f}{\partial t} + a_{21}hk_1 \frac{\partial f}{\partial x} + O(h^2)
-     $$
-
-   - Pour que le schéma soit d'ordre 2, les termes d'ordre 1 doivent correspondre, ce qui implique \(c_2 = a_{21}\).
-
-2. **Relations pour l'Ordre 2** :
-   - Pour que le schéma soit d'ordre 2, les coefficients doivent satisfaire les conditions suivantes :
-
-     $$
-     b_1 + b_2 = 1
-     $$
-
-     $$
-     b_2 c_2 = \frac{1}{2}
-     $$
-
-   - En substituant \(c_2 = a_{21}\) dans la deuxième équation, nous obtenons :
-
-     $$
-     b_2 a_{21} = \frac{1}{2}
-     $$
-
-3. **Conclusion** :
-   - En résolvant ces équations, nous trouvons que \(b_1 = 0\), \(b_2 = 1\), et \(a_{21} = \frac{1}{2}\).
-   - Ces valeurs correspondent à la méthode de Runge-Kutta d'ordre 2, également connue sous le nom de méthode du point milieu.
-
-# Schémas de Runge-Kutta Explicites
-
-Les schémas de Runge-Kutta sont des méthodes numériques utilisées pour résoudre les équations différentielles ordinaires. Ils sont définis par un tableau de Butcher qui spécifie les coefficients utilisés dans les calculs intermédiaires.
-
-## Tableau de Butcher
-
-Un schéma de Runge-Kutta est défini par le tableau suivant :
+On représente en pratique ce schéma par le tableau de [Butcher](https://fr.wikipedia.org/wiki/John_Butcher) suivant.
 
 $$
-\begin{array}{c|cccc}
-0 &  &  &  &  \\
-c_2 & a_{21} &  &  &  \\
-\vdots & \vdots & \ddots &  &  \\
-c_s & a_{s1} & a_{s2} & \cdots & a_{s,s-1} \\
-\hline
- & b_1 & b_2 & \cdots & b_s \\
+\begin{array}{c | c c c c c} % chktex 44
+    c_1     & & & & & \\[0.1em]
+    c_2     & a_{21} & & & & \\[0.1em]
+    c_3     & a_{31} & a_{32} & & & \\[0.1em]
+    \vdots  & \vdots & \vdots & \ddots & & \\[0.1em]
+    c_s     & a_{s1} & a_{s2} & \cdots & a_{ss-1} & \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            & b_1 & b_2 & \cdots & b_{s-1} & b_s \\
 \end{array}
 $$
 
-## Exemples de Schémas de Runge-Kutta
+Voici une liste d'exemples de schémas de Runge-Kutta explicites.
 
-1. **Méthode d'Euler** :
-   - Tableau de Butcher :
+- Euler (ordre 1)
+$$
+\begin{array}{c | c} % chktex 44
+    0   & \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+        & 1 \\
+\end{array}
+$$
 
-     $$
-     \begin{array}{c|c}
-     0 & 0 \\
-     \hline
-      & 1 \\
-     \end{array}
-     $$
+- Runge (ordre 2)
+$$
+\begin{array}{c | c c} % chktex 44
+    0       &     & \\[0.1em]
+    1/2     & 1/2 & \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            & 0   & 1 \\
+\end{array}
+$$
 
-   - Ordre : 1
+- Heun (ordre 3)
+$$
+\begin{array}{c | c c c} % chktex 44
+    0       &     &     &  \\[0.1em]
+    1/3     & 1/3 &     &  \\[0.1em]
+    2/3     & 0   & 2/3 &  \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            & 1/4 & 0   & 3/4 \\
+\end{array}
+$$
 
-2. **Méthode de Runge-Kutta d'Ordre 2 (Point Milieu)** :
-   - Tableau de Butcher :
+- Rk4 (ordre 4)
+$$
+\begin{array}{c | c c c c} % chktex 44
+    0       & & & & \\[0.1em]
+    1/2     & 1/2 & & & \\[0.1em]
+    1/2     & 0 & 1/2 & & \\[0.1em]
+    1       & 0 & 0 & 1 & \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            & 1/6 & 2/6 & 2/6 & 1/6 \\
+\end{array}
+$$
 
-     $$
-     \begin{array}{c|cc}
-     0 & 0 & 0 \\
-     \frac{1}{2} & \frac{1}{2} & 0 \\
-     \hline
-      & 0 & 1 \\
-     \end{array}
-     $$
+- Rk4, règle 3/8 (ordre 4)
+$$
+\begin{array}{c | c c c c} % chktex 44
+    0       & & & & \\[0.1em]
+    1/3     & 1/3  & & & \\[0.1em]
+    2/3     & -1/3 & 1 & & \\[0.1em]
+    1       & 1 & -1 & 1 & \\[0.1em]
+    \hline % chktex 44
+    \rule{0pt}{2.6ex}
+            & 1/8 & 3/8 & 3/8 & 1/8 \\
+\end{array}
+$$
 
-   - Ordre : 2
+::: {.callout-note icon=false}
+### Remarque
 
-3. **Méthode de Heun** :
-   - Tableau de Butcher :
+Dans les schémas ci-dessus, nous avons indiqué l'ordre de la méthode. Celle-ci est définie par la suite.
+:::
 
-     $$
-     \begin{array}{c|cc}
-     0 & 0 & 0 \\
-     1 & 1 & 0 \\
-     \hline
-      & \frac{1}{2} & \frac{1}{2} \\
-     \end{array}
-     $$
+::: {.callout-tip icon=false}
+### Question
 
-   - Ordre : 2
-
-4. **Méthode de Runge-Kutta d'Ordre 4 (RK4)** :
-   - Tableau de Butcher :
-
-     $$
-     \begin{array}{c|cccc}
-     0 & 0 & 0 & 0 & 0 \\
-     \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 \\
-     \frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 \\
-     1 & 0 & 0 & 1 & 0 \\
-     \hline
-      & \frac{1}{6} & \frac{1}{3} & \frac{1}{3} & \frac{1}{6} \\
-     \end{array}
-     $$
-
-   - Ordre : 4
-
-# TP : Vérification Numérique des Ordres
-
-**Objectif :**
-- Implémentez les méthodes de Runge-Kutta ci-dessus et vérifiez numériquement leurs ordres en comparant les erreurs pour différents pas de temps \(h\).
-
-**Instructions :**
-- Choisissez une équation différentielle test, par exemple \(\dot{x}(t) = -x(t)\) avec \(x(0) = 1\).
-- Calculez les solutions numériques pour différents pas de temps \(h\) et comparez les erreurs avec la solution exacte \(x(t) = e^{-t}\).
-- Vérifiez que l'erreur décroît comme \(O(h^p)\), où \(p\) est l'ordre attendu de la méthode.
-
-Ces exercices et exemples permettent de comprendre les schémas de Runge-Kutta et de vérifier leur précision numérique.
+On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l'application $\Phi(t_0, x_0, h)$.
+:::

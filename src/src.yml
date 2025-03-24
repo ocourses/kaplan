@@ -20,14 +20,22 @@
 
 - title: Intégration numérique
   links:
-    - text: "Euler"
-      href: integration_numerique/euler.qmd
+    - text: "Introduction"
+      href: integration_numerique/introduction.qmd
     - text: "Méthodes de Runge-Kutta"
       href: integration_numerique/runge_kutta.qmd
+    - text: "Consistance"
+      href: integration_numerique/consistance.qmd
+    - text: "Stabilité"
+      href: integration_numerique/stabilite.qmd
+    - text: "Convergence"
+      href: integration_numerique/convergence.qmd
 
 - title: Dérivées
   links:
-    - text: "Fonctions dérivées"
-      href: derivees/fonctions.qmd
-    - text: "Equations variationnelles"
-      href: derivees/equations.qmd
+    - text: "Introduction"
+      href: derivees/introduction.qmd
+    - text: "Condition initiale"
+      href: derivees/derivee_ci.qmd
+    - text: "Paramètres"
+      href: derivees/derivee_parametres.qmd

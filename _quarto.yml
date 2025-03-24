@@ -95,13 +95,21 @@ website:
                   href: src/edo_lineaires/exemples.qmd
             - section: "Intégration numérique"
               contents: 
-                - text: "Méthode d'Euler"
-                  href: src/integration_numerique/euler.qmd
-                - text: "Méthode de Runge-Kutta"
+                - text: "Introduction"
+                  href: src/integration_numerique/introduction.qmd
+                - text: "Méthodes de Runge-Kutta"
                   href: src/integration_numerique/runge_kutta.qmd
+                - text: "Consistance"
+                  href: src/integration_numerique/consistance.qmd
+                - text: "Stabilité"
+                  href: src/integration_numerique/stabilite.qmd
+                - text: "Convergence"
+                  href: src/integration_numerique/convergence.qmd
             - section: "Dérivées"
               contents: 
-                - text: "Fonctions dérivées"
-                  href: src/derivees/fonctions.qmd
-                - text: "Equations variationnelles"
-                  href: src/derivees/equations.qmd
+                - text: "Introduction"
+                  href: src/derivees/introduction.qmd
+                - text: "Condition initiale"
+                  href: src/derivees/derivee_ci.qmd
+                - text: "Paramètres"
+                  href: src/derivees/derivee_parametres.qmd

@@ -16,8 +16,8 @@ $$
 où :
 
 - $x(t) \in \mathbb{R}^n$ est le vecteur d'état à l'instant $t$.
-- $A \in \mathrm{M}_{n}(\mathbb{R})$ est la matrice des coefficients.
-- $B \in \mathrm{M}_{n, m}(\mathbb{R})$ est la matrice d'entrée.
+- $A \in \mathcal{M}_{n}(\mathbb{R})$ est la matrice des coefficients.
+- $B \in \mathcal{M}_{n, m}(\mathbb{R})$ est la matrice d'entrée.
 - $u(t) \in \mathbb{R}^m$ est le vecteur des entrées.
 
 Nous disposons de mesures $x_i$ à des instants $t_i$ pour $i = 1, 2, \ldots, N$. Nous cherchons à estimer les paramètres 
@@ -36,8 +36,10 @@ où :
 - $x(t_i, \theta)$ est la prédiction du modèle, c'est-à-dire la solution du problème de Cauchy, à l'instant $t_i$ avec les paramètres $\theta$. 
 - $\| \cdot \|$ désigne la norme euclidienne.
 
-::: {.callout-note}
-- La fonction coût $F$ est la somme des carrés des erreurs entre les mesures observées $x_i$ et les prédictions du modèle $x(t_i, \theta)$. On appelle ces erreurs les **résidus**.
+::: {.callout-note icon=false}
+### Remarques
+
+- La fonction $F$ est la somme des carrés des erreurs entre les mesures observées $x_i$ et les prédictions du modèle $x(t_i, \theta)$. On appelle ces erreurs les **résidus**.
 - L'objectif est de trouver les paramètres $\theta$ qui minimisent cette fonction coût.
 - Cette formulation est un problème d'optimisation aux moindres carrés.
 - Les mesures $x_i$ peuvent être bruitées, ce qui nécessite une approche robuste pour estimer les paramètres.
@@ -107,7 +109,7 @@ $$
 où
 
 $$
-   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathrm{M}_{l}(\mathbb{R})
+   A_k = \sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \in \mathcal{M}_{l}(\mathbb{R})
    \quad \text{et} \quad 
    b_k = \sum_{i=1}^{N} {J_{i,k}}^T \left( x_i - x(t_i, \theta_k) \right) \in \mathbb{R}^l.
 $$
@@ -142,7 +144,7 @@ Voici les étapes principales :
          \displaystyle\frac{\partial x_n}{\partial \theta_2}(t_i, \theta_k) &
          \displaystyle\ldots & 
          \displaystyle\frac{\partial x_n}{\partial \theta_l}(t_i, \theta_k)
-       \end{pmatrix} \in \mathrm{M}_{n, l}(\mathbb{\R})
+       \end{pmatrix} \in \mathcal{M}_{n, l}(\mathbb{\R})
        $$
 
    - Mettre à jour les paramètres en utilisant la formule :
@@ -202,7 +204,9 @@ $$
 
 Nous cherchons à estimer les paramètres $a$ et $b$ en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 Nous pouvons voir $x(t, \theta)$ comme la solution du problème de Cauchy : 
 $$
    x'(t) = b, \quad x(0) = a.
@@ -295,6 +299,8 @@ On rappelle que le paramètre s'écrit $\theta = (a, b)$. On note alors la varia
 Cet exemple montre comment appliquer l'algorithme de Gauss-Newton à la main pour estimer les paramètres d'un modèle linéaire simple. Le tableau de convergence permet de visualiser la diminution de l'écart entre les itérations et la minimisation du coût.
 :::
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 Nous verrons en TP comment résoudre numériquement ce problème en Python.
 :::

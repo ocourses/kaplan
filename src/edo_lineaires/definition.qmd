@@ -8,18 +8,20 @@ page-layout: article
 Un **problème de Cauchy linéaire** consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d'une condition initiale. Il s'écrit sous la forme :
 
 $$
-x'(t) = A(t)\, x(t) + b(t), \quad x(t_0) = x_0
+x'(t) = A(t) x(t) + b(t), \quad x(t_0) = x_0
 $$
 
 où :
 
 - $x\colon I \to \mathbb{R}^n$ est la fonction inconnue définie sur un intervalle $I$ contenant $t_0$,
-- $A(t) \in \mathrm{M}_{n}(\mathbb{R})$ est une matrice donnée, dépendant du temps $t$,
+- $A(t) \in \mathcal{M}_{n}(\mathbb{R})$ est une matrice donnée, dépendant du temps $t$,
 - $b(t) \in \mathbb{R}^n$ est un vecteur donné, dépendant du temps $t$,
 - $t_0 \in I$ est l’instant initial,
 - $x_0 \in \mathbb{R}^n$ est la condition initiale.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 Nous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où $A(t)$ est constant.
 :::
 
@@ -28,31 +30,34 @@ Nous considérons ici le cas linéaire, et dans la suite du cours, nous ne trait
 Soit l'équation différentielle ordinaire linéaire :
 
 $$
-x'(t) = A(t)\, x(t) + b(t),
+x'(t) = A(t) x(t) + b(t),
 $$
 
-où $A(t) \in \mathrm{M}_{n}(\mathbb{R})$ et $b(t) \in \mathbb{R}^n$. On distingue plusieurs cas :
+où $A(t) \in \mathcal{M}_{n}(\mathbb{R})$ et $b(t) \in \mathbb{R}^n$. On distingue plusieurs cas :
 
-- **Équation linéaire homogène** : lorsque $b(t) = 0$, l’équation devient $x'(t) = A(t)\, x(t)$.
+- **Équation linéaire homogène** : lorsque $b(t) = 0$, l’équation devient $x'(t) = A(t) x(t)$.
 - **Équation linéaire non homogène (ou avec second membre)** : lorsque $b(t) \neq 0$.
 - **Équation autonome** : lorsque $A(t)$ et $b(t)$ sont constants, c'est-à-dire indépendants de $t$.
 
 ## Solution
 
-::: {.callout-important icon=false}
-## Définition
-On suppose les fonctions $t \mapsto A(t)$ et $t \mapsto b(t)$ définies et **continues** sur un intervalle ouvert $\mathcal{I}$ contenant $t_0$. 
+On suppose les fonctions $t \mapsto A(t)$ et $t \mapsto b(t)$ définies et **continues** sur un intervalle ouvert $\mathcal{I}$ contenant $t_0$. On appelle **solution** du problème de Cauchy associé, tout couple $(I, \varphi)$, où $I$ est un intervalle ouvert de $\mathcal{I}$ contenant $t_0$ et $\varphi \colon I \to \mathbb{R}^n$ est une fonction dérivable sur $I$, tel que pour tout $t \in I$, 
+$$
+  \varphi'(t) = A(t) \varphi(t) + b(t)
+$$
+et $\varphi(t_0) = x_0$.
 
-On appelle **solution** du problème de Cauchy associé, tout couple $(I, \varphi)$, où $I$ est un intervalle ouvert de $\mathcal{I}$ contenant $t_0$ et $\varphi \colon I \to \mathbb{R}^n$ est une fonction dérivable sur $I$, tel que pour tout $t \in I$, $\varphi'(t) = A(t)\, \varphi(t) + b(t)$ et $\varphi(t_0) = x_0$.
-:::
+::: {.callout-note icon=false}
+### Remarque
 
-::: {.callout-note}
 Il est courant d'utiliser la même notation pour la solution $\varphi$ et l'inconnue $x$.
 :::
 
 Une solution $(I,\varphi)$ est dite **maximale** si, pour toute autre solution $(J,\psi)$, on a $J \subset I$ et $\varphi = \psi$ sur $J$. On dit que qu'une solution $(I,\varphi)$ est un **prolongement** d'une autre solution $(J,\psi)$, si $J \subset I$ et $\varphi = \psi$ sur $J$. On parle de solution **globale** si ell est définie sur tout l'intervalle $\mathcal{I}$.
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarques
+
 - Toute solution se prolonge en une solution maximale (pas nécessairement unique).
 - Tout solution globale est maximale mais pas l'inverse.
 :::
@@ -60,45 +65,58 @@ Une solution $(I,\varphi)$ est dite **maximale** si, pour toute autre solution $
 ## Formulation Intégrale
 
 ::: {.callout-important icon=false}
-## Théorème
-Soit un couple $(I, \varphi)$, avec $I$ un intervalle ouvert de $\mathcal{I}$ et $\varphi \colon I \to \mathbb{R}^n$ une fonction dérivable sur $I$.
+### Théorème
 
-Alors, le couple $(I, \varphi)$ est solution du problème de Cauchy si et seulement si pour tout $t \in I$ on a :
+Soit un couple $(I, \varphi)$, avec $I$ un intervalle ouvert de $\mathcal{I}$ et $\varphi \colon I \to \mathbb{R}^n$ une fonction dérivable sur $I$. Alors, le couple $(I, \varphi)$ est solution du problème de Cauchy si et seulement si pour tout $t \in I$ on a :
 
 $$
-\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s)\, \varphi(s) + b(s) \right) \, \mathrm{d}s.
+\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s) \varphi(s) + b(s) \right) \, \mathrm{d}s.
 $$
 :::
 
+
+
 ::: {.callout-caution collapse="true" icon=false}
 ### Preuve
-Notons $f \colon \mathcal{I} \times \mathbb{R}^n \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x) \coloneqq A(t)\, x + b(t)$.
+
+Notons $f \colon \mathcal{I} \times \mathbb{R}^n \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x) \coloneqq A(t) x + b(t)$.
 
 **$\Rightarrow$** Puisque $\varphi$ est dérivable sur $I$, l'application $t \mapsto g(t) \coloneqq f(t, \varphi(t))$ est continue sur $I$, donc intégrable sur tout compact de $I$. De plus, $\varphi$ est une primitive de $g$ sur $I$, et d'après le second théorème fondamental de l'analyse, on obtient :
+
 $$
   \int_{t_0}^{t} g(s) \, \mathrm{d}s = \varphi(t) - \varphi(t_0),
 $$
+
 ce qui entraîne :
+
 $$
   \int_{t_0}^{t} f(s, \varphi(s)) \, \mathrm{d}s = \varphi(t) - x_0.
 $$
 
 **$\Leftarrow$** L'application $g$ est intégrable sur tout compact de $I$, donc la fonction 
+
 $$
 G(t) \coloneqq \int_{t_0}^{t} g(s) \, \mathrm{d}s
 $$
+
 est bien définie pour tout $t \in I$. Comme $g$ est continue, $G$ est l'unique primitive de $g$ s'annulant en $t_0$ (d'après le premier théorème fondamental de l'analyse). Ainsi, si pour tout $t \in I$ :
+
 $$
-\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s)\, \varphi(s) + b(s) \right) \, \mathrm{d}s = x_0 + G(t),
+\varphi(t) = x_0 + \int_{t_0}^{t} \left( A(s) \varphi(s) + b(s) \right) \, \mathrm{d}s = x_0 + G(t),
 $$
+
 alors on a $\varphi(t_0) = x_0$ (puisque $G(t_0) = 0$). En différenciant les deux membres de cette expression, on obtient :
+
 $$
 \varphi'(t) = G'(t) = f(t, \varphi(t)),
 $$
+
 ce qui achève la démonstration.
 :::
 
-::: {.callout-note}
+::: {.callout-note icon=false}
+### Remarque
+
 Cette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre.
 :::
 
@@ -128,8 +146,8 @@ $$
 x(t) = x_0 e^{a t}.
 $$
 
-::: {.callout-note}
-### Commentaire sur le Cas Vectoriel
+::: {.callout-note icon=false}
+### Commentaire sur le cas vectoriel
 
 Le cas scalaire fait intervenir la fonction exponentielle sur $\mathbb{R}$. Dans le cas vectoriel, où $x(t) \in \mathbb{R}^n$, nous aurons besoin de l'exponentielle de matrice, qui est une généralisation de l'exponentielle scalaire.
 :::

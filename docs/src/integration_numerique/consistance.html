@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exponentielle de Matrice – Cours EDO</title>
+<title>Consistance – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/edo_lineaires/solution.html" rel="next">
-<link href="../../src/edo_lineaires/definition.html" rel="prev">
+<link href="../../src/integration_numerique/stabilite.html" rel="next">
+<link href="../../src/integration_numerique/runge_kutta.html" rel="prev">
 <link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -139,13 +139,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Exponentielle de Matrice – Cours EDO">
+<meta property="og:title" content="Consistance – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta name="twitter:title" content="Exponentielle de Matrice – Cours EDO">
+<meta name="twitter:title" content="Consistance – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -187,7 +187,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exponentielle.html">Exponentielle de matrice</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/consistance.html">Consistance</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -239,13 +239,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Problème de Cauchy linéaire</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/edo_lineaires/definition.html" class="sidebar-item-text sidebar-link">
@@ -254,7 +254,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../src/edo_lineaires/exponentielle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exponentielle de matrice</span></a>
   </div>
 </li>
@@ -274,13 +274,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Intégration numérique</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
@@ -295,7 +295,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/integration_numerique/consistance.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Consistance</span></a>
   </div>
 </li>
@@ -354,26 +354,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
-  <li><a href="#propriétés" id="toc-propriétés" class="nav-link" data-scroll-target="#propriétés">Propriétés</a>
-  <ul class="collapse">
-  <li><a href="#matrice-nulle" id="toc-matrice-nulle" class="nav-link" data-scroll-target="#matrice-nulle">Matrice Nulle</a></li>
-  <li><a href="#matrice-diagonale" id="toc-matrice-diagonale" class="nav-link" data-scroll-target="#matrice-diagonale">Matrice Diagonale</a></li>
-  <li><a href="#matrice-semblable" id="toc-matrice-semblable" class="nav-link" data-scroll-target="#matrice-semblable">Matrice Semblable</a></li>
-  <li><a href="#matrice-transposée" id="toc-matrice-transposée" class="nav-link" data-scroll-target="#matrice-transposée">Matrice Transposée</a></li>
-  <li><a href="#matrice-nilpotente" id="toc-matrice-nilpotente" class="nav-link" data-scroll-target="#matrice-nilpotente">Matrice Nilpotente</a></li>
-  <li><a href="#matrices-commutantes" id="toc-matrices-commutantes" class="nav-link" data-scroll-target="#matrices-commutantes">Matrices Commutantes</a></li>
-  <li><a href="#inversibilité-et-dérivabilité" id="toc-inversibilité-et-dérivabilité" class="nav-link" data-scroll-target="#inversibilité-et-dérivabilité">Inversibilité et Dérivabilité</a></li>
-  </ul></li>
+  <li><a href="#méthode-consistante" id="toc-méthode-consistante" class="nav-link active" data-scroll-target="#méthode-consistante">Méthode consistante</a></li>
+  <li><a href="#ordre-de-consistance" id="toc-ordre-de-consistance" class="nav-link" data-scroll-target="#ordre-de-consistance">Ordre de consistance</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/definition.html">Problème de Cauchy linéaire</a></li><li class="breadcrumb-item"><a href="../../src/edo_lineaires/exponentielle.html">Exponentielle de matrice</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/consistance.html">Consistance</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exponentielle de Matrice</h1>
+<h1 class="title">Consistance</h1>
 </div>
 
 
@@ -390,313 +381,55 @@ window.Quarto = {
 </header>
 
 
-<p>L’exponentielle d’une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d’exponentielle des nombres réels aux matrices.</p>
-<section id="définition" class="level2">
-<h2 class="anchored" data-anchor-id="définition">Définition</h2>
-<p>On définit l’exponentielle d’une matrice <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> par :</p>
+<section id="méthode-consistante" class="level2">
+<h2 class="anchored" data-anchor-id="méthode-consistante">Méthode consistante</h2>
+<p>Les méthodes de Runge-Kutta sont des méthodes à un pas</p>
 <p><span class="math display">
-e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i), \quad h_i = t_{i+1} - t_i,
 </span></p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Preuve de la convergence de la série
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Pour montrer que cette série converge absolument pour toute matrice <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span>, nous allons utiliser une norme sous-multiplicative. Soit <span class="math inline">\|\cdot\|</span> une norme sous-multiplicative sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>, par exemple la <a href="https://fr.wikipedia.org/wiki/Norme_matricielle#Norme_de_Frobenius">norme de Frobenius</a> ou n’importe quelle norme subordonnée (ou norme d’algèbre). Une norme sous-multiplicative satisfait pour toutes matrices <span class="math inline">\ A, B \in \mathcal{M}_n(\mathbb{R})</span> la propriété suivante :</p>
+<p>que l’on peut écrire sous la forme</p>
 <p><span class="math display">
-    \|A B\| \leq \|A\| \|B\|.
+    E_i(x_i, x_{i+1}) \coloneqq x_{i+1} - \left( x_i + h_i\, \Phi(t_i, x_i, h_i) \right) = 0.
 </span></p>
-<p>Dans ce cas, nous pouvons majorer la norme de chaque terme de la série :</p>
-<p><span class="math display">
-    \left\| \frac{A^k}{k!} \right\| = \frac{\|A^k\|}{k!} \leq \frac{\|A\|^k}{k!}.
-</span></p>
-<p>La série <span class="math inline">\sum_{k=0}^{\infty} \frac{\|A\|^k}{k!}</span> est simplement l’exponentielle scalaire de la norme <span class="math inline">\|A\|</span> :</p>
-<p><span class="math display">
-    \sum_{k=0}^{\infty} \frac{\|A\|^k}{k!} = e^{\|A\|}.
-</span></p>
-<p>Puisque la série de droite converge, il en découle que la série de matrices <span class="math inline">\sum_{k=0}^{\infty} \frac{A^k}{k!}</span> converge absolument. Enfin, une série absolument convergente dans un espace vectoriel normé de dimension finie est convergente.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<p>On rappelle que <span class="math inline">x(\cdot, t_0, x_0)</span> est la solution du problème de Cauchy <span class="math inline">x'(t) = f(t, x(t))</span>, <span class="math inline">x(t_0) = x_0</span>. Pour alléger les notations, nous écrivons simplement <span class="math inline">x(\cdot)</span> cette solution, <span class="math inline">t_0</span> et <span class="math inline">x_0</span> étant fixés.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Remarque
+Définition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’exponentielle de <span class="math inline">A</span> s’écrit aussi <span class="math inline">\exp(A)</span>.</p>
-</div>
-</div>
-</section>
-<section id="propriétés" class="level2">
-<h2 class="anchored" data-anchor-id="propriétés">Propriétés</h2>
-<section id="matrice-nulle" class="level3">
-<h3 class="anchored" data-anchor-id="matrice-nulle">Matrice Nulle</h3>
-<p>On note <span class="math inline">0_n</span> la matrice nulle de <span class="math inline">\mathcal{M}_n(\mathbb{R})</span> et <span class="math inline">I_n</span> la matrice identité. On a alors : <span class="math display">
-    e^{0_n} = I_n.
-</span></p>
-</section>
-<section id="matrice-diagonale" class="level3">
-<h3 class="anchored" data-anchor-id="matrice-diagonale">Matrice Diagonale</h3>
-<p>Si <span class="math inline">\Sigma</span> est une matrice diagonale avec des éléments diagonaux <span class="math inline">\lambda_1, \lambda_2, \dots, \lambda_n</span>, c’est-à-dire :</p>
+<p><strong>L’erreur (locale) de consistance</strong> <span class="math inline">e_i</span> est l’erreur locale de troncature</p>
 <p><span class="math display">
-    \Sigma = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n) =
-    \begin{pmatrix}
-        \lambda_1 &amp; 0 &amp; \cdots &amp; 0 \\
-        0 &amp; \lambda_2 &amp; \cdots &amp; 0 \\
-        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        0 &amp; 0 &amp; \cdots &amp; \lambda_n
-    \end{pmatrix},
+    e_i \coloneqq E_i(x(t_i), x(t_{i+1})).
 </span></p>
-<p>alors l’exponentielle de <span class="math inline">\Sigma</span> est simplement la matrice diagonale des exponentielles des éléments diagonaux :</p>
-<p><span class="math display">
-    e^\Sigma = \text{diag}(e^{\lambda_1}, e^{\lambda_2}, \dots, e^{\lambda_n}) =
-    \begin{pmatrix}
-        e^{\lambda_1} &amp; 0 &amp; \cdots &amp; 0 \\
-        0 &amp; e^{\lambda_2} &amp; \cdots &amp; 0 \\
-        \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-        0 &amp; 0 &amp; \cdots &amp; e^{\lambda_n}
-    \end{pmatrix}.
-</span></p>
-</section>
-<section id="matrice-semblable" class="level3">
-<h3 class="anchored" data-anchor-id="matrice-semblable">Matrice Semblable</h3>
-<p>Soit <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> et <span class="math inline">P \in \mathrm{GL}_n(\mathbb{R})</span>, c’est-à-dire <span class="math inline">P</span> est inversible. Alors</p>
-<p><span class="math display">
-    e^{PAP^{-1}} = P e^A P^{-1}.
-</span></p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Preuve
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Nous avons : <span class="math display">
-    e^{PAP^{-1}} = \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!}.
-</span></p>
-<p>Montrons par récurrence que <span class="math inline">\left(PAP^{-1}\right)^k = P A^k P^{-1}</span>.</p>
-<ul>
-<li>Pour <span class="math inline">k=0</span>, nous avons <span class="math inline">I_n = \left(PAP^{-1}\right)^0</span> et <span class="math inline">P A^0 P^{-1} = P P^{-1} = I_n</span> donc la propriété est vraie.</li>
-<li>Supposons cette propriété vraie pour <span class="math inline">k &gt; 0</span>. Alors <span class="math display">
-  \left(PAP^{-1}\right)^{k+1} = \left(PAP^{-1}\right)^k PAP^{-1} = P A^k P^{-1} PAP^{-1} = P A^{k+1} P^{-1}
-</span> et donc la propriété est vraie pour <span class="math inline">k+1</span>.</li>
-</ul>
-<p>Ainsi, on a : <span class="math display">\begin{align}
-    e^{PAP^{-1}} &amp;= \sum_{k=0}^{\infty} \frac{\left(PAP^{-1}\right)^k}{k!} =
-    \sum_{k=0}^{\infty} \left( P \frac{A^k}{k!} P^{-1} \right) \notag \\[1.5em]
-    &amp;= P \left( \sum_{k=0}^{\infty} \frac{A^k}{k!} \right) P^{-1}
-    \tag*{(par continuité de la conjugaison)} \\[1.5em]
-    &amp;= P e^A P^{-1}. \notag
-\end{align}</span></p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Si la matrice <span class="math inline">A</span> est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l’exponentielle d’une matrice diagonale.</p>
-</div>
-</div>
-</section>
-<section id="matrice-transposée" class="level3">
-<h3 class="anchored" data-anchor-id="matrice-transposée">Matrice Transposée</h3>
-<p>La transposée d’une matrice <span class="math inline">A</span> de taille <span class="math inline">m \times n</span> est notée <span class="math inline">A^T</span> et s’obtient en échangeant les lignes et les colonnes de <span class="math inline">A</span>. Autrement dit, l’élément <span class="math inline">(i, j)</span> de <span class="math inline">A^T</span> est l’élément <span class="math inline">(j, i)</span> de <span class="math inline">A</span> :</p>
-<p><span class="math display">
-(A^T)_{ij} = A_{ji}
-</span></p>
-<p>Concernant l’exponentielle de matrice, nous avons :</p>
-<p><span class="math display">
-e^{A^T} = (e^A)^T.
-</span></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La preuve est laissée en exercice. On pourra s’inspirer de la preuve ci-avant.</p>
-</div>
-</div>
-</section>
-<section id="matrice-nilpotente" class="level3">
-<h3 class="anchored" data-anchor-id="matrice-nilpotente">Matrice Nilpotente</h3>
-<p>Une matrice carrée <span class="math inline">A</span> est dite nilpotente s’il existe un entier <span class="math inline">k</span> tel que :</p>
-<p><span class="math display">
-A^k = 0.
-</span></p>
-<p>Dans ce cas, l’exponentielle de <span class="math inline">A</span> s’écrit sous forme de somme finie :</p>
-<p><span class="math display">
-e^A = \sum_{n=0}^{k-1} \frac{A^n}{n!}.
-</span></p>
-<p>Par exemple, pour la matrice</p>
-<p><span class="math display">
-A = \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix},
-</span></p>
-<p>on a <span class="math inline">A^2 = 0</span>, donc son exponentielle est :</p>
-<p><span class="math display">
-e^A = I + A = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}.
-</span></p>
-</section>
-<section id="matrices-commutantes" class="level3">
-<h3 class="anchored" data-anchor-id="matrices-commutantes">Matrices Commutantes</h3>
-<p>Si les matrices <span class="math inline">A</span> et <span class="math inline">B</span> commutent, c’est-à-dire si <span class="math inline">AB = BA</span>, alors l’exponentielle de leur somme est le produit des exponentielles :</p>
-<p><span class="math display">
-    e^{A + B} = e^A\, e^B.
-</span></p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Preuve
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Soit <span class="math inline">A</span> et <span class="math inline">B</span> deux matrices dans <span class="math inline">\mathcal{M}_n(\mathbb{R})</span> qui commutent, c’est-à-dire telle que <span class="math inline">AB = BA</span>.</p>
-<p>En développant <span class="math inline">(A+B)^k</span> à l’aide du binôme de Newton, on obtient puisque <span class="math inline">A</span> et <span class="math inline">B</span> commutent :</p>
-<p><span class="math display">
-    (A + B)^k = \sum_{j=0}^{k} \binom{k}{j} A^j B^{k-j}.
-</span></p>
-<p>En utilisant le produit de Cauchy et le résultat précédent, nous avons :</p>
-<p><span class="math display">
-    e^A\, e^B = \sum_{k=0}^{\infty} c_k, \quad c_k = \sum_{j=0}^{k} \frac{A^j}{j!} \frac{B^{k-j}}{(k-j)!} = \frac{(A + B)^k}{k!}.
-</span></p>
-<p>Ainsi, au final nous obtenons :</p>
-<p><span class="math display">
-    e^A\, e^B = \sum_{k=0}^{\infty} \frac{(A + B)^k}{k!} = e^{A+B}.
-</span></p>
-<p>Cela conclut la démonstration.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La commutativité des matrices <span class="math inline">A</span> et <span class="math inline">B</span> est une condition nécessaire pour que cette propriété soit vraie. Voir la <a href="https://fr.wikipedia.org/wiki/Formule_de_Baker-Campbell-Hausdorff">formule de Baker-Campbell-Hausdorff</a> pour plus de détails.</p>
-<p><strong>Contre-exemple.</strong> Soient</p>
-<p><span class="math display">
-    A = \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}.
-</span></p>
-<p>Alors, pusique <span class="math inline">A^2 = B^2 = 0_2</span>, on a :</p>
-<p><span class="math display">
-    e^A = \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 &amp; 0 \\ 1 &amp; 1 \end{pmatrix}
-</span></p>
-<p>mais par ailleursn <span class="math inline">(A + B)^2 = I_2</span> donc</p>
+<p>Nous obtenons</p>
 <p><span class="math display">
     \begin{aligned}
-        e^{A+B} &amp;= \left( \sum_{k=0}^{\infty} \frac{1}{2k!} \right) I_2 + \left( \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \right) (A+B) \\[1.5em]
-        &amp;= \cosh(1) I_2 + \sinh(1) (A + B) \\[0.5em]
-        &amp;\ne e^A e^B = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 1 \end{pmatrix}.
+        e_i &amp;= E_i(x(t_i), x(t_{i+1}))
+        = x(t_{i+1}) - x(t_i) - h_i \, \Phi(t_i, x(t_i), h_i) \\[0.5em]
+        &amp;= \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d} t - h_i \, \Phi(t_i, x(t_i), h_i).
     \end{aligned}
 </span></p>
-</div>
-</div>
-</section>
-<section id="inversibilité-et-dérivabilité" class="level3">
-<h3 class="anchored" data-anchor-id="inversibilité-et-dérivabilité">Inversibilité et Dérivabilité</h3>
-<p>Soit <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span>. En corollaire de ce qui précède, nous avons les propriétés suivantes :</p>
-<ol type="1">
-<li><p><strong>Inversibilité</strong> : <span class="math inline">e^A</span> est toujours une matrice inversible et son inverse est donné par :</p>
-<p><span class="math display">
-     (e^A)^{-1} = e^{-A}.
-</span></p></li>
-<li><p><strong>Dérivabilité</strong> : L’application <span class="math inline">t \mapsto e^{tA}</span> est dérivable par rapport à <span class="math inline">t</span>, et sa dérivée est donnée par :</p>
-<p><span class="math display">
-     \frac{\mathrm{d}}{\mathrm{d} t} e^{tA} = A\, e^{tA} = e^{tA} A.
-</span></p></li>
-</ol>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Preuve
+Définition
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><p><strong>Inversibilité</strong> :</p>
-<p>Pour prouver que <span class="math inline">e^A</span> est inversible et que son inverse est <span class="math inline">e^{-A}</span>, nous utilisons la commutativité des matrices <span class="math inline">A</span> et <span class="math inline">-A</span>. En effet, il est évident que les matrices <span class="math inline">A</span> et <span class="math inline">-A</span> commutent, donc on peut écrire :</p>
+<p>On dit qu’une méthode à un pas est <strong>consistante</strong> si pour toute solution au problème de Cauchy, on a</p>
 <p><span class="math display">
-     e^{-A} e^A = e^A e^{-A} = e^{A + (-A)} = e^{0_n} = I_n.
+    \sum_{i=0}^{N-1} \Vert e_i\Vert \to 0 \quad \text{quand} \quad h_{\max} = \max_i h_i \to 0.
 </span></p>
-<p>Ainsi, <span class="math inline">e^A</span> est inversible et son inverse est <span class="math inline">e^{-A}</span>.</p></li>
-<li><p><strong>Dérivabilité</strong> :</p>
-<p>Fixons un <span class="math inline">t \in \mathbb{R}</span>. Pour étudier la dérivée de <span class="math inline">e^{tA}</span> par rapport à <span class="math inline">t</span>, nous commençons par utiliser la définition de la dérivée :</p>
-<p><span class="math display">
-     \frac{\mathrm{d}}{\mathrm{d}t} e^{tA} = \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h}.
-</span></p>
-<p>En remarquant que <span class="math inline">tA</span> et <span class="math inline">hA</span> commutent, nous réécrivons la différence comme suit :</p>
-<p><span class="math display">
-     e^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I_n).
-</span></p>
-<p>Divisons par <span class="math inline">h</span> :</p>
-<p><span class="math display">
-     \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
-</span></p>
-<p>Or,</p>
-<p><span class="math display">
-     \begin{aligned}
-         \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} &amp;= A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!} \\
-         &amp;= A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
-     \end{aligned}
-</span></p>
-<p>et la série de termes <span class="math inline">{h^{k}A^k}/{(k+2)!}</span> est convergente puisque ceux-ci sont majorés pas ceux de l’exponentielle de <span class="math inline">hA</span>. On note <span class="math inline">B</span> la limite de la série et on obtient</p>
-<p><span class="math display">
-     \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B \right) = e^{tA} A.
-</span></p>
-<p>Donc, la dérivée de <span class="math inline">e^{tA}</span> est :</p>
-<p><span class="math display">
-     \frac{\mathrm{d}}{\mathrm{d}t} e^{tA} = e^{tA} A.
-</span></p>
-<p>Par commutativité de <span class="math inline">A</span> avec ses puissances, on peut aussi écrire cette dérivée comme :</p>
-<p><span class="math display">
-     \frac{\mathrm{d}}{\mathrm{d}t} e^{tA} = A\, e^{tA}.
-</span></p></li>
-</ol>
-<p>Cela conclut la démonstration des deux propriétés.</p>
-</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -709,17 +442,282 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On pourra préférer la notation <span class="math inline">\exp</span>. Ces deux derniers résultats nous indique que l’on a <span class="math inline">\exp \colon \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})</span> et que <span class="math display">
-    \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.
-</span> <strong>Attention</strong>, nous n’avons rien prouvé quant à la régularité de l’application <span class="math inline">\exp</span>, rien au sujet ni de sa continuité sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>, ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même <span class="math inline">\mathscr{C}^\infty</span>. L’application exponentielle est même surjective.</p>
+<p>Il est important de noter que les instants <span class="math inline">t_i</span> et le nombre de pas dépendent directement du vecteur de discrétisation <span class="math inline">{(h_i)}_{i}</span>.</p>
+</div>
+</div>
+<p>Nous avons le résultat suivant.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proposition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une méthode à un pas explicite est consistante si et seulement si</p>
+<p><span class="math display">
+    \forall\, (t, x) \in [t_0, t_f] \times \mathbb{R}^n, \quad \Phi(t, x, h)|_{h=0} = f(t, x).
+</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Corollaire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les méthodes de Runge-Kutta explicites sont consistantes si et seulement si</p>
+<p><span class="math display">
+    \sum_{i=1}^s b_i = 1.
+</span></p>
+</div>
+</div>
+</section>
+<section id="ordre-de-consistance" class="level2">
+<h2 class="anchored" data-anchor-id="ordre-de-consistance">Ordre de consistance</h2>
+<p>Pour évaluer l’erreur de consistance à l’indice <span class="math inline">i</span>, le paramètre important est le pas <span class="math inline">h_i</span>. On fixe les autres paramètres et on regarde comment se comporte l’erreur en fonction du pas. Nous aurons besoin de la <strong>notation de Landau</strong>. Rappelons que la notation de Landau <span class="math inline">e(h) = O\mathopen{}\left({h^p}\right)</span> signifie qu’il existe un voisinage <span class="math inline">U</span> de <span class="math inline">0</span> et une constante positive <span class="math inline">C</span> telle que pour tout <span class="math inline">h \in U</span>, <span class="math inline">\lVert e(h)\rVert \le C \lvert h\rvert^p</span>.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Définition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si l’erreur locale de consistance vérifie pour <span class="math inline">p \ge 1</span> :</p>
+<p><span class="math display">
+E_i(h) \coloneqq E_i(x(t_i), x(t_i + h)) = x(t_i + h) - x(t_i) - h \, \Phi(t_i, x(t_i), h) = O\mathopen{}\left({h^{p+1}}\right),
+</span></p>
+<p>on dit que le schéma est <strong>d’ordre</strong> <span class="math inline">p</span>. On parle de l’ordre de consistance du schéma.</p>
+</div>
+</div>
+<p>Si nous avions défini <span class="math inline">E_i</span> comme étant donnée par</p>
+<p><span class="math display">
+\frac{x_{i+1}-x_i}{h_i} - \Phi(t_i, x_i, h_i),
+</span></p>
+<p>nous aurions eu <span class="math inline">E_i(h) = O\mathopen{}\left(h^p\right)</span>. L’ordre de consistance est bien <span class="math inline">p</span> ce qui se verra mieux par la suite car l’ordre de convergence sera donné par l’ordre de consistance dans le cas où la méthode est consistante et stable.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une méthode d’ordre de consistance <span class="math inline">p \ge 1</span> est consistante.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’ordre de consistance ne dépend pas de l’indice <span class="math inline">i</span>. Ainsi, on peut se restreindre au premier pas. Dans ce cas, on note</p>
+<p><span class="math display">
+E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h).
+</span></p>
+<p>Pour simplifier un peu plus la notation, on utilise le fait que <span class="math inline">x(t_0) = x_0</span> et on note</p>
+<p><span class="math display">
+E(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h).
+</span></p>
+</div>
+</div>
+<p>Le schéma d’Euler explicite est d’ordre <span class="math inline">p=1</span> car par définition de la dérivée</p>
+<p><span class="math display">
+\begin{aligned}
+E(h) &amp;= x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h) \\
+&amp;= x'(t_0)\, h + O\mathopen{}\left(h^2\right) - h \, f(t_0, x_0) \\
+&amp;= h\, f(t_0, x_0) - h \, f(t_0, x_0) + O\mathopen{}\left(h^2\right) \\
+&amp;= O\mathopen{}\left(h^2\right).
+\end{aligned}
+</span></p>
+<p>Nous allons dans l’exercice suivant étudier les relations que doivent vérifier les coefficients <span class="math inline">a_{ij}</span>, <span class="math inline">b_i</span> et <span class="math inline">c_i</span> pour qu’un schéma de Runge-Kutta explicite à 2 étages soit d’ordre 2.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Soit le schéma de Runge-Kutta</p>
+<p><span class="math display">
+\begin{aligned}
+k_1 &amp;= f(t_0, x_0) \\
+k_2 &amp;= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\
+x_1 &amp;= x_0 + h\, (b_1 k_1 + b_2 k_2).
+\end{aligned}
+</span></p>
+<p>Retrouver que <span class="math inline">c_2 = a_{21}</span> et donner les 2 relations que doivent vérifier <span class="math inline">b_1</span>, <span class="math inline">b_2</span> et <span class="math inline">a_{21}</span> pour que le schéma soit d’ordre 2. En déduire que la méthode de Runge est d’ordre 2.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dans ce cas, nous avons</p>
+<p><span class="math display">
+e(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h)
+</span></p>
+<p>avec</p>
+<p><span class="math display">
+\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).
+</span></p>
+<p>Développons <span class="math inline">e(h)</span> à l’ordre 2 et voyons les conditions à vérifier pour avoir <span class="math inline">e(h) = O\mathopen{}\left(h^3\right)</span>. Dans un premier temps, nous avons</p>
+<p><span class="math display">
+x(t_0 + h) - x_0 = hx'(t_0) + \frac{h^2}{2} x''(t_0) + O\mathopen{}\left(h^3\right)
+</span></p>
+<p>et puisque <span class="math inline">x'(t) = f(t, x(t))</span>, alors</p>
+<p><span class="math display">
+x''(t) = \dfrac{\partial f}{\partial t}(t, x(t)) + \dfrac{\partial f}{\partial x}(t, x(t)) \, x'(t)
+= \dfrac{\partial f}{\partial t}(t, x(t)) + \dfrac{\partial f}{\partial x}(t, x(t)) \, f(t, x(t))
+</span></p>
+<p>donc</p>
+<p><span class="math display">
+x(t_0 + h) - x_0 = h f(t_0, x_0) + \frac{h^2}{2}
+\left( \dfrac{\partial f}{\partial t}(t_0, x_0) + \dfrac{\partial f}{\partial x}(t_0, x_0) \, f(t_0, x_0) \right) + O\mathopen{}\left(h^3\right).
+</span></p>
+<p>D’un autre côté, nous avons</p>
+<p><span class="math display">
+k_2(h) = f(t_0, x_0) + h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) + O\mathopen{}\left(h^2\right).
+</span></p>
+<p>Au final, nous obtenons</p>
+<p><span class="math display">
+\begin{aligned}
+e(h) &amp;= h f(t_0, x_0) + \frac{h^2}{2}
+\left( \dfrac{\partial f}{\partial t}(t_0, x_0) + \dfrac{\partial f}{\partial x}(t_0, x_0) \, f(t_0, x_0) \right) \\[0.5em]
+&amp; \quad - h \left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) \right)
++ O\mathopen{}\left(h^3\right) \\[0.5em]
+&amp;= h (1-b_1-b_2) f(t_0, x_0) \\[0.5em]
+&amp;\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \dfrac{\partial f}{\partial t}(t_0, x_0)
++ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \dfrac{\partial f}{\partial x}(t_0, x_0)\, f(t_0, x_0) + O\mathopen{}\left(h^3\right).
+\end{aligned}
+</span></p>
+<p>Ainsi, pour que <span class="math inline">e(h) = O\mathopen{}\left(h^3\right)</span> il faut avoir <span class="math inline">c_2 = a_{21}</span> et</p>
+<p><span class="math display">
+1 = b_1 + b_2 \quad \text{et} \quad b_2 a_{21} = \frac{1}{2}.
+</span></p>
+<p>La méthode de Runge correspond à <span class="math inline">c_2 = a_{21} = 1/2</span>, <span class="math inline">b_1 = 0</span> et <span class="math inline">b_2 = 1</span> donc les conditions sont vérifiées et la méthode est bien d’ordre 2.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proposition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les méthodes de Heun et Rk4 sont respectivement d’ordre 3 et 4.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Preuve
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Voir le livre “Solving Ordinary Differential Equations I, Nonstiff Problem”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> pour les démonstrations.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On considère le schéma de Runge-Kutta à 3 étages</p>
+<p><span class="math display">
+\begin{array}{c | c c c}
+0       &amp;        &amp;        &amp;  \\[0.1em]
+c_2     &amp; a_{21} &amp;        &amp;  \\[0.1em]
+c_3     &amp; a_{31} &amp; a_{32} &amp;  \\[0.1em]
+\hline
+        &amp; b_1 &amp; b_2 &amp; b_3 \\
+\end{array}
+\quad
+\text{avec}
+\quad
+c_i = \sum_{j=1}^{3} a_{ij}.
+</span></p>
+<p>Démontrer dans le cas d’un système autonome que les relations que doivent vérifier les coefficients pour avoir un schéma d’ordre 3 sont</p>
+<p><span class="math display">
+\begin{aligned}
+    1 &amp;= b_1 + b_2 + b_3, \\[0.5em]
+    \frac{1}{2} &amp;= b_2\, a_{21} + b_3\, a_{31} + b_3\, a_{32}, \\[0.5em]
+    \frac{1}{3} &amp;= b_2\, a_{21}^2 + b_3\, \left( a_{31}^2 + 2\, a_{31}\, a_{32} + a_{32}^3 \right), \\[0.5em]
+    \frac{1}{6} &amp;= b_3\, a_{32}\, a_{21}.
+\end{aligned}
+</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On considère une méthode de Runge-Kutta explicite à <span class="math inline">s</span> étages.</p>
+<ol type="1">
+<li>Appliquer un pas de la méthode à l’équation <span class="math inline">x'(t)=x(t)</span>, pour la condition initiale <span class="math inline">x(0)=1</span>, et montrer que <span class="math inline">x_1</span> est un polynôme en <span class="math inline">h</span> au plus de degré <span class="math inline">s</span>.</li>
+<li>En déduire que l’ordre <span class="math inline">p</span> de la méthode est au plus égale à <span class="math inline">s</span>.</li>
+</ol>
 </div>
 </div>
 
 
 </section>
-</section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>E. Hairer, S. P. Nørsett &amp; G. Wanner, Solving Ordinary Differential Equations I, Nonstiff Problems, vol 8 of Springer Serie in Computational Mathematics, Springer-Verlag, second edn (1993).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1139,13 +1137,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/edo_lineaires/definition.html" class="pagination-link" aria-label="Définition">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Définition</span>
+      <a href="../../src/integration_numerique/runge_kutta.html" class="pagination-link" aria-label="Méthodes de Runge-Kutta">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Méthodes de Runge-Kutta</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/edo_lineaires/solution.html" class="pagination-link" aria-label="Solution">
-        <span class="nav-page-text">Solution</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/integration_numerique/stabilite.html" class="pagination-link" aria-label="Stabilité">
+        <span class="nav-page-text">Stabilité</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1157,7 +1155,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

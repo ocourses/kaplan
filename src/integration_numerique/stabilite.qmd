@@ -1,0 +1,109 @@
+---
+title: "Stabilité"
+page-layout: article
+---
+
+{{< include ../../assets/latex/macros.qmd >}}
+
+La stabilité consiste à comparer la solution du schéma avec celle du même schéma auquel on ajoute une perturbation.
+Si la borne des erreurs (en norme) sur l'ensemble des points de discrétisation entre les deux solutions ne dépend
+que des perturbations et non pas de la subdivision, c'est-à-dire du vecteur de pas, alors on dira que la méthode est
+stable. En effet, pour une méthode stable de petites perturbations mènent à de petites erreurs.
+
+::: {.callout-warning icon=false}
+### Définition
+
+On dit qu'une méthode à un pas explicite est **stable** si il existe une constante $S$ positive
+indépendante de ${(h_i)}_i$ telle que pour toutes suites sur $\llbracket 0\,,\, N-1 \rrbracket$ :
+
+$$
+    \begin{aligned}
+        x_{i+1} &= x_i + h_i\, \Phi(t_i, x_i, h_i) \\
+        y_{i+1} &= y_i + h_i\, \Phi(t_i, y_i, h_i) + \veps_i,
+    \end{aligned}
+$$
+
+on ait
+
+$$
+    \max_{0 \le i \le N}\, \norm{x_i - y_i}
+    \le S \left( \norm{x_0 - y_0} +~\sum_{i=0}^{N-1} \norm{\veps_i} \right).
+$$
+:::
+
+::: {.callout-tip icon=false}
+### Question
+
+Montrer que la méthode d'Euler est stable si la fonction $f$ est de classe $\mathscr{C}^{1}$ et globalement lipschitzienne par rapport à la variable $x$. On supposera pour simplifier que le pas d'intégration est uniforme, c'est-à-dire que $h_i = h$ pour tout $i$.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### Correction
+
+Soit ${(x_i)}_i$ et ${(y_i)}_i$ des solutions de
+
+$$
+    \begin{aligned}
+        x_{i+1} &= x_i + h_i\, f(t_i, x_i) \\[0.5em]
+        y_{i+1} &= y_i + h_i\, f(t_i, y_i) + \veps_i.
+    \end{aligned}
+$$
+
+Puisque $f$ est $\mathscr{C}^{1}$, elle est localement lipschitzienne et puisque $t$ appartient à un intervalle compact, on peut trouver une constante de Lipschitz indépendante du temps. La fonction $f$ étant globalement lipschitzienne par rapport à la variable $x$, on peut donc trouver une constante de Lipschitz indépendante aussi de $x$. On note $L$ cette constante. Ainsi, on a :
+
+$$
+    \begin{aligned}
+        \norm{x_{i+1} - y_{i+1}}
+        &\le \norm{x_i - y_i} + h_i \, \norm{f(t_i, x_i) - f(t_i, y_i)} + \norm{\veps_i}\\[0.5em]
+        &\le (1 + h_i L)\, \norm{x_i - y_i} + \norm{\veps_i}.
+    \end{aligned}
+$$
+
+Puisque $h_i = h$ pour tout $i$, on arrive à montrer que
+
+$$
+    \norm{x_{i+1} - y_{i+1}} \le {(1 + h\, L)}^N \left( \norm{x_0-y_0} + \sum_{i=0}^{N-1} \norm{e_i} \right).
+$$
+
+Puisque notamment pour tout $x \ge 0$, on a $1+x \le e^x$, il vient que
+
+$$
+    {(1 + h\, L)}^N \le e^{hLN} = e^{(t_f-t_0)\, L}
+    \quad
+    \text{car}
+    \quad
+    N = \frac{t_f-t_0}{h},
+$$
+
+et donc pour tout $i \in \llbracket 0\,,\, N-1 \rrbracket$, on a
+
+$$
+    \norm{x_{i} - y_{i}} \le e^{(t_f-t_0)\, L} \left( \norm{x_0-y_0} + \sum_{i=0}^{N-1} \norm{e_i} \right)
+$$
+
+ce qui montre la stabilité de la méthode d'Euler en passant au max.
+:::
+
+Dans l'exercice précédent, la stabilité de la méthode d'Euler découle du fait que $f$ est globalement lipschitzienne par rapport à la variable $x$ de manière uniforme sur $[t_0, t_f]$. De manière générale, on a le résultat suivant.
+
+::: {.callout-important icon=false}
+### Proposition
+
+Pour que la méthode à un pas explicite soit stable il suffit que $\Phi$ soit $\mathscr{C}^{1}$ et globalement lipschitzienne par rapport à la variable $x$.
+:::
+
+::: {.callout-caution collapse="true" icon=false}
+### Preuve rapide
+
+Supposons $\Phi$ de classe $\mathscr{C}^{1}$ et globalement lipschitzienne par rapport à la variable $x$. Alors, il existe $K \ge 0$ telle que :
+
+$$
+    \norm{\Phi(t, x, h) - \Phi(t, y, h)} \le K \norm{x - y},
+$$
+
+pour tout $t\in [t_0, t_f]$, $0 \le h \le t_f-t_0$ et $(x, y) \in \R^n \times \R^n$. On peut alors prendre comme constante de stabilité 
+
+$$
+S = e^{K(t_f-t_0)}. 
+$$
+:::
