@@ -244,91 +244,70 @@
     "href": "src/introduction/quiz.html#question-3",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 3",
-    "text": "Question 3\nEst-ce que l’équation différentielle \\(x'(t) = A x(t) + B u(t)\\) est autonome ?\n\n\n\nOui\nNon"
+    "text": "Question 3\nPourquoi l’équation \\(x'(t) = ax(t)\\) est-elle dite autonome ?\n\n\n\nElle ne dépend pas explicitement du temps \\(t\\)\nElle dépend explicitement du temps \\(t\\)\nElle fait intervenir un scalaire \\(a\\) ne dépendant pas du temps"
   },
   {
     "objectID": "src/introduction/quiz.html#question-4",
     "href": "src/introduction/quiz.html#question-4",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 4",
-    "text": "Question 4\nPourquoi l’équation \\(x'(t) = a x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir que la dérivée première de \\(x(t)\\)\nParce que \\(a\\) est scalaire\nParce que \\(x(t) \\in \\mathbb{R}\\)"
+    "text": "Question 4\nEst-ce que l’équation différentielle \\(x'(t) = A x(t) + B u(t)\\) est autonome ?\n\n\n\nOui\nNon"
   },
   {
     "objectID": "src/introduction/quiz.html#question-5",
     "href": "src/introduction/quiz.html#question-5",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 5",
-    "text": "Question 5\nQuelle est la condition initiale pour l’équation \\(x'(t) = a x(t)\\) ?\n\n\n\n\\(x(0) = x_0\\)\n\\(x'(0) = x_0\\)\n\\(x(t) = x_0\\)"
+    "text": "Question 5\nPourquoi l’équation \\(x'(t) = a x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir que la dérivée première de \\(x(t)\\)\nParce que \\(a\\) est scalaire\nParce que \\(x(t) \\in \\mathbb{R}\\)"
   },
   {
     "objectID": "src/introduction/quiz.html#question-6",
     "href": "src/introduction/quiz.html#question-6",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 6",
-    "text": "Question 6\nQu’est-ce qu’un problème de Cauchy ?\n\n\n\nUn problème qui combine une équation différentielle avec une condition initiale\nUn problème qui combine une équation différentielle avec une condition aux limites\nUn problème qui combine une équation différentielle avec une condition de périodicité"
+    "text": "Question 6\nQuelle est la condition initiale pour l’équation \\(x'(t) = a x(t)\\) ?\n\n\n\n\\(x(0) = x_0\\)\n\\(x'(0) = x_0\\)\n\\(x(t) = x_0\\)"
   },
   {
     "objectID": "src/introduction/quiz.html#question-7",
     "href": "src/introduction/quiz.html#question-7",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 7",
-    "text": "Question 7\nQuel théorème est utilisé pour montrer l’équivalence entre la formulation différentielle et la formulation intégrale d’une équation différentielle ?\n\n\n\nLe théorème fondamental de l’analyse\nLe théorème de Rolle\nLe théorème de la moyenne"
+    "text": "Question 7\nQu’est-ce qu’un problème de Cauchy ?\n\n\n\nUn problème qui combine une équation différentielle avec une condition initiale\nUn problème qui combine une équation différentielle avec une condition aux limites\nUn problème qui combine une équation différentielle avec une condition de périodicité"
   },
   {
     "objectID": "src/introduction/quiz.html#question-8",
     "href": "src/introduction/quiz.html#question-8",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 8",
-    "text": "Question 8\nQuelle est la formulation intégrale de l’équation \\(x'(t) = a x(t)\\) avec la condition initiale \\(x(0) = x_0\\) ?\n\n\n\n\\(x(t) = x_0 + \\int_{0}^{t} a x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} a \\, \\mathrm{d}s\\)"
+    "text": "Question 8\nQuel théorème est utilisé pour montrer l’équivalence entre la formulation différentielle et la formulation intégrale d’une équation différentielle ?\n\n\n\nLe théorème fondamental de l’analyse\nLe théorème de Rolle\nLe théorème de la moyenne"
   },
   {
     "objectID": "src/introduction/quiz.html#question-9",
     "href": "src/introduction/quiz.html#question-9",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 9",
-    "text": "Question 9\nQuelle est l’ordre de l’équation différentielle \\(x''(t) = -x(t)\\) ?\n\n\n\nOrdre 1\nOrdre 2\nOrdre 3"
+    "text": "Question 9\nQuelle est la formulation intégrale de l’équation \\(x'(t) = a x(t)\\) avec la condition initiale \\(x(0) = x_0\\) ?\n\n\n\n\\(x(t) = x_0 + \\int_{0}^{t} a x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} a \\, \\mathrm{d}s\\)"
   },
   {
     "objectID": "src/introduction/quiz.html#question-10",
     "href": "src/introduction/quiz.html#question-10",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 10",
-    "text": "Question 10\nPourquoi l’équation \\(x''(t) = -x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir qu’une seule fonction inconnue \\(x(t)\\)\nParce qu’elle est linéaire\nParce qu’elle est autonome"
+    "text": "Question 10\nQuelle est l’ordre de l’équation différentielle \\(x''(t) = -x(t)\\) ?\n\n\n\nOrdre 1\nOrdre 2\nOrdre 3"
   },
   {
     "objectID": "src/introduction/quiz.html#question-11",
     "href": "src/introduction/quiz.html#question-11",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 11",
-    "text": "Question 11\nQuelle est la forme matricielle du système équivalent à l’équation \\(x''(t) = -x(t)\\) ?\n\n\n\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n1 & 0 \\\\\n0 & 1\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 0 \\\\\n0 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]"
+    "text": "Question 11\nPourquoi l’équation \\(x''(t) = -x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir qu’une seule fonction inconnue \\(x(t)\\)\nParce qu’elle est linéaire\nParce qu’elle est autonome"
   },
   {
     "objectID": "src/introduction/quiz.html#question-12",
     "href": "src/introduction/quiz.html#question-12",
     "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
     "section": "Question 12",
-    "text": "Question 12\nQuelle est l’équation différentielle pour un point matériel soumis à la gravitation ?\n\n\n\n\\(x''(t) = g\\)\n\\(x''(t) = -x(t)\\)\n\\(x'(t) = a x(t)\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-13",
-    "href": "src/introduction/quiz.html#question-13",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 13",
-    "text": "Question 13\nQuelle est la forme matricielle du système équivalent à l’équation \\(x''(t) = g\\) ?\n\n\n\n\\[\\begin{pmatrix} x'(t) \\\\ v'(t) \\end{pmatrix} =\n\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} x(t) \\\\ v(t) \\end{pmatrix} +\n\\begin{pmatrix} 0 \\\\ g \\end{pmatrix}\\]\n\\[\\begin{pmatrix} x'(t) \\\\ v'(t) \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} x(t) \\\\ v(t) \\end{pmatrix}\\]\n\\[\\begin{pmatrix} x'(t) \\\\ v'(t) \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix} \\begin{pmatrix} x(t) \\\\ v(t) \\end{pmatrix}\\]"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-14",
-    "href": "src/introduction/quiz.html#question-14",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 14",
-    "text": "Question 14\nQuelle est l’équation différentielle d’ordre 1 linéaire non homogène ?\n\n\n\n\\(x'(t) = A x(t) + B(t)\\)\n\\(x'(t) = A x(t)\\)\n\\(x''(t) = -x(t)\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-15",
-    "href": "src/introduction/quiz.html#question-15",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 15",
-    "text": "Question 15\nPourquoi les équations différentielles sont-elles importantes dans divers domaines scientifiques et techniques ?\n\n\n\nElles permettent de modéliser des systèmes dynamiques et de prédire leur comportement futur\nElles permettent de maximiser les profits\nElles permettent de minimiser les coûts"
+    "text": "Question 12\nQuelle est la forme matricielle du système équivalent à l’équation \\(x''(t) = -x(t)\\) ?\n\n\n\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n1 & 0 \\\\\n0 & 1\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 0 \\\\\n0 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]"
   },
   {
     "objectID": "about.html",

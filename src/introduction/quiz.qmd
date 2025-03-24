@@ -52,6 +52,15 @@ Dans l'équation $x'(t) = a x(t)$, que représente $t$ ?
 
 ## Question 3 {.quiz-question}
 
+Pourquoi l’équation $x'(t) = ax(t)$ est-elle dite autonome ?
+<p style="margin-top:50px"> </p>
+
+  -  [Elle ne dépend pas explicitement du temps $t$]{.correct}
+  -  Elle dépend explicitement du temps $t$
+  -  Elle fait intervenir un scalaire $a$ ne dépendant pas du temps
+
+## Question 4 {.quiz-question}
+
 Est-ce que l'équation différentielle $x'(t) = A x(t) + B u(t)$ est autonome ? 
 
 <p style="margin-top:50px"> </p>
@@ -59,7 +68,7 @@ Est-ce que l'équation différentielle $x'(t) = A x(t) + B u(t)$ est autonome ?
 - Oui
 - [Non]{.correct}
 
-## Question 4 {.quiz-question}
+## Question 5 {.quiz-question}
 
 Pourquoi l'équation $x'(t) = a x(t)$ est-elle qualifiée de scalaire ? 
 
@@ -69,7 +78,7 @@ Pourquoi l'équation $x'(t) = a x(t)$ est-elle qualifiée de scalaire ?
 - Parce que $a$ est scalaire
 - [Parce que $x(t) \in \mathbb{R}$]{.correct}
 
-## Question 5 {.quiz-question}
+## Question 6 {.quiz-question}
 
 Quelle est la condition initiale pour l'équation $x'(t) = a x(t)$ ?
 
@@ -79,7 +88,7 @@ Quelle est la condition initiale pour l'équation $x'(t) = a x(t)$ ?
 - $x'(0) = x_0$
 - $x(t) = x_0$
 
-## Question 6 {.quiz-question}
+## Question 7 {.quiz-question}
 
 Qu'est-ce qu'un problème de Cauchy ? 
 
@@ -89,7 +98,7 @@ Qu'est-ce qu'un problème de Cauchy ?
 - Un problème qui combine une équation différentielle avec une condition aux limites
 - Un problème qui combine une équation différentielle avec une condition de périodicité
 
-## Question 7 {.quiz-question}
+## Question 8 {.quiz-question}
 
 Quel théorème est utilisé pour montrer l'équivalence entre la formulation différentielle et la formulation intégrale d'une équation différentielle ?
 
@@ -99,7 +108,7 @@ Quel théorème est utilisé pour montrer l'équivalence entre la formulation di
 - Le théorème de Rolle
 - Le théorème de la moyenne
 
-## Question 8 {.quiz-question}
+## Question 9 {.quiz-question}
 
 Quelle est la formulation intégrale de l'équation $x'(t) = a x(t)$ avec la condition initiale $x(0) = x_0$ ?
 
@@ -109,7 +118,7 @@ Quelle est la formulation intégrale de l'équation $x'(t) = a x(t)$ avec la con
 - $x(t) = x_0 + \int_{0}^{t} x(s) \, \mathrm{d}s$
 - $x(t) = x_0 + \int_{0}^{t} a \, \mathrm{d}s$
 
-## Question 9 {.quiz-question}
+## Question 10 {.quiz-question}
 
 Quelle est l'ordre de l'équation différentielle $x''(t) = -x(t)$ ?
 
@@ -119,7 +128,7 @@ Quelle est l'ordre de l'équation différentielle $x''(t) = -x(t)$ ?
 - [Ordre 2]{.correct}
 - Ordre 3
 
-## Question 10 {.quiz-question}
+## Question 11 {.quiz-question}
 
 Pourquoi l'équation $x''(t) = -x(t)$ est-elle qualifiée de scalaire ?
 
@@ -129,7 +138,7 @@ Pourquoi l'équation $x''(t) = -x(t)$ est-elle qualifiée de scalaire ?
 - Parce qu'elle est linéaire
 - Parce qu'elle est autonome
 
-## Question 11 {.quiz-question}
+## Question 12 {.quiz-question}
 
 Quelle est la forme matricielle du système équivalent à l'équation $x''(t) = -x(t)$ ?
 
@@ -180,46 +189,3 @@ x(t) \\
 y(t)
 \end{pmatrix}
 $$
-
-## Question 12 {.quiz-question}
-
-Quelle est l'équation différentielle pour un point matériel soumis à la gravitation ?
-
-<p style="margin-top:50px"> </p>
-
-- [$x''(t) = g$]{.correct}
-- $x''(t) = -x(t)$
-- $x'(t) = a x(t)$
-
-## Question 13 {.quiz-question}
-
-Quelle est la forme matricielle du système équivalent à l'équation $x''(t) = g$ ?
-
-<p style="margin-top:50px"> </p>
-
-- []{.correct}$$\begin{pmatrix} x'(t) \\ v'(t) \end{pmatrix} = 
-\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x(t) \\ v(t) \end{pmatrix} + 
-\begin{pmatrix} 0 \\ g \end{pmatrix}$$
-- $$\begin{pmatrix} x'(t) \\ v'(t) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x(t) \\ v(t) \end{pmatrix}$$
-- $$\begin{pmatrix} x'(t) \\ v'(t) \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x(t) \\ v(t) \end{pmatrix}$$
-
-## Question 14 {.quiz-question}
-
-Quelle est l'équation différentielle d'ordre 1 linéaire non homogène ?
-
-<p style="margin-top:50px"> </p>
-
-- [$x'(t) = A x(t) + B(t)$]{.correct}
-- $x'(t) = A x(t)$
-- $x''(t) = -x(t)$
-
-## Question 15 {.quiz-question}
-
-Pourquoi les équations différentielles sont-elles importantes dans divers domaines scientifiques et techniques ?
-
-<p style="margin-top:50px"> </p>
-
-- [Elles permettent de modéliser des systèmes dynamiques et de prédire leur comportement futur]{.correct}
-- Elles permettent de maximiser les profits
-- Elles permettent de minimiser les coûts
-
