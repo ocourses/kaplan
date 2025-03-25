@@ -114,21 +114,3 @@ $$
     x'(t) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} x(t) + \begin{pmatrix} 0 \\ 3e^{-2t} \end{pmatrix}, \quad x(0) = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
 $$
 :::
-
-::: {.callout-tip icon=false}
-### Question
-On considère un problème de Cauchy linéaire homogène $x'(t) = A x(t)$, $x(0) = x_0$. 
-Pour chaque matrice $A$ ci-dessous, résolvez le problème et discuter du comportement quand $t \to \infty$ des trajectoires en fonction de $x_0$ et des éventuels paramètres :
-
-$$
-    \begin{aligned}
-        A &= \begin{pmatrix}  0 &  1 \\ -1 & 0 \end{pmatrix}, \\[1em]
-        A &= \begin{pmatrix}  2 & -1 \\  1 & 2 \end{pmatrix}, \\[1em]
-        A &= \begin{pmatrix} -1 &  1 \\  0 & 1 \end{pmatrix}, \\[1em]
-        A &= \begin{pmatrix}  0 &  1 \\  1 & 0 \end{pmatrix}, \\[1em]
-        A &= \begin{pmatrix}  1 &  1 \\  1 & 1 \end{pmatrix}, \\[1em]
-        A &= \begin{pmatrix}  \alpha & \beta \\ -\beta & \alpha \end{pmatrix}, \quad \alpha, \beta \in \mathbb{R},\\[1em]
-        A &= \begin{pmatrix}  \lambda &  1 \\  0 & \lambda \end{pmatrix}, \quad \lambda \in \mathbb{R}.\\[1em]
-    \end{aligned}
-$$
-:::

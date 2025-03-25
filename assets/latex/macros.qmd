@@ -9,3 +9,9 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\fonction}[5]{
+    \begin{array}{rcll}
+        #1 \colon & #2 & \longrightarrow & #3 \\
+                  & #4 & \longmapsto     & #5
+    \end{array}
+}

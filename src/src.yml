@@ -30,6 +30,8 @@
       href: integration_numerique/stabilite.qmd
     - text: "Convergence"
       href: integration_numerique/convergence.qmd
+    - text: "Erreurs d'arrondi"
+      href: integration_numerique/erreurs_arrondi.qmd
 
 - title: Dérivées
   links:

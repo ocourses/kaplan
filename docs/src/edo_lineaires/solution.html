@@ -311,6 +311,12 @@ window.Quarto = {
  <span class="menu-text">Convergence</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/erreurs_arrondi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erreurs d’arrondi</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -401,8 +407,9 @@ Théorème
 <div class="callout-body-container callout-body">
 <p>La solution du problème de Cauchy linéaire homogène est donnée par :</p>
 <p><span class="math display">
-    x(t, x_0) = e^{tA} x_0
+    t \mapsto e^{tA} x_0
 </span></p>
+<p>avec <span class="math inline">t \in \mathbb{R}</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
@@ -417,27 +424,27 @@ Preuve
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Existence.</strong> Montrons que <span class="math inline">x(t, x_0) = e^{tA} x_0</span> vérifie les propriétés d’une solution pour le problème de Cauchy.</p>
+<p><strong>Existence.</strong> Montrons que <span class="math inline">\varphi(t) \coloneqq e^{tA} x_0</span> vérifie les propriétés d’une solution pour le problème de Cauchy.</p>
 <ul>
-<li><p><strong>Vérification de la Condition Initiale.</strong> À <span class="math inline">t = 0</span>, nous avons : <span class="math display">
-      x(0, x_0) = e^{0 \cdot A} x_0 = I x_0 = x_0
+<li><p><strong>Vérification de la condition initiale.</strong> À <span class="math inline">t = 0</span>, nous avons : <span class="math display">
+      \varphi(0) = e^{0 A} x_0 = I_n x_0 = x_0.
   </span> Donc, la condition initiale est satisfaite.</p></li>
-<li><p><strong>Vérification de l’Équation Différentielle.</strong> Calculons la dérivée de <span class="math inline">x(t, x_0)</span> par rapport à <span class="math inline">t</span> : <span class="math display">
-      \frac{d}{dt} x(t, x_0) = \frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)
-  </span> Donc, <span class="math inline">x(t, x_0)</span> satisfait l’équation différentielle <span class="math inline">x'(t) = A x(t)</span>.</p></li>
+<li><p><strong>Vérification de l’équation différentielle.</strong> Calculons la dérivée de <span class="math inline">\varphi(t)</span> par rapport à <span class="math inline">t</span> : <span class="math display">
+      \varphi'(t) = \frac{\mathrm{d}}{\mathrm{d}t} (e^{tA} x_0) = A e^{tA} x_0 = A \varphi(t).
+  </span> Donc, <span class="math inline">\varphi(t)</span> satisfait l’équation différentielle <span class="math inline">x'(t) = A x(t)</span>.</p></li>
 </ul>
-<p>Ainsi, <span class="math inline">x(t, x_0) = e^{tA} x_0</span> est bien une solution du problème de Cauchy, ce qui prouve l’existence.</p>
-<p><strong>Unicité.</strong> Supposons qu’il existe une autre solution <span class="math inline">y(t)</span> du problème de Cauchy. Définissons <span class="math inline">z(t) = y(t) - x(t, x_0)</span>. Alors,</p>
+<p>Ainsi, <span class="math inline">\varphi(t) = e^{tA} x_0</span> est bien une solution du problème de Cauchy, ce qui prouve l’existence.</p>
+<p><strong>Unicité.</strong> Supposons qu’il existe une autre solution <span class="math inline">y(t)</span> du problème de Cauchy. Définissons <span class="math inline">z(t) = y(t) - \varphi(t)</span>. Alors,</p>
 <p><span class="math display">
-    z'(t) = y'(t) - x'(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)
+    z'(t) = y'(t) - \varphi'(t) = A y(t) - A \varphi(t) = A (y(t) - \varphi(t)) = A z(t),
 </span></p>
-<p>Avec la condition initiale <span class="math inline">z(0) = y(0) - x(0, x_0) = 0</span>.</p>
+<p>avec la condition initiale <span class="math inline">z(0) = y(0) - \varphi(0) = x_0 - x_0 = 0</span>.</p>
 <p>Considérons maintenant le changement de variable <span class="math inline">w(t) = e^{-tA} z(t)</span>. Alors,</p>
 <p><span class="math display">
-    w'(t) = \frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0
+    w'(t) = \frac{\mathrm{d}}{\mathrm{d}t} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0.
 </span></p>
-<p>Puisque <span class="math inline">w'(t) = 0</span>, <span class="math inline">w(t)</span> est constante (d’après le TAF). Donc, <span class="math inline">w(t) = w(0) = e^{-0 \cdot A} z(0) = 0</span>.</p>
-<p>Ainsi, <span class="math inline">z(t) = e^{tA} w(t) = 0</span> pour tout <span class="math inline">t</span>, ce qui implique que <span class="math inline">y(t) = x(t, x_0)</span>. Cela prouve l’unicité de la solution.</p>
+<p>Puisque <span class="math inline">w'(t) = 0</span>, <span class="math inline">w(t)</span> est constante (d’après le TAF). Donc, <span class="math inline">w(t) = w(0) = e^{-0 A} z(0) = 0</span>.</p>
+<p>Ainsi, <span class="math inline">z(t) = e^{tA} w(t) = 0</span> pour tout <span class="math inline">t</span>, ce qui implique que <span class="math inline">y(t) = \varphi(t)</span>. Cela prouve l’unicité de la solution.</p>
 </div>
 </div>
 </div>
@@ -474,12 +481,26 @@ Théorème
 <div class="callout-body-container callout-body">
 <p>La solution du problème de Cauchy linéaire non homogène est donnée par :</p>
 <p><span class="math display">
-x(t) = e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
+\varphi(t) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
 </span></p>
+<p>avec <span class="math inline">t \in \mathcal{I}</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vérifiez que <span class="math inline">\varphi(t)</span> est une solution du problème de Cauchy linéaire non homogène.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -488,17 +509,21 @@ Preuve
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Puisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction <span class="math inline">x(t)</span> définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Cette vérification est laissée au lecteur. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation des constantes.</p>
-<p><strong>Méthode de variation des constantes.</strong> Posons <span class="math inline">x(t) = e^{(t-t_0)A} z(t)</span> et déterminons <span class="math inline">z(t)</span>. Tout d’abord, <span class="math inline">x(\cdot)</span> doit vérifier la condition initiale :</p>
+<p>Notons</p>
 <p><span class="math display">
-x(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,
+    \varphi(t) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds.
+</span></p>
+<p>Puisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction <span class="math inline">\varphi(t)</span> définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation de la constante. Faisons-le.</p>
+<p><strong>Méthode de variation de la constante.</strong> Posons <span class="math inline">\varphi(t) = e^{(t-t_0)A} z(t)</span> et déterminons <span class="math inline">z(t)</span>. Tout d’abord, <span class="math inline">\varphi(\cdot)</span> doit vérifier la condition initiale :</p>
+<p><span class="math display">
+\varphi(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,
 </span></p>
 <p>d’où <span class="math inline">z(t_0) = x_0</span>.</p>
-<p>Ensuite, <span class="math inline">x(\cdot)</span> doit satisfaire l’équation différentielle. En dérivant, on obtient :</p>
+<p>Ensuite, <span class="math inline">\varphi(\cdot)</span> doit satisfaire l’équation différentielle. En dérivant, on obtient :</p>
 <p><span class="math display">
-x'(t) = A x(t) + e^{(t-t_0)A} z'(t).
+\varphi'(t) = A \varphi(t) + e^{(t-t_0)A} z'(t).
 </span></p>
 <p>Il faut donc choisir <span class="math inline">z(\cdot)</span> de manière à ce que <span class="math inline">b(t) = e^{(t-t_0)A} z'(t)</span>, ce qui équivaut à <span class="math inline">z'(t) = e^{(t_0-t)A} b(t)</span>.</p>
 <p>Enfin, en intégrant :</p>
@@ -507,7 +532,7 @@ z(t) = x_0 + \int_{t_0}^t e^{(t_0-s)A}\, b(s)\, \mathrm{d}s.
 </span></p>
 <p>D’où l’expression finale :</p>
 <p><span class="math display">
-x(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \int_{t_0}^t e^{(t-s)A}\, b(s)\, \mathrm{d}s,
+\varphi(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \int_{t_0}^t e^{(t-s)A}\, b(s)\, \mathrm{d}s,
 </span></p>
 <p>grâce à la propriété <span class="math inline">e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}</span>.</p>
 </div>
@@ -534,13 +559,13 @@ x(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \int_{t_0}^t e^{(t-s)A}\, b(s)\, \
     x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t).
 </span></p>
 <p>Ce changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">

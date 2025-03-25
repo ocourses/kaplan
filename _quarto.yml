@@ -105,6 +105,8 @@ website:
                   href: src/integration_numerique/stabilite.qmd
                 - text: "Convergence"
                   href: src/integration_numerique/convergence.qmd
+                - text: "Erreurs d'arrondi"
+                  href: src/integration_numerique/erreurs_arrondi.qmd
             - section: "Dérivées"
               contents: 
                 - text: "Introduction"

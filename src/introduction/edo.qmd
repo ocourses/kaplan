@@ -198,5 +198,5 @@ En maîtrisant les concepts et les techniques de résolution des équations diff
 ## Quiz
 
 <a href="quiz.html">
-  <img class="centering" width="30%" style="max-width:800px" src="../../assets/images/quiz.png"/>
+  <img class="centering" width="25%" style="max-width:400px; min-width:200px" src="../../assets/images/quiz.png"/>
 </a>

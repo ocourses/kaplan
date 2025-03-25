@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction – Cours EDO</title>
+<title>Influence des Erreurs d’Arrondi – Cours EDO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../src/introduction/kaplan.html" rel="next">
-<link href="../../src/index.html" rel="prev">
+<link href="../../src/derivees/introduction.html" rel="next">
+<link href="../../src/integration_numerique/convergence.html" rel="prev">
 <link href="../../assets/images/edo-favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -94,62 +94,13 @@ ul.task-list li input[type="checkbox"] {
     });
 </script> 
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
-<meta property="og:title" content="Introduction – Cours EDO">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/images/quiz.png">
+<meta property="og:title" content="Influence des Erreurs d’Arrondi – Cours EDO">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
-<meta property="og:image:height" content="696">
-<meta property="og:image:width" content="1920">
-<meta name="twitter:title" content="Introduction – Cours EDO">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/images/quiz.png">
-<meta name="twitter:image-height" content="696">
-<meta name="twitter:image-width" content="1920">
+<meta name="twitter:title" content="Influence des Erreurs d’Arrondi – Cours EDO">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -191,7 +142,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/erreurs_arrondi.html">Erreurs d’arrondi</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -214,16 +165,16 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../src/introduction/edo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Équations différentielles ordinaires</span></a>
   </div>
 </li>
@@ -278,13 +229,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Intégration numérique</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../src/integration_numerique/introduction.html" class="sidebar-item-text sidebar-link">
@@ -317,7 +268,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../src/integration_numerique/erreurs_arrondi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../src/integration_numerique/erreurs_arrondi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Erreurs d’arrondi</span></a>
   </div>
 </li>
@@ -359,31 +310,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#équations-différentielles-dordre-1-scalaire" id="toc-équations-différentielles-dordre-1-scalaire" class="nav-link active" data-scroll-target="#équations-différentielles-dordre-1-scalaire">Équations Différentielles d’Ordre 1 Scalaire</a></li>
-  <li><a href="#condition-initiale-et-problème-de-cauchy" id="toc-condition-initiale-et-problème-de-cauchy" class="nav-link" data-scroll-target="#condition-initiale-et-problème-de-cauchy">Condition Initiale et Problème de Cauchy</a></li>
-  <li><a href="#lien-avec-la-formulation-intégrale" id="toc-lien-avec-la-formulation-intégrale" class="nav-link" data-scroll-target="#lien-avec-la-formulation-intégrale">Lien avec la Formulation Intégrale</a></li>
-  <li><a href="#espace-des-solutions" id="toc-espace-des-solutions" class="nav-link" data-scroll-target="#espace-des-solutions">Espace des Solutions</a></li>
-  <li><a href="#équation-différentielle-dordre-2-scalaire" id="toc-équation-différentielle-dordre-2-scalaire" class="nav-link" data-scroll-target="#équation-différentielle-dordre-2-scalaire">Équation Différentielle d’Ordre 2 Scalaire</a>
-  <ul class="collapse">
-  <li><a href="#exemple" id="toc-exemple" class="nav-link" data-scroll-target="#exemple">Exemple</a></li>
-  </ul></li>
-  <li><a href="#équations-différentielles-dordre-1-vectorielle" id="toc-équations-différentielles-dordre-1-vectorielle" class="nav-link" data-scroll-target="#équations-différentielles-dordre-1-vectorielle">Équations Différentielles d’Ordre 1 Vectorielle</a></li>
-  <li><a href="#importance-des-équations-différentielles" id="toc-importance-des-équations-différentielles" class="nav-link" data-scroll-target="#importance-des-équations-différentielles">Importance des Équations Différentielles</a></li>
-  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/introduction/edo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/introduction/edo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Introduction</a></li><li class="breadcrumb-item"><a href="../../src/introduction/edo.html">Équations différentielles ordinaires</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../src/index.html">Plan du cours</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/introduction.html">Intégration numérique</a></li><li class="breadcrumb-item"><a href="../../src/integration_numerique/erreurs_arrondi.html">Erreurs d’arrondi</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">Influence des Erreurs d’Arrondi</h1>
 </div>
 
 
@@ -400,212 +335,8 @@ window.Quarto = {
 </header>
 
 
-<section id="équations-différentielles-dordre-1-scalaire" class="level2">
-<h2 class="anchored" data-anchor-id="équations-différentielles-dordre-1-scalaire">Équations Différentielles d’Ordre 1 Scalaire</h2>
-<p>Considérons pour commencer une équation différentielle ordinaire (EDO) d’ordre 1, scalaire, autonome et linéaire (homogène) :</p>
-<p><span class="math display">
-x'(t) = a x(t)
-</span></p>
-<p>où :</p>
-<ul>
-<li><span class="math inline">t \in \mathbb{R}</span> est le “temps”. C’est la variable d’intégration.</li>
-<li><span class="math inline">t \mapsto x(t) \in \mathbb{R}</span> est la fonction inconnue que nous cherchons à déterminer. Elle représente l’état du système à l’instant <span class="math inline">t</span>.</li>
-<li><span class="math inline">t \mapsto x'(t)</span> est la dérivée de <span class="math inline">t \mapsto x(t)</span> par rapport au temps <span class="math inline">t</span>.</li>
-<li><span class="math inline">a \in \mathbb{R}</span> est un paramètre constant.</li>
-</ul>
-<p>Donnons des explications sur la terminologie employée.</p>
-<ul>
-<li>Le terme <strong>ordinaire</strong> est utilisé par opposition au terme équation différentielle partielle (plus communément équation aux dérivées partielles, ou EDP).</li>
-<li>Dans ce cas, l’équation différentielle est <strong>scalaire</strong> car elle ne fait intervenir qu’une seule fonction inconnue <span class="math inline">t \mapsto x(t) \in \mathbb{R}</span>.</li>
-<li>Elle est <strong>autonome</strong> car elle ne dépend pas explicitement du temps <span class="math inline">t</span>.</li>
-<li>Enfin, elle est <strong>linéaire</strong> (homogène) car elle est linéaire en <span class="math inline">x(t)</span>.</li>
-<li>Elle est <strong>d’ordre 1</strong> car elle ne fait intervenir que la dérivée première de <span class="math inline">x</span> notée <span class="math inline">x'(t)</span>, ou <span class="math inline">\dot{x}(t)</span> à la physicienne.</li>
-</ul>
-</section>
-<section id="condition-initiale-et-problème-de-cauchy" class="level2">
-<h2 class="anchored" data-anchor-id="condition-initiale-et-problème-de-cauchy">Condition Initiale et Problème de Cauchy</h2>
-<p>L’équation différentielle <span class="math inline">x'(t) = a x(t)</span> possède une infinité de solutions. Nous n’allons pas chercher l’ensemble des solutions, mais une solution particulière qui satisfait une <strong>condition initiale</strong> :</p>
-<p><span class="math display">
-x(0) = x_0.
-</span></p>
-<p>Le couple formé par l’équation différentielle et la condition initiale constitue un <strong>problème de Cauchy</strong>. La solution de ce problème est une fonction <span class="math inline">t \mapsto x(t)</span> qui satisfait à la fois l’équation différentielle et la condition initiale.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarques
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Nous noterons parfois <span class="math inline">x(\cdot)</span> la fonction inconnue <span class="math inline">t \mapsto x(t)</span> pour simplifier l’écriture.</li>
-<li>La condition initiale <span class="math inline">x(0) = x_0</span> fixe la valeur de la fonction inconnue <span class="math inline">x(\cdot)</span> en <span class="math inline">t = 0</span>. Elle permet de déterminer une solution unique au problème de Cauchy que nous considérons.</li>
-<li>Nous avons fixé la condition initiale en <span class="math inline">t = 0</span> pour simplifier l’exposition. En pratique, la condition initiale peut être donnée à tout instant <span class="math inline">t = t_0</span>.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="lien-avec-la-formulation-intégrale" class="level2">
-<h2 class="anchored" data-anchor-id="lien-avec-la-formulation-intégrale">Lien avec la Formulation Intégrale</h2>
-<p>Le problème de Cauchy peut également être formulé sous la forme intégrale suivante :</p>
-<p><span class="math display">
-x(t) = x_0 + \int_{0}^{t} a x(s) \, \mathrm{d}s.
-</span></p>
-<p>Cette formulation intégrale est équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre dont l’inconnue est la fonction <span class="math inline">x(\cdot)</span>.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>De manière générale, pour montrer qu’une solution du problème de Cauchy est solution du problème sous forme intégrale, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Second_théorème">second théorème fondamental</a> de l’analyse. Pour la réciproque, nous avons besoin du <a href="https://fr.wikipedia.org/wiki/Théorème_fondamental_de_l%27analyse#Premier_théorème">premier théorème fondamental</a> de l’analyse.</p>
-</div>
-</div>
-</section>
-<section id="espace-des-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="espace-des-solutions">Espace des Solutions</h2>
-<p>Pour une équation différentielle, comme pour toute équation, il est crucial de définir l’espace dans lequel nous cherchons les solutions. Ici, nous cherchons une fonction <span class="math inline">x(\cdot)</span> qui est :</p>
-<ul>
-<li>Dérivable</li>
-<li>Définie sur un intervalle de temps ouvert contenant 0 (car la condition initiale est donnée en <span class="math inline">t = 0</span>).</li>
-</ul>
-</section>
-<section id="équation-différentielle-dordre-2-scalaire" class="level2">
-<h2 class="anchored" data-anchor-id="équation-différentielle-dordre-2-scalaire">Équation Différentielle d’Ordre 2 Scalaire</h2>
-<p>Considérons maintenant une équation différentielle d’ordre 2 :</p>
-<p><span class="math display">
-x''(t) = -x(t)
-</span></p>
-<p>où <span class="math inline">x''(t)</span> représente la dérivée seconde de <span class="math inline">x(\cdot)</span> au temps <span class="math inline">t</span>. Cette équation est d’ordre 2 car elle fait intervenir la dérivée seconde de <span class="math inline">x(\cdot)</span>. Elle est scalaire car elle ne fait intervenir qu’une seule fonction inconnue <span class="math inline">x(\cdot)</span>.</p>
-<p>Pour ramener cette équation à un système d’ordre 1, nous introduisons une nouvelle variable <span class="math inline">y(t) = x'(t)</span>. Ainsi, nous obtenons le système suivant :</p>
-<p><span class="math display">
-\begin{cases}
-x'(t) = y(t), \\
-y'(t) = -x(t).
-\end{cases}
-</span></p>
-<p>Ce système est équivalent à l’équation d’ordre 2 initiale et peut être résolu en utilisant les techniques d’ordre 1. Par la suite, nous ne considérons que des équations d’ordre 1, scalaires ou vectorielles. L’équation précédente, dans les coordonnées <span class="math inline">(x, y)</span>, est une équation différentielle ordinaire d’ordre 1 linéaire, autonome et vectorielle. Elle peut s’écrire sous forme matricielle :</p>
-<p><span class="math display">
-\begin{pmatrix}
-x'(t) \\
-y'(t)
-\end{pmatrix}
-=
-\begin{pmatrix}
-0 &amp; 1 \\
--1 &amp; 0
-\end{pmatrix}
-\begin{pmatrix}
-x(t) \\
-y(t)
-\end{pmatrix}.
-</span></p>
-<section id="exemple" class="level3">
-<h3 class="anchored" data-anchor-id="exemple">Exemple</h3>
-<p>Considérons un point matériel soumis à la gravitation, où l’équation différentielle est donnée par :</p>
-<p><span class="math display">
-x''(t) = g
-</span></p>
-<p>où <span class="math inline">g</span> est l’accélération due à la gravité. Cette équation est d’ordre 2 et scalaire.</p>
-<p>Pour ramener cette équation à un système d’ordre 1, nous introduisons une nouvelle variable <span class="math inline">v(t) = x'(t)</span>, représentant la vitesse du point matériel. Ainsi, nous obtenons le système suivant :</p>
-<p><span class="math display">
-\begin{cases}
-x'(t) = v(t), \\
-v'(t) = g.
-\end{cases}
-</span></p>
-<p>Ce système est équivalent à l’équation d’ordre 2 initiale et peut être résolu en utilisant les techniques d’ordre 1. Le système peut s’écrire sous forme matricielle :</p>
-<p><span class="math display">
-\begin{pmatrix}
-x'(t) \\
-v'(t)
-\end{pmatrix}
-=
-\begin{pmatrix}
-0 &amp; 1 \\
-0 &amp; 0
-\end{pmatrix}
-\begin{pmatrix}
-x(t) \\
-v(t)
-\end{pmatrix}
-+
-\begin{pmatrix}
-0 \\
-g
-\end{pmatrix}
-</span></p>
-<p>Cet exemple illustre comment une équation différentielle d’ordre 2 peut être transformée en un système d’ordre 1 pour faciliter sa résolution.</p>
-</section>
-</section>
-<section id="équations-différentielles-dordre-1-vectorielle" class="level2">
-<h2 class="anchored" data-anchor-id="équations-différentielles-dordre-1-vectorielle">Équations Différentielles d’Ordre 1 Vectorielle</h2>
-<p>Considérons maintenant une équation différentielle ordinaire d’ordre 1 <strong>linéaire non homogène</strong> :</p>
-<p><span class="math display">
-x'(t) = A x(t) + b(t)
-</span></p>
-<p>où <span class="math inline">A</span> est une matrice constante de taille <span class="math inline">n \times n</span> et <span class="math inline">b(t)</span> est un vecteur de taille <span class="math inline">n</span> dépendant du temps <span class="math inline">t</span>.</p>
-<p>Cette équation n’est pas autonome car elle dépend explicitement du temps <span class="math inline">t</span> à travers <span class="math inline">b(t)</span>. Cette équation est affine en <span class="math inline">x(t)</span>, car elle contient un terme linéaire <span class="math inline">A x(t)</span> et un terme constant <span class="math inline">b(t)</span>. Nous parlerons d’équation différentielle linéaire non homogène. C’est une équation d’ordre 1 car elle ne fait intervenir que la dérivée première de <span class="math inline">x(t)</span>, mais c’est une équation vectorielle car <span class="math inline">x(t)</span> est un vecteur de taille <span class="math inline">n</span>.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Toutes les équations différentielles que nous considérons seront linéaires et auront une matrice <span class="math inline">A</span> constante. Cela simplifie la résolution.</p>
-</div>
-</div>
-<p>Pour mieux comprendre que le temps <span class="math inline">t</span> intervient explicitement seulement dans <span class="math inline">b(t)</span>, nous pouvons réécrire l’équation à l’aide d’une fonction <span class="math inline">f</span> (appelée <strong>second membre</strong>) dépendant du temps <span class="math inline">t</span> et de la variable <span class="math inline">x</span> :</p>
-<p><span class="math display">
-x'(t) = f(t, x(t))
-</span></p>
-<p>où <span class="math inline">f</span> est une fonction de <span class="math inline">\mathbb{R} \times \mathbb{R}^n</span> dans <span class="math inline">\mathbb{R}^n</span> définie par</p>
-<p><span class="math display">
-f(t, x) = A x + b(t).
-</span></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Remarques
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>On dira que l’équation différentielle est autonome si <span class="math inline">f</span> ne dépend pas explicitement du temps <span class="math inline">t</span> et non autonome sinon.</li>
-<li>Dans la littérature, on parle d’équation différentielle linéaire homogène lorsque <span class="math inline">b(t) = 0</span> et d’équation différentielle linéaire non homogène (ou avec second membre) sinon.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="importance-des-équations-différentielles" class="level2">
-<h2 class="anchored" data-anchor-id="importance-des-équations-différentielles">Importance des Équations Différentielles</h2>
-<p>Les équations différentielles sont fondamentales dans de nombreux domaines scientifiques et techniques. Elles permettent de modéliser des systèmes dynamiques et de prédire leur comportement futur. Par exemple :</p>
-<ul>
-<li>En physique, elles décrivent le mouvement des objets.</li>
-<li>En biologie, elles modélisent la croissance des populations.</li>
-<li>En économie, elles analysent les fluctuations du marché.</li>
-</ul>
-<p>En maîtrisant les concepts et les techniques de résolution des équations différentielles, nous pouvons mieux comprendre et prédire le comportement de ces systèmes complexes.</p>
-</section>
-<section id="quiz" class="level2">
-<h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
-<p><a href="quiz.html"> <img class="centering" width="25%" style="max-width:400px; min-width:200px" src="../../assets/images/quiz.png"> </a></p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1027,13 +758,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../src/index.html" class="pagination-link" aria-label="Plan du cours">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plan du cours</span>
+      <a href="../../src/integration_numerique/convergence.html" class="pagination-link" aria-label="Convergence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Convergence</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../src/introduction/kaplan.html" class="pagination-link" aria-label="Problème de Kaplan">
-        <span class="nav-page-text">Problème de Kaplan</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../src/derivees/introduction.html" class="pagination-link" aria-label="Introduction">
+        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1045,7 +776,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/introduction/edo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/introduction/edo.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/erreurs_arrondi.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/erreurs_arrondi.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

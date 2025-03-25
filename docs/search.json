@@ -36,304 +36,208 @@
     ]
   },
   {
-    "objectID": "src/integration_numerique/consistance.html",
-    "href": "src/integration_numerique/consistance.html",
-    "title": "Consistance",
+    "objectID": "src/integration_numerique/runge_kutta.html",
+    "href": "src/integration_numerique/runge_kutta.html",
+    "title": "Méthodes de Runge-Kutta",
     "section": "",
-    "text": "Les méthodes de Runge-Kutta sont des méthodes à un pas\n\n    x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i), \\quad h_i = t_{i+1} - t_i,\n\nque l’on peut écrire sous la forme\n\n    E_i(x_i, x_{i+1}) \\coloneqq x_{i+1} - \\left( x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\right) = 0.\n\nOn rappelle que x(\\cdot, t_0, x_0) est la solution du problème de Cauchy x'(t) = f(t, x(t)), x(t_0) = x_0. Pour alléger les notations, nous écrivons simplement x(\\cdot) cette solution, t_0 et x_0 étant fixés.\n\n\n\n\n\n\nDéfinition\n\n\n\nL’erreur (locale) de consistance e_i est l’erreur locale de troncature\n\n    e_i \\coloneqq E_i(x(t_i), x(t_{i+1})).\n\n\n\nNous obtenons\n\n    \\begin{aligned}\n        e_i &= E_i(x(t_i), x(t_{i+1}))\n        = x(t_{i+1}) - x(t_i) - h_i \\, \\Phi(t_i, x(t_i), h_i) \\\\[0.5em]\n        &= \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d} t - h_i \\, \\Phi(t_i, x(t_i), h_i).\n    \\end{aligned}\n\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas est consistante si pour toute solution au problème de Cauchy, on a\n\n    \\sum_{i=0}^{N-1} \\Vert e_i\\Vert \\to 0 \\quad \\text{quand} \\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nIl est important de noter que les instants t_i et le nombre de pas dépendent directement du vecteur de discrétisation {(h_i)}_{i}.\n\n\nNous avons le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nUne méthode à un pas explicite est consistante si et seulement si\n\n    \\forall\\, (t, x) \\in [t_0, t_f] \\times \\mathbb{R}^n, \\quad \\Phi(t, x, h)|_{h=0} = f(t, x).\n\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLes méthodes de Runge-Kutta explicites sont consistantes si et seulement si\n\n    \\sum_{i=1}^s b_i = 1.",
+    "text": "Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d’Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.\n\n\n\n\n\n\nDéfinition\n\n\n\nOn appelle méthode de Runge-Kutta explicite à s étages, la méthode définie par le schéma\n\n\\begin{aligned}\n    k_1 &= f(t_0, x_0) \\\\\n    k_2 &= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\\\\n    \\vdots & \\\\[-1em]\n    k_s &= f(t_0 + c_s h, x_0 + h \\sum_{j=1}^{s-1} a_{sj} k_j) \\\\\n    x_1 &= x_0 + h \\sum_{i=1}^{s} b_i k_i,\n\\end{aligned}\n\noù les coefficients c_i, a_{ij} et b_i sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que c_1 = 0 et c_i = \\sum_{j=1}^{i-1} a_{ij}, pour i = 2, \\ldots, s.\n\n\nOn représente en pratique ce schéma par le tableau de Butcher suivant.\n\n\\begin{array}{c | c c c c c} % chktex 44\n    c_1     & & & & & \\\\[0.1em]\n    c_2     & a_{21} & & & & \\\\[0.1em]\n    c_3     & a_{31} & a_{32} & & & \\\\[0.1em]\n    \\vdots  & \\vdots & \\vdots & \\ddots & & \\\\[0.1em]\n    c_s     & a_{s1} & a_{s2} & \\cdots & a_{ss-1} & \\\\[0.1em]\n    \\hline % chktex 44\n    \\rule{0pt}{2.6ex}\n            & b_1 & b_2 & \\cdots & b_{s-1} & b_s \\\\\n\\end{array}\n\nVoici une liste d’exemples de schémas de Runge-Kutta explicites.\n\nEuler (ordre 1) \n\\begin{array}{c | c} % chktex 44\n  0   & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n      & 1 \\\\\n\\end{array}\n\nRunge (ordre 2) \n\\begin{array}{c | c c} % chktex 44\n  0       &     & \\\\[0.1em]\n  1/2     & 1/2 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 0   & 1 \\\\\n\\end{array}\n\nHeun (ordre 3) \n\\begin{array}{c | c c c} % chktex 44\n  0       &     &     &  \\\\[0.1em]\n  1/3     & 1/3 &     &  \\\\[0.1em]\n  2/3     & 0   & 2/3 &  \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/4 & 0   & 3/4 \\\\\n\\end{array}\n\nRk4 (ordre 4) \n\\begin{array}{c | c c c c} % chktex 44\n  0       & & & & \\\\[0.1em]\n  1/2     & 1/2 & & & \\\\[0.1em]\n  1/2     & 0 & 1/2 & & \\\\[0.1em]\n  1       & 0 & 0 & 1 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/6 & 2/6 & 2/6 & 1/6 \\\\\n\\end{array}\n\nRk4, règle 3/8 (ordre 4) \n\\begin{array}{c | c c c c} % chktex 44\n  0       & & & & \\\\[0.1em]\n  1/3     & 1/3  & & & \\\\[0.1em]\n  2/3     & -1/3 & 1 & & \\\\[0.1em]\n  1       & 1 & -1 & 1 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/8 & 3/8 & 3/8 & 1/8 \\\\\n\\end{array}\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nDans les schémas ci-dessus, nous avons indiqué l’ordre de la méthode. Celle-ci est définie par la suite.\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l’application \\Phi(t_0, x_0, h).\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
-      "Consistance"
+      "Méthodes de Runge-Kutta"
     ]
   },
   {
-    "objectID": "src/integration_numerique/consistance.html#méthode-consistante",
-    "href": "src/integration_numerique/consistance.html#méthode-consistante",
-    "title": "Consistance",
+    "objectID": "src/integration_numerique/stabilite.html",
+    "href": "src/integration_numerique/stabilite.html",
+    "title": "Stabilité",
     "section": "",
-    "text": "Les méthodes de Runge-Kutta sont des méthodes à un pas\n\n    x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i), \\quad h_i = t_{i+1} - t_i,\n\nque l’on peut écrire sous la forme\n\n    E_i(x_i, x_{i+1}) \\coloneqq x_{i+1} - \\left( x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\right) = 0.\n\nOn rappelle que x(\\cdot, t_0, x_0) est la solution du problème de Cauchy x'(t) = f(t, x(t)), x(t_0) = x_0. Pour alléger les notations, nous écrivons simplement x(\\cdot) cette solution, t_0 et x_0 étant fixés.\n\n\n\n\n\n\nDéfinition\n\n\n\nL’erreur (locale) de consistance e_i est l’erreur locale de troncature\n\n    e_i \\coloneqq E_i(x(t_i), x(t_{i+1})).\n\n\n\nNous obtenons\n\n    \\begin{aligned}\n        e_i &= E_i(x(t_i), x(t_{i+1}))\n        = x(t_{i+1}) - x(t_i) - h_i \\, \\Phi(t_i, x(t_i), h_i) \\\\[0.5em]\n        &= \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d} t - h_i \\, \\Phi(t_i, x(t_i), h_i).\n    \\end{aligned}\n\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas est consistante si pour toute solution au problème de Cauchy, on a\n\n    \\sum_{i=0}^{N-1} \\Vert e_i\\Vert \\to 0 \\quad \\text{quand} \\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nIl est important de noter que les instants t_i et le nombre de pas dépendent directement du vecteur de discrétisation {(h_i)}_{i}.\n\n\nNous avons le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nUne méthode à un pas explicite est consistante si et seulement si\n\n    \\forall\\, (t, x) \\in [t_0, t_f] \\times \\mathbb{R}^n, \\quad \\Phi(t, x, h)|_{h=0} = f(t, x).\n\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLes méthodes de Runge-Kutta explicites sont consistantes si et seulement si\n\n    \\sum_{i=1}^s b_i = 1.",
+    "text": "La stabilité consiste à comparer la solution du schéma avec celle du même schéma auquel on ajoute une perturbation. Si la borne des erreurs (en norme) sur l’ensemble des points de discrétisation entre les deux solutions ne dépend que des perturbations et non pas de la subdivision, c’est-à-dire du vecteur de pas, alors on dira que la méthode est stable. En effet, pour une méthode stable de petites perturbations mènent à de petites erreurs.\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas explicite est stable si il existe une constante S positive indépendante de {(h_i)}_i telle que pour toutes suites sur \\llbracket 0\\,,\\, N-1 \\rrbracket :\n\n    \\begin{aligned}\n        x_{i+1} &= x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\\\\n        y_{i+1} &= y_i + h_i\\, \\Phi(t_i, y_i, h_i) + \\varepsilon_i,\n    \\end{aligned}\n\non ait\n\n    \\max_{0 \\le i \\le N}\\, \\lVert x_i - y_i\\rVert\n    \\le S \\left( \\lVert x_0 - y_0\\rVert +~\\sum_{i=0}^{N-1} \\lVert\\varepsilon_i\\rVert \\right).\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nMontrer que la méthode d’Euler est stable si la fonction f est de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x. On supposera pour simplifier que le pas d’intégration est uniforme, c’est-à-dire que h_i = h pour tout i.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nSoit {(x_i)}_i et {(y_i)}_i des solutions de\n\n    \\begin{aligned}\n        x_{i+1} &= x_i + h_i\\, f(t_i, x_i) \\\\[0.5em]\n        y_{i+1} &= y_i + h_i\\, f(t_i, y_i) + \\varepsilon_i.\n    \\end{aligned}\n\nPuisque f est \\mathscr{C}^{1}, elle est localement lipschitzienne et puisque t appartient à un intervalle compact, on peut trouver une constante de Lipschitz indépendante du temps. La fonction f étant globalement lipschitzienne par rapport à la variable x, on peut donc trouver une constante de Lipschitz indépendante aussi de x. On note L cette constante. Ainsi, on a :\n\n    \\begin{aligned}\n        \\lVert x_{i+1} - y_{i+1}\\rVert\n        &\\le \\lVert x_i - y_i\\rVert + h_i \\, \\lVert f(t_i, x_i) - f(t_i, y_i)\\rVert + \\lVert\\varepsilon_i\\rVert\\\\[0.5em]\n        &\\le (1 + h_i L)\\, \\lVert x_i - y_i\\rVert + \\lVert\\varepsilon_i\\rVert.\n    \\end{aligned}\n\nPuisque h_i = h pour tout i, on arrive à montrer que\n\n    \\lVert x_{i+1} - y_{i+1}\\rVert \\le {(1 + h\\, L)}^N \\left( \\lVert x_0-y_0\\rVert + \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\right).\n\nPuisque notamment pour tout x \\ge 0, on a 1+x \\le e^x, il vient que\n\n    {(1 + h\\, L)}^N \\le e^{hLN} = e^{(t_f-t_0)\\, L}\n    \\quad\n    \\text{car}\n    \\quad\n    N = \\frac{t_f-t_0}{h},\n\net donc pour tout i \\in \\llbracket 0\\,,\\, N-1 \\rrbracket, on a\n\n    \\lVert x_{i} - y_{i}\\rVert \\le e^{(t_f-t_0)\\, L} \\left( \\lVert x_0-y_0\\rVert + \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\right)\n\nce qui montre la stabilité de la méthode d’Euler en passant au max.\n\n\n\nDans l’exercice précédent, la stabilité de la méthode d’Euler découle du fait que f est globalement lipschitzienne par rapport à la variable x de manière uniforme sur [t_0, t_f]. De manière générale, on a le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nPour que la méthode à un pas explicite soit stable il suffit que \\Phi soit \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x.\n\n\n\n\n\n\n\n\nPreuve rapide\n\n\n\n\n\nSupposons \\Phi de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x. Alors, il existe K \\ge 0 telle que :\n\n    \\lVert\\Phi(t, x, h) - \\Phi(t, y, h)\\rVert \\le K \\lVert x - y\\rVert,\n\npour tout t\\in [t_0, t_f], 0 \\le h \\le t_f-t_0 et (x, y) \\in \\mathbb{R}^n \\times \\mathbb{R}^n. On peut alors prendre comme constante de stabilité\n\nS = e^{K(t_f-t_0)}.\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
-      "Consistance"
+      "Stabilité"
     ]
   },
   {
-    "objectID": "src/integration_numerique/consistance.html#ordre-de-consistance",
-    "href": "src/integration_numerique/consistance.html#ordre-de-consistance",
-    "title": "Consistance",
-    "section": "Ordre de consistance",
-    "text": "Ordre de consistance\nPour évaluer l’erreur de consistance à l’indice i, le paramètre important est le pas h_i. On fixe les autres paramètres et on regarde comment se comporte l’erreur en fonction du pas. Nous aurons besoin de la notation de Landau. Rappelons que la notation de Landau e(h) = O\\mathopen{}\\left({h^p}\\right) signifie qu’il existe un voisinage U de 0 et une constante positive C telle que pour tout h \\in U, \\lVert e(h)\\rVert \\le C \\lvert h\\rvert^p.\n\n\n\n\n\n\nDéfinition\n\n\n\nSi l’erreur locale de consistance vérifie pour p \\ge 1 :\n\nE_i(h) \\coloneqq E_i(x(t_i), x(t_i + h)) = x(t_i + h) - x(t_i) - h \\, \\Phi(t_i, x(t_i), h) = O\\mathopen{}\\left({h^{p+1}}\\right),\n\non dit que le schéma est d’ordre p. On parle de l’ordre de consistance du schéma.\n\n\nSi nous avions défini E_i comme étant donnée par\n\n\\frac{x_{i+1}-x_i}{h_i} - \\Phi(t_i, x_i, h_i),\n\nnous aurions eu E_i(h) = O\\mathopen{}\\left(h^p\\right). L’ordre de consistance est bien p ce qui se verra mieux par la suite car l’ordre de convergence sera donné par l’ordre de consistance dans le cas où la méthode est consistante et stable.\n\n\n\n\n\n\nRemarque\n\n\n\nUne méthode d’ordre de consistance p \\ge 1 est consistante.\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nL’ordre de consistance ne dépend pas de l’indice i. Ainsi, on peut se restreindre au premier pas. Dans ce cas, on note\n\nE(h) = x(t_0 + h) - x(t_0) - h \\, \\Phi(t_0, x(t_0), h).\n\nPour simplifier un peu plus la notation, on utilise le fait que x(t_0) = x_0 et on note\n\nE(h) = x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h).\n\n\n\nLe schéma d’Euler explicite est d’ordre p=1 car par définition de la dérivée\n\n\\begin{aligned}\nE(h) &= x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h) \\\\\n&= x'(t_0)\\, h + O\\mathopen{}\\left(h^2\\right) - h \\, f(t_0, x_0) \\\\\n&= h\\, f(t_0, x_0) - h \\, f(t_0, x_0) + O\\mathopen{}\\left(h^2\\right) \\\\\n&= O\\mathopen{}\\left(h^2\\right).\n\\end{aligned}\n\nNous allons dans l’exercice suivant étudier les relations que doivent vérifier les coefficients a_{ij}, b_i et c_i pour qu’un schéma de Runge-Kutta explicite à 2 étages soit d’ordre 2.\n\n\n\n\n\n\nQuestion\n\n\n\nSoit le schéma de Runge-Kutta\n\n\\begin{aligned}\nk_1 &= f(t_0, x_0) \\\\\nk_2 &= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\\\\nx_1 &= x_0 + h\\, (b_1 k_1 + b_2 k_2).\n\\end{aligned}\n\nRetrouver que c_2 = a_{21} et donner les 2 relations que doivent vérifier b_1, b_2 et a_{21} pour que le schéma soit d’ordre 2. En déduire que la méthode de Runge est d’ordre 2.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nDans ce cas, nous avons\n\ne(h) = x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h)\n\navec\n\n\\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \\quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).\n\nDéveloppons e(h) à l’ordre 2 et voyons les conditions à vérifier pour avoir e(h) = O\\mathopen{}\\left(h^3\\right). Dans un premier temps, nous avons\n\nx(t_0 + h) - x_0 = hx'(t_0) + \\frac{h^2}{2} x''(t_0) + O\\mathopen{}\\left(h^3\\right)\n\net puisque x'(t) = f(t, x(t)), alors\n\nx''(t) = \\dfrac{\\partial f}{\\partial t}(t, x(t)) + \\dfrac{\\partial f}{\\partial x}(t, x(t)) \\, x'(t)\n= \\dfrac{\\partial f}{\\partial t}(t, x(t)) + \\dfrac{\\partial f}{\\partial x}(t, x(t)) \\, f(t, x(t))\n\ndonc\n\nx(t_0 + h) - x_0 = h f(t_0, x_0) + \\frac{h^2}{2}\n\\left( \\dfrac{\\partial f}{\\partial t}(t_0, x_0) + \\dfrac{\\partial f}{\\partial x}(t_0, x_0) \\, f(t_0, x_0) \\right) + O\\mathopen{}\\left(h^3\\right).\n\nD’un autre côté, nous avons\n\nk_2(h) = f(t_0, x_0) + h\\, f'(t_0, x_0) \\cdot (c_2, a_{21} k_1) + O\\mathopen{}\\left(h^2\\right).\n\nAu final, nous obtenons\n\n\\begin{aligned}\ne(h) &= h f(t_0, x_0) + \\frac{h^2}{2}\n\\left( \\dfrac{\\partial f}{\\partial t}(t_0, x_0) + \\dfrac{\\partial f}{\\partial x}(t_0, x_0) \\, f(t_0, x_0) \\right) \\\\[0.5em]\n& \\quad - h \\left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\\, f'(t_0, x_0) \\cdot (c_2, a_{21} k_1) \\right)\n+ O\\mathopen{}\\left(h^3\\right) \\\\[0.5em]\n&= h (1-b_1-b_2) f(t_0, x_0) \\\\[0.5em]\n&\\quad + \\frac{h^2}{2} (1 - 2 b_2 c_2) \\dfrac{\\partial f}{\\partial t}(t_0, x_0)\n+ \\frac{h^2}{2} (1 - 2 b_2 a_{21}) \\dfrac{\\partial f}{\\partial x}(t_0, x_0)\\, f(t_0, x_0) + O\\mathopen{}\\left(h^3\\right).\n\\end{aligned}\n\nAinsi, pour que e(h) = O\\mathopen{}\\left(h^3\\right) il faut avoir c_2 = a_{21} et\n\n1 = b_1 + b_2 \\quad \\text{et} \\quad b_2 a_{21} = \\frac{1}{2}.\n\nLa méthode de Runge correspond à c_2 = a_{21} = 1/2, b_1 = 0 et b_2 = 1 donc les conditions sont vérifiées et la méthode est bien d’ordre 2.\n\n\n\n\n\n\n\n\n\nProposition\n\n\n\nLes méthodes de Heun et Rk4 sont respectivement d’ordre 3 et 4.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nVoir le livre “Solving Ordinary Differential Equations I, Nonstiff Problem”1 pour les démonstrations.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère le schéma de Runge-Kutta à 3 étages\n\n\\begin{array}{c | c c c}\n0       &        &        &  \\\\[0.1em]\nc_2     & a_{21} &        &  \\\\[0.1em]\nc_3     & a_{31} & a_{32} &  \\\\[0.1em]\n\\hline\n        & b_1 & b_2 & b_3 \\\\\n\\end{array}\n\\quad\n\\text{avec}\n\\quad\nc_i = \\sum_{j=1}^{3} a_{ij}.\n\nDémontrer dans le cas d’un système autonome que les relations que doivent vérifier les coefficients pour avoir un schéma d’ordre 3 sont\n\n\\begin{aligned}\n    1 &= b_1 + b_2 + b_3, \\\\[0.5em]\n    \\frac{1}{2} &= b_2\\, a_{21} + b_3\\, a_{31} + b_3\\, a_{32}, \\\\[0.5em]\n    \\frac{1}{3} &= b_2\\, a_{21}^2 + b_3\\, \\left( a_{31}^2 + 2\\, a_{31}\\, a_{32} + a_{32}^3 \\right), \\\\[0.5em]\n    \\frac{1}{6} &= b_3\\, a_{32}\\, a_{21}.\n\\end{aligned}\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère une méthode de Runge-Kutta explicite à s étages.\n\nAppliquer un pas de la méthode à l’équation x'(t)=x(t), pour la condition initiale x(0)=1, et montrer que x_1 est un polynôme en h au plus de degré s.\nEn déduire que l’ordre p de la méthode est au plus égale à s.",
-    "crumbs": [
-      "Plan du cours",
-      "Intégration numérique",
-      "Consistance"
-    ]
-  },
-  {
-    "objectID": "src/integration_numerique/consistance.html#footnotes",
-    "href": "src/integration_numerique/consistance.html#footnotes",
-    "title": "Consistance",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nE. Hairer, S. P. Nørsett & G. Wanner, Solving Ordinary Differential Equations I, Nonstiff Problems, vol 8 of Springer Serie in Computational Mathematics, Springer-Verlag, second edn (1993).↩︎",
-    "crumbs": [
-      "Plan du cours",
-      "Intégration numérique",
-      "Consistance"
-    ]
-  },
-  {
-    "objectID": "src/edo_lineaires/exemples.html",
-    "href": "src/edo_lineaires/exemples.html",
-    "title": "Exemples et Exercices",
+    "objectID": "src/edo_lineaires/solution.html",
+    "href": "src/edo_lineaires/solution.html",
+    "title": "Solution du Problème de Cauchy Linéaire",
     "section": "",
-    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "text": "Considérons le problème de Cauchy linéaire homogène suivant :\n\n    x'(t) = A x(t), \\quad x(0) = x_0\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et x_0 \\in \\mathbb{R}^n est le vecteur d’état initial.\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire homogène est donnée par :\n\n    t \\mapsto e^{tA} x_0\n\navec t \\in \\mathbb{R}.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nExistence. Montrons que \\varphi(t) \\coloneqq e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\nVérification de la condition initiale. À t = 0, nous avons : \n      \\varphi(0) = e^{0 A} x_0 = I_n x_0 = x_0.\n   Donc, la condition initiale est satisfaite.\nVérification de l’équation différentielle. Calculons la dérivée de \\varphi(t) par rapport à t : \n      \\varphi'(t) = \\frac{\\mathrm{d}}{\\mathrm{d}t} (e^{tA} x_0) = A e^{tA} x_0 = A \\varphi(t).\n   Donc, \\varphi(t) satisfait l’équation différentielle x'(t) = A x(t).\n\nAinsi, \\varphi(t) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.\nUnicité. Supposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - \\varphi(t). Alors,\n\n    z'(t) = y'(t) - \\varphi'(t) = A y(t) - A \\varphi(t) = A (y(t) - \\varphi(t)) = A z(t),\n\navec la condition initiale z(0) = y(0) - \\varphi(0) = x_0 - x_0 = 0.\nConsidérons maintenant le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n    w'(t) = \\frac{\\mathrm{d}}{\\mathrm{d}t} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0.\n\nPuisque w'(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = \\varphi(t). Cela prouve l’unicité de la solution.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Exemples"
+      "Solution"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/exemples.html#exemple-1-convergence",
-    "href": "src/edo_lineaires/exemples.html#exemple-1-convergence",
-    "title": "Exemples et Exercices",
+    "objectID": "src/edo_lineaires/solution.html#cas-homogène",
+    "href": "src/edo_lineaires/solution.html#cas-homogène",
+    "title": "Solution du Problème de Cauchy Linéaire",
     "section": "",
-    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "text": "Considérons le problème de Cauchy linéaire homogène suivant :\n\n    x'(t) = A x(t), \\quad x(0) = x_0\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et x_0 \\in \\mathbb{R}^n est le vecteur d’état initial.\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire homogène est donnée par :\n\n    t \\mapsto e^{tA} x_0\n\navec t \\in \\mathbb{R}.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nExistence. Montrons que \\varphi(t) \\coloneqq e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\nVérification de la condition initiale. À t = 0, nous avons : \n      \\varphi(0) = e^{0 A} x_0 = I_n x_0 = x_0.\n   Donc, la condition initiale est satisfaite.\nVérification de l’équation différentielle. Calculons la dérivée de \\varphi(t) par rapport à t : \n      \\varphi'(t) = \\frac{\\mathrm{d}}{\\mathrm{d}t} (e^{tA} x_0) = A e^{tA} x_0 = A \\varphi(t).\n   Donc, \\varphi(t) satisfait l’équation différentielle x'(t) = A x(t).\n\nAinsi, \\varphi(t) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.\nUnicité. Supposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - \\varphi(t). Alors,\n\n    z'(t) = y'(t) - \\varphi'(t) = A y(t) - A \\varphi(t) = A (y(t) - \\varphi(t)) = A z(t),\n\navec la condition initiale z(0) = y(0) - \\varphi(0) = x_0 - x_0 = 0.\nConsidérons maintenant le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n    w'(t) = \\frac{\\mathrm{d}}{\\mathrm{d}t} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0.\n\nPuisque w'(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = \\varphi(t). Cela prouve l’unicité de la solution.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Exemples"
+      "Solution"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/exemples.html#exemple-2-divergence",
-    "href": "src/edo_lineaires/exemples.html#exemple-2-divergence",
-    "title": "Exemples et Exercices",
-    "section": "Exemple 2 : Divergence",
-    "text": "Exemple 2 : Divergence\nConsidérons le système linéaire suivant :\n\n    x'(t) = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} a des valeurs propres complexes conjuguées 1 \\pm i.\nL’exponentielle de A est : \n  e^{tA} = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = e^t \\begin{pmatrix} \\cos(t) \\\\ \\sin(t) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, \\|x(t)\\| \\to \\infty car la partie réelle des valeurs propres est positive.",
+    "objectID": "src/edo_lineaires/solution.html#cas-non-homogène",
+    "href": "src/edo_lineaires/solution.html#cas-non-homogène",
+    "title": "Solution du Problème de Cauchy Linéaire",
+    "section": "Cas Non Homogène",
+    "text": "Cas Non Homogène\nConsidérons maintenant le problème de Cauchy linéaire non homogène :\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0,\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et t \\mapsto b(t) \\in \\mathbb{R}^n est définie et continue sur un intervalle ouvert \\mathcal{I} contenant t_0.\n\n\n\n\n\n\nHypothèse\n\n\n\nNous supposons acquis l’existence d’une unique solution globale.\n\n\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire non homogène est donnée par :\n\n\\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds\n\navec t \\in \\mathcal{I}.\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nVérifiez que \\varphi(t) est une solution du problème de Cauchy linéaire non homogène.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNotons\n\n    \\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds.\n\nPuisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction \\varphi(t) définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation de la constante. Faisons-le.\nMéthode de variation de la constante. Posons \\varphi(t) = e^{(t-t_0)A} z(t) et déterminons z(t). Tout d’abord, \\varphi(\\cdot) doit vérifier la condition initiale :\n\n\\varphi(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,\n\nd’où z(t_0) = x_0.\nEnsuite, \\varphi(\\cdot) doit satisfaire l’équation différentielle. En dérivant, on obtient :\n\n\\varphi'(t) = A \\varphi(t) + e^{(t-t_0)A} z'(t).\n\nIl faut donc choisir z(\\cdot) de manière à ce que b(t) = e^{(t-t_0)A} z'(t), ce qui équivaut à z'(t) = e^{(t_0-t)A} b(t).\nEnfin, en intégrant :\n\nz(t) = x_0 + \\int_{t_0}^t e^{(t_0-s)A}\\, b(s)\\, \\mathrm{d}s.\n\nD’où l’expression finale :\n\n\\varphi(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \\int_{t_0}^t e^{(t-s)A}\\, b(s)\\, \\mathrm{d}s,\n\ngrâce à la propriété e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Exemples"
+      "Solution"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/exemples.html#exemple-3-second-membre-constant",
-    "href": "src/edo_lineaires/exemples.html#exemple-3-second-membre-constant",
-    "title": "Exemples et Exercices",
-    "section": "Exemple 3 : Second Membre Constant",
-    "text": "Exemple 3 : Second Membre Constant\nConsidérons le système linéaire suivant avec un second membre constant :\n\n    x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\mathrm{d}s\n\nCalculons l’intégrale : \n   x(t) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} & 0 \\\\ 0 & e^{-2(t-s)} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, \\mathrm{d}s\n\nCe qui donne : \n   x(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ \\frac{1}{2} (1 - e^{-2t}) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\end{pmatrix}.",
+    "objectID": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
+    "href": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
+    "title": "Solution du Problème de Cauchy Linéaire",
+    "section": "Cas Particulier : b Constant",
+    "text": "Cas Particulier : b Constant\nSi b est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable. On fixe pour la suite t_0 = 0.\nPosons z(t) = x(t) - x_p(t), où x_p(t) est une solution particulière de l’équation x'(t) = A x(t) + b. En substituant x(t) = z(t) + x_p(t) dans l’équation originale, nous obtenons :\n\n    z'(t) + x'_p(t) = A(z(t) + x_p(t)) + b.\n\nPuisque x_p(t) est une solution particulière, x'_p(t) = A x_p(t) + b. Donc,\n\n    z'(t) = A z(t).\n\nAinsi, z(t) satisfait une équation différentielle linéaire homogène. La solution de z'(t) = A z(t) avec la condition initiale z(0) = x_0 - x_p(0) est donnée par :\n\n    z(t) = e^{tA} (x_0 - x_p(0)).\n\nEn revenant à la variable originale, nous avons :\n\n    x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t).\n\nCe changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.\n\n\n\n\n\n\nRemarque\n\n\n\nSi b appartient à l’image de A, c’est-à-dire s’il existe un vecteur x_e tel que A x_e = -b, alors nous pouvons choisir x_p(t) = x_e. En effet, dans ce cas, x_e est une solution particulière constante de l’équation x'(t) = A x(t) + b, car :\n\nA x_e + b = -b + b = 0\n\nAinsi, x_p(t) = x_e est une solution particulière constante, simplifiant encore le changement de variable et nous obtenons\n\n    x(t) = e^{tA} (x_0 - x_e) + x_e.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Exemples"
+      "Solution"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/exponentielle.html",
-    "href": "src/edo_lineaires/exponentielle.html",
-    "title": "Exponentielle de Matrice",
+    "objectID": "src/edo_lineaires/definition.html",
+    "href": "src/edo_lineaires/definition.html",
+    "title": "Problème de Cauchy Linéaire",
     "section": "",
-    "text": "L’exponentielle d’une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d’exponentielle des nombres réels aux matrices.",
+    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx\\colon I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I contenant t_0,\nA(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Exponentielle de matrice"
+      "Définition"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/exponentielle.html#définition",
-    "href": "src/edo_lineaires/exponentielle.html#définition",
-    "title": "Exponentielle de Matrice",
-    "section": "Définition",
-    "text": "Définition\nOn définit l’exponentielle d’une matrice A \\in \\mathcal{M}_n(\\mathbb{R}) par :\n\ne^A \\coloneqq \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} \\in \\mathcal{M}_n(\\mathbb{R}).\n\n\n\n\n\n\n\nPreuve de la convergence de la série\n\n\n\n\n\nPour montrer que cette série converge absolument pour toute matrice A \\in \\mathcal{M}_n(\\mathbb{R}), nous allons utiliser une norme sous-multiplicative. Soit \\|\\cdot\\| une norme sous-multiplicative sur \\mathcal{M}_n(\\mathbb{R}), par exemple la norme de Frobenius ou n’importe quelle norme subordonnée (ou norme d’algèbre). Une norme sous-multiplicative satisfait pour toutes matrices \\ A, B \\in \\mathcal{M}_n(\\mathbb{R}) la propriété suivante :\n\n    \\|A B\\| \\leq \\|A\\| \\|B\\|.\n\nDans ce cas, nous pouvons majorer la norme de chaque terme de la série :\n\n    \\left\\| \\frac{A^k}{k!} \\right\\| = \\frac{\\|A^k\\|}{k!} \\leq \\frac{\\|A\\|^k}{k!}.\n\nLa série \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} est simplement l’exponentielle scalaire de la norme \\|A\\| :\n\n    \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} = e^{\\|A\\|}.\n\nPuisque la série de droite converge, il en découle que la série de matrices \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} converge absolument. Enfin, une série absolument convergente dans un espace vectoriel normé de dimension finie est convergente.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nL’exponentielle de A s’écrit aussi \\exp(A).",
-    "crumbs": [
-      "Plan du cours",
-      "Problème de Cauchy linéaire",
-      "Exponentielle de matrice"
-    ]
-  },
-  {
-    "objectID": "src/edo_lineaires/exponentielle.html#propriétés",
-    "href": "src/edo_lineaires/exponentielle.html#propriétés",
-    "title": "Exponentielle de Matrice",
-    "section": "Propriétés",
-    "text": "Propriétés\n\nMatrice Nulle\nOn note 0_n la matrice nulle de \\mathcal{M}_n(\\mathbb{R}) et I_n la matrice identité. On a alors : \n    e^{0_n} = I_n.\n\n\n\nMatrice Diagonale\nSi \\Sigma est une matrice diagonale avec des éléments diagonaux \\lambda_1, \\lambda_2, \\dots, \\lambda_n, c’est-à-dire :\n\n    \\Sigma = \\text{diag}(\\lambda_1, \\lambda_2, \\dots, \\lambda_n) =\n    \\begin{pmatrix}\n        \\lambda_1 & 0 & \\cdots & 0 \\\\\n        0 & \\lambda_2 & \\cdots & 0 \\\\\n        \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & \\lambda_n\n    \\end{pmatrix},\n\nalors l’exponentielle de \\Sigma est simplement la matrice diagonale des exponentielles des éléments diagonaux :\n\n    e^\\Sigma = \\text{diag}(e^{\\lambda_1}, e^{\\lambda_2}, \\dots, e^{\\lambda_n}) =\n    \\begin{pmatrix}\n        e^{\\lambda_1} & 0 & \\cdots & 0 \\\\\n        0 & e^{\\lambda_2} & \\cdots & 0 \\\\\n        \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & e^{\\lambda_n}\n    \\end{pmatrix}.\n\n\n\nMatrice Semblable\nSoit A \\in \\mathcal{M}_n(\\mathbb{R}) et P \\in \\mathrm{GL}_n(\\mathbb{R}), c’est-à-dire P est inversible. Alors\n\n    e^{PAP^{-1}} = P e^A P^{-1}.\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNous avons : \n    e^{PAP^{-1}} = \\sum_{k=0}^{\\infty} \\frac{\\left(PAP^{-1}\\right)^k}{k!}.\n\nMontrons par récurrence que \\left(PAP^{-1}\\right)^k = P A^k P^{-1}.\n\nPour k=0, nous avons I_n = \\left(PAP^{-1}\\right)^0 et P A^0 P^{-1} = P P^{-1} = I_n donc la propriété est vraie.\nSupposons cette propriété vraie pour k &gt; 0. Alors \n  \\left(PAP^{-1}\\right)^{k+1} = \\left(PAP^{-1}\\right)^k PAP^{-1} = P A^k P^{-1} PAP^{-1} = P A^{k+1} P^{-1}\n et donc la propriété est vraie pour k+1.\n\nAinsi, on a : \\begin{align}\n    e^{PAP^{-1}} &= \\sum_{k=0}^{\\infty} \\frac{\\left(PAP^{-1}\\right)^k}{k!} =\n    \\sum_{k=0}^{\\infty} \\left( P \\frac{A^k}{k!} P^{-1} \\right) \\notag \\\\[1.5em]\n    &= P \\left( \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} \\right) P^{-1}\n    \\tag*{(par continuité de la conjugaison)} \\\\[1.5em]\n    &= P e^A P^{-1}. \\notag\n\\end{align}\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nSi la matrice A est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l’exponentielle d’une matrice diagonale.\n\n\n\n\nMatrice Transposée\nLa transposée d’une matrice A de taille m \\times n est notée A^T et s’obtient en échangeant les lignes et les colonnes de A. Autrement dit, l’élément (i, j) de A^T est l’élément (j, i) de A :\n\n(A^T)_{ij} = A_{ji}\n\nConcernant l’exponentielle de matrice, nous avons :\n\ne^{A^T} = (e^A)^T.\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa preuve est laissée en exercice. On pourra s’inspirer de la preuve ci-avant.\n\n\n\n\nMatrice Nilpotente\nUne matrice carrée A est dite nilpotente s’il existe un entier k tel que :\n\nA^k = 0.\n\nDans ce cas, l’exponentielle de A s’écrit sous forme de somme finie :\n\ne^A = \\sum_{n=0}^{k-1} \\frac{A^n}{n!}.\n\nPar exemple, pour la matrice\n\nA = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix},\n\non a A^2 = 0, donc son exponentielle est :\n\ne^A = I + A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}.\n\n\n\nMatrices Commutantes\nSi les matrices A et B commutent, c’est-à-dire si AB = BA, alors l’exponentielle de leur somme est le produit des exponentielles :\n\n    e^{A + B} = e^A\\, e^B.\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nSoit A et B deux matrices dans \\mathcal{M}_n(\\mathbb{R}) qui commutent, c’est-à-dire telle que AB = BA.\nEn développant (A+B)^k à l’aide du binôme de Newton, on obtient puisque A et B commutent :\n\n    (A + B)^k = \\sum_{j=0}^{k} \\binom{k}{j} A^j B^{k-j}.\n\nEn utilisant le produit de Cauchy et le résultat précédent, nous avons :\n\n    e^A\\, e^B = \\sum_{k=0}^{\\infty} c_k, \\quad c_k = \\sum_{j=0}^{k} \\frac{A^j}{j!} \\frac{B^{k-j}}{(k-j)!} = \\frac{(A + B)^k}{k!}.\n\nAinsi, au final nous obtenons :\n\n    e^A\\, e^B = \\sum_{k=0}^{\\infty} \\frac{(A + B)^k}{k!} = e^{A+B}.\n\nCela conclut la démonstration.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nLa commutativité des matrices A et B est une condition nécessaire pour que cette propriété soit vraie. Voir la formule de Baker-Campbell-Hausdorff pour plus de détails.\nContre-exemple. Soient\n\n    A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}.\n\nAlors, pusique A^2 = B^2 = 0_2, on a :\n\n    e^A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\end{pmatrix}, \\quad e^B = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix}\n\nmais par ailleursn (A + B)^2 = I_2 donc\n\n    \\begin{aligned}\n        e^{A+B} &= \\left( \\sum_{k=0}^{\\infty} \\frac{1}{2k!} \\right) I_2 + \\left( \\sum_{k=0}^{\\infty} \\frac{1}{(2k+1)!} \\right) (A+B) \\\\[1.5em]\n        &= \\cosh(1) I_2 + \\sinh(1) (A + B) \\\\[0.5em]\n        &\\ne e^A e^B = \\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \\end{pmatrix}.\n    \\end{aligned}\n\n\n\n\n\nInversibilité et Dérivabilité\nSoit A \\in \\mathcal{M}_n(\\mathbb{R}). En corollaire de ce qui précède, nous avons les propriétés suivantes :\n\nInversibilité : e^A est toujours une matrice inversible et son inverse est donné par :\n\n     (e^A)^{-1} = e^{-A}.\n\nDérivabilité : L’application t \\mapsto e^{tA} est dérivable par rapport à t, et sa dérivée est donnée par :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d} t} e^{tA} = A\\, e^{tA} = e^{tA} A.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\n\nInversibilité :\nPour prouver que e^A est inversible et que son inverse est e^{-A}, nous utilisons la commutativité des matrices A et -A. En effet, il est évident que les matrices A et -A commutent, donc on peut écrire :\n\n     e^{-A} e^A = e^A e^{-A} = e^{A + (-A)} = e^{0_n} = I_n.\n\nAinsi, e^A est inversible et son inverse est e^{-A}.\nDérivabilité :\nFixons un t \\in \\mathbb{R}. Pour étudier la dérivée de e^{tA} par rapport à t, nous commençons par utiliser la définition de la dérivée :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = \\lim_{h \\to 0} \\frac{e^{(t+h)A} - e^{tA}}{h}.\n\nEn remarquant que tA et hA commutent, nous réécrivons la différence comme suit :\n\n     e^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I_n).\n\nDivisons par h :\n\n     \\frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \\frac{e^{hA} - I}{h} = e^{tA} \\left( \\sum_{k=1}^{\\infty} \\frac{h^{k-1}A^k}{k!} \\right).\n\nOr,\n\n     \\begin{aligned}\n         \\sum_{k=1}^{\\infty} \\frac{h^{k-1}A^k}{k!} &= A + h \\sum_{k=2}^{\\infty} \\frac{h^{k-2}A^k}{k!} \\\\\n         &= A + h A^2 \\sum_{k=0}^{\\infty} \\frac{h^{k}A^k}{(k+2)!}\n     \\end{aligned}\n\net la série de termes {h^{k}A^k}/{(k+2)!} est convergente puisque ceux-ci sont majorés pas ceux de l’exponentielle de hA. On note B la limite de la série et on obtient\n\n     \\lim_{h \\to 0} \\frac{e^{(t+h)A} - e^{tA}}{h} = \\lim_{h \\to 0} e^{tA} \\left( A + h A^2 B \\right) = e^{tA} A.\n\nDonc, la dérivée de e^{tA} est :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = e^{tA} A.\n\nPar commutativité de A avec ses puissances, on peut aussi écrire cette dérivée comme :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = A\\, e^{tA}.\n\n\nCela conclut la démonstration des deux propriétés.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nOn pourra préférer la notation \\exp. Ces deux derniers résultats nous indique que l’on a \\exp \\colon \\mathcal{M}_n(\\mathbb{R}) \\to \\mathrm{GL}_n(\\mathbb{R}) et que \n    \\frac{\\mathrm{d}}{\\mathrm{d}t} \\exp(tA) = A \\exp(tA) = \\exp(tA) A.\n Attention, nous n’avons rien prouvé quant à la régularité de l’application \\exp, rien au sujet ni de sa continuité sur \\mathcal{M}_n(\\mathbb{R}), ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même \\mathscr{C}^\\infty. L’application exponentielle est même surjective.",
-    "crumbs": [
-      "Plan du cours",
-      "Problème de Cauchy linéaire",
-      "Exponentielle de matrice"
-    ]
-  },
-  {
-    "objectID": "src/index.html",
-    "href": "src/index.html",
-    "title": "Cours Prépa INP",
+    "objectID": "src/edo_lineaires/definition.html#définition",
+    "href": "src/edo_lineaires/definition.html#définition",
+    "title": "Problème de Cauchy Linéaire",
     "section": "",
-    "text": "Introduction\n\n\nÉquations différentielles ordinaires\nProblème de Kaplan\nProblème aux moindres carrés\n\n\n\n\n\n\nProblème de Cauchy linéaire\n\n\nDéfinition\nExponentielle de matrice\nSolution\nExemples\n\n\n\n\n\n\nIntégration numérique\n\n\nIntroduction\nMéthodes de Runge-Kutta\nConsistance\nStabilité\nConvergence\n\n\n\n\n\n\nDérivées\n\n\nIntroduction\nCondition initiale\nParamètres\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top",
+    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx\\colon I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I contenant t_0,\nA(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant.",
     "crumbs": [
-      "Plan du cours"
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Définition"
     ]
   },
   {
-    "objectID": "src/introduction/kaplan.html",
-    "href": "src/introduction/kaplan.html",
-    "title": "Problème de Kaplan",
+    "objectID": "src/edo_lineaires/definition.html#terminologie",
+    "href": "src/edo_lineaires/definition.html#terminologie",
+    "title": "Problème de Cauchy Linéaire",
+    "section": "Terminologie",
+    "text": "Terminologie\nSoit l’équation différentielle ordinaire linéaire :\n\nx'(t) = A(t) x(t) + b(t),\n\noù A(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) et b(t) \\in \\mathbb{R}^n. On distingue plusieurs cas :\n\nÉquation linéaire homogène : lorsque b(t) = 0, l’équation devient x'(t) = A(t) x(t).\nÉquation linéaire non homogène (ou avec second membre) : lorsque b(t) \\neq 0.\nÉquation autonome : lorsque A(t) et b(t) sont constants, c’est-à-dire indépendants de t.",
+    "crumbs": [
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Définition"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#solution",
+    "href": "src/edo_lineaires/definition.html#solution",
+    "title": "Problème de Cauchy Linéaire",
+    "section": "Solution",
+    "text": "Solution\nOn suppose les fonctions t \\mapsto A(t) et t \\mapsto b(t) définies et continues sur un intervalle ouvert \\mathcal{I} contenant t_0. On appelle solution du problème de Cauchy associé, tout couple (I, \\varphi), où I est un intervalle ouvert de \\mathcal{I} contenant t_0 et \\varphi \\colon I \\to \\mathbb{R}^n est une fonction dérivable sur I, tel que pour tout t \\in I, \n  \\varphi'(t) = A(t) \\varphi(t) + b(t)\n et \\varphi(t_0) = x_0.\n\n\n\n\n\n\nRemarque\n\n\n\nIl est courant d’utiliser la même notation pour la solution \\varphi et l’inconnue x.\n\n\nUne solution (I,\\varphi) est dite maximale si, pour toute autre solution (J,\\psi), on a J \\subset I et \\varphi = \\psi sur J. On dit que qu’une solution (I,\\varphi) est un prolongement d’une autre solution (J,\\psi), si J \\subset I et \\varphi = \\psi sur J. On parle de solution globale si ell est définie sur tout l’intervalle \\mathcal{I}.\n\n\n\n\n\n\nRemarques\n\n\n\n\nToute solution se prolonge en une solution maximale (pas nécessairement unique).\nTout solution globale est maximale mais pas l’inverse.",
+    "crumbs": [
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Définition"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#formulation-intégrale",
+    "href": "src/edo_lineaires/definition.html#formulation-intégrale",
+    "title": "Problème de Cauchy Linéaire",
+    "section": "Formulation Intégrale",
+    "text": "Formulation Intégrale\n\n\n\n\n\n\nThéorème\n\n\n\nSoit un couple (I, \\varphi), avec I un intervalle ouvert de \\mathcal{I} et \\varphi \\colon I \\to \\mathbb{R}^n une fonction dérivable sur I. Alors, le couple (I, \\varphi) est solution du problème de Cauchy si et seulement si pour tout t \\in I on a :\n\n\\varphi(t) = x_0 + \\int_{t_0}^{t} \\left( A(s) \\varphi(s) + b(s) \\right) \\, \\mathrm{d}s.\n\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNotons f \\colon \\mathcal{I} \\times \\mathbb{R}^n \\to \\mathbb{R}^n, (t, x) \\mapsto f(t, x) \\coloneqq A(t) x + b(t).\n\\Rightarrow Puisque \\varphi est dérivable sur I, l’application t \\mapsto g(t) \\coloneqq f(t, \\varphi(t)) est continue sur I, donc intégrable sur tout compact de I. De plus, \\varphi est une primitive de g sur I, et d’après le second théorème fondamental de l’analyse, on obtient :\n\n  \\int_{t_0}^{t} g(s) \\, \\mathrm{d}s = \\varphi(t) - \\varphi(t_0),\n\nce qui entraîne :\n\n  \\int_{t_0}^{t} f(s, \\varphi(s)) \\, \\mathrm{d}s = \\varphi(t) - x_0.\n\n\\Leftarrow L’application g est intégrable sur tout compact de I, donc la fonction\n\nG(t) \\coloneqq \\int_{t_0}^{t} g(s) \\, \\mathrm{d}s\n\nest bien définie pour tout t \\in I. Comme g est continue, G est l’unique primitive de g s’annulant en t_0 (d’après le premier théorème fondamental de l’analyse). Ainsi, si pour tout t \\in I :\n\n\\varphi(t) = x_0 + \\int_{t_0}^{t} \\left( A(s) \\varphi(s) + b(s) \\right) \\, \\mathrm{d}s = x_0 + G(t),\n\nalors on a \\varphi(t_0) = x_0 (puisque G(t_0) = 0). En différenciant les deux membres de cette expression, on obtient :\n\n\\varphi'(t) = G'(t) = f(t, \\varphi(t)),\n\nce qui achève la démonstration.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nCette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre.",
+    "crumbs": [
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Définition"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/definition.html#cas-scalaire",
+    "href": "src/edo_lineaires/definition.html#cas-scalaire",
+    "title": "Problème de Cauchy Linéaire",
+    "section": "Cas Scalaire",
+    "text": "Cas Scalaire\nDans le cas d’une équation linéaire homogène scalaire autonome, où a est une fonction constante, et en considérant le problème de Cauchy avec la condition initiale x(0) = x_0, l’équation est donnée par :\n\nx'(t) = a x(t), \\quad x(0) = x_0.\n\nLa solution générale de l’équation différentielle est :\n\nx(t) = C e^{a t},\n\noù C est une constante déterminée par la condition initiale. En imposant x(0) = x_0, on trouve :\n\nC = x_0.\n\nAinsi, la solution du problème de Cauchy est :\n\nx(t) = x_0 e^{a t}.\n\n\n\n\n\n\n\nCommentaire sur le cas vectoriel\n\n\n\nLe cas scalaire fait intervenir la fonction exponentielle sur \\mathbb{R}. Dans le cas vectoriel, où x(t) \\in \\mathbb{R}^n, nous aurons besoin de l’exponentielle de matrice, qui est une généralisation de l’exponentielle scalaire.",
+    "crumbs": [
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Définition"
+    ]
+  },
+  {
+    "objectID": "src/introduction/moindres_carres.html",
+    "href": "src/introduction/moindres_carres.html",
+    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
     "section": "",
-    "text": "Le problème de Kaplan est un exemple concret d’estimation de paramètres et de la condition initiale dans le cadre d’une équation différentielle ordinaire linéaire vectorielle. Ce problème est souvent utilisé pour illustrer les techniques d’identification de systèmes dynamiques.",
+    "text": "Le problème de Kaplan peut être formulé comme un problème d’optimisation aux moindres carrés. L’objectif est d’estimer les paramètres et la condition initiale d’une équation différentielle linéaire vectorielle en minimisant l’écart entre les mesures observées et les prédictions du modèle.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème de Kaplan"
+      "Problème aux moindres carrés"
     ]
   },
   {
-    "objectID": "src/introduction/kaplan.html#présentation-du-problème",
-    "href": "src/introduction/kaplan.html#présentation-du-problème",
-    "title": "Problème de Kaplan",
-    "section": "Présentation du Problème",
-    "text": "Présentation du Problème\nConsidérons un système dynamique linéaire décrit par l’équation différentielle suivante :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) est le vecteur d’état du système à l’instant t.\nA est la matrice des coefficients, représentant la dynamique interne du système.\nB est une matrice qui modélise l’influence des entrées u(t) sur le système.\nu(t) est le vecteur des entrées ou des commandes appliquées au système.",
+    "objectID": "src/introduction/moindres_carres.html#formulation-mathématique",
+    "href": "src/introduction/moindres_carres.html#formulation-mathématique",
+    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
+    "section": "Formulation Mathématique",
+    "text": "Formulation Mathématique\nConsidérons le problème de Cauchy linéaire décrit par :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) \\in \\mathbb{R}^n est le vecteur d’état à l’instant t.\nA \\in \\mathcal{M}_{n}(\\mathbb{R}) est la matrice des coefficients.\nB \\in \\mathcal{M}_{n, m}(\\mathbb{R}) est la matrice d’entrée.\nu(t) \\in \\mathbb{R}^m est le vecteur des entrées.\n\nNous disposons de mesures x_i à des instants t_i pour i = 1, 2, \\ldots, N. Nous cherchons à estimer les paramètres\n\n   \\theta = (A, B, x_0)\n en minimisant la fonction coût suivante :\n\nF(\\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\| x_i - x(t_i, \\theta) \\|^2\n\noù :\n\nx(t_i, \\theta) est la prédiction du modèle, c’est-à-dire la solution du problème de Cauchy, à l’instant t_i avec les paramètres \\theta.\n\\| \\cdot \\| désigne la norme euclidienne.\n\n\n\n\n\n\n\nRemarques\n\n\n\n\nLa fonction F est la somme des carrés des erreurs entre les mesures observées x_i et les prédictions du modèle x(t_i, \\theta). On appelle ces erreurs les résidus.\nL’objectif est de trouver les paramètres \\theta qui minimisent cette fonction coût.\nCette formulation est un problème d’optimisation aux moindres carrés.\nLes mesures x_i peuvent être bruitées, ce qui nécessite une approche robuste pour estimer les paramètres.\n\n\n\nLes matrices A et B et le vecteur x_0 sont ici considérés comme des paramètres à estimer. Dans certains cas, seuls certains paramètres peuvent être inconnus. Il est aussi possible de ne chercher qu’à estimer une partie des paramètres. Dans ce cas, si nous notons \\theta \\in \\mathbb{R}^l les paramètres à estimer, nous pouvons écrire la dépendance de A, B et x_0 en fonction de \\theta, et le problème de Cauchy devient :\n\nx'(t) = A(\\theta)\\, x(t) + B(\\theta)\\, u(t), \\quad x(0) = x_0(\\theta).\n\n\n\n\n\n\n\nImportant\n\n\n\nNous parlons de problème aux moindres carrés linéaire si \\theta \\mapsto x(t_i, \\theta) est linéaire pour toute donnée t_i, sinon on parle de problème aux moindres carrés non linéaire.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème de Kaplan"
+      "Problème aux moindres carrés"
     ]
   },
   {
-    "objectID": "src/introduction/kaplan.html#objectif",
-    "href": "src/introduction/kaplan.html#objectif",
-    "title": "Problème de Kaplan",
-    "section": "Objectif",
-    "text": "Objectif\nL’objectif du problème de Kaplan est d’estimer :\n\nLes paramètres : Les éléments des matrices A et B.\nLa condition initiale : Le vecteur d’état initial x_0.\n\nCes estimations sont basées sur des mesures bruitées de l’état x(t) et des entrées u(t) sur un intervalle de temps donné.",
+    "objectID": "src/introduction/moindres_carres.html#algorithme-de-gauss-newton",
+    "href": "src/introduction/moindres_carres.html#algorithme-de-gauss-newton",
+    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
+    "section": "Algorithme de Gauss-Newton",
+    "text": "Algorithme de Gauss-Newton\n\nDescription de la méthode\nL’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût F. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial \\theta_0, l’algorithme va construire une suite d’itérés (\\theta_k)_{k\\ge 0} qui on l’espère converge vers un minimum de F.\n\nL’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons \\theta_k l’itéré courant. Nous pouvons approcher pour chaque instant t_i la prédiction \\theta \\mapsto x(t_i, \\theta) par son approximation linéaire au voisinage du point courant \\theta_k :\n\n   x(t_i, \\theta_k) + \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta.\n\nCeci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :\n\n   \\mathrm{minimiser}~ F_k(\\Delta \\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\left\\| x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right\\|^2.\n\n\n\n\n\n\n\nImportant\n\n\n\nA chaque itération, la fonction à minimiser dépend de \\Delta \\theta, la valeur du paramètre \\theta est fixée à \\theta_k.\n\n\nLe prochain itéré s’écrit :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du problème aux moindres carrés linéaires faisant intervenir F_k.\n\n\nSolution du problème linéaire\nLe point \\Delta \\theta_k \\in \\mathbb{R}^l est obtenu en annulant le gradient de F_k, c’est-à-dire en résolvant :\n\n\\begin{aligned}\n   \\nabla F_k(\\Delta \\theta) &= \\sum_{i=1}^{N} {\\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)}^T \\left( x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right) \\\\\n   &= \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) - \\left( \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\right) \\Delta \\theta = 0,\n\\end{aligned}\n\noù l’on a introduit la notation\n\n   J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k).\n\nSi l’on regarde attentivement l’équation ci-dessus en \\Delta \\theta, nous pouvons remarquer que nous devons résoudre un simple système linéaire de la forme :\n\n   A_k \\Delta \\theta = b_k,\n\noù\n\n   A_k = \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\in \\mathcal{M}_{l}(\\mathbb{R})\n   \\quad \\text{et} \\quad\n   b_k = \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) \\in \\mathbb{R}^l.\n\n\n\nPrésentation de l’algorithme\nVoici les étapes principales :\n\nInitialisation : Choisir une estimation initiale \\theta_0 des paramètres.\nItération : Pour chaque itération :\n\nCalculer la prédiction x(t_i, \\theta_k) pour chaque instant t_i.\nCalculer les matrices jacobiennes J_{i,k} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_k :\n\n  J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k) =\n   \\begin{pmatrix}\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\vdots &\n    \\displaystyle\\vdots &\n    \\displaystyle\\ddots &\n    \\displaystyle\\vdots \\\\[1em]\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_l}(t_i, \\theta_k)\n  \\end{pmatrix} \\in \\mathcal{M}_{n, l}(\\mathbb{\\R})\n  \nMettre à jour les paramètres en utilisant la formule :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du système linéaire :\n\nA_k \\Delta \\theta = b_k\n\navec A_k et b_k définis ci-dessus.\n\nConvergence : Répéter jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème de Kaplan"
+      "Problème aux moindres carrés"
     ]
   },
   {
-    "objectID": "src/introduction/kaplan.html#importance",
-    "href": "src/introduction/kaplan.html#importance",
-    "title": "Problème de Kaplan",
-    "section": "Importance",
-    "text": "Importance\nLa résolution de ce problème est cruciale dans de nombreuses applications pratiques :\n\nContrôle de processus industriels : Pour ajuster les paramètres d’un système de contrôle afin d’optimiser la production.\nModélisation économique : Pour estimer les paramètres d’un modèle économique à partir de données historiques.\nBiologie : Pour comprendre les dynamiques de populations ou de réactions biochimiques.",
+    "objectID": "src/introduction/moindres_carres.html#fonctions-nécessaires",
+    "href": "src/introduction/moindres_carres.html#fonctions-nécessaires",
+    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
+    "section": "Fonctions Nécessaires",
+    "text": "Fonctions Nécessaires\nPour implémenter cet algorithme, deux fonctions principales sont nécessaires :\n\nFonction de Prédiction :\n\nEntrée : Paramètre \\theta et instant t_i.\nSortie : Prédictions x(t_i, \\theta) en résolvant le problème de Cauchy jusqu’au temps t_i.\n\nFonction de Dérivée :\n\nEntrée : Paramètre \\theta et instant t_i.\nSortie : Matrice jacobienne des dérivées partielles de x(t_i, \\theta) par rapport à \\theta.\n\n\nCes fonctions permettent de calculer les prédictions du modèle et les dérivées nécessaires pour mettre à jour les paramètres à chaque itération de l’algorithme de Gauss-Newton. La suite du cours est consacrée à l’implémentation de ces fonctions pour résoudre des problèmes de Kaplan concrets.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème de Kaplan"
+      "Problème aux moindres carrés"
     ]
   },
   {
-    "objectID": "src/introduction/kaplan.html#exemple-simple",
-    "href": "src/introduction/kaplan.html#exemple-simple",
-    "title": "Problème de Kaplan",
-    "section": "Exemple Simple",
-    "text": "Exemple Simple\nImaginons un système simple où un objet est soumis à une force de rappel proportionnelle à son déplacement (comme un ressort) et à une force d’amortissement proportionnelle à sa vitesse. L’équation différentielle pourrait être :\n\nx'(t) = \\begin{pmatrix} 0 & 1 \\\\ -k/m & -c/m \\end{pmatrix} x(t) + \\begin{pmatrix} 0 \\\\ 1/m \\end{pmatrix} u(t)\n\noù :\n\nx(t) = \\begin{pmatrix} x(t) \\\\ v(t) \\end{pmatrix} est le vecteur d’état contenant la position x(t) et la vitesse v(t).\nk est la constante de rappel du ressort.\nc est le coefficient d’amortissement.\nm est la masse de l’objet.\nu(t) est une force externe appliquée.\n\nDans ce contexte, le problème de Kaplan consisterait à estimer les valeurs de k, c, et m, ainsi que la condition initiale x(0), à partir de mesures de x(t) et u(t).",
+    "objectID": "src/introduction/moindres_carres.html#exercice",
+    "href": "src/introduction/moindres_carres.html#exercice",
+    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
+    "section": "Exercice",
+    "text": "Exercice\nConsidérons le modèle linéaire suivant :\n x(t, \\theta) = a + b\\, t \noù :\n\nx(t, \\theta) est la sortie du modèle à l’instant t pour les paramètres \\theta.\n\\theta = (a, b) sont les paramètres à estimer.\n\nSupposons que nous avons les observations suivantes :\n\n\\begin{array}{c|c}\nt & x \\\\\n\\hline\n1 & 2 \\\\\n2 & 3 \\\\\n3 & 5 \\\\\n\\end{array}\n\nNous cherchons à estimer les paramètres a et b en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.\n\n\n\n\n\n\nRemarque\n\n\n\nNous pouvons voir x(t, \\theta) comme la solution du problème de Cauchy : \n   x'(t) = b, \\quad x(0) = a.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nDévelopper à la main la première itération de l’algorithme de Gauss-Newton. Vous pouvez choisir \\theta_0 = (1, 1) comme initialisation.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nNous cherchons à estimer les paramètres a et b en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.\n\nÉtapes de l’algorithme de Gauss-Newton\n\nInitialisation :\n\nChoisissons une estimation initiale \\theta_0 = (1, 1).\n\nItération 1 :\n\nCalculons les prédictions x(t_i, \\theta_0) pour chaque instant t_i : \nx(1, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 1 = 2\n \nx(2, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 2 = 3\n \nx(3, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 3 = 4\n\nCalculons la matrice jacobienne J_{i,0} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_0 : \nJ_{i,0} = \\begin{pmatrix}\n\\displaystyle\\frac{\\partial x}{\\partial a}(t_i, \\theta_0) &\n\\displaystyle\\frac{\\partial x}{\\partial b}(t_i, \\theta_0)\n\\end{pmatrix}\n= \\begin{pmatrix}\n1 & t_i\n\\end{pmatrix}\n Donc, \nJ_{1,0} = \\begin{pmatrix} 1 & 1 \\end{pmatrix}, \\quad J_{2,0} = \\begin{pmatrix} 1 & 2 \\end{pmatrix}, \\quad J_{3,0} = \\begin{pmatrix} 1 & 3 \\end{pmatrix}\n\nRésolvons le système linéaire pour obtenir \\Delta \\theta_0 : \nA_0 \\Delta \\theta = b_0\n où \nA_0 = \\sum_{i=1}^{3} {J_{i,0}}^T J_{i,0} = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\end{pmatrix}\n= \\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix}\n et \nb_0 = \\sum_{i=1}^{3} {J_{i,0}}^T \\left( x_i - x(t_i, \\theta_0) \\right) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\cdot 0 + \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot 0 + \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} \\cdot 1 = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}\n Donc, \n\\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix} \\Delta \\theta = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}\n En résolvant ce système, nous obtenons : \n\\Delta \\theta_0 = \\begin{pmatrix} -2/3 \\\\ 0.5 \\end{pmatrix}\n\nMettons à jour les paramètres : \n\\theta_1 = \\theta_0 + \\Delta \\theta_0 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + \\begin{pmatrix} -2/3 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 1/3 \\\\ 1.5 \\end{pmatrix}\n\n\nConvergence :\n\nRépéter les étapes jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.\n\n\n\n\nTableau de Convergence\nOn rappelle que le paramètre s’écrit \\theta = (a, b). On note alors la variation d’une itération à l’autre \\Delta \\theta = (\\Delta a, \\Delta b). Puisque le problème est déjà un problème aux moindres carrés linéaires, nous n’observons aucune amélioration après la première itération, l’algorithme converge en une seule itération.\n\n\n\n\n\n\n\n\n\n\n\nItération\na\nb\nÉcart \\Delta a\nÉcart \\Delta b\nValeur du coût F(\\theta)\n\n\n\n\n0\n1.000\n1.000\n-\n-\n0.500\n\n\n1\n1/3\n1.500\n-2/3\n0.500\n0.083\n\n\n2\n1/3\n1.500\n0.000\n0.000\n0.083\n\n\n\nCet exemple montre comment appliquer l’algorithme de Gauss-Newton à la main pour estimer les paramètres d’un modèle linéaire simple. Le tableau de convergence permet de visualiser la diminution de l’écart entre les itérations et la minimisation du coût.\n\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous verrons en TP comment résoudre numériquement ce problème en Python.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème de Kaplan"
+      "Problème aux moindres carrés"
     ]
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-1",
-    "href": "src/introduction/quiz.html#question-1",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 1",
-    "text": "Question 1\nQuelle est l’équation différentielle ordinaire d’ordre 1, scalaire, autonome et linéaire homogène ?\n\n\n\n\\(x'(t) = 10 x(t) + 2\\)\n\\(x'(t) = 5 x(t)\\)\n\\(x'(t) = t-x\\)\n\\(x''(t) = -x\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-2",
-    "href": "src/introduction/quiz.html#question-2",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 2",
-    "text": "Question 2\nDans l’équation \\(x'(t) = a x(t)\\), que représente \\(t\\) ?\n\n\n\nLa variable d’intégration\nLa variable inconnue\nUn paramètre fixé"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-3",
-    "href": "src/introduction/quiz.html#question-3",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 3",
-    "text": "Question 3\nPourquoi l’équation \\(x'(t) = ax(t)\\) est-elle dite autonome ?\n\n\n\nElle ne dépend pas explicitement du temps \\(t\\)\nElle dépend explicitement du temps \\(t\\)\nElle fait intervenir un scalaire \\(a\\) ne dépendant pas du temps"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-4",
-    "href": "src/introduction/quiz.html#question-4",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 4",
-    "text": "Question 4\nEst-ce que l’équation différentielle \\(x'(t) = A x(t) + B u(t)\\) est autonome ?\n\n\n\nOui\nNon"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-5",
-    "href": "src/introduction/quiz.html#question-5",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 5",
-    "text": "Question 5\nPourquoi l’équation \\(x'(t) = a x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir que la dérivée première de \\(x(t)\\)\nParce que \\(a\\) est scalaire\nParce que \\(x(t) \\in \\mathbb{R}\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-6",
-    "href": "src/introduction/quiz.html#question-6",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 6",
-    "text": "Question 6\nQuelle est la condition initiale pour l’équation \\(x'(t) = a x(t)\\) ?\n\n\n\n\\(x(0) = x_0\\)\n\\(x'(0) = x_0\\)\n\\(x(t) = x_0\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-7",
-    "href": "src/introduction/quiz.html#question-7",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 7",
-    "text": "Question 7\nQu’est-ce qu’un problème de Cauchy ?\n\n\n\nUn problème qui combine une équation différentielle avec une condition initiale\nUn problème qui combine une équation différentielle avec une condition aux limites\nUn problème qui combine une équation différentielle avec une condition de périodicité"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-8",
-    "href": "src/introduction/quiz.html#question-8",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 8",
-    "text": "Question 8\nQuel théorème est utilisé pour montrer l’équivalence entre la formulation différentielle et la formulation intégrale d’une équation différentielle ?\n\n\n\nLe théorème fondamental de l’analyse\nLe théorème de Rolle\nLe théorème de la moyenne"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-9",
-    "href": "src/introduction/quiz.html#question-9",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 9",
-    "text": "Question 9\nQuelle est la formulation intégrale de l’équation \\(x'(t) = a x(t)\\) avec la condition initiale \\(x(0) = x_0\\) ?\n\n\n\n\\(x(t) = x_0 + \\int_{0}^{t} a x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} a \\, \\mathrm{d}s\\)"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-10",
-    "href": "src/introduction/quiz.html#question-10",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 10",
-    "text": "Question 10\nQuelle est l’ordre de l’équation différentielle \\(x''(t) = -x(t)\\) ?\n\n\n\nOrdre 1\nOrdre 2\nOrdre 3"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-11",
-    "href": "src/introduction/quiz.html#question-11",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 11",
-    "text": "Question 11\nPourquoi l’équation \\(x''(t) = -x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir qu’une seule fonction inconnue \\(x(t)\\)\nParce qu’elle est linéaire\nParce qu’elle est autonome"
-  },
-  {
-    "objectID": "src/introduction/quiz.html#question-12",
-    "href": "src/introduction/quiz.html#question-12",
-    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
-    "section": "Question 12",
-    "text": "Question 12\nQuelle est la forme matricielle du système équivalent à l’équation \\(x''(t) = -x(t)\\) ?\n\n\n\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n1 & 0 \\\\\n0 & 1\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 0 \\\\\n0 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "assets/latex/macros.html",
-    "href": "assets/latex/macros.html",
-    "title": "Cours EDO",
-    "section": "",
-    "text": "Back to top"
   },
   {
     "objectID": "src/introduction/edo.html",
@@ -444,207 +348,339 @@
     ]
   },
   {
-    "objectID": "src/introduction/moindres_carres.html",
-    "href": "src/introduction/moindres_carres.html",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
+    "objectID": "assets/latex/macros.html",
+    "href": "assets/latex/macros.html",
+    "title": "Cours EDO",
     "section": "",
-    "text": "Le problème de Kaplan peut être formulé comme un problème d’optimisation aux moindres carrés. L’objectif est d’estimer les paramètres et la condition initiale d’une équation différentielle linéaire vectorielle en minimisant l’écart entre les mesures observées et les prédictions du modèle.",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-1",
+    "href": "src/introduction/quiz.html#question-1",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 1",
+    "text": "Question 1\nQuelle est l’équation différentielle ordinaire d’ordre 1, scalaire, autonome et linéaire homogène ?\n\n\n\n\\(x'(t) = 10 x(t) + 2\\)\n\\(x'(t) = 5 x(t)\\)\n\\(x'(t) = t-x\\)\n\\(x''(t) = -x\\)"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-2",
+    "href": "src/introduction/quiz.html#question-2",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 2",
+    "text": "Question 2\nDans l’équation \\(x'(t) = a x(t)\\), que représente \\(t\\) ?\n\n\n\nLa variable d’intégration\nLa variable inconnue\nUn paramètre fixé"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-3",
+    "href": "src/introduction/quiz.html#question-3",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 3",
+    "text": "Question 3\nPourquoi l’équation \\(x'(t) = ax(t)\\) est-elle dite autonome ?\n\n\n\nElle ne dépend pas explicitement du temps \\(t\\)\nElle dépend explicitement du temps \\(t\\)\nElle fait intervenir un scalaire \\(a\\) ne dépendant pas du temps"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-4",
+    "href": "src/introduction/quiz.html#question-4",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 4",
+    "text": "Question 4\nEst-ce que l’équation différentielle \\(x'(t) = A x(t) + B u(t)\\) est autonome ?\n\n\n\nOui\nNon"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-5",
+    "href": "src/introduction/quiz.html#question-5",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 5",
+    "text": "Question 5\nPourquoi l’équation \\(x'(t) = a x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir que la dérivée première de \\(x(t)\\)\nParce que \\(a\\) est scalaire\nParce que \\(x(t) \\in \\mathbb{R}\\)"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-6",
+    "href": "src/introduction/quiz.html#question-6",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 6",
+    "text": "Question 6\nQuelle est la condition initiale pour l’équation \\(x'(t) = a x(t)\\) ?\n\n\n\n\\(x(0) = x_0\\)\n\\(x'(0) = x_0\\)\n\\(x(t) = x_0\\)"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-7",
+    "href": "src/introduction/quiz.html#question-7",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 7",
+    "text": "Question 7\nQu’est-ce qu’un problème de Cauchy ?\n\n\n\nUn problème qui combine une équation différentielle avec une condition initiale\nUn problème qui combine une équation différentielle avec une condition aux limites\nUn problème qui combine une équation différentielle avec une condition de périodicité"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-8",
+    "href": "src/introduction/quiz.html#question-8",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 8",
+    "text": "Question 8\nQuel théorème est utilisé pour montrer l’équivalence entre la formulation différentielle et la formulation intégrale d’une équation différentielle ?\n\n\n\nLe théorème fondamental de l’analyse\nLe théorème de Rolle\nLe théorème de la moyenne"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-9",
+    "href": "src/introduction/quiz.html#question-9",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 9",
+    "text": "Question 9\nQuelle est la formulation intégrale de l’équation \\(x'(t) = a x(t)\\) avec la condition initiale \\(x(0) = x_0\\) ?\n\n\n\n\\(x(t) = x_0 + \\int_{0}^{t} a x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} x(s) \\, \\mathrm{d}s\\)\n\\(x(t) = x_0 + \\int_{0}^{t} a \\, \\mathrm{d}s\\)"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-10",
+    "href": "src/introduction/quiz.html#question-10",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 10",
+    "text": "Question 10\nQuelle est l’ordre de l’équation différentielle \\(x''(t) = -x(t)\\) ?\n\n\n\nOrdre 1\nOrdre 2\nOrdre 3"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-11",
+    "href": "src/introduction/quiz.html#question-11",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 11",
+    "text": "Question 11\nPourquoi l’équation \\(x''(t) = -x(t)\\) est-elle qualifiée de scalaire ?\n\n\n\nParce qu’elle ne fait intervenir qu’une seule fonction inconnue \\(x(t)\\)\nParce qu’elle est linéaire\nParce qu’elle est autonome"
+  },
+  {
+    "objectID": "src/introduction/quiz.html#question-12",
+    "href": "src/introduction/quiz.html#question-12",
+    "title": "Quiz: Introduction aux Équations Différentielles Ordinaires",
+    "section": "Question 12",
+    "text": "Question 12\nQuelle est la forme matricielle du système équivalent à l’équation \\(x''(t) = -x(t)\\) ?\n\n\n\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 1 \\\\\n-1 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n1 & 0 \\\\\n0 & 1\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]\n\\[\n\\begin{pmatrix}\nx'(t) \\\\\ny'(t)\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n0 & 0 \\\\\n0 & 0\n\\end{pmatrix}\n\\begin{pmatrix}\nx(t) \\\\\ny(t)\n\\end{pmatrix}\n\\]"
+  },
+  {
+    "objectID": "src/introduction/kaplan.html",
+    "href": "src/introduction/kaplan.html",
+    "title": "Problème de Kaplan",
+    "section": "",
+    "text": "Le problème de Kaplan est un exemple concret d’estimation de paramètres et de la condition initiale dans le cadre d’une équation différentielle ordinaire linéaire vectorielle. Ce problème est souvent utilisé pour illustrer les techniques d’identification de systèmes dynamiques.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème aux moindres carrés"
+      "Problème de Kaplan"
     ]
   },
   {
-    "objectID": "src/introduction/moindres_carres.html#formulation-mathématique",
-    "href": "src/introduction/moindres_carres.html#formulation-mathématique",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
-    "section": "Formulation Mathématique",
-    "text": "Formulation Mathématique\nConsidérons le problème de Cauchy linéaire décrit par :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) \\in \\mathbb{R}^n est le vecteur d’état à l’instant t.\nA \\in \\mathcal{M}_{n}(\\mathbb{R}) est la matrice des coefficients.\nB \\in \\mathcal{M}_{n, m}(\\mathbb{R}) est la matrice d’entrée.\nu(t) \\in \\mathbb{R}^m est le vecteur des entrées.\n\nNous disposons de mesures x_i à des instants t_i pour i = 1, 2, \\ldots, N. Nous cherchons à estimer les paramètres\n\n   \\theta = (A, B, x_0)\n en minimisant la fonction coût suivante :\n\nF(\\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\| x_i - x(t_i, \\theta) \\|^2\n\noù :\n\nx(t_i, \\theta) est la prédiction du modèle, c’est-à-dire la solution du problème de Cauchy, à l’instant t_i avec les paramètres \\theta.\n\\| \\cdot \\| désigne la norme euclidienne.\n\n\n\n\n\n\n\nRemarques\n\n\n\n\nLa fonction F est la somme des carrés des erreurs entre les mesures observées x_i et les prédictions du modèle x(t_i, \\theta). On appelle ces erreurs les résidus.\nL’objectif est de trouver les paramètres \\theta qui minimisent cette fonction coût.\nCette formulation est un problème d’optimisation aux moindres carrés.\nLes mesures x_i peuvent être bruitées, ce qui nécessite une approche robuste pour estimer les paramètres.\n\n\n\nLes matrices A et B et le vecteur x_0 sont ici considérés comme des paramètres à estimer. Dans certains cas, seuls certains paramètres peuvent être inconnus. Il est aussi possible de ne chercher qu’à estimer une partie des paramètres. Dans ce cas, si nous notons \\theta \\in \\mathbb{R}^l les paramètres à estimer, nous pouvons écrire la dépendance de A, B et x_0 en fonction de \\theta, et le problème de Cauchy devient :\n\nx'(t) = A(\\theta)\\, x(t) + B(\\theta)\\, u(t), \\quad x(0) = x_0(\\theta).\n\n\n\n\n\n\n\nImportant\n\n\n\nNous parlons de problème aux moindres carrés linéaire si \\theta \\mapsto x(t_i, \\theta) est linéaire pour toute donnée t_i, sinon on parle de problème aux moindres carrés non linéaire.",
+    "objectID": "src/introduction/kaplan.html#présentation-du-problème",
+    "href": "src/introduction/kaplan.html#présentation-du-problème",
+    "title": "Problème de Kaplan",
+    "section": "Présentation du Problème",
+    "text": "Présentation du Problème\nConsidérons un système dynamique linéaire décrit par l’équation différentielle suivante :\n\nx'(t) = Ax(t) + Bu(t), \\quad x(0) = x_0\n\noù :\n\nx(t) est le vecteur d’état du système à l’instant t.\nA est la matrice des coefficients, représentant la dynamique interne du système.\nB est une matrice qui modélise l’influence des entrées u(t) sur le système.\nu(t) est le vecteur des entrées ou des commandes appliquées au système.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème aux moindres carrés"
+      "Problème de Kaplan"
     ]
   },
   {
-    "objectID": "src/introduction/moindres_carres.html#algorithme-de-gauss-newton",
-    "href": "src/introduction/moindres_carres.html#algorithme-de-gauss-newton",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
-    "section": "Algorithme de Gauss-Newton",
-    "text": "Algorithme de Gauss-Newton\n\nDescription de la méthode\nL’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût F. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial \\theta_0, l’algorithme va construire une suite d’itérés (\\theta_k)_{k\\ge 0} qui on l’espère converge vers un minimum de F. L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons \\theta_k l’itéré courant. Nous pouvons approcher pour chaque instant t_i la prédiction \\theta \\mapsto x(t_i, \\theta) par son approximation linéaire au voisinage du point courant \\theta_k :\n\n   x(t_i, \\theta_k) + \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta.\n\nCeci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :\n\n   \\mathrm{minimiser}~ F_k(\\Delta \\theta) = \\frac{1}{2} \\sum_{i=1}^{N} \\left\\| x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right\\|^2.\n\n\n\n\n\n\n\nImportant\n\n\n\nA chaque itération, la fonction à minimiser dépend de \\Delta \\theta, la valeur du paramètre \\theta est fixée à \\theta_k.\n\n\nLe prochain itéré s’écrit :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du problème aux moindres carrés linéaires faisant intervenir F_k.\n\n\nSolution du problème linéaire\nLe point \\Delta \\theta_k \\in \\mathbb{R}^l est obtenu en annulant le gradient de F_k, c’est-à-dire en résolvant :\n\n\\begin{aligned}\n   \\nabla F_k(\\Delta \\theta) &= \\sum_{i=1}^{N} {\\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)}^T \\left( x_i - x(t_i, \\theta_k) - \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k)\\, \\Delta \\theta \\right) \\\\\n   &= \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) - \\left( \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\right) \\Delta \\theta = 0,\n\\end{aligned}\n\noù l’on a introduit la notation\n\n   J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k).\n\nSi l’on regarde attentivement l’équation ci-dessus en \\Delta \\theta, nous pouvons remarquer que nous devons résoudre un simple système linéaire de la forme :\n\n   A_k \\Delta \\theta = b_k,\n\noù\n\n   A_k = \\sum_{i=1}^{N} {J_{i,k}}^T J_{i,k} \\in \\mathcal{M}_{l}(\\mathbb{R})\n   \\quad \\text{et} \\quad\n   b_k = \\sum_{i=1}^{N} {J_{i,k}}^T \\left( x_i - x(t_i, \\theta_k) \\right) \\in \\mathbb{R}^l.\n\n\n\nPrésentation de l’algorithme\nVoici les étapes principales :\n\nInitialisation : Choisir une estimation initiale \\theta_0 des paramètres.\nItération : Pour chaque itération :\n\nCalculer la prédiction x(t_i, \\theta_k) pour chaque instant t_i.\nCalculer les matrices jacobiennes J_{i,k} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_k :\n\n  J_{i,k} = \\frac{\\partial x}{\\partial \\theta}(t_i, \\theta_k) =\n   \\begin{pmatrix}\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_1}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_2}{\\partial \\theta_l}(t_i, \\theta_k) \\\\[1em]\n    \\displaystyle\\vdots &\n    \\displaystyle\\vdots &\n    \\displaystyle\\ddots &\n    \\displaystyle\\vdots \\\\[1em]\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_1}(t_i, \\theta_k) &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_2}(t_i, \\theta_k) &\n    \\displaystyle\\ldots &\n    \\displaystyle\\frac{\\partial x_n}{\\partial \\theta_l}(t_i, \\theta_k)\n  \\end{pmatrix} \\in \\mathcal{M}_{n, l}(\\mathbb{\\R})\n  \nMettre à jour les paramètres en utilisant la formule :\n\n\\theta_{k+1} = \\theta_k + \\Delta \\theta_k\n\noù \\Delta \\theta_k est la solution du système linéaire :\n\nA_k \\Delta \\theta = b_k\n\navec A_k et b_k définis ci-dessus.\n\nConvergence : Répéter jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.",
+    "objectID": "src/introduction/kaplan.html#objectif",
+    "href": "src/introduction/kaplan.html#objectif",
+    "title": "Problème de Kaplan",
+    "section": "Objectif",
+    "text": "Objectif\nL’objectif du problème de Kaplan est d’estimer :\n\nLes paramètres : Les éléments des matrices A et B.\nLa condition initiale : Le vecteur d’état initial x_0.\n\nCes estimations sont basées sur des mesures bruitées de l’état x(t) et des entrées u(t) sur un intervalle de temps donné.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème aux moindres carrés"
+      "Problème de Kaplan"
     ]
   },
   {
-    "objectID": "src/introduction/moindres_carres.html#fonctions-nécessaires",
-    "href": "src/introduction/moindres_carres.html#fonctions-nécessaires",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
-    "section": "Fonctions Nécessaires",
-    "text": "Fonctions Nécessaires\nPour implémenter cet algorithme, deux fonctions principales sont nécessaires :\n\nFonction de Prédiction :\n\nEntrée : Paramètre \\theta et instant t_i.\nSortie : Prédictions x(t_i, \\theta) en résolvant le problème de Cauchy jusqu’au temps t_i.\n\nFonction de Dérivée :\n\nEntrée : Paramètre \\theta et instant t_i.\nSortie : Matrice jacobienne des dérivées partielles de x(t_i, \\theta) par rapport à \\theta.\n\n\nCes fonctions permettent de calculer les prédictions du modèle et les dérivées nécessaires pour mettre à jour les paramètres à chaque itération de l’algorithme de Gauss-Newton. La suite du cours est consacrée à l’implémentation de ces fonctions pour résoudre des problèmes de Kaplan concrets.",
+    "objectID": "src/introduction/kaplan.html#importance",
+    "href": "src/introduction/kaplan.html#importance",
+    "title": "Problème de Kaplan",
+    "section": "Importance",
+    "text": "Importance\nLa résolution de ce problème est cruciale dans de nombreuses applications pratiques :\n\nContrôle de processus industriels : Pour ajuster les paramètres d’un système de contrôle afin d’optimiser la production.\nModélisation économique : Pour estimer les paramètres d’un modèle économique à partir de données historiques.\nBiologie : Pour comprendre les dynamiques de populations ou de réactions biochimiques.",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème aux moindres carrés"
+      "Problème de Kaplan"
     ]
   },
   {
-    "objectID": "src/introduction/moindres_carres.html#exercice",
-    "href": "src/introduction/moindres_carres.html#exercice",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
-    "section": "Exercice",
-    "text": "Exercice\nConsidérons le modèle linéaire suivant :\n x(t, \\theta) = a + b\\, t \noù :\n\nx(t, \\theta) est la sortie du modèle à l’instant t pour les paramètres \\theta.\n\\theta = (a, b) sont les paramètres à estimer.\n\nSupposons que nous avons les observations suivantes :\n\n\\begin{array}{c|c}\nt & x \\\\\n\\hline\n1 & 2 \\\\\n2 & 3 \\\\\n3 & 5 \\\\\n\\end{array}\n\nNous cherchons à estimer les paramètres a et b en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.\n\n\n\n\n\n\nRemarque\n\n\n\nNous pouvons voir x(t, \\theta) comme la solution du problème de Cauchy : \n   x'(t) = b, \\quad x(0) = a.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nDévelopper à la main la première itération de l’algorithme de Gauss-Newton. Vous pouvez choisir \\theta_0 = (1, 1) comme initialisation.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nNous cherchons à estimer les paramètres a et b en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.\n\nÉtapes de l’algorithme de Gauss-Newton\n\nInitialisation :\n\nChoisissons une estimation initiale \\theta_0 = (1, 1).\n\nItération 1 :\n\nCalculons les prédictions x(t_i, \\theta_0) pour chaque instant t_i : \nx(1, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 1 = 2\n \nx(2, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 2 = 3\n \nx(3, \\theta_0) = 1 \\cdot 1 + 1 \\cdot 3 = 4\n\nCalculons la matrice jacobienne J_{i,0} des dérivées partielles de x(t_i, \\theta) par rapport à \\theta, évaluée en \\theta_0 : \nJ_{i,0} = \\begin{pmatrix}\n\\displaystyle\\frac{\\partial x}{\\partial a}(t_i, \\theta_0) &\n\\displaystyle\\frac{\\partial x}{\\partial b}(t_i, \\theta_0)\n\\end{pmatrix}\n= \\begin{pmatrix}\n1 & t_i\n\\end{pmatrix}\n Donc, \nJ_{1,0} = \\begin{pmatrix} 1 & 1 \\end{pmatrix}, \\quad J_{2,0} = \\begin{pmatrix} 1 & 2 \\end{pmatrix}, \\quad J_{3,0} = \\begin{pmatrix} 1 & 3 \\end{pmatrix}\n\nRésolvons le système linéaire pour obtenir \\Delta \\theta_0 : \nA_0 \\Delta \\theta = b_0\n où \nA_0 = \\sum_{i=1}^{3} {J_{i,0}}^T J_{i,0} = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\end{pmatrix} + \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} \\begin{pmatrix} 1 & 3 \\end{pmatrix}\n= \\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix}\n et \nb_0 = \\sum_{i=1}^{3} {J_{i,0}}^T \\left( x_i - x(t_i, \\theta_0) \\right) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\cdot 0 + \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\cdot 0 + \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix} \\cdot 1 = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}\n Donc, \n\\begin{pmatrix} 3 & 6 \\\\ 6 & 14 \\end{pmatrix} \\Delta \\theta = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}\n En résolvant ce système, nous obtenons : \n\\Delta \\theta_0 = \\begin{pmatrix} -2/3 \\\\ 0.5 \\end{pmatrix}\n\nMettons à jour les paramètres : \n\\theta_1 = \\theta_0 + \\Delta \\theta_0 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} + \\begin{pmatrix} -2/3 \\\\ 0.5 \\end{pmatrix} = \\begin{pmatrix} 1/3 \\\\ 1.5 \\end{pmatrix}\n\n\nConvergence :\n\nRépéter les étapes jusqu’à ce que les changements dans \\theta soient négligeables ou qu’un critère de convergence soit satisfait.\n\n\n\n\nTableau de Convergence\nOn rappelle que le paramètre s’écrit \\theta = (a, b). On note alors la variation d’une itération à l’autre \\Delta \\theta = (\\Delta a, \\Delta b). Puisque le problème est déjà un problème aux moindres carrés linéaires, nous n’observons aucune amélioration après la première itération, l’algorithme converge en une seule itération.\n\n\n\n\n\n\n\n\n\n\n\nItération\na\nb\nÉcart \\Delta a\nÉcart \\Delta b\nValeur du coût F(\\theta)\n\n\n\n\n0\n1.000\n1.000\n-\n-\n0.500\n\n\n1\n1/3\n1.500\n-2/3\n0.500\n0.083\n\n\n2\n1/3\n1.500\n0.000\n0.000\n0.083\n\n\n\nCet exemple montre comment appliquer l’algorithme de Gauss-Newton à la main pour estimer les paramètres d’un modèle linéaire simple. Le tableau de convergence permet de visualiser la diminution de l’écart entre les itérations et la minimisation du coût.\n\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous verrons en TP comment résoudre numériquement ce problème en Python.",
+    "objectID": "src/introduction/kaplan.html#exemple-simple",
+    "href": "src/introduction/kaplan.html#exemple-simple",
+    "title": "Problème de Kaplan",
+    "section": "Exemple Simple",
+    "text": "Exemple Simple\nImaginons un système simple où un objet est soumis à une force de rappel proportionnelle à son déplacement (comme un ressort) et à une force d’amortissement proportionnelle à sa vitesse. L’équation différentielle pourrait être :\n\nx'(t) = \\begin{pmatrix} 0 & 1 \\\\ -k/m & -c/m \\end{pmatrix} x(t) + \\begin{pmatrix} 0 \\\\ 1/m \\end{pmatrix} u(t)\n\noù :\n\nx(t) = \\begin{pmatrix} x(t) \\\\ v(t) \\end{pmatrix} est le vecteur d’état contenant la position x(t) et la vitesse v(t).\nk est la constante de rappel du ressort.\nc est le coefficient d’amortissement.\nm est la masse de l’objet.\nu(t) est une force externe appliquée.\n\nDans ce contexte, le problème de Kaplan consisterait à estimer les valeurs de k, c, et m, ainsi que la condition initiale x(0), à partir de mesures de x(t) et u(t).",
     "crumbs": [
       "Plan du cours",
       "Introduction",
-      "Problème aux moindres carrés"
+      "Problème de Kaplan"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html",
-    "href": "src/edo_lineaires/definition.html",
-    "title": "Problème de Cauchy Linéaire",
+    "objectID": "src/index.html",
+    "href": "src/index.html",
+    "title": "Cours Prépa INP",
     "section": "",
-    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx\\colon I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I contenant t_0,\nA(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant.",
+    "text": "Introduction\n\n\nÉquations différentielles ordinaires\nProblème de Kaplan\nProblème aux moindres carrés\n\n\n\n\n\n\nProblème de Cauchy linéaire\n\n\nDéfinition\nExponentielle de matrice\nSolution\nExemples\n\n\n\n\n\n\nIntégration numérique\n\n\nIntroduction\nMéthodes de Runge-Kutta\nConsistance\nStabilité\nConvergence\nErreurs d'arrondi\n\n\n\n\n\n\nDérivées\n\n\nIntroduction\nCondition initiale\nParamètres\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Plan du cours",
-      "Problème de Cauchy linéaire",
-      "Définition"
+      "Plan du cours"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html#définition",
-    "href": "src/edo_lineaires/definition.html#définition",
-    "title": "Problème de Cauchy Linéaire",
+    "objectID": "src/edo_lineaires/exponentielle.html",
+    "href": "src/edo_lineaires/exponentielle.html",
+    "title": "Exponentielle de Matrice",
     "section": "",
-    "text": "Un problème de Cauchy linéaire consiste à résoudre une équation différentielle ordinaire (EDO) linéaire accompagnée d’une condition initiale. Il s’écrit sous la forme :\n\nx'(t) = A(t) x(t) + b(t), \\quad x(t_0) = x_0\n\noù :\n\nx\\colon I \\to \\mathbb{R}^n est la fonction inconnue définie sur un intervalle I contenant t_0,\nA(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) est une matrice donnée, dépendant du temps t,\nb(t) \\in \\mathbb{R}^n est un vecteur donné, dépendant du temps t,\nt_0 \\in I est l’instant initial,\nx_0 \\in \\mathbb{R}^n est la condition initiale.\n\n\n\n\n\n\n\nRemarque\n\n\n\nNous considérons ici le cas linéaire, et dans la suite du cours, nous ne traiterons que le cas où A(t) est constant.",
+    "text": "L’exponentielle d’une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d’exponentielle des nombres réels aux matrices.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Définition"
+      "Exponentielle de matrice"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html#terminologie",
-    "href": "src/edo_lineaires/definition.html#terminologie",
-    "title": "Problème de Cauchy Linéaire",
-    "section": "Terminologie",
-    "text": "Terminologie\nSoit l’équation différentielle ordinaire linéaire :\n\nx'(t) = A(t) x(t) + b(t),\n\noù A(t) \\in \\mathcal{M}_{n}(\\mathbb{R}) et b(t) \\in \\mathbb{R}^n. On distingue plusieurs cas :\n\nÉquation linéaire homogène : lorsque b(t) = 0, l’équation devient x'(t) = A(t) x(t).\nÉquation linéaire non homogène (ou avec second membre) : lorsque b(t) \\neq 0.\nÉquation autonome : lorsque A(t) et b(t) sont constants, c’est-à-dire indépendants de t.",
+    "objectID": "src/edo_lineaires/exponentielle.html#définition",
+    "href": "src/edo_lineaires/exponentielle.html#définition",
+    "title": "Exponentielle de Matrice",
+    "section": "Définition",
+    "text": "Définition\nOn définit l’exponentielle d’une matrice A \\in \\mathcal{M}_n(\\mathbb{R}) par :\n\n\\exp(A) \\coloneqq \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} \\in \\mathcal{M}_n(\\mathbb{R}).\n\n\n\n\n\n\n\nPreuve de la convergence de la série\n\n\n\n\n\nPour montrer que cette série converge absolument pour toute matrice A \\in \\mathcal{M}_n(\\mathbb{R}), nous allons utiliser une norme sous-multiplicative. Soit \\|\\cdot\\| une norme sous-multiplicative sur \\mathcal{M}_n(\\mathbb{R}), par exemple la norme de Frobenius ou n’importe quelle norme subordonnée (ou norme d’algèbre). Une norme sous-multiplicative satisfait pour toutes matrices \\ A, B \\in \\mathcal{M}_n(\\mathbb{R}) la propriété suivante :\n\n    \\|A B\\| \\leq \\|A\\| \\|B\\|.\n\nDans ce cas, nous pouvons majorer la norme de chaque terme de la série :\n\n    \\left\\| \\frac{A^k}{k!} \\right\\| = \\frac{\\|A^k\\|}{k!} \\leq \\frac{\\|A\\|^k}{k!}.\n\nLa série \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} est simplement l’exponentielle scalaire de la norme \\|A\\| :\n\n    \\sum_{k=0}^{\\infty} \\frac{\\|A\\|^k}{k!} = e^{\\|A\\|}.\n\nPuisque la série de droite converge, il en découle que la série de matrices \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} converge absolument. Enfin, une série absolument convergente dans un espace vectoriel normé de dimension finie est convergente.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Définition"
+      "Exponentielle de matrice"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html#solution",
-    "href": "src/edo_lineaires/definition.html#solution",
-    "title": "Problème de Cauchy Linéaire",
-    "section": "Solution",
-    "text": "Solution\nOn suppose les fonctions t \\mapsto A(t) et t \\mapsto b(t) définies et continues sur un intervalle ouvert \\mathcal{I} contenant t_0. On appelle solution du problème de Cauchy associé, tout couple (I, \\varphi), où I est un intervalle ouvert de \\mathcal{I} contenant t_0 et \\varphi \\colon I \\to \\mathbb{R}^n est une fonction dérivable sur I, tel que pour tout t \\in I, \n  \\varphi'(t) = A(t) \\varphi(t) + b(t)\n et \\varphi(t_0) = x_0.\n\n\n\n\n\n\nRemarque\n\n\n\nIl est courant d’utiliser la même notation pour la solution \\varphi et l’inconnue x.\n\n\nUne solution (I,\\varphi) est dite maximale si, pour toute autre solution (J,\\psi), on a J \\subset I et \\varphi = \\psi sur J. On dit que qu’une solution (I,\\varphi) est un prolongement d’une autre solution (J,\\psi), si J \\subset I et \\varphi = \\psi sur J. On parle de solution globale si ell est définie sur tout l’intervalle \\mathcal{I}.\n\n\n\n\n\n\nRemarques\n\n\n\n\nToute solution se prolonge en une solution maximale (pas nécessairement unique).\nTout solution globale est maximale mais pas l’inverse.",
+    "objectID": "src/edo_lineaires/exponentielle.html#continuité",
+    "href": "src/edo_lineaires/exponentielle.html#continuité",
+    "title": "Exponentielle de Matrice",
+    "section": "Continuité",
+    "text": "Continuité\nL’application exponentielle (de matrice) :\n\n\n    \\begin{array}{rcll}\n        \\exp \\colon & \\mathcal{M}_n(\\mathbb{R}) & \\longrightarrow & \\mathcal{M}_n(\\mathbb{R}) \\\\\n                  & A & \\longmapsto     & \\displaystyle\\exp(A) = \\sum_{k=0}^{\\infty} \\frac{A^k}{k!}\n    \\end{array}\n\n\nest continue. En effet, la série est normalement convergente sur tout compact de \\mathcal{M}_n(\\mathbb{R}) et donc uniformément convergente sur tout compact. Par conséquent, l’application \\exp est continue sur \\mathcal{M}_n(\\mathbb{R}).\n\n\n\n\n\n\nRemarque\n\n\n\nL’exponentielle de A s’écrit aussi e^A.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Définition"
+      "Exponentielle de matrice"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html#formulation-intégrale",
-    "href": "src/edo_lineaires/definition.html#formulation-intégrale",
-    "title": "Problème de Cauchy Linéaire",
-    "section": "Formulation Intégrale",
-    "text": "Formulation Intégrale\n\n\n\n\n\n\nThéorème\n\n\n\nSoit un couple (I, \\varphi), avec I un intervalle ouvert de \\mathcal{I} et \\varphi \\colon I \\to \\mathbb{R}^n une fonction dérivable sur I. Alors, le couple (I, \\varphi) est solution du problème de Cauchy si et seulement si pour tout t \\in I on a :\n\n\\varphi(t) = x_0 + \\int_{t_0}^{t} \\left( A(s) \\varphi(s) + b(s) \\right) \\, \\mathrm{d}s.\n\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNotons f \\colon \\mathcal{I} \\times \\mathbb{R}^n \\to \\mathbb{R}^n, (t, x) \\mapsto f(t, x) \\coloneqq A(t) x + b(t).\n\\Rightarrow Puisque \\varphi est dérivable sur I, l’application t \\mapsto g(t) \\coloneqq f(t, \\varphi(t)) est continue sur I, donc intégrable sur tout compact de I. De plus, \\varphi est une primitive de g sur I, et d’après le second théorème fondamental de l’analyse, on obtient :\n\n  \\int_{t_0}^{t} g(s) \\, \\mathrm{d}s = \\varphi(t) - \\varphi(t_0),\n\nce qui entraîne :\n\n  \\int_{t_0}^{t} f(s, \\varphi(s)) \\, \\mathrm{d}s = \\varphi(t) - x_0.\n\n\\Leftarrow L’application g est intégrable sur tout compact de I, donc la fonction\n\nG(t) \\coloneqq \\int_{t_0}^{t} g(s) \\, \\mathrm{d}s\n\nest bien définie pour tout t \\in I. Comme g est continue, G est l’unique primitive de g s’annulant en t_0 (d’après le premier théorème fondamental de l’analyse). Ainsi, si pour tout t \\in I :\n\n\\varphi(t) = x_0 + \\int_{t_0}^{t} \\left( A(s) \\varphi(s) + b(s) \\right) \\, \\mathrm{d}s = x_0 + G(t),\n\nalors on a \\varphi(t_0) = x_0 (puisque G(t_0) = 0). En différenciant les deux membres de cette expression, on obtient :\n\n\\varphi'(t) = G'(t) = f(t, \\varphi(t)),\n\nce qui achève la démonstration.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nCette formulation intégrale est donc équivalente à la formulation différentielle. Il est important de retenir que même cette formulation réprésente une équation à résoudre.",
+    "objectID": "src/edo_lineaires/exponentielle.html#propriétés",
+    "href": "src/edo_lineaires/exponentielle.html#propriétés",
+    "title": "Exponentielle de Matrice",
+    "section": "Propriétés",
+    "text": "Propriétés\n\nMatrice Nulle\nOn note 0_n la matrice nulle de \\mathcal{M}_n(\\mathbb{R}) et I_n la matrice identité. On a alors : \n    e^{0_n} = I_n.\n\n\n\nMatrice Diagonale\nSi \\Sigma est une matrice diagonale avec des éléments diagonaux \\lambda_1, \\lambda_2, \\dots, \\lambda_n, c’est-à-dire :\n\n    \\Sigma = \\text{diag}(\\lambda_1, \\lambda_2, \\dots, \\lambda_n) =\n    \\begin{pmatrix}\n        \\lambda_1 & 0 & \\cdots & 0 \\\\\n        0 & \\lambda_2 & \\cdots & 0 \\\\\n        \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & \\lambda_n\n    \\end{pmatrix},\n\nalors l’exponentielle de \\Sigma est simplement la matrice diagonale des exponentielles des éléments diagonaux :\n\n    e^\\Sigma = \\text{diag}(e^{\\lambda_1}, e^{\\lambda_2}, \\dots, e^{\\lambda_n}) =\n    \\begin{pmatrix}\n        e^{\\lambda_1} & 0 & \\cdots & 0 \\\\\n        0 & e^{\\lambda_2} & \\cdots & 0 \\\\\n        \\vdots & \\vdots & \\ddots & \\vdots \\\\\n        0 & 0 & \\cdots & e^{\\lambda_n}\n    \\end{pmatrix}.\n\n\n\nMatrice Semblable\nSoit A \\in \\mathcal{M}_n(\\mathbb{R}) et P \\in \\mathrm{GL}_n(\\mathbb{R}), c’est-à-dire P est inversible. Alors\n\n    e^{PAP^{-1}} = P e^A P^{-1}.\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNous avons : \n    e^{PAP^{-1}} = \\sum_{k=0}^{\\infty} \\frac{\\left(PAP^{-1}\\right)^k}{k!}.\n\nMontrons par récurrence que \\left(PAP^{-1}\\right)^k = P A^k P^{-1}.\n\nPour k=0, nous avons I_n = \\left(PAP^{-1}\\right)^0 et P A^0 P^{-1} = P P^{-1} = I_n donc la propriété est vraie.\nSupposons cette propriété vraie pour k &gt; 0. Alors \n  \\left(PAP^{-1}\\right)^{k+1} = \\left(PAP^{-1}\\right)^k PAP^{-1} = P A^k P^{-1} PAP^{-1} = P A^{k+1} P^{-1}\n et donc la propriété est vraie pour k+1.\n\nAinsi, on a : \\begin{align}\n    e^{PAP^{-1}} &= \\sum_{k=0}^{\\infty} \\frac{\\left(PAP^{-1}\\right)^k}{k!} =\n    \\sum_{k=0}^{\\infty} \\left( P \\frac{A^k}{k!} P^{-1} \\right) \\notag \\\\[1.5em]\n    &= P \\left( \\sum_{k=0}^{\\infty} \\frac{A^k}{k!} \\right) P^{-1}\n    \\tag*{(par continuité de la conjugaison)} \\\\[1.5em]\n    &= P e^A P^{-1}. \\notag\n\\end{align}\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nSi la matrice A est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l’exponentielle d’une matrice diagonale. En effet, si A = P \\Sigma P^{-1}, avec \\Sigma diagonale, alors e^A = P e^\\Sigma P^{-1}, avec e^\\Sigma diagonale.\n\n\n\n\nMatrice Transposée\nLa transposée d’une matrice A de taille m \\times n est notée A^T et s’obtient en échangeant les lignes et les colonnes de A. Autrement dit, l’élément (i, j) de A^T est l’élément (j, i) de A :\n\n(A^T)_{ij} = A_{ji}\n\nConcernant l’exponentielle de matrice, nous avons :\n\ne^{A^T} = (e^A)^T.\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa preuve est laissée en exercice. On pourra s’inspirer de la preuve ci-avant.\n\n\n\n\nMatrice Nilpotente\nUne matrice carrée A est dite nilpotente s’il existe un entier k tel que :\n\nA^k = 0.\n\nDans ce cas, l’exponentielle de A s’écrit sous forme de somme finie :\n\ne^A = \\sum_{n=0}^{k-1} \\frac{A^n}{n!}.\n\nPar exemple, pour la matrice\n\nA = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix},\n\non a A^2 = 0, donc son exponentielle est :\n\ne^A = I_2 + A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}.\n\n\n\nMatrices Commutantes\nSi les matrices A et B commutent, c’est-à-dire si AB = BA, alors l’exponentielle de leur somme est le produit des exponentielles :\n\n    e^{A + B} = e^A\\, e^B.\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nSoit A et B deux matrices dans \\mathcal{M}_n(\\mathbb{R}) qui commutent, c’est-à-dire telle que AB = BA.\nEn développant (A+B)^k à l’aide du binôme de Newton, on obtient puisque A et B commutent :\n\n    (A + B)^k = \\sum_{j=0}^{k} \\binom{k}{j} A^j B^{k-j}.\n\nEn utilisant le produit de Cauchy et le résultat précédent, nous avons :\n\n    e^A\\, e^B = \\sum_{k=0}^{\\infty} c_k, \\quad c_k = \\sum_{j=0}^{k} \\frac{A^j}{j!} \\frac{B^{k-j}}{(k-j)!} = \\frac{(A + B)^k}{k!}.\n\nAinsi, au final nous obtenons :\n\n    e^A\\, e^B = \\sum_{k=0}^{\\infty} \\frac{(A + B)^k}{k!} = e^{A+B}.\n\nCela conclut la démonstration.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nLa commutativité des matrices A et B est une condition nécessaire pour que cette propriété soit vraie. Voir la formule de Baker-Campbell-Hausdorff pour plus de détails.\nContre-exemple. Soient\n\n    A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}, \\quad B = \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}.\n\nAlors, pusique A^2 = B^2 = 0_2, on a :\n\n    e^A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\end{pmatrix}, \\quad e^B = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix}\n\nmais par ailleursn (A + B)^2 = I_2 donc\n\n    \\begin{aligned}\n        e^{A+B} &= \\left( \\sum_{k=0}^{\\infty} \\frac{1}{2k!} \\right) I_2 + \\left( \\sum_{k=0}^{\\infty} \\frac{1}{(2k+1)!} \\right) (A+B) \\\\[1.5em]\n        &= \\cosh(1) I_2 + \\sinh(1) (A + B) \\\\[0.5em]\n        &\\ne e^A e^B = \\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \\end{pmatrix}.\n    \\end{aligned}\n\n\n\n\n\nInversibilité et Dérivabilité\nSoit A \\in \\mathcal{M}_n(\\mathbb{R}). En corollaire de ce qui précède, nous avons les propriétés suivantes :\n\nInversibilité : e^A est toujours une matrice inversible et son inverse est donné par :\n\n     (e^A)^{-1} = e^{-A}.\n\nDérivabilité : L’application t \\mapsto e^{tA} est dérivable par rapport à t, et sa dérivée est donnée par :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d} t} e^{tA} = A\\, e^{tA} = e^{tA} A.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\n\nInversibilité :\nPour prouver que e^A est inversible et que son inverse est e^{-A}, nous utilisons la commutativité des matrices A et -A. En effet, il est évident que les matrices A et -A commutent, donc on peut écrire :\n\n     e^{-A} e^A = e^A e^{-A} = e^{A + (-A)} = e^{0_n} = I_n.\n\nAinsi, e^A est inversible et son inverse est e^{-A}.\nDérivabilité :\nFixons un t \\in \\mathbb{R}. Pour étudier la dérivée de e^{tA} par rapport à t, nous commençons par utiliser la définition de la dérivée :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = \\lim_{h \\to 0} \\frac{e^{(t+h)A} - e^{tA}}{h}.\n\nEn remarquant que tA et hA commutent, nous réécrivons la différence comme suit :\n\n     e^{(t+h)A} - e^{tA} = e^{tA} e^{hA} - e^{tA} = e^{tA} (e^{hA} - I_n).\n\nDivisons par h :\n\n     \\frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \\frac{e^{hA} - I_n}{h} = e^{tA} \\left( \\sum_{k=1}^{\\infty} \\frac{h^{k-1}A^k}{k!} \\right).\n\nOr,\n\n     \\sum_{k=1}^{\\infty} \\frac{h^{k-1}A^k}{k!} = A + h \\sum_{k=2}^{\\infty} \\frac{h^{k-2}A^k}{k!}\n     = A + h A^2 \\sum_{k=0}^{\\infty} \\frac{h^{k}A^k}{(k+2)!}\n\net la série de termes {h^{k}A^k}/{(k+2)!} est convergente puisque ceux-ci sont majorés pas ceux de l’exponentielle de hA. On note B(h) la limite de la série. L’application h \\mapsto B(h) est continue en 0 (par convergence normale) et B(0) = I_n / 2. Ainsi, on a :\n\n     \\lim_{h \\to 0} \\frac{e^{(t+h)A} - e^{tA}}{h} = \\lim_{h \\to 0} e^{tA} \\left( A + h A^2 B(h) \\right) = e^{tA} A.\n\nDonc, la dérivée de e^{tA} est :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = e^{tA} A.\n\nPar commutativité de A avec ses puissances, on peut aussi écrire cette dérivée comme :\n\n     \\frac{\\mathrm{d}}{\\mathrm{d}t} e^{tA} = A\\, e^{tA}.\n\n\nCela conclut la démonstration des deux propriétés.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nOn pourra préférer la notation \\exp. Ces deux derniers résultats nous indique que l’on a \\exp \\colon \\mathcal{M}_n(\\mathbb{R}) \\to \\mathrm{GL}_n(\\mathbb{R}) et que \n    \\frac{\\mathrm{d}}{\\mathrm{d}t} \\exp(tA) = A \\exp(tA) = \\exp(tA) A.\n Nous savons que \\exp est continue sur \\mathcal{M}_n(\\mathbb{R}). Nous pourrions montrer que cette application est de classe \\mathscr{C}^\\infty sur son domaine de définition. L’application exponentielle est même surjective, c’est-à-dire \n    \\exp(\\mathcal{M}_n(\\mathbb{R})) = \\mathrm{GL}_n(\\mathbb{R}).",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Définition"
+      "Exponentielle de matrice"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/definition.html#cas-scalaire",
-    "href": "src/edo_lineaires/definition.html#cas-scalaire",
-    "title": "Problème de Cauchy Linéaire",
-    "section": "Cas Scalaire",
-    "text": "Cas Scalaire\nDans le cas d’une équation linéaire homogène scalaire autonome, où a est une fonction constante, et en considérant le problème de Cauchy avec la condition initiale x(0) = x_0, l’équation est donnée par :\n\nx'(t) = a x(t), \\quad x(0) = x_0.\n\nLa solution générale de l’équation différentielle est :\n\nx(t) = C e^{a t},\n\noù C est une constante déterminée par la condition initiale. En imposant x(0) = x_0, on trouve :\n\nC = x_0.\n\nAinsi, la solution du problème de Cauchy est :\n\nx(t) = x_0 e^{a t}.\n\n\n\n\n\n\n\nCommentaire sur le cas vectoriel\n\n\n\nLe cas scalaire fait intervenir la fonction exponentielle sur \\mathbb{R}. Dans le cas vectoriel, où x(t) \\in \\mathbb{R}^n, nous aurons besoin de l’exponentielle de matrice, qui est une généralisation de l’exponentielle scalaire.",
+    "objectID": "src/edo_lineaires/exponentielle.html#exercices",
+    "href": "src/edo_lineaires/exponentielle.html#exercices",
+    "title": "Exponentielle de Matrice",
+    "section": "Exercices",
+    "text": "Exercices\n\n\n\n\n\n\nQuestion\n\n\n\nPour chaque matrice A ci-dessous, calculez son exponentielle (\\alpha, \\beta, \\lambda \\in \\mathbb{R}) :\n\n    \\begin{aligned}\n        A &= \\begin{pmatrix}  0 &  1 \\\\ -1 & 0 \\end{pmatrix}, \\quad\n        A  = \\begin{pmatrix}  2 & -1 \\\\  1 & 2 \\end{pmatrix}, \\quad\n        A  = \\begin{pmatrix} -1 &  1 \\\\  0 & 1 \\end{pmatrix}, \\quad\n        A  = \\begin{pmatrix}  0 &  1 \\\\  1 & 0 \\end{pmatrix}, \\\\[1.5em]\n        A &= \\begin{pmatrix}  1 &  1 \\\\  1 & 1 \\end{pmatrix},  \\quad\n        A  = \\begin{pmatrix}  \\alpha & \\beta \\\\ -\\beta & \\alpha \\end{pmatrix},  \\quad\n        A  = \\begin{pmatrix}  \\lambda &  1 \\\\  0 & \\lambda \\end{pmatrix}.\n    \\end{aligned}",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Définition"
+      "Exponentielle de matrice"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/solution.html",
-    "href": "src/edo_lineaires/solution.html",
-    "title": "Solution du Problème de Cauchy Linéaire",
+    "objectID": "src/edo_lineaires/exemples.html",
+    "href": "src/edo_lineaires/exemples.html",
+    "title": "Exemples et Exercices",
     "section": "",
-    "text": "Considérons le problème de Cauchy linéaire homogène suivant :\n\n    x'(t) = A x(t), \\quad x(0) = x_0\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et x_0 \\in \\mathbb{R}^n est le vecteur d’état initial.\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire homogène est donnée par :\n\n    x(t, x_0) = e^{tA} x_0\n\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nExistence. Montrons que x(t, x_0) = e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\nVérification de la Condition Initiale. À t = 0, nous avons : \n      x(0, x_0) = e^{0 \\cdot A} x_0 = I x_0 = x_0\n   Donc, la condition initiale est satisfaite.\nVérification de l’Équation Différentielle. Calculons la dérivée de x(t, x_0) par rapport à t : \n      \\frac{d}{dt} x(t, x_0) = \\frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)\n   Donc, x(t, x_0) satisfait l’équation différentielle x'(t) = A x(t).\n\nAinsi, x(t, x_0) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.\nUnicité. Supposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - x(t, x_0). Alors,\n\n    z'(t) = y'(t) - x'(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)\n\nAvec la condition initiale z(0) = y(0) - x(0, x_0) = 0.\nConsidérons maintenant le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n    w'(t) = \\frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0\n\nPuisque w'(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 \\cdot A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = x(t, x_0). Cela prouve l’unicité de la solution.",
+    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Solution"
+      "Exemples"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/solution.html#cas-homogène",
-    "href": "src/edo_lineaires/solution.html#cas-homogène",
-    "title": "Solution du Problème de Cauchy Linéaire",
+    "objectID": "src/edo_lineaires/exemples.html#exemple-1-convergence",
+    "href": "src/edo_lineaires/exemples.html#exemple-1-convergence",
+    "title": "Exemples et Exercices",
     "section": "",
-    "text": "Considérons le problème de Cauchy linéaire homogène suivant :\n\n    x'(t) = A x(t), \\quad x(0) = x_0\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et x_0 \\in \\mathbb{R}^n est le vecteur d’état initial.\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire homogène est donnée par :\n\n    x(t, x_0) = e^{tA} x_0\n\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nExistence. Montrons que x(t, x_0) = e^{tA} x_0 vérifie les propriétés d’une solution pour le problème de Cauchy.\n\nVérification de la Condition Initiale. À t = 0, nous avons : \n      x(0, x_0) = e^{0 \\cdot A} x_0 = I x_0 = x_0\n   Donc, la condition initiale est satisfaite.\nVérification de l’Équation Différentielle. Calculons la dérivée de x(t, x_0) par rapport à t : \n      \\frac{d}{dt} x(t, x_0) = \\frac{d}{dt} (e^{tA} x_0) = A e^{tA} x_0 = A x(t, x_0)\n   Donc, x(t, x_0) satisfait l’équation différentielle x'(t) = A x(t).\n\nAinsi, x(t, x_0) = e^{tA} x_0 est bien une solution du problème de Cauchy, ce qui prouve l’existence.\nUnicité. Supposons qu’il existe une autre solution y(t) du problème de Cauchy. Définissons z(t) = y(t) - x(t, x_0). Alors,\n\n    z'(t) = y'(t) - x'(t, x_0) = A y(t) - A x(t, x_0) = A (y(t) - x(t, x_0)) = A z(t)\n\nAvec la condition initiale z(0) = y(0) - x(0, x_0) = 0.\nConsidérons maintenant le changement de variable w(t) = e^{-tA} z(t). Alors,\n\n    w'(t) = \\frac{d}{dt} (e^{-tA} z(t)) = -A e^{-tA} z(t) + e^{-tA} z'(t) = -A w(t) + e^{-tA} A z(t) = 0\n\nPuisque w'(t) = 0, w(t) est constante (d’après le TAF). Donc, w(t) = w(0) = e^{-0 \\cdot A} z(0) = 0.\nAinsi, z(t) = e^{tA} w(t) = 0 pour tout t, ce qui implique que y(t) = x(t, x_0). Cela prouve l’unicité de la solution.",
+    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Solution"
+      "Exemples"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/solution.html#cas-non-homogène",
-    "href": "src/edo_lineaires/solution.html#cas-non-homogène",
-    "title": "Solution du Problème de Cauchy Linéaire",
-    "section": "Cas Non Homogène",
-    "text": "Cas Non Homogène\nConsidérons maintenant le problème de Cauchy linéaire non homogène :\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0,\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et t \\mapsto b(t) \\in \\mathbb{R}^n est définie et continue sur un intervalle ouvert \\mathcal{I} contenant t_0.\n\n\n\n\n\n\nHypothèse\n\n\n\nNous supposons acquis l’existence d’une unique solution globale.\n\n\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire non homogène est donnée par :\n\nx(t) = e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds\n\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nPuisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction x(t) définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Cette vérification est laissée au lecteur. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation des constantes.\nMéthode de variation des constantes. Posons x(t) = e^{(t-t_0)A} z(t) et déterminons z(t). Tout d’abord, x(\\cdot) doit vérifier la condition initiale :\n\nx(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,\n\nd’où z(t_0) = x_0.\nEnsuite, x(\\cdot) doit satisfaire l’équation différentielle. En dérivant, on obtient :\n\nx'(t) = A x(t) + e^{(t-t_0)A} z'(t).\n\nIl faut donc choisir z(\\cdot) de manière à ce que b(t) = e^{(t-t_0)A} z'(t), ce qui équivaut à z'(t) = e^{(t_0-t)A} b(t).\nEnfin, en intégrant :\n\nz(t) = x_0 + \\int_{t_0}^t e^{(t_0-s)A}\\, b(s)\\, \\mathrm{d}s.\n\nD’où l’expression finale :\n\nx(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \\int_{t_0}^t e^{(t-s)A}\\, b(s)\\, \\mathrm{d}s,\n\ngrâce à la propriété e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}.",
+    "objectID": "src/edo_lineaires/exemples.html#exemple-2-divergence",
+    "href": "src/edo_lineaires/exemples.html#exemple-2-divergence",
+    "title": "Exemples et Exercices",
+    "section": "Exemple 2 : Divergence",
+    "text": "Exemple 2 : Divergence\nConsidérons le système linéaire suivant :\n\n    x'(t) = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} a des valeurs propres complexes conjuguées 1 \\pm i.\nL’exponentielle de A est : \n  e^{tA} = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = e^t \\begin{pmatrix} \\cos(t) \\\\ \\sin(t) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, \\|x(t)\\| \\to \\infty car la partie réelle des valeurs propres est positive.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Solution"
+      "Exemples"
     ]
   },
   {
-    "objectID": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
-    "href": "src/edo_lineaires/solution.html#cas-particulier-b-constant",
-    "title": "Solution du Problème de Cauchy Linéaire",
-    "section": "Cas Particulier : b Constant",
-    "text": "Cas Particulier : b Constant\nSi b est un vecteur constant (ne dépend pas du temps), nous pouvons nous ramener au cas linéaire homogène par un changement de variable. On fixe pour la suite t_0 = 0.\nPosons z(t) = x(t) - x_p(t), où x_p(t) est une solution particulière de l’équation x'(t) = A x(t) + b. En substituant x(t) = z(t) + x_p(t) dans l’équation originale, nous obtenons :\n\n    z'(t) + x'_p(t) = A(z(t) + x_p(t)) + b.\n\nPuisque x_p(t) est une solution particulière, x'_p(t) = A x_p(t) + b. Donc,\n\n    z'(t) = A z(t).\n\nAinsi, z(t) satisfait une équation différentielle linéaire homogène. La solution de z'(t) = A z(t) avec la condition initiale z(0) = x_0 - x_p(0) est donnée par :\n\n    z(t) = e^{tA} (x_0 - x_p(0)).\n\nEn revenant à la variable originale, nous avons :\n\n    x(t) = z(t) + x_p(t) = e^{tA} (x_0 - x_p(0)) + x_p(t).\n\nCe changement de variable permet de ramener le problème linéaire non homogène à un problème linéaire homogène, facilitant ainsi sa résolution.\n\n\n\n\n\n\nNote\n\n\n\nSi b appartient à l’image de A, c’est-à-dire s’il existe un vecteur x_e tel que A x_e = -b, alors nous pouvons choisir x_p(t) = x_e. En effet, dans ce cas, x_e est une solution particulière constante de l’équation x'(t) = A x(t) + b, car :\n\nA x_e + b = -b + b = 0\n\nAinsi, x_p(t) = x_e est une solution particulière constante, simplifiant encore le changement de variable et nous obtenons\n\n    x(t) = e^{tA} (x_0 - x_e) + x_e.",
+    "objectID": "src/edo_lineaires/exemples.html#exemple-3-second-membre-constant",
+    "href": "src/edo_lineaires/exemples.html#exemple-3-second-membre-constant",
+    "title": "Exemples et Exercices",
+    "section": "Exemple 3 : Second Membre Constant",
+    "text": "Exemple 3 : Second Membre Constant\nConsidérons le système linéaire suivant avec un second membre constant :\n\n    x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\mathrm{d}s\n\nCalculons l’intégrale : \n   x(t) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} & 0 \\\\ 0 & e^{-2(t-s)} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, \\mathrm{d}s\n\nCe qui donne : \n   x(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ \\frac{1}{2} (1 - e^{-2t}) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\end{pmatrix}.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
-      "Solution"
+      "Exemples"
     ]
   },
   {
-    "objectID": "src/integration_numerique/stabilite.html",
-    "href": "src/integration_numerique/stabilite.html",
-    "title": "Stabilité",
+    "objectID": "src/integration_numerique/consistance.html",
+    "href": "src/integration_numerique/consistance.html",
+    "title": "Consistance",
     "section": "",
-    "text": "La stabilité consiste à comparer la solution du schéma avec celle du même schéma auquel on ajoute une perturbation. Si la borne des erreurs (en norme) sur l’ensemble des points de discrétisation entre les deux solutions ne dépend que des perturbations et non pas de la subdivision, c’est-à-dire du vecteur de pas, alors on dira que la méthode est stable. En effet, pour une méthode stable de petites perturbations mènent à de petites erreurs.\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas explicite est stable si il existe une constante S positive indépendante de {(h_i)}_i telle que pour toutes suites sur \\llbracket 0\\,,\\, N-1 \\rrbracket :\n\n    \\begin{aligned}\n        x_{i+1} &= x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\\\\n        y_{i+1} &= y_i + h_i\\, \\Phi(t_i, y_i, h_i) + \\varepsilon_i,\n    \\end{aligned}\n\non ait\n\n    \\max_{0 \\le i \\le N}\\, \\lVert x_i - y_i\\rVert\n    \\le S \\left( \\lVert x_0 - y_0\\rVert +~\\sum_{i=0}^{N-1} \\lVert\\varepsilon_i\\rVert \\right).\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nMontrer que la méthode d’Euler est stable si la fonction f est de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x. On supposera pour simplifier que le pas d’intégration est uniforme, c’est-à-dire que h_i = h pour tout i.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nSoit {(x_i)}_i et {(y_i)}_i des solutions de\n\n    \\begin{aligned}\n        x_{i+1} &= x_i + h_i\\, f(t_i, x_i) \\\\[0.5em]\n        y_{i+1} &= y_i + h_i\\, f(t_i, y_i) + \\varepsilon_i.\n    \\end{aligned}\n\nPuisque f est \\mathscr{C}^{1}, elle est localement lipschitzienne et puisque t appartient à un intervalle compact, on peut trouver une constante de Lipschitz indépendante du temps. La fonction f étant globalement lipschitzienne par rapport à la variable x, on peut donc trouver une constante de Lipschitz indépendante aussi de x. On note L cette constante. Ainsi, on a :\n\n    \\begin{aligned}\n        \\lVert x_{i+1} - y_{i+1}\\rVert\n        &\\le \\lVert x_i - y_i\\rVert + h_i \\, \\lVert f(t_i, x_i) - f(t_i, y_i)\\rVert + \\lVert\\varepsilon_i\\rVert\\\\[0.5em]\n        &\\le (1 + h_i L)\\, \\lVert x_i - y_i\\rVert + \\lVert\\varepsilon_i\\rVert.\n    \\end{aligned}\n\nPuisque h_i = h pour tout i, on arrive à montrer que\n\n    \\lVert x_{i+1} - y_{i+1}\\rVert \\le {(1 + h\\, L)}^N \\left( \\lVert x_0-y_0\\rVert + \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\right).\n\nPuisque notamment pour tout x \\ge 0, on a 1+x \\le e^x, il vient que\n\n    {(1 + h\\, L)}^N \\le e^{hLN} = e^{(t_f-t_0)\\, L}\n    \\quad\n    \\text{car}\n    \\quad\n    N = \\frac{t_f-t_0}{h},\n\net donc pour tout i \\in \\llbracket 0\\,,\\, N-1 \\rrbracket, on a\n\n    \\lVert x_{i} - y_{i}\\rVert \\le e^{(t_f-t_0)\\, L} \\left( \\lVert x_0-y_0\\rVert + \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\right)\n\nce qui montre la stabilité de la méthode d’Euler en passant au max.\n\n\n\nDans l’exercice précédent, la stabilité de la méthode d’Euler découle du fait que f est globalement lipschitzienne par rapport à la variable x de manière uniforme sur [t_0, t_f]. De manière générale, on a le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nPour que la méthode à un pas explicite soit stable il suffit que \\Phi soit \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x.\n\n\n\n\n\n\n\n\nPreuve rapide\n\n\n\n\n\nSupposons \\Phi de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x. Alors, il existe K \\ge 0 telle que :\n\n    \\lVert\\Phi(t, x, h) - \\Phi(t, y, h)\\rVert \\le K \\lVert x - y\\rVert,\n\npour tout t\\in [t_0, t_f], 0 \\le h \\le t_f-t_0 et (x, y) \\in \\mathbb{R}^n \\times \\mathbb{R}^n. On peut alors prendre comme constante de stabilité\n\nS = e^{K(t_f-t_0)}.\n\n\n\n\n\n\n\n Back to top",
+    "text": "Les méthodes de Runge-Kutta sont des méthodes à un pas\n\n    x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i), \\quad h_i = t_{i+1} - t_i,\n\nque l’on peut écrire sous la forme\n\n    E_i(x_i, x_{i+1}) \\coloneqq x_{i+1} - \\left( x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\right) = 0.\n\nOn rappelle que x(\\cdot, t_0, x_0) est la solution du problème de Cauchy x'(t) = f(t, x(t)), x(t_0) = x_0. Pour alléger les notations, nous écrivons simplement x(\\cdot) cette solution, t_0 et x_0 étant fixés.\n\n\n\n\n\n\nDéfinition\n\n\n\nL’erreur (locale) de consistance e_i est l’erreur locale de troncature\n\n    e_i \\coloneqq E_i(x(t_i), x(t_{i+1})).\n\n\n\nNous obtenons\n\n    \\begin{aligned}\n        e_i &= E_i(x(t_i), x(t_{i+1}))\n        = x(t_{i+1}) - x(t_i) - h_i \\, \\Phi(t_i, x(t_i), h_i) \\\\[0.5em]\n        &= \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d} t - h_i \\, \\Phi(t_i, x(t_i), h_i).\n    \\end{aligned}\n\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas est consistante si pour toute solution au problème de Cauchy, on a\n\n    \\sum_{i=0}^{N-1} \\Vert e_i\\Vert \\to 0 \\quad \\text{quand} \\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nIl est important de noter que les instants t_i et le nombre de pas dépendent directement du vecteur de discrétisation {(h_i)}_{i}.\n\n\nNous avons le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nUne méthode à un pas explicite est consistante si et seulement si\n\n    \\forall\\, (t, x) \\in [t_0, t_f] \\times \\mathbb{R}^n, \\quad \\Phi(t, x, h)|_{h=0} = f(t, x).\n\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLes méthodes de Runge-Kutta explicites sont consistantes si et seulement si\n\n    \\sum_{i=1}^s b_i = 1.",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
-      "Stabilité"
+      "Consistance"
     ]
   },
   {
-    "objectID": "src/integration_numerique/runge_kutta.html",
-    "href": "src/integration_numerique/runge_kutta.html",
-    "title": "Méthodes de Runge-Kutta",
+    "objectID": "src/integration_numerique/consistance.html#méthode-consistante",
+    "href": "src/integration_numerique/consistance.html#méthode-consistante",
+    "title": "Consistance",
     "section": "",
-    "text": "Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d’Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.\n\n\n\n\n\n\nDéfinition\n\n\n\nOn appelle méthode de Runge-Kutta explicite à s étages, la méthode définie par le schéma\n\n\\begin{aligned}\n    k_1 &= f(t_0, x_0) \\\\\n    k_2 &= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\\\\n    \\vdots & \\\\[-1em]\n    k_s &= f(t_0 + c_s h, x_0 + h \\sum_{j=1}^{s-1} a_{sj} k_j) \\\\\n    x_1 &= x_0 + h \\sum_{i=1}^{s} b_i k_i,\n\\end{aligned}\n\noù les coefficients c_i, a_{ij} et b_i sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que c_1 = 0 et c_i = \\sum_{j=1}^{i-1} a_{ij}, pour i = 2, \\ldots, s.\n\n\nOn représente en pratique ce schéma par le tableau de Butcher suivant.\n\n\\begin{array}{c | c c c c c} % chktex 44\n    c_1     & & & & & \\\\[0.1em]\n    c_2     & a_{21} & & & & \\\\[0.1em]\n    c_3     & a_{31} & a_{32} & & & \\\\[0.1em]\n    \\vdots  & \\vdots & \\vdots & \\ddots & & \\\\[0.1em]\n    c_s     & a_{s1} & a_{s2} & \\cdots & a_{ss-1} & \\\\[0.1em]\n    \\hline % chktex 44\n    \\rule{0pt}{2.6ex}\n            & b_1 & b_2 & \\cdots & b_{s-1} & b_s \\\\\n\\end{array}\n\nVoici une liste d’exemples de schémas de Runge-Kutta explicites.\n\nEuler (ordre 1) \n\\begin{array}{c | c} % chktex 44\n  0   & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n      & 1 \\\\\n\\end{array}\n\nRunge (ordre 2) \n\\begin{array}{c | c c} % chktex 44\n  0       &     & \\\\[0.1em]\n  1/2     & 1/2 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 0   & 1 \\\\\n\\end{array}\n\nHeun (ordre 3) \n\\begin{array}{c | c c c} % chktex 44\n  0       &     &     &  \\\\[0.1em]\n  1/3     & 1/3 &     &  \\\\[0.1em]\n  2/3     & 0   & 2/3 &  \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/4 & 0   & 3/4 \\\\\n\\end{array}\n\nRk4 (ordre 4) \n\\begin{array}{c | c c c c} % chktex 44\n  0       & & & & \\\\[0.1em]\n  1/2     & 1/2 & & & \\\\[0.1em]\n  1/2     & 0 & 1/2 & & \\\\[0.1em]\n  1       & 0 & 0 & 1 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/6 & 2/6 & 2/6 & 1/6 \\\\\n\\end{array}\n\nRk4, règle 3/8 (ordre 4) \n\\begin{array}{c | c c c c} % chktex 44\n  0       & & & & \\\\[0.1em]\n  1/3     & 1/3  & & & \\\\[0.1em]\n  2/3     & -1/3 & 1 & & \\\\[0.1em]\n  1       & 1 & -1 & 1 & \\\\[0.1em]\n  \\hline % chktex 44\n  \\rule{0pt}{2.6ex}\n          & 1/8 & 3/8 & 3/8 & 1/8 \\\\\n\\end{array}\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nDans les schémas ci-dessus, nous avons indiqué l’ordre de la méthode. Celle-ci est définie par la suite.\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l’application \\Phi(t_0, x_0, h).\n\n\n\n\n\n Back to top",
+    "text": "Les méthodes de Runge-Kutta sont des méthodes à un pas\n\n    x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i), \\quad h_i = t_{i+1} - t_i,\n\nque l’on peut écrire sous la forme\n\n    E_i(x_i, x_{i+1}) \\coloneqq x_{i+1} - \\left( x_i + h_i\\, \\Phi(t_i, x_i, h_i) \\right) = 0.\n\nOn rappelle que x(\\cdot, t_0, x_0) est la solution du problème de Cauchy x'(t) = f(t, x(t)), x(t_0) = x_0. Pour alléger les notations, nous écrivons simplement x(\\cdot) cette solution, t_0 et x_0 étant fixés.\n\n\n\n\n\n\nDéfinition\n\n\n\nL’erreur (locale) de consistance e_i est l’erreur locale de troncature\n\n    e_i \\coloneqq E_i(x(t_i), x(t_{i+1})).\n\n\n\nNous obtenons\n\n    \\begin{aligned}\n        e_i &= E_i(x(t_i), x(t_{i+1}))\n        = x(t_{i+1}) - x(t_i) - h_i \\, \\Phi(t_i, x(t_i), h_i) \\\\[0.5em]\n        &= \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d} t - h_i \\, \\Phi(t_i, x(t_i), h_i).\n    \\end{aligned}\n\n\n\n\n\n\n\nDéfinition\n\n\n\nOn dit qu’une méthode à un pas est consistante si pour toute solution au problème de Cauchy, on a\n\n    \\sum_{i=0}^{N-1} \\Vert e_i\\Vert \\to 0 \\quad \\text{quand} \\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nIl est important de noter que les instants t_i et le nombre de pas dépendent directement du vecteur de discrétisation {(h_i)}_{i}.\n\n\nNous avons le résultat suivant.\n\n\n\n\n\n\nProposition\n\n\n\nUne méthode à un pas explicite est consistante si et seulement si\n\n    \\forall\\, (t, x) \\in [t_0, t_f] \\times \\mathbb{R}^n, \\quad \\Phi(t, x, h)|_{h=0} = f(t, x).\n\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLes méthodes de Runge-Kutta explicites sont consistantes si et seulement si\n\n    \\sum_{i=1}^s b_i = 1.",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
-      "Méthodes de Runge-Kutta"
+      "Consistance"
+    ]
+  },
+  {
+    "objectID": "src/integration_numerique/consistance.html#ordre-de-consistance",
+    "href": "src/integration_numerique/consistance.html#ordre-de-consistance",
+    "title": "Consistance",
+    "section": "Ordre de consistance",
+    "text": "Ordre de consistance\nPour évaluer l’erreur de consistance à l’indice i, le paramètre important est le pas h_i. On fixe les autres paramètres et on regarde comment se comporte l’erreur en fonction du pas. Nous aurons besoin de la notation de Landau. Rappelons que la notation de Landau e(h) = O\\mathopen{}\\left({h^p}\\right) signifie qu’il existe un voisinage U de 0 et une constante positive C telle que pour tout h \\in U, \\lVert e(h)\\rVert \\le C \\lvert h\\rvert^p.\n\n\n\n\n\n\nDéfinition\n\n\n\nSi l’erreur locale de consistance vérifie pour p \\ge 1 :\n\nE_i(h) \\coloneqq E_i(x(t_i), x(t_i + h)) = x(t_i + h) - x(t_i) - h \\, \\Phi(t_i, x(t_i), h) = O\\mathopen{}\\left({h^{p+1}}\\right),\n\non dit que le schéma est d’ordre p. On parle de l’ordre de consistance du schéma.\n\n\nSi nous avions défini E_i comme étant donnée par\n\n\\frac{x_{i+1}-x_i}{h_i} - \\Phi(t_i, x_i, h_i),\n\nnous aurions eu E_i(h) = O\\mathopen{}\\left(h^p\\right). L’ordre de consistance est bien p ce qui se verra mieux par la suite car l’ordre de convergence sera donné par l’ordre de consistance dans le cas où la méthode est consistante et stable.\n\n\n\n\n\n\nRemarque\n\n\n\nUne méthode d’ordre de consistance p \\ge 1 est consistante.\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nL’ordre de consistance ne dépend pas de l’indice i. Ainsi, on peut se restreindre au premier pas. Dans ce cas, on note\n\nE(h) = x(t_0 + h) - x(t_0) - h \\, \\Phi(t_0, x(t_0), h).\n\nPour simplifier un peu plus la notation, on utilise le fait que x(t_0) = x_0 et on note\n\nE(h) = x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h).\n\n\n\nLe schéma d’Euler explicite est d’ordre p=1 car par définition de la dérivée\n\n\\begin{aligned}\nE(h) &= x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h) \\\\\n&= x'(t_0)\\, h + O\\mathopen{}\\left(h^2\\right) - h \\, f(t_0, x_0) \\\\\n&= h\\, f(t_0, x_0) - h \\, f(t_0, x_0) + O\\mathopen{}\\left(h^2\\right) \\\\\n&= O\\mathopen{}\\left(h^2\\right).\n\\end{aligned}\n\nNous allons dans l’exercice suivant étudier les relations que doivent vérifier les coefficients a_{ij}, b_i et c_i pour qu’un schéma de Runge-Kutta explicite à 2 étages soit d’ordre 2.\n\n\n\n\n\n\nQuestion\n\n\n\nSoit le schéma de Runge-Kutta\n\n\\begin{aligned}\nk_1 &= f(t_0, x_0) \\\\\nk_2 &= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\\\\nx_1 &= x_0 + h\\, (b_1 k_1 + b_2 k_2).\n\\end{aligned}\n\nRetrouver que c_2 = a_{21} et donner les 2 relations que doivent vérifier b_1, b_2 et a_{21} pour que le schéma soit d’ordre 2. En déduire que la méthode de Runge est d’ordre 2.\n\n\n\n\n\n\n\n\nCorrection\n\n\n\n\n\nDans ce cas, nous avons\n\ne(h) = x(t_0 + h) - x_0 - h \\, \\Phi(t_0, x_0, h)\n\navec\n\n\\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \\quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).\n\nDéveloppons e(h) à l’ordre 2 et voyons les conditions à vérifier pour avoir e(h) = O\\mathopen{}\\left(h^3\\right). Dans un premier temps, nous avons\n\nx(t_0 + h) - x_0 = hx'(t_0) + \\frac{h^2}{2} x''(t_0) + O\\mathopen{}\\left(h^3\\right)\n\net puisque x'(t) = f(t, x(t)), alors\n\nx''(t) = \\dfrac{\\partial f}{\\partial t}(t, x(t)) + \\dfrac{\\partial f}{\\partial x}(t, x(t)) \\, x'(t)\n= \\dfrac{\\partial f}{\\partial t}(t, x(t)) + \\dfrac{\\partial f}{\\partial x}(t, x(t)) \\, f(t, x(t))\n\ndonc\n\nx(t_0 + h) - x_0 = h f(t_0, x_0) + \\frac{h^2}{2}\n\\left( \\dfrac{\\partial f}{\\partial t}(t_0, x_0) + \\dfrac{\\partial f}{\\partial x}(t_0, x_0) \\, f(t_0, x_0) \\right) + O\\mathopen{}\\left(h^3\\right).\n\nD’un autre côté, nous avons\n\nk_2(h) = f(t_0, x_0) + h\\, f'(t_0, x_0) \\cdot (c_2, a_{21} k_1) + O\\mathopen{}\\left(h^2\\right).\n\nAu final, nous obtenons\n\n\\begin{aligned}\ne(h) &= h f(t_0, x_0) + \\frac{h^2}{2}\n\\left( \\dfrac{\\partial f}{\\partial t}(t_0, x_0) + \\dfrac{\\partial f}{\\partial x}(t_0, x_0) \\, f(t_0, x_0) \\right) \\\\[0.5em]\n& \\quad - h \\left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\\, f'(t_0, x_0) \\cdot (c_2, a_{21} k_1) \\right)\n+ O\\mathopen{}\\left(h^3\\right) \\\\[0.5em]\n&= h (1-b_1-b_2) f(t_0, x_0) \\\\[0.5em]\n&\\quad + \\frac{h^2}{2} (1 - 2 b_2 c_2) \\dfrac{\\partial f}{\\partial t}(t_0, x_0)\n+ \\frac{h^2}{2} (1 - 2 b_2 a_{21}) \\dfrac{\\partial f}{\\partial x}(t_0, x_0)\\, f(t_0, x_0) + O\\mathopen{}\\left(h^3\\right).\n\\end{aligned}\n\nAinsi, pour que e(h) = O\\mathopen{}\\left(h^3\\right) il faut avoir c_2 = a_{21} et\n\n1 = b_1 + b_2 \\quad \\text{et} \\quad b_2 a_{21} = \\frac{1}{2}.\n\nLa méthode de Runge correspond à c_2 = a_{21} = 1/2, b_1 = 0 et b_2 = 1 donc les conditions sont vérifiées et la méthode est bien d’ordre 2.\n\n\n\n\n\n\n\n\n\nProposition\n\n\n\nLes méthodes de Heun et Rk4 sont respectivement d’ordre 3 et 4.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nVoir le livre “Solving Ordinary Differential Equations I, Nonstiff Problem”1 pour les démonstrations.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère le schéma de Runge-Kutta à 3 étages\n\n\\begin{array}{c | c c c}\n0       &        &        &  \\\\[0.1em]\nc_2     & a_{21} &        &  \\\\[0.1em]\nc_3     & a_{31} & a_{32} &  \\\\[0.1em]\n\\hline\n        & b_1 & b_2 & b_3 \\\\\n\\end{array}\n\\quad\n\\text{avec}\n\\quad\nc_i = \\sum_{j=1}^{3} a_{ij}.\n\nDémontrer dans le cas d’un système autonome que les relations que doivent vérifier les coefficients pour avoir un schéma d’ordre 3 sont\n\n\\begin{aligned}\n    1 &= b_1 + b_2 + b_3, \\\\[0.5em]\n    \\frac{1}{2} &= b_2\\, a_{21} + b_3\\, a_{31} + b_3\\, a_{32}, \\\\[0.5em]\n    \\frac{1}{3} &= b_2\\, a_{21}^2 + b_3\\, \\left( a_{31}^2 + 2\\, a_{31}\\, a_{32} + a_{32}^3 \\right), \\\\[0.5em]\n    \\frac{1}{6} &= b_3\\, a_{32}\\, a_{21}.\n\\end{aligned}\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nOn considère une méthode de Runge-Kutta explicite à s étages.\n\nAppliquer un pas de la méthode à l’équation x'(t)=x(t), pour la condition initiale x(0)=1, et montrer que x_1 est un polynôme en h au plus de degré s.\nEn déduire que l’ordre p de la méthode est au plus égale à s.",
+    "crumbs": [
+      "Plan du cours",
+      "Intégration numérique",
+      "Consistance"
+    ]
+  },
+  {
+    "objectID": "src/integration_numerique/consistance.html#footnotes",
+    "href": "src/integration_numerique/consistance.html#footnotes",
+    "title": "Consistance",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nE. Hairer, S. P. Nørsett & G. Wanner, Solving Ordinary Differential Equations I, Nonstiff Problems, vol 8 of Springer Serie in Computational Mathematics, Springer-Verlag, second edn (1993).↩︎",
+    "crumbs": [
+      "Plan du cours",
+      "Intégration numérique",
+      "Consistance"
+    ]
+  },
+  {
+    "objectID": "src/integration_numerique/erreurs_arrondi.html",
+    "href": "src/integration_numerique/erreurs_arrondi.html",
+    "title": "Influence des Erreurs d’Arrondi",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Plan du cours",
+      "Intégration numérique",
+      "Erreurs d'arrondi"
     ]
   },
   {

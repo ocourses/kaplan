@@ -311,6 +311,12 @@ window.Quarto = {
  <span class="menu-text">Convergence</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/erreurs_arrondi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erreurs d’arrondi</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -355,6 +361,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
+  <li><a href="#continuité" id="toc-continuité" class="nav-link" data-scroll-target="#continuité">Continuité</a></li>
   <li><a href="#propriétés" id="toc-propriétés" class="nav-link" data-scroll-target="#propriétés">Propriétés</a>
   <ul class="collapse">
   <li><a href="#matrice-nulle" id="toc-matrice-nulle" class="nav-link" data-scroll-target="#matrice-nulle">Matrice Nulle</a></li>
@@ -365,6 +372,7 @@ window.Quarto = {
   <li><a href="#matrices-commutantes" id="toc-matrices-commutantes" class="nav-link" data-scroll-target="#matrices-commutantes">Matrices Commutantes</a></li>
   <li><a href="#inversibilité-et-dérivabilité" id="toc-inversibilité-et-dérivabilité" class="nav-link" data-scroll-target="#inversibilité-et-dérivabilité">Inversibilité et Dérivabilité</a></li>
   </ul></li>
+  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/edo_lineaires/exponentielle.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -395,7 +403,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="définition">Définition</h2>
 <p>On définit l’exponentielle d’une matrice <span class="math inline">A \in \mathcal{M}_n(\mathbb{R})</span> par :</p>
 <p><span class="math display">
-e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
+\exp(A) \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
 </span></p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -425,6 +433,19 @@ Preuve de la convergence de la série
 </div>
 </div>
 </div>
+</section>
+<section id="continuité" class="level2">
+<h2 class="anchored" data-anchor-id="continuité">Continuité</h2>
+<p>L’application <strong>exponentielle</strong> (de matrice) :</p>
+<p><span class="math display">
+
+    \begin{array}{rcll}
+        \exp \colon &amp; \mathcal{M}_n(\mathbb{R}) &amp; \longrightarrow &amp; \mathcal{M}_n(\mathbb{R}) \\
+                  &amp; A &amp; \longmapsto     &amp; \displaystyle\exp(A) = \sum_{k=0}^{\infty} \frac{A^k}{k!}
+    \end{array}
+
+</span></p>
+<p>est <strong>continue</strong>. En effet, la série est normalement convergente sur tout compact de <span class="math inline">\mathcal{M}_n(\mathbb{R})</span> et donc uniformément convergente sur tout compact. Par conséquent, l’application <span class="math inline">\exp</span> est continue sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -435,7 +456,7 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’exponentielle de <span class="math inline">A</span> s’écrit aussi <span class="math inline">\exp(A)</span>.</p>
+<p>L’exponentielle de <span class="math inline">A</span> s’écrit aussi <span class="math inline">e^A</span>.</p>
 </div>
 </div>
 </section>
@@ -518,7 +539,7 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si la matrice <span class="math inline">A</span> est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l’exponentielle d’une matrice diagonale.</p>
+<p>Si la matrice <span class="math inline">A</span> est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l’exponentielle d’une matrice diagonale. En effet, si <span class="math inline">A = P \Sigma P^{-1}</span>, avec <span class="math inline">\Sigma</span> diagonale, alors <span class="math inline">e^A = P e^\Sigma P^{-1}</span>, avec <span class="math inline">e^\Sigma</span> diagonale.</p>
 </div>
 </div>
 </section>
@@ -562,7 +583,7 @@ A = \begin{pmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{pmatrix},
 </span></p>
 <p>on a <span class="math inline">A^2 = 0</span>, donc son exponentielle est :</p>
 <p><span class="math display">
-e^A = I + A = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}.
+e^A = I_2 + A = \begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix}.
 </span></p>
 </section>
 <section id="matrices-commutantes" class="level3">
@@ -673,18 +694,16 @@ Preuve
 </span></p>
 <p>Divisons par <span class="math inline">h</span> :</p>
 <p><span class="math display">
-     \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
+     \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I_n}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
 </span></p>
 <p>Or,</p>
 <p><span class="math display">
-     \begin{aligned}
-         \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} &amp;= A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!} \\
-         &amp;= A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
-     \end{aligned}
+     \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} = A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!}
+     = A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
 </span></p>
-<p>et la série de termes <span class="math inline">{h^{k}A^k}/{(k+2)!}</span> est convergente puisque ceux-ci sont majorés pas ceux de l’exponentielle de <span class="math inline">hA</span>. On note <span class="math inline">B</span> la limite de la série et on obtient</p>
+<p>et la série de termes <span class="math inline">{h^{k}A^k}/{(k+2)!}</span> est convergente puisque ceux-ci sont majorés pas ceux de l’exponentielle de <span class="math inline">hA</span>. On note <span class="math inline">B(h)</span> la limite de la série. L’application <span class="math inline">h \mapsto B(h)</span> est continue en <span class="math inline">0</span> (par convergence normale) et <span class="math inline">B(0) = I_n / 2</span>. Ainsi, on a :</p>
 <p><span class="math display">
-     \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B \right) = e^{tA} A.
+     \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B(h) \right) = e^{tA} A.
 </span></p>
 <p>Donc, la dérivée de <span class="math inline">e^{tA}</span> est :</p>
 <p><span class="math display">
@@ -711,12 +730,41 @@ Remarque
 <div class="callout-body-container callout-body">
 <p>On pourra préférer la notation <span class="math inline">\exp</span>. Ces deux derniers résultats nous indique que l’on a <span class="math inline">\exp \colon \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})</span> et que <span class="math display">
     \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.
-</span> <strong>Attention</strong>, nous n’avons rien prouvé quant à la régularité de l’application <span class="math inline">\exp</span>, rien au sujet ni de sa continuité sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>, ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même <span class="math inline">\mathscr{C}^\infty</span>. L’application exponentielle est même surjective.</p>
+</span> Nous savons que <span class="math inline">\exp</span> est continue sur <span class="math inline">\mathcal{M}_n(\mathbb{R})</span>. Nous pourrions montrer que cette application est de classe <span class="math inline">\mathscr{C}^\infty</span> sur son domaine de définition. L’application exponentielle est même surjective, c’est-à-dire <span class="math display">
+    \exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R}).
+</span></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="exercices" class="level2">
+<h2 class="anchored" data-anchor-id="exercices">Exercices</h2>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour chaque matrice <span class="math inline">A</span> ci-dessous, calculez son exponentielle (<span class="math inline">\alpha</span>, <span class="math inline">\beta</span>, <span class="math inline">\lambda \in \mathbb{R}</span>) :</p>
+<p><span class="math display">
+    \begin{aligned}
+        A &amp;= \begin{pmatrix}  0 &amp;  1 \\ -1 &amp; 0 \end{pmatrix}, \quad
+        A  = \begin{pmatrix}  2 &amp; -1 \\  1 &amp; 2 \end{pmatrix}, \quad
+        A  = \begin{pmatrix} -1 &amp;  1 \\  0 &amp; 1 \end{pmatrix}, \quad
+        A  = \begin{pmatrix}  0 &amp;  1 \\  1 &amp; 0 \end{pmatrix}, \\[1.5em]
+        A &amp;= \begin{pmatrix}  1 &amp;  1 \\  1 &amp; 1 \end{pmatrix},  \quad
+        A  = \begin{pmatrix}  \alpha &amp; \beta \\ -\beta &amp; \alpha \end{pmatrix},  \quad
+        A  = \begin{pmatrix}  \lambda &amp;  1 \\  0 &amp; \lambda \end{pmatrix}.
+    \end{aligned}
+</span></p>
+</div>
+</div>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

@@ -3,6 +3,8 @@ title: "Exponentielle de Matrice"
 page-layout: article
 ---
 
+{{< include ../../assets/latex/macros.qmd >}}
+
 L'exponentielle d'une matrice est un outil fondamental pour résoudre les équations différentielles linéaires. Elle généralise la notion d'exponentielle des nombres réels aux matrices.
 
 ## Définition
@@ -10,7 +12,7 @@ L'exponentielle d'une matrice est un outil fondamental pour résoudre les équat
 On définit l'exponentielle d'une matrice $A \in \mathcal{M}_n(\mathbb{R})$ par :
 
 $$
-e^A \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
+\exp(A) \coloneqq \sum_{k=0}^{\infty} \frac{A^k}{k!} \in \mathcal{M}_n(\mathbb{R}).
 $$
 
 ::: {.callout-caution collapse="true" icon=false}
@@ -37,10 +39,20 @@ $$
 Puisque la série de droite converge, il en découle que la série de matrices $\sum_{k=0}^{\infty} \frac{A^k}{k!}$ converge absolument. Enfin, une série absolument convergente dans un espace vectoriel normé de dimension finie est convergente.
 :::
 
+## Continuité
+
+L'application **exponentielle** (de matrice) :
+
+$$
+\fonction{\exp}{\mathcal{M}_n(\mathbb{R})}{\mathcal{M}_n(\mathbb{R})}{A}{\displaystyle\exp(A) = \sum_{k=0}^{\infty} \frac{A^k}{k!}}
+$$
+
+est **continue**. En effet, la série est normalement convergente sur tout compact de $\mathcal{M}_n(\mathbb{R})$ et donc uniformément convergente sur tout compact. Par conséquent, l'application $\exp$ est continue sur $\mathcal{M}_n(\mathbb{R})$. 
+
 ::: {.callout-note icon=false}
 ### Remarque
 
-L'exponentielle de $A$ s'écrit aussi $\exp(A)$.
+L'exponentielle de $A$ s'écrit aussi $e^A$.
 :::
 
 ## Propriétés
@@ -116,7 +128,7 @@ Ainsi, on a :
 ::: {.callout-note icon=false}
 ### Remarque
 
-Si la matrice $A$ est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l'exponentielle d'une matrice diagonale.
+Si la matrice $A$ est diagonalisable, on peut facilement calculer son exponentielle en se ramenant au calcul de l'exponentielle d'une matrice diagonale. En effet, si $A = P \Sigma P^{-1}$, avec $\Sigma$ diagonale, alors $e^A = P e^\Sigma P^{-1}$, avec $e^\Sigma$ diagonale.
 :::
 
 ### Matrice Transposée
@@ -162,7 +174,7 @@ $$
 on a $A^2 = 0$, donc son exponentielle est :
 
 $$
-e^A = I + A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
+e^A = I_2 + A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
 $$
 
 ### Matrices Commutantes
@@ -271,22 +283,20 @@ Soit $A \in \mathcal{M}_n(\mathbb{R})$. En corollaire de ce qui précède, nous 
     Divisons par $h$ :
 
     $$
-        \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
+        \frac{e^{(t+h)A} - e^{tA}}{h} = e^{tA} \frac{e^{hA} - I_n}{h} = e^{tA} \left( \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} \right).
     $$
 
     Or,
 
     $$
-        \begin{aligned}
-            \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} &= A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!} \\
-            &= A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
-        \end{aligned}
+        \sum_{k=1}^{\infty} \frac{h^{k-1}A^k}{k!} = A + h \sum_{k=2}^{\infty} \frac{h^{k-2}A^k}{k!}
+        = A + h A^2 \sum_{k=0}^{\infty} \frac{h^{k}A^k}{(k+2)!}
     $$
 
-    et la série de termes ${h^{k}A^k}/{(k+2)!}$ est convergente puisque ceux-ci sont majorés pas ceux de l'exponentielle de $hA$. On note $B$ la limite de la série et on obtient 
+    et la série de termes ${h^{k}A^k}/{(k+2)!}$ est convergente puisque ceux-ci sont majorés pas ceux de l'exponentielle de $hA$. On note $B(h)$ la limite de la série. L'application $h \mapsto B(h)$ est continue en $0$ (par convergence normale) et $B(0) = I_n / 2$. Ainsi, on a :
 
     $$
-        \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B \right) = e^{tA} A.
+        \lim_{h \to 0} \frac{e^{(t+h)A} - e^{tA}}{h} = \lim_{h \to 0} e^{tA} \left( A + h A^2 B(h) \right) = e^{tA} A.
     $$
 
     Donc, la dérivée de $e^{tA}$ est :
@@ -311,5 +321,27 @@ On pourra préférer la notation $\exp$. Ces deux derniers résultats nous indiq
 $$
     \frac{\mathrm{d}}{\mathrm{d}t} \exp(tA) = A \exp(tA) = \exp(tA) A.
 $$
-**Attention**, nous n'avons rien prouvé quant à la régularité de l'application $\exp$, rien au sujet ni de sa continuité sur $\mathcal{M}_n(\mathbb{R})$, ni de sa dérivabilité. Cependant, on peut montrer que cette application est continue, même $\mathscr{C}^\infty$. L'application exponentielle est même surjective.
+Nous savons que $\exp$ est continue sur $\mathcal{M}_n(\mathbb{R})$. Nous pourrions montrer que cette application est de classe $\mathscr{C}^\infty$ sur son domaine de définition. L'application exponentielle est même surjective, c'est-à-dire 
+$$
+    \exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R}).
+$$
+:::
+
+## Exercices
+
+::: {.callout-tip icon=false}
+### Question
+Pour chaque matrice $A$ ci-dessous, calculez son exponentielle ($\alpha$, $\beta$, $\lambda \in \mathbb{R}$) :
+
+$$
+    \begin{aligned}
+        A &= \begin{pmatrix}  0 &  1 \\ -1 & 0 \end{pmatrix}, \quad
+        A  = \begin{pmatrix}  2 & -1 \\  1 & 2 \end{pmatrix}, \quad
+        A  = \begin{pmatrix} -1 &  1 \\  0 & 1 \end{pmatrix}, \quad
+        A  = \begin{pmatrix}  0 &  1 \\  1 & 0 \end{pmatrix}, \\[1.5em]
+        A &= \begin{pmatrix}  1 &  1 \\  1 & 1 \end{pmatrix},  \quad
+        A  = \begin{pmatrix}  \alpha & \beta \\ -\beta & \alpha \end{pmatrix},  \quad
+        A  = \begin{pmatrix}  \lambda &  1 \\  0 & \lambda \end{pmatrix}.
+    \end{aligned}
+$$
 :::

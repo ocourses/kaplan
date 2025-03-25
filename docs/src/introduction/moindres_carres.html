@@ -141,11 +141,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Problème de Kaplan sous Forme de Moindres Carrés – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/introduction/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/approximation_lineaire.gif">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Problème de Kaplan sous Forme de Moindres Carrés – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/introduction/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/approximation_lineaire.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -311,6 +311,12 @@ window.Quarto = {
  <span class="menu-text">Convergence</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../src/integration_numerique/erreurs_arrondi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erreurs d’arrondi</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -454,7 +460,9 @@ Important
 <h2 class="anchored" data-anchor-id="algorithme-de-gauss-newton">Algorithme de Gauss-Newton</h2>
 <section id="description-de-la-méthode" class="level3">
 <h3 class="anchored" data-anchor-id="description-de-la-méthode">Description de la méthode</h3>
-<p>L’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût <span class="math inline">F</span>. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial <span class="math inline">\theta_0</span>, l’algorithme va construire une suite d’itérés <span class="math inline">(\theta_k)_{k\ge 0}</span> qui on l’espère converge vers un minimum de <span class="math inline">F</span>. L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> la prédiction <span class="math inline">\theta \mapsto x(t_i, \theta)</span> par son approximation linéaire au voisinage du point courant <span class="math inline">\theta_k</span> :</p>
+<p>L’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût <span class="math inline">F</span>. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial <span class="math inline">\theta_0</span>, l’algorithme va construire une suite d’itérés <span class="math inline">(\theta_k)_{k\ge 0}</span> qui on l’espère converge vers un minimum de <span class="math inline">F</span>.</p>
+<p><img class="centering" width="40%" style="float: right; max-width:500px; min-width:200px" src="../../assets/julia/approximation_lineaire.gif"></p>
+<p>L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> la prédiction <span class="math inline">\theta \mapsto x(t_i, \theta)</span> par son approximation linéaire au voisinage du point courant <span class="math inline">\theta_k</span> :</p>
 <p><span class="math display">
    x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 </span></p>

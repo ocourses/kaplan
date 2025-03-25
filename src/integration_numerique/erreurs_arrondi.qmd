@@ -1,0 +1,4 @@
+---
+title: "Influence des Erreurs d'Arrondi"
+page-layout: article
+---
