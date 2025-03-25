@@ -92,7 +92,8 @@ ul.task-list li input[type="checkbox"] {
             }
         }
     });
-</script> 
+</script>
+<script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -461,10 +462,17 @@ Important
 <section id="description-de-la-méthode" class="level3">
 <h3 class="anchored" data-anchor-id="description-de-la-méthode">Description de la méthode</h3>
 <p>L’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût <span class="math inline">F</span>. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial <span class="math inline">\theta_0</span>, l’algorithme va construire une suite d’itérés <span class="math inline">(\theta_k)_{k\ge 0}</span> qui on l’espère converge vers un minimum de <span class="math inline">F</span>.</p>
-<p><img class="centering" width="40%" style="float: right; max-width:500px; min-width:200px" src="../../assets/julia/approximation_lineaire.gif"></p>
-<p>L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> la prédiction <span class="math inline">\theta \mapsto x(t_i, \theta)</span> par son approximation linéaire au voisinage du point courant <span class="math inline">\theta_k</span> :</p>
+<div class="centering freezeframe" width="40%" style="float: right; max-width:360px; min-width:200px">
+<p><img src="../../assets/julia/approximation_lineaire.gif"></p>
+</div>
+<script>new Freezeframe();</script>
+<p>L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> le <span style="color:#210fff">modèle</span> :</p>
 <p><span class="math display">
-   x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
+   \theta \mapsto x(t_i, \theta)
+</span></p>
+<p>par son <span style="color:#f51219">approximation linéaire</span> au voisinage du point courant <span class="math inline">\theta_k</span> :</p>
+<p><span class="math display">
+   \Delta\theta \mapsto  x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 </span></p>
 <p>Ceci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :</p>
 <p><span class="math display">

@@ -61,12 +61,21 @@ Nous parlons de problème aux moindres carrés **linéaire** si $\theta \mapsto 
 
 L'algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût $F$. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d'un itéré initial $\theta_0$, l'algorithme va construire une suite d'itérés $(\theta_k)_{k\ge 0}$ qui on l'espère converge vers un minimum de $F$. 
 
-<img class="centering" width="40%" style="float: right; max-width:500px; min-width:200px" src="../../assets/julia/approximation_lineaire.gif"/>
+<div class="centering freezeframe" width="40%" style="float: right; max-width:360px; min-width:200px">
+   <img src="../../assets/julia/approximation_lineaire.gif"/>
+</div>
+<script>new Freezeframe();</script>
 
-L'idée principale de l'alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons $\theta_k$ l'itéré courant. Nous pouvons approcher pour chaque instant $t_i$ la prédiction $\theta \mapsto x(t_i, \theta)$ par son approximation linéaire au voisinage du point courant $\theta_k$ :
+L'idée principale de l'alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons $\theta_k$ l'itéré courant. Nous pouvons approcher pour chaque instant $t_i$ le <span style="color:#210fff">modèle</span> :
 
 $$
-   x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
+   \theta \mapsto x(t_i, \theta)
+$$ 
+
+par son <span style="color:#f51219">approximation linéaire</span> au voisinage du point courant $\theta_k$ :
+
+$$
+   \Delta\theta \mapsto  x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 $$
 
 Ceci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaires :

@@ -49,7 +49,7 @@ function draw(state)
     
         # labels
         annotate!(plt, 2, -0.25, text(L"\theta", font_size), :top)
-        annotate!(plt, -0.3, 3-0.1, text(L"x(t_i, \cdot)", font_size), :right)
+        #annotate!(plt, -0.3, 3-0.1, text(L"x(t_i, \cdot)", font_size), :right)
      
         return plt
     end
@@ -79,7 +79,7 @@ function draw(state)
 
     plt = initiate_plot()
 
-    text_theta = text(L"\theta", font_size, :black)
+    text_theta = text(L"\theta_k", font_size, :black)
 
     @match state begin
         :Init => nothing
@@ -126,7 +126,21 @@ end
 # (:theta, step): affichage du point de départ en plusieurs étapes
 
 # Scénario
-states = Any[:Init]
+states = Any[]
+
+for r in 1:-0.01:0
+    push!(states, (:model_and_tangent, r))
+end
+for i ∈ 1:10
+    push!(states, (:theta, 3))
+end
+for i ∈ 1:10
+    push!(states, (:theta, 2))
+end
+for i ∈ 1:10
+    push!(states, (:theta, 1))
+end
+push!(states, :End)
 for i ∈ 1:20
     push!(states, :Init)
 end
@@ -146,24 +160,12 @@ for r in 1:-0.01:0
     push!(states, (:model, r))
 end
 for i ∈ 1:10
-    push!(states, (:theta, 3))
+    push!(states, (:model, 0))
 end
 for r in 0:0.01:1
     push!(states, (:model_and_tangent, r))
 end
-for r in 1:-0.01:0
-    push!(states, (:model_and_tangent, r))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 3))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 2))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 1))
-end
-push!(states, :End)
+
 
 # affichage
 anim = @animate for state in states
