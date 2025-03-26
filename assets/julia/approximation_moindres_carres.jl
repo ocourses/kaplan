@@ -44,7 +44,7 @@ function draw(state)
     function initiate_plot()
     
         # plot
-        plt = plot(framestyle=:none, ticks=nothing, legend=false, axes=false, xlims=xlims_, ylims=ylims_)
+        plt = plot(framestyle=:none, ticks=nothing, legend=false, axes=false, xlims=xlims_, ylims=ylims_, dpi=300)
     
         # axes
         plot!(plt, [xlims_[1], xlims_[2]], [0, 0], color=:black, lw=1, arrow=true)
@@ -255,7 +255,7 @@ end
 pathname = "assets/julia/approximation_moindres_carres"
 
 gif(anim, pathname * ".gif", fps=30)
-gif(anim, pathname * ".mp4", fps=30)
+#gif(anim, pathname * ".mp4", fps=30)
 
-convert = `ffmpeg -y -i $(pathname).mp4 -vf format=yuv420p $(pathname)_converted.mp4`
+convert = `ffmpeg -y -i $(pathname).gif -vf format=yuv420p $(pathname).mp4`
 run(convert)

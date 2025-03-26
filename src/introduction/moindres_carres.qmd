@@ -61,12 +61,6 @@ Nous parlons de problème aux moindres carrés **linéaire** si $\theta \mapsto 
 
 L'algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût $F$. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d'un itéré initial $\theta_0$, l'algorithme va construire une suite d'itérés $(\theta_k)_{k\ge 0}$ qui on l'espère converge vers un minimum de $F$. 
 
-<div class="centering" style="float: right; max-width:360px; min-width:200px; object-fit:fill; width:50%;">
-   <video width="100%" height="100%" controls autoplay muted loop>
-      <source src="../../assets/julia/approximation_lineaire_converted.mp4" type="video/mp4">
-   </video>
-</div>
-
 L'idée principale de l'alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons $\theta_k$ l'itéré courant. Nous pouvons approcher pour chaque instant $t_i$ le <span style="color:#210fff">modèle</span> :
 
 $$
@@ -78,6 +72,12 @@ par son <span style="color:#f51219">approximation linéaire</span> au voisinage 
 $$
    \Delta\theta \mapsto  x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 $$
+
+<div class="centering" style="max-width:900px; min-width:300px; object-fit:fill; width:100%;">
+   <video width="100%" height="100%" controls autoplay muted loop>
+      <source src="../../assets/julia/approximation_lineaire.mp4" type="video/mp4">
+   </video>
+</div>
 
 Ceci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaire :
 
@@ -97,9 +97,9 @@ $$
 
 où $\Delta \theta_k$ est la solution du problème aux moindres carrés linéaires faisant intervenir $F_k$.
 
-<div class="centering" style="max-width:450px; min-width:300px; object-fit:fill; width:60%;">
+<div class="centering" style="max-width:900px; min-width:300px; object-fit:fill; width:100%;">
    <video width="100%" height="100%" controls autoplay muted loop>
-      <source src="../../assets/julia/approximation_moindres_carres_converted.mp4" type="video/mp4">
+      <source src="../../assets/julia/approximation_moindres_carres.mp4" type="video/mp4">
    </video>
 </div>
 

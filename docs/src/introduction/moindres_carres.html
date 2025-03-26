@@ -462,9 +462,6 @@ Important
 <section id="description-de-la-méthode" class="level3">
 <h3 class="anchored" data-anchor-id="description-de-la-méthode">Description de la méthode</h3>
 <p>L’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût <span class="math inline">F</span>. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial <span class="math inline">\theta_0</span>, l’algorithme va construire une suite d’itérés <span class="math inline">(\theta_k)_{k\ge 0}</span> qui on l’espère converge vers un minimum de <span class="math inline">F</span>.</p>
-<div class="centering" style="float: right; max-width:360px; min-width:200px; object-fit:fill; width:50%;">
-<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_lineaire_converted.mp4" type="video/mp4"> </video></p>
-</div>
 <p>L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> le <span style="color:#210fff">modèle</span> :</p>
 <p><span class="math display">
    \theta \mapsto x(t_i, \theta)
@@ -473,6 +470,9 @@ Important
 <p><span class="math display">
    \Delta\theta \mapsto  x(t_i, \theta_k) + \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta.
 </span></p>
+<div class="centering" style="max-width:900px; min-width:300px; object-fit:fill; width:100%;">
+<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_lineaire.mp4" type="video/mp4"> </video></p>
+</div>
 <p>Ceci nous amène, à chaque itération, à devoir résoudre un problème aux moindres carrés linéaire :</p>
 <p><span class="math display">
    \mathrm{minimiser}~ F_k(\Delta \theta) = \frac{1}{2} \sum_{i=1}^{N} \left\| x_i - x(t_i, \theta_k) - \frac{\partial x}{\partial \theta}(t_i, \theta_k)\, \Delta \theta \right\|^2.
@@ -495,8 +495,8 @@ Important
 \theta_{k+1} = \theta_k + \Delta \theta_k
 </span></p>
 <p>où <span class="math inline">\Delta \theta_k</span> est la solution du problème aux moindres carrés linéaires faisant intervenir <span class="math inline">F_k</span>.</p>
-<div class="centering" style="max-width:450px; min-width:300px; object-fit:fill; width:60%;">
-<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_moindres_carres_converted.mp4" type="video/mp4"> </video></p>
+<div class="centering" style="max-width:900px; min-width:300px; object-fit:fill; width:100%;">
+<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_moindres_carres.mp4" type="video/mp4"> </video></p>
 </div>
 </section>
 <section id="solution-du-problème-linéaire" class="level3">

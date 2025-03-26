@@ -41,7 +41,7 @@ function draw(state)
     function initiate_plot()
     
         # plot
-        plt = plot(framestyle=:none, ticks=nothing, legend=false, axes=false, xlims=xlims_, ylims=ylims_)
+        plt = plot(framestyle=:none, ticks=nothing, legend=false, axes=false, xlims=xlims_, ylims=ylims_, dpi=300)
     
         # axes
         plot!(plt, [xlims_[1], xlims_[2]], [0, 0], color=:black, lw=1, arrow=true)
@@ -169,8 +169,10 @@ anim = @animate for state in states
     plt = draw(state)
 end
 
-gif(anim, "assets/julia/approximation_lineaire.gif", fps=30)
-gif(anim, "assets/julia/approximation_lineaire.mp4", fps=30)
+pathname = "assets/julia/approximation_lineaire"
 
-convert = `ffmpeg -y -i approximation_lineaire.mp4 -vf format=yuv420p approximation_lineaire_converted.mp4`
+gif(anim, pathname * ".gif", fps=30)
+#gif(anim, pathname * ".mp4", fps=30)
+
+convert = `ffmpeg -y -i $(pathname).gif -vf format=yuv420p $(pathname).mp4`
 run(convert)
