@@ -252,4 +252,10 @@ anim = @animate for state in states
     plt = draw(state)
 end
 
-gif(anim, "assets/julia/approximation_moindres_carres.gif", fps=30)
+pathname = "assets/julia/approximation_moindres_carres"
+
+gif(anim, pathname * ".gif", fps=30)
+gif(anim, pathname * ".mp4", fps=30)
+
+convert = `ffmpeg -y -i $(pathname).mp4 -vf format=yuv420p $(pathname)_converted.mp4`
+run(convert)

@@ -61,16 +61,11 @@ Nous parlons de problème aux moindres carrés **linéaire** si $\theta \mapsto 
 
 L'algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût $F$. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d'un itéré initial $\theta_0$, l'algorithme va construire une suite d'itérés $(\theta_k)_{k\ge 0}$ qui on l'espère converge vers un minimum de $F$. 
 
-<div class="freezeframe" width="40%" style="float: right; max-width:360px; min-width:200px">
-   <img class="approximation_lineaire" src="../../assets/julia/approximation_lineaire.gif"/>
+<div class="centering" style="float: right; max-width:360px; min-width:200px; object-fit:fill; width:50%;">
+   <video width="100%" height="100%" controls autoplay muted loop>
+      <source src="../../assets/julia/approximation_lineaire_converted.mp4" type="video/mp4">
+   </video>
 </div>
-<script>
-const ff_al = new Freezeframe({
-   selector: '.approximation_lineaire',
-   trigger: 'click',
-   overlay: true
-});
-</script>
 
 L'idée principale de l'alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons $\theta_k$ l'itéré courant. Nous pouvons approcher pour chaque instant $t_i$ le <span style="color:#210fff">modèle</span> :
 
@@ -102,16 +97,11 @@ $$
 
 où $\Delta \theta_k$ est la solution du problème aux moindres carrés linéaires faisant intervenir $F_k$.
 
-<div class="centering freezeframe" width="60%" style="max-width:450px; min-width:300px">
-   <img class="approximation_moindres_carres" src="../../assets/julia/approximation_moindres_carres.gif"/>
+<div class="centering" style="max-width:450px; min-width:300px; object-fit:fill; width:60%;">
+   <video width="100%" height="100%" controls autoplay muted loop>
+      <source src="../../assets/julia/approximation_moindres_carres_converted.mp4" type="video/mp4">
+   </video>
 </div>
-<script>
-const ff_amc = new Freezeframe({
-   selector: '.approximation_moindres_carres',
-   trigger: 'click',
-   overlay: true
-});
-</script>
 
 ### Solution du problème linéaire
 
@@ -249,7 +239,7 @@ $$
 Développer à la main la première itération de l'algorithme de Gauss-Newton. Vous pouvez choisir $\theta_0 = (1, 1)$ comme initialisation.
 :::
 
-::: {.callout-caution collapse="true" icon=false}
+::: {.callout-caution collapse="false" icon=false}
 ### Correction
 
 Nous cherchons à estimer les paramètres $a$ et $b$ en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.
@@ -327,6 +317,11 @@ On rappelle que le paramètre s'écrit $\theta = (a, b)$. On note alors la varia
 | 2         | 1/3         | 1.500       |  0.000                   | 0.000                    | 0.083                     |
 
 Cet exemple montre comment appliquer l'algorithme de Gauss-Newton à la main pour estimer les paramètres d'un modèle linéaire simple. Le tableau de convergence permet de visualiser la diminution de l'écart entre les itérations et la minimisation du coût.
+
+Dans la figure ci-dessous, la courbe rouge est donnée par le modèle avec les <span style="color:#f51219">paramètres initiaux</span>. La courbe bleue est la prédiction du modèle après la <span style="color:#210fff">première itération</span> de l'algorithme de Gauss-Newton. Nous observons que la prédiction est plus proche des observations.
+
+<img src="../../assets/julia/convergence_gauss_newton.svg" class="centering" style="max-width:400px; min-width:300px; width:50%;">
+
 :::
 
 ::: {.callout-note icon=false}

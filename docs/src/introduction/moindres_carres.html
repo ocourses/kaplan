@@ -142,11 +142,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Problème de Kaplan sous Forme de Moindres Carrés – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/approximation_lineaire.gif">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/convergence_gauss_newton.svg">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Problème de Kaplan sous Forme de Moindres Carrés – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/approximation_lineaire.gif">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/convergence_gauss_newton.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -462,16 +462,9 @@ Important
 <section id="description-de-la-méthode" class="level3">
 <h3 class="anchored" data-anchor-id="description-de-la-méthode">Description de la méthode</h3>
 <p>L’algorithme de Gauss-Newton est une méthode itérative utilisée pour minimiser la fonction coût <span class="math inline">F</span>. Cette algorithme est utilisé pour la résolution de problèmes aux moindres carrés non linéaires. Si le problème est linéaire, seul la première itération suffit. A partir d’un itéré initial <span class="math inline">\theta_0</span>, l’algorithme va construire une suite d’itérés <span class="math inline">(\theta_k)_{k\ge 0}</span> qui on l’espère converge vers un minimum de <span class="math inline">F</span>.</p>
-<div class="freezeframe" width="40%" style="float: right; max-width:360px; min-width:200px">
-<p><img class="approximation_lineaire" src="../../assets/julia/approximation_lineaire.gif"></p>
+<div class="centering" style="float: right; max-width:360px; min-width:200px; object-fit:fill; width:50%;">
+<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_lineaire_converted.mp4" type="video/mp4"> </video></p>
 </div>
-<script>
-const ff_al = new Freezeframe({
-   selector: '.approximation_lineaire',
-   trigger: 'click',
-   overlay: true
-});
-</script>
 <p>L’idée principale de l’alogrithme de Gauss-Newton est de résoudre à chaque itération un problème aux moindres carrés linéaire. Notons <span class="math inline">\theta_k</span> l’itéré courant. Nous pouvons approcher pour chaque instant <span class="math inline">t_i</span> le <span style="color:#210fff">modèle</span> :</p>
 <p><span class="math display">
    \theta \mapsto x(t_i, \theta)
@@ -502,16 +495,9 @@ Important
 \theta_{k+1} = \theta_k + \Delta \theta_k
 </span></p>
 <p>où <span class="math inline">\Delta \theta_k</span> est la solution du problème aux moindres carrés linéaires faisant intervenir <span class="math inline">F_k</span>.</p>
-<div class="centering freezeframe" width="60%" style="max-width:450px; min-width:300px">
-<p><img class="approximation_moindres_carres" src="../../assets/julia/approximation_moindres_carres.gif"></p>
+<div class="centering" style="max-width:450px; min-width:300px; object-fit:fill; width:60%;">
+<p><video width="100%" height="100%" controls="" autoplay="" muted="" loop=""> <source src="../../assets/julia/approximation_moindres_carres_converted.mp4" type="video/mp4"> </video></p>
 </div>
-<script>
-const ff_amc = new Freezeframe({
-   selector: '.approximation_moindres_carres',
-   trigger: 'click',
-   overlay: true
-});
-</script>
 </section>
 <section id="solution-du-problème-linéaire" class="level3">
 <h3 class="anchored" data-anchor-id="solution-du-problème-linéaire">Solution du problème linéaire</h3>
@@ -647,7 +633,7 @@ Question
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -656,7 +642,7 @@ Correction
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Nous cherchons à estimer les paramètres <span class="math inline">a</span> et <span class="math inline">b</span> en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.</p>
 <section id="étapes-de-lalgorithme-de-gauss-newton" class="level3">
@@ -758,6 +744,8 @@ b_0 = \sum_{i=1}^{3} {J_{i,0}}^T \left( x_i - x(t_i, \theta_0) \right) = \begin{
 </tbody>
 </table>
 <p>Cet exemple montre comment appliquer l’algorithme de Gauss-Newton à la main pour estimer les paramètres d’un modèle linéaire simple. Le tableau de convergence permet de visualiser la diminution de l’écart entre les itérations et la minimisation du coût.</p>
+<p>Dans la figure ci-dessous, la courbe rouge est donnée par le modèle avec les <span style="color:#f51219">paramètres initiaux</span>. La courbe bleue est la prédiction du modèle après la <span style="color:#210fff">première itération</span> de l’algorithme de Gauss-Newton. Nous observons que la prédiction est plus proche des observations.</p>
+<p><img src="../../assets/julia/convergence_gauss_newton.svg" class="centering" style="max-width:400px; min-width:300px; width:50%;"></p>
 </section>
 </div>
 </div>

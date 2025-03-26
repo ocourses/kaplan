@@ -170,3 +170,7 @@ anim = @animate for state in states
 end
 
 gif(anim, "assets/julia/approximation_lineaire.gif", fps=30)
+gif(anim, "assets/julia/approximation_lineaire.mp4", fps=30)
+
+convert = `ffmpeg -y -i approximation_lineaire.mp4 -vf format=yuv420p approximation_lineaire_converted.mp4`
+run(convert)
