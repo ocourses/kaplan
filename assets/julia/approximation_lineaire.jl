@@ -54,6 +54,19 @@ function draw(state)
         return plt
     end
 
+    # affichage de la courbe sur un intervalle
+    function draw_model!(plt, x, θ, Δθa, Δθb)
+        curveplot!(plt, x, θ, Δθa, Δθb, :blue, 1)
+        annotate!(plt, θ-0.5, x(θ)+0.05, text("modèle", 16, :blue), :bottom)
+    end
+
+    # affichage de la tangente à la courbe en un point sur un intervalle
+    function draw_tangent!(plt, ∂x, θ, Δθa, Δθb)
+        T(y) = x(θ) + ∂x(θ) * (y - θ)
+        curveplot!(plt, T, θ, Δθa, Δθb, :red, 2)
+        annotate!(plt, θ+0.5, x(θ)-0.1, text("approx. lin.", 16, :red), :bottom)
+    end
+
     # modèle
     x(θ) = 0.5 + (θ-0.5)^2
 
@@ -63,19 +76,6 @@ function draw(state)
     # point de départ
     θₖ = 1
     xₖ = x(θₖ)
-
-    # affichage de la courbe sur un intervalle
-    function draw_model!(plt, x, θ, Δθa, Δθb)
-        curveplot!(plt, x, θ, Δθa, Δθb, :blue, 1)
-        annotate!(plt, θ-0.3, x(θ)+0.3, text("modèle", 16, :blue), :bottom)
-    end
-
-    # affichage de la tangente à la courbe en un point sur un intervalle
-    function draw_tangent!(plt, ∂x, θ, Δθa, Δθb)
-        T(y) = x(θ) + ∂x(θ) * (y - θ)
-        curveplot!(plt, T, θ, Δθa, Δθb, :red, 2)
-        annotate!(plt, θ+0.5, x(θ)-0.2, text("approx. lin.", 16, :red), :bottom)
-    end
 
     plt = initiate_plot()
 
@@ -123,8 +123,6 @@ function draw(state)
 
 end
 
-# (:theta, step): affichage du point de départ en plusieurs étapes
-
 # Scénario
 states = Any[]
 
@@ -165,7 +163,6 @@ end
 for r in 0:0.01:1
     push!(states, (:model_and_tangent, r))
 end
-
 
 # affichage
 anim = @animate for state in states

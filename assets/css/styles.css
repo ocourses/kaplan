@@ -50,6 +50,12 @@ img.centering {
   margin: auto;
 }
 
+div.centering {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
 .tab-content img {
   max-width: 100%;
 }
@@ -410,4 +416,14 @@ iframe.reveal-demo {
 
 .sidebar-navigation {
   padding-left: 0px;
+}
+
+
+/* 
+  Custom CSS
+*/
+.ff-overlay {
+  background-image: url("../images/play.png")!important;
+  max-width: 60px!important;
+  max-height: 60px!important;
 }
