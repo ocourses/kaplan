@@ -239,7 +239,7 @@ $$
 Développer à la main la première itération de l'algorithme de Gauss-Newton. Vous pouvez choisir $\theta_0 = (1, 1)$ comme initialisation.
 :::
 
-::: {.callout-caution collapse="false" icon=false}
+::: {.callout-caution collapse="true" icon=false}
 ### Correction
 
 Nous cherchons à estimer les paramètres $a$ et $b$ en minimisant la somme des carrés des résidus entre les observations et les prédictions du modèle.
