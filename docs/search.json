@@ -706,17 +706,5 @@
       "Dérivées",
       "Condition initiale"
     ]
-  },
-  {
-    "objectID": "src/introduction/moindres_carres.html#figure-de-convergence",
-    "href": "src/introduction/moindres_carres.html#figure-de-convergence",
-    "title": "Problème de Kaplan sous Forme de Moindres Carrés",
-    "section": "Figure de Convergence",
-    "text": "Figure de Convergence\nLa figure ci-dessous montre la convergence de l’algorithme de Gauss-Newton pour l’exemple précédent. Nous observons que l’algorithme converge en une seule itération, comme prévu.\n\n\n\n```xhdqpkua ../../assets/julia/convergence_gauss_newton.svg\n\n\n\n\nname: convergence-gauss-newton\n\n\n\nConvergence de l’algorithme de Gauss-Newton pour l’exemple de l’estimation des paramètres d’un modèle linéaire. ```",
-    "crumbs": [
-      "Plan du cours",
-      "Introduction",
-      "Problème aux moindres carrés"
-    ]
   }
 ]
