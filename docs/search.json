@@ -580,7 +580,7 @@
     "href": "src/edo_lineaires/exemples.html",
     "title": "Exemples et Exercices",
     "section": "",
-    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\nCalcul de l’Exponentielle de la Matrice.\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\n\nSolution du Système.\nLa solution est donnée par : \n    x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\nComportement à l’Infini.\nLorsque t \\to \\infty, nous avons x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
@@ -592,7 +592,7 @@
     "href": "src/edo_lineaires/exemples.html#exemple-1-convergence",
     "title": "Exemples et Exercices",
     "section": "",
-    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
+    "text": "Considérons le système linéaire suivant :\n\n   x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\nCalcul de l’Exponentielle de la Matrice.\n\nLa matrice A = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} est diagonale.\nL’exponentielle de A est : \n  e^{tA} = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix}\n\n\n\nSolution du Système.\nLa solution est donnée par : \n    x(t) = e^{tA} x(0) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} e^{-t} \\\\ e^{-2t} \\end{pmatrix}\n\nComportement à l’Infini.\nLorsque t \\to \\infty, nous avons x(t) \\to \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} car les valeurs propres -1 et -2 sont négatives.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
@@ -604,7 +604,7 @@
     "href": "src/edo_lineaires/exemples.html#exemple-2-divergence",
     "title": "Exemples et Exercices",
     "section": "Exemple 2 : Divergence",
-    "text": "Exemple 2 : Divergence\nConsidérons le système linéaire suivant :\n\n    x'(t) = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\n\nCalcul de l’Exponentielle de la Matrice :\n\nLa matrice A = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} a des valeurs propres complexes conjuguées 1 \\pm i.\nL’exponentielle de A est : \n  e^{tA} = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = e^t \\begin{pmatrix} \\cos(t) \\\\ \\sin(t) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, \\|x(t)\\| \\to \\infty car la partie réelle des valeurs propres est positive.",
+    "text": "Exemple 2 : Divergence\nConsidérons le système linéaire suivant :\n\n    x'(t) = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\nCalcul de l’Exponentielle de la Matrice.\n\nLa matrice A = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix} a des valeurs propres complexes conjuguées 1 \\pm i.\nL’exponentielle de A est : \n  e^{tA} = e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix}\n\n\n\nSolution du Système.\nLa solution est donnée par : \n    \\begin{aligned}\n        x(t) &= e^{tA} x(0) \\\\\n        &= e^t \\begin{pmatrix} \\cos(t) & -\\sin(t) \\\\ \\sin(t) & \\cos(t) \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n        = e^t \\begin{pmatrix} \\cos(t) \\\\ \\sin(t) \\end{pmatrix}\n    \\end{aligned}\n\nComportement à l’Infini.\nLorsque t \\to \\infty, nous avons \\|x(t)\\| \\to \\infty car la partie réelle des valeurs propres est positive.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
@@ -616,7 +616,19 @@
     "href": "src/edo_lineaires/exemples.html#exemple-3-second-membre-constant",
     "title": "Exemples et Exercices",
     "section": "Exemple 3 : Second Membre Constant",
-    "text": "Exemple 3 : Second Membre Constant\nConsidérons le système linéaire suivant avec un second membre constant :\n\n    x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\n\nSolution du Système :\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\mathrm{d}s\n\nCalculons l’intégrale : \n   x(t) = \\begin{pmatrix} e^{-t} & 0 \\\\ 0 & e^{-2t} \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} & 0 \\\\ 0 & e^{-2(t-s)} \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\, \\mathrm{d}s\n\nCe qui donne : \n   x(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ \\frac{1}{2} (1 - e^{-2t}) \\end{pmatrix}\n\n\nComportement à l’Infini :\n\nLorsque t \\to \\infty, x(t) \\to \\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\end{pmatrix}.",
+    "text": "Exemple 3 : Second Membre Constant\nConsidérons le système linéaire suivant avec un second membre constant :\n\n    x'(t) = \\begin{pmatrix} -1 & 0 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 1/2 \\end{pmatrix}\n\nSolution du Système.\n\nLa solution est donnée par : \n  x(t) = e^{tA} x(0) + \\int_{0}^{t} e^{(t-s)A} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\mathrm{d}s\n\n\n\n\nCalculons l’intégrale :\n\n\n    x(t) = \\begin{pmatrix} 0 \\\\ e^{-2t}/2 \\end{pmatrix} + \\int_{0}^{t} \\begin{pmatrix} e^{-(t-s)} \\\\ e^{-2(t-s)} \\end{pmatrix} \\, \\mathrm{d}s\n\n\nCe qui donne :\n\n\n    x(t) = \\begin{pmatrix} 1 - e^{-t} \\\\ 1/2 - e^{-2t} \\end{pmatrix}\n\nComportement à l’Infini.\nLorsque t \\to \\infty, nous avons x(t) \\to (1, 1/2).",
+    "crumbs": [
+      "Plan du cours",
+      "Problème de Cauchy linéaire",
+      "Exemples"
+    ]
+  },
+  {
+    "objectID": "src/edo_lineaires/exemples.html#exercices",
+    "href": "src/edo_lineaires/exemples.html#exercices",
+    "title": "Exemples et Exercices",
+    "section": "Exercices",
+    "text": "Exercices\n\n\n\n\n\n\nQuestion\n\n\n\nRésolvez le problème de Cauchy linéaire homogène suivant et déterminez le comportement de la trajectoire solution quand t \\to \\infty :\n\n    x'(t) = \\begin{pmatrix} -3 & 1 \\\\ 2 & -4 \\end{pmatrix} x(t), \\quad x(0) = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nRésolvez le problème de Cauchy linéaire suivant avec un second membre constant et déterminez le comportement de la trajectoire solution quand t \\to \\infty :\n\n    x'(t) = \\begin{pmatrix} -1 & 1 \\\\ 0 & -2 \\end{pmatrix} x(t) + \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}.\n\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nRésolvez le problème de Cauchy linéaire suivant avec un second membre non constant et déterminez le comportement de la trajectoire solution quand t \\to \\infty :\n\n    x'(t) = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix} x(t) + \\begin{pmatrix} 0 \\\\ 3e^{-2t} \\end{pmatrix}, \\quad x(0) = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",

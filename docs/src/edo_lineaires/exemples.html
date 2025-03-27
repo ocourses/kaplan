@@ -208,11 +208,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Exemples et Exercices – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/exponentielle_exemple1.gif">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Exemples et Exercices – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/edo_lineaires/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/exponentielle_exemple1.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -462,25 +462,20 @@ window.Quarto = {
 <p><span class="math display">
    x'(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 </span></p>
-<ol type="1">
-<li><p><strong>Calcul de l’Exponentielle de la Matrice</strong> :</p>
+<p><strong>Calcul de l’Exponentielle de la Matrice.</strong></p>
 <ul>
 <li>La matrice <span class="math inline">A = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix}</span> est diagonale.</li>
 <li>L’exponentielle de <span class="math inline">A</span> est : <span class="math display">
   e^{tA} = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix}
 </span></li>
-</ul></li>
-<li><p><strong>Solution du Système</strong> :</p>
-<ul>
-<li>La solution est donnée par : <span class="math display">
-  x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
-</span></li>
-</ul></li>
-<li><p><strong>Comportement à l’Infini</strong> :</p>
-<ul>
-<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}</span> car les valeurs propres <span class="math inline">-1</span> et <span class="math inline">-2</span> sont négatives.</li>
-</ul></li>
-</ol>
+</ul>
+<p><img src="../../assets/julia/exponentielle_exemple1.gif" class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;"></p>
+<p><strong>Solution du Système.</strong></p>
+<p>La solution est donnée par : <span class="math display">
+    x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+</span></p>
+<p><strong>Comportement à l’Infini.</strong></p>
+<p>Lorsque <span class="math inline">t \to \infty</span>, nous avons <span class="math inline">x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}</span> car les valeurs propres <span class="math inline">-1</span> et <span class="math inline">-2</span> sont négatives.</p>
 </section>
 <section id="exemple-2-divergence" class="level2">
 <h2 class="anchored" data-anchor-id="exemple-2-divergence">Exemple 2 : Divergence</h2>
@@ -488,53 +483,55 @@ window.Quarto = {
 <p><span class="math display">
     x'(t) = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 </span></p>
-<ol type="1">
-<li><p><strong>Calcul de l’Exponentielle de la Matrice</strong> :</p>
+<p><strong>Calcul de l’Exponentielle de la Matrice.</strong></p>
 <ul>
 <li>La matrice <span class="math inline">A = \begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix}</span> a des valeurs propres complexes conjuguées <span class="math inline">1 \pm i</span>.</li>
 <li>L’exponentielle de <span class="math inline">A</span> est : <span class="math display">
   e^{tA} = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix}
 </span></li>
-</ul></li>
-<li><p><strong>Solution du Système</strong> :</p>
-<ul>
-<li>La solution est donnée par : <span class="math display">
-  x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
-</span></li>
-</ul></li>
-<li><p><strong>Comportement à l’Infini</strong> :</p>
-<ul>
-<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">\|x(t)\| \to \infty</span> car la partie réelle des valeurs propres est positive.</li>
-</ul></li>
-</ol>
+</ul>
+<p><img src="../../assets/julia/exponentielle_exemple2.gif" class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;"></p>
+<p><strong>Solution du Système.</strong></p>
+<p>La solution est donnée par : <span class="math display">
+    \begin{aligned}
+        x(t) &amp;= e^{tA} x(0) \\
+        &amp;= e^t \begin{pmatrix} \cos(t) &amp; -\sin(t) \\ \sin(t) &amp; \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+        = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
+    \end{aligned}
+</span></p>
+<p><strong>Comportement à l’Infini.</strong></p>
+<p>Lorsque <span class="math inline">t \to \infty</span>, nous avons <span class="math inline">\|x(t)\| \to \infty</span> car la partie réelle des valeurs propres est positive.</p>
 </section>
 <section id="exemple-3-second-membre-constant" class="level2">
 <h2 class="anchored" data-anchor-id="exemple-3-second-membre-constant">Exemple 3 : Second Membre Constant</h2>
 <p>Considérons le système linéaire suivant avec un second membre constant :</p>
 <p><span class="math display">
-    x'(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} -1 &amp; 0 \\ 0 &amp; -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1/2 \end{pmatrix}
 </span></p>
-<ol type="1">
-<li><p><strong>Solution du Système</strong> :</p>
+<p><strong>Solution du Système.</strong></p>
 <ul>
-<li><p>La solution est donnée par : <span class="math display">
+<li>La solution est donnée par : <span class="math display">
   x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mathrm{d}s
-</span></p></li>
-<li><p>Calculons l’intégrale : <span class="math display">
-   x(t) = \begin{pmatrix} e^{-t} &amp; 0 \\ 0 &amp; e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} &amp; 0 \\ 0 &amp; e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, \mathrm{d}s
-</span></p></li>
-<li><p>Ce qui donne : <span class="math display">
-   x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
-</span></p></li>
-</ul></li>
-<li><p><strong>Comportement à l’Infini</strong> :</p>
+</span></li>
+</ul>
+<p><img src="../../assets/julia/exponentielle_exemple3.gif" class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;"></p>
 <ul>
-<li>Lorsque <span class="math inline">t \to \infty</span>, <span class="math inline">x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}</span>.</li>
-</ul></li>
-</ol>
+<li>Calculons l’intégrale :</li>
+</ul>
+<p><span class="math display">
+    x(t) = \begin{pmatrix} 0 \\ e^{-2t}/2 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} \\ e^{-2(t-s)} \end{pmatrix} \, \mathrm{d}s
+</span></p>
+<ul>
+<li>Ce qui donne :</li>
+</ul>
+<p><span class="math display">
+    x(t) = \begin{pmatrix} 1 - e^{-t} \\ 1/2 - e^{-2t} \end{pmatrix}
+</span></p>
+<p><strong>Comportement à l’Infini.</strong></p>
+<p>Lorsque <span class="math inline">t \to \infty</span>, nous avons <span class="math inline">x(t) \to (1, 1/2)</span>.</p>
 </section>
-<section id="exercices" class="level1">
-<h1>Exercices</h1>
+<section id="exercices" class="level2">
+<h2 class="anchored" data-anchor-id="exercices">Exercices</h2>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

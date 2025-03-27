@@ -11,24 +11,27 @@ $$
    x'(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
 
-1. **Calcul de l'Exponentielle de la Matrice** :
+**Calcul de l'Exponentielle de la Matrice.**
    
-    - La matrice $A = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ est diagonale.
-    - L'exponentielle de $A$ est :
-    $$
-        e^{tA} = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix}
-    $$
+- La matrice $A = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix}$ est diagonale.
+- L'exponentielle de $A$ est :
+$$
+    e^{tA} = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix}
+$$
 
-2. **Solution du Système** :
+<img src="../../assets/julia/exponentielle_exemple1.gif" 
+    class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;">
 
-    - La solution est donnée par :
-    $$
-        x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
-    $$
+**Solution du Système.** 
 
-3. **Comportement à l'Infini** :
-   
-    - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ car les valeurs propres $-1$ et $-2$ sont négatives.
+La solution est donnée par :
+$$
+    x(t) = e^{tA} x(0) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} e^{-t} \\ e^{-2t} \end{pmatrix}
+$$
+
+**Comportement à l'Infini.** 
+
+Lorsque $t \to \infty$, nous avons $x(t) \to \begin{pmatrix} 0 \\ 0 \end{pmatrix}$ car les valeurs propres $-1$ et $-2$ sont négatives.
 
 ## Exemple 2 : Divergence
 
@@ -38,55 +41,67 @@ $$
     x'(t) = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} x(t), \quad x(0) = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
 $$
 
-1. **Calcul de l'Exponentielle de la Matrice** :
+**Calcul de l'Exponentielle de la Matrice.**
 
-    - La matrice $A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$ a des valeurs propres complexes conjuguées $1 \pm i$.
-    - L'exponentielle de $A$ est :
-    $$
-        e^{tA} = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
-    $$
+- La matrice $A = \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}$ a des valeurs propres complexes conjuguées $1 \pm i$.
+- L'exponentielle de $A$ est :
+$$
+    e^{tA} = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix}
+$$
 
-2. **Solution du Système** :
+<img src="../../assets/julia/exponentielle_exemple2.gif" 
+    class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;">
 
-    - La solution est donnée par :
-    $$
-        x(t) = e^{tA} x(0) = e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
-    $$
+**Solution du Système.** 
 
-3. **Comportement à l'Infini** :
+La solution est donnée par :
+$$
+    \begin{aligned}
+        x(t) &= e^{tA} x(0) \\
+        &= e^t \begin{pmatrix} \cos(t) & -\sin(t) \\ \sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} 
+        = e^t \begin{pmatrix} \cos(t) \\ \sin(t) \end{pmatrix}
+    \end{aligned}
+$$
 
-    - Lorsque $t \to \infty$, $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
+**Comportement à l'Infini.** 
+
+Lorsque $t \to \infty$, nous avons $\|x(t)\| \to \infty$ car la partie réelle des valeurs propres est positive.
 
 ## Exemple 3 : Second Membre Constant
 
 Considérons le système linéaire suivant avec un second membre constant :
 
 $$
-    x'(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+    x'(t) = \begin{pmatrix} -1 & 0 \\ 0 & -2 \end{pmatrix} x(t) + \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad x(0) = \begin{pmatrix} 0 \\ 1/2 \end{pmatrix}
 $$
 
-1. **Solution du Système** :
+**Solution du Système.**
 
-    - La solution est donnée par :
-    $$
-        x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mathrm{d}s
-    $$
+- La solution est donnée par :
+$$
+    x(t) = e^{tA} x(0) + \int_{0}^{t} e^{(t-s)A} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mathrm{d}s
+$$
 
-   - Calculons l'intégrale :
-    $$
-        x(t) = \begin{pmatrix} e^{-t} & 0 \\ 0 & e^{-2t} \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \, \mathrm{d}s
-    $$
+<img src="../../assets/julia/exponentielle_exemple3.gif" 
+    class="centering" style="float: right;max-width:400px; min-width:100px; width:40%;">
 
-   - Ce qui donne :
-    $$
-        x(t) = \begin{pmatrix} 1 - e^{-t} \\ \frac{1}{2} (1 - e^{-2t}) \end{pmatrix}
-    $$
+- Calculons l'intégrale :
 
-2. **Comportement à l'Infini** :
+$$
+    x(t) = \begin{pmatrix} 0 \\ e^{-2t}/2 \end{pmatrix} + \int_{0}^{t} \begin{pmatrix} e^{-(t-s)} \\ e^{-2(t-s)} \end{pmatrix} \, \mathrm{d}s
+$$
 
-    - Lorsque $t \to \infty$, $x(t) \to \begin{pmatrix} 1 \\ \frac{1}{2} \end{pmatrix}$.
+- Ce qui donne :
 
-# Exercices
+$$
+    x(t) = \begin{pmatrix} 1 - e^{-t} \\ 1/2 - e^{-2t} \end{pmatrix}
+$$
+
+**Comportement à l'Infini.** 
+
+Lorsque $t \to \infty$, nous avons $x(t) \to (1, 1/2)$.
+
+## Exercices
 
 ::: {.callout-tip icon=false}
 ### Question
