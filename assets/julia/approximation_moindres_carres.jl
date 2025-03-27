@@ -38,7 +38,7 @@ function draw(state)
     xlims_ = (-2, 6)
     ylims_ = (-0.6, 5)
 
-    font_size = 22
+    font_size = 18
 
     # initialisation
     function initiate_plot()
@@ -102,21 +102,24 @@ function draw(state)
         _ => nothing
     end
 
+    theta_y = -0.4
+    delta_theta_y = -0.2
+
     @match state begin
         (θₖ, :theta, 1) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
         end
         (θₖ, :theta, 2) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
         end
         (θₖ, :theta, 3) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
         end
         (θₖ, :theta_suivant, 1) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
             Δθa = 1*(θₖ-xlims_[1])
@@ -129,10 +132,10 @@ function draw(state)
             θₖ₊₁ = θₖ + lslin(θₖ)
             Fₖ₊₁ = ∂F(θₖ, θₖ₊₁-θₖ)
             #
-            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=3)
+            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=4)
         end
         (θₖ, :theta_suivant, 2) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
             Δθa = 1*(θₖ-xlims_[1])
@@ -145,11 +148,11 @@ function draw(state)
             θₖ₊₁ = θₖ + lslin(θₖ)
             Fₖ₊₁ = ∂F(θₖ, θₖ₊₁-θₖ)
             #
-            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=3)
-            annotate!(plt, (θₖ+θₖ₊₁)/2+0, -0.2, text_delta_theta, :bottom)
+            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=4)
+            annotate!(plt, (θₖ+θₖ₊₁)/2+0, delta_theta_y, text_delta_theta, :bottom)
         end
         (θₖ, :theta_suivant, 3) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
             Δθa = 1*(θₖ-xlims_[1])
@@ -162,12 +165,12 @@ function draw(state)
             θₖ₊₁ = θₖ + lslin(θₖ)
             Fₖ₊₁ = ∂F(θₖ, θₖ₊₁-θₖ)
             #
-            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=3)
-            annotate!(plt, (θₖ+θₖ₊₁)/2+0, -0.2, text_delta_theta, :bottom)
+            plot!(plt, [θₖ, θₖ₊₁], [0, 0], color=:green, lw=4, z_order=4)
+            annotate!(plt, (θₖ+θₖ₊₁)/2+0, delta_theta_y, text_delta_theta, :bottom)
             #
-            annotate!(plt, θₖ₊₁+0.3, -0.5, text_theta_suivant, :bottom)
-            plot!(plt, [θₖ₊₁, θₖ₊₁], [0, Fₖ₊₁], color=:black, lw=1, z_order=3, linestyle=:dash)
-            scatter!(plt, [θₖ₊₁], [Fₖ₊₁], color=:black, z_order=3)
+            annotate!(plt, θₖ₊₁+0.3, theta_y, text_theta_suivant, :bottom)
+            plot!(plt, [θₖ₊₁, θₖ₊₁], [0, Fₖ₊₁], color=:black, lw=1, z_order=5, linestyle=:dash)
+            scatter!(plt, [θₖ₊₁], [Fₖ₊₁], color=:black, z_order=5)
         end
         (θₖ, :model, r) => begin
             Δθa = r*(θₖ-xlims_[1])
@@ -175,20 +178,20 @@ function draw(state)
             draw_model!(plt, F, θₖ, Δθa, Δθb)
         end
         (θₖ, :model_and_theta, 1) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             Δθa = 1*(θₖ-xlims_[1])
             Δθb = 1*(xlims_[2]-θₖ)
             draw_model!(plt, F, θₖ, Δθa, Δθb)
         end
         (θₖ, :model_and_theta, 2) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             Δθa = 1*(θₖ-xlims_[1])
             Δθb = 1*(xlims_[2]-θₖ)
             draw_model!(plt, F, θₖ, Δθa, Δθb)
         end
         (θₖ, :model_and_theta, 3) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
             Δθa = 1*(θₖ-xlims_[1])
@@ -196,7 +199,7 @@ function draw(state)
             draw_model!(plt, F, θₖ, Δθa, Δθb)
         end
         (θₖ, :model_and_tangent, r) => begin
-            annotate!(plt, θₖ+0.08, -0.5, text_theta, :bottom)
+            annotate!(plt, θₖ+0.08, theta_y, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, fₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [fₖ], color=:black, z_order=3)
             Δθa = 1*(θₖ-xlims_[1])
@@ -240,6 +243,7 @@ function scenario()
     for θₖ ∈ 2:0.025:5.5     push!(states, (θₖ, :model_and_tangent, 1))  end
     for θₖ ∈ 5.5:-0.025:-1.5 push!(states, (θₖ, :model_and_tangent, 1))  end
     for θₖ ∈ -1.5:0.025:2    push!(states, (θₖ, :model_and_tangent, 1))  end
+    for i ∈ 1:30        push!(states, (θₖ, :model_and_tangent, 1))      end
     #
     for i ∈ 1:50        push!(states, (θₖ, :theta_suivant, 1))          end
     for i ∈ 1:50        push!(states, (θₖ, :theta_suivant, 2))          end

@@ -35,7 +35,7 @@ function draw(state)
     xlims_ = (-0.5, 2)
     ylims_ = (-0.4, 3)
 
-    font_size = 22
+    font_size = 18
 
     # initialisation
     function initiate_plot()
@@ -80,10 +80,11 @@ function draw(state)
     plt = initiate_plot()
 
     text_theta = text(L"\theta_k", font_size, :black)
+    theta_y = -0.2
 
     @match state begin
         :Init => nothing
-        _ => annotate!(plt, θₖ, -0.25, text_theta, :bottom)
+        _ => annotate!(plt, θₖ, theta_y, text_theta, :bottom)
     end
 
     @match state begin
@@ -91,16 +92,13 @@ function draw(state)
             nothing
         end
         (:theta, 2) => begin
-            #annotate!(plt, θₖ, -0.2, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, xₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
         end
         (:theta, 3) => begin
-            #annotate!(plt, θₖ, -0.2, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, xₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [xₖ], color=:black, z_order=3)
         end
         (:model, r) => begin
-            #annotate!(plt, θₖ, -0.2, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, xₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [xₖ], color=:black, z_order=3)
             Δθa = r*(θₖ-xlims_[1])
@@ -108,7 +106,6 @@ function draw(state)
             draw_model!(plt, x, θₖ, Δθa, Δθb)
         end
         (:model_and_tangent, r) => begin
-            #annotate!(plt, θₖ, -0.2, text_theta, :bottom)
             plot!(plt, [θₖ, θₖ], [0, xₖ], color=:black, lw=1, z_order=3, linestyle=:dash)
             scatter!(plt, [θₖ], [xₖ], color=:black, z_order=3)
             Δθa = r*(θₖ-xlims_[1])
@@ -123,48 +120,30 @@ function draw(state)
 
 end
 
-# Scénario
-states = Any[]
+draw((:model_and_tangent, 1))
 
-for r in 1:-0.01:0
-    push!(states, (:model_and_tangent, r))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 3))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 2))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 1))
-end
-push!(states, :End)
-for i ∈ 1:20
-    push!(states, :Init)
-end
-for i ∈ 1:20
-    push!(states, (:theta, 1))
-end
-for i ∈ 1:10
-    push!(states, (:theta, 2))
-end
-for i ∈ 1:30
-    push!(states, (:theta, 3))
-end
-for r in 0:0.01:1
-    push!(states, (:model, r))
-end
-for r in 1:-0.01:0
-    push!(states, (:model, r))
-end
-for i ∈ 1:10
-    push!(states, (:model, 0))
-end
-for r in 0:0.01:1
-    push!(states, (:model_and_tangent, r))
+# Scénario
+function scenario()
+    states = Any[]
+
+    for r in 1:-0.01:0  push!(states, (:model_and_tangent, r))  end
+    for i ∈ 1:10        push!(states, (:theta, 3))              end
+    for i ∈ 1:10        push!(states, (:theta, 2))              end
+    for i ∈ 1:10        push!(states, (:theta, 1))              end
+    for i ∈ 1:20        push!(states, :Init)                    end
+    for i ∈ 1:20        push!(states, (:theta, 1))              end
+    for i ∈ 1:10        push!(states, (:theta, 2))              end
+    for i ∈ 1:30        push!(states, (:theta, 3))              end
+    for r in 0:0.01:1   push!(states, (:model, r))              end
+    for r in 1:-0.01:0  push!(states, (:model, r))              end
+    for i ∈ 1:10        push!(states, (:model, 0))              end
+    for r in 0:0.01:1   push!(states, (:model_and_tangent, r))  end
+
+    return states
 end
 
 # affichage
+states = scenario()
 anim = @animate for state in states
     plt = draw(state)
 end
