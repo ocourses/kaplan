@@ -208,11 +208,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Convergence – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/images/convergence.svg">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Convergence – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/images/convergence.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -429,6 +429,7 @@ window.Quarto = {
   <ul>
   <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
   <li><a href="#condition-suffisante-de-convergence" id="toc-condition-suffisante-de-convergence" class="nav-link" data-scroll-target="#condition-suffisante-de-convergence">Condition Suffisante de Convergence</a></li>
+  <li><a href="#illustration-de-la-convergence" id="toc-illustration-de-la-convergence" class="nav-link" data-scroll-target="#illustration-de-la-convergence">Illustration de la convergence</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -456,8 +457,8 @@ window.Quarto = {
 
 <section id="définition" class="level2">
 <h2 class="anchored" data-anchor-id="définition">Définition</h2>
-<p>Étant donnée une subdivision, on souhaite avoir <span class="math inline">x_i \approx x(t_i, t_0, x_0)</span> pour tout <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span> où <span class="math inline">{(x_i)}_{1 \le i \le N}</span> est la solution de la méthode (discrétisée) à un pas explicite et où <span class="math inline">x(\cdot, t_0, x_0)</span> est la solution du problème de Cauchy (continu).</p>
-<p>Enfin, on souhaite que <span class="math inline">x_i</span> tende vers <span class="math inline">x(t_i, t_0, x_0)</span> quand le pas de discrétisation tend vers <span class="math inline">0</span>. On introduit la définition suivante.</p>
+<p>Étant donnée une subdivision, on souhaite avoir <span class="math inline">x_i \approx x(t_i)</span> pour tout <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span> où <span class="math inline">{(x_i)}_{1 \le i \le N}</span> est la solution de la méthode (discrétisée) à un pas explicite et où <span class="math inline">x(\cdot)</span> est la solution du problème de Cauchy.</p>
+<p>Enfin, on souhaite que <span class="math inline">x_i</span> tende vers <span class="math inline">x(t_i)</span> quand le pas de discrétisation tend vers <span class="math inline">0</span>. On introduit la définition suivante.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -468,9 +469,9 @@ Définition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Une méthode à un pas explicite est <strong>convergente</strong> si pour toute solution <span class="math inline">x(\cdot, t_0, x_0)</span>, la suite <span class="math inline">{(x_i)}_i</span> définie par <span class="math inline">x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i)</span> vérifie</p>
+<p>Une méthode à un pas explicite est <strong>convergente</strong> si la suite <span class="math inline">{(x_i)}_i</span> définie par <span class="math inline">x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i)</span> vérifie</p>
 <p><span class="math display">
-    \max_{1 \le i \le N}\, \lVert x(t_i, t_0, x_0) - x_i\rVert \to 0
+    \max_{0 \le i \le N}\, \lVert x(t_i) - x_i\rVert \to 0
     \quad\text{quand}\quad h_{\max} = \max_i h_i \to 0.
 </span></p>
 </div>
@@ -485,19 +486,19 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La quantité <span class="math inline">\max_{1 \le i \le N}\, \lVert x(t_i, t_0, x_0) - x_i\rVert</span> dans la définition précédente s’appelle <strong>l’erreur globale de convergence</strong>.</p>
+<p>La quantité <span class="math inline">\max_{0 \le i \le N}\, \lVert x(t_i) - x_i\rVert</span> dans la définition précédente s’appelle <strong>l’erreur globale de convergence</strong>.</p>
 </div>
 </div>
 </section>
 <section id="condition-suffisante-de-convergence" class="level2">
 <h2 class="anchored" data-anchor-id="condition-suffisante-de-convergence">Condition Suffisante de Convergence</h2>
-<p>Notons <span class="math inline">x(\cdot) = x(\cdot, t_0, x_0)</span> la solution du problème de Cauchy, <span class="math inline">t_0</span> et <span class="math inline">x_0</span> étant fixés. Par définition de l’erreur de consistance on a</p>
+<p>Par définition de l’erreur de consistance on a</p>
 <p><span class="math display">
     x(t_{i+1}) = x(t_i) + h_i\, \Phi(t_i, x(t_i), h_i) + e_i.
 </span></p>
 <p>Si la méthode est stable, nous en déduisons que l’erreur globale de convergence vérifie</p>
 <p><span class="math display">
-    \max_{1 \le i \le N}\, \lVert x(t_i, t_0, x_0) - x_i\rVert \le S \sum_{i=0}^{N-1} \lVert e_i\rVert.
+    \max_{0 \le i \le N}\, \lVert x(t_i) - x_i\rVert \le S \left( \lVert x(t_0) - x_0\rVert + \sum_{i=0}^{N-1} \lVert e_i\rVert \right).
 </span></p>
 <p>Nous en déduisons.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -528,12 +529,25 @@ Corollaire
 </div>
 <p>Si de plus la méthode est consistante d’ordre <span class="math inline">p</span> et si l’on peut majorer les constantes <span class="math inline">C_i</span> par une constante <span class="math inline">C</span> indépendante de <span class="math inline">{(h_i)}_i</span>, on obtient <span class="math display">
     \begin{aligned}
-        \max_{1 \le i \le N}\, \lVert x(t_i, t_0, x_0) - x_i\rVert
+        \max_{1 \le i \le N}\, \lVert x(t_i) - x_i\rVert
         &amp;\le S \sum_{i=0}^{N-1} \lVert e_i\rVert \le S \sum_{i=0}^{N-1} C_i\, {h_i}^{p+1} \\
         &amp;\le S\, C\, h_{\max}^p \sum_{i=0}^{N-1} h_i \le S\, C\, h_{\max}^p (t_f - t_0)
         \le M h_{\max}^p
     \end{aligned}
 </span> pour une certaine constante <span class="math inline">M</span> positive indépendante de <span class="math inline">{(h_i)}_i</span>. Ainsi, l’ordre de convergence est donné par l’ordre de consistance.</p>
+</section>
+<section id="illustration-de-la-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="illustration-de-la-convergence">Illustration de la convergence</h2>
+<p>Considérons un pas uniforme, c’est-à-dire <span class="math inline">h_i = h = (t_f - t_0) / N</span>, avec <span class="math inline">N</span> le nombre de pas. Notons l’erreur de convergence <span class="math inline">E</span>. Faisons l’hypothèse que <span class="math inline">E = M h^p</span> pour un certain <span class="math inline">M \ge 0</span>. En passant au logarithme, on obtient</p>
+<p><span class="math display">
+    \log(E) = \log(M) + p\, \log(h).
+</span></p>
+<p>Nous en déduisons que si on trace <span class="math inline">\log(E)</span> en fonction de <span class="math inline">\log(h)</span>, on doit obtenir une droite de pente <span class="math inline">p</span>. La figure ci-dessous illustre les ordres de convergence de méthodes de Runge-Kutta pour l’exemple suivant :</p>
+<p><span class="math display">
+    x'(t) = (1-2t) x(t), \quad x(0) = 1,
+</span></p>
+<p>sur l’intervalle <span class="math inline">[0, 3]</span>.</p>
+<p><img src="../../assets/images/convergence.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
 
 
 </section>

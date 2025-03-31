@@ -52,7 +52,7 @@
     "href": "src/integration_numerique/introduction.html#euler",
     "title": "Introduction",
     "section": "Euler",
-    "text": "Euler\nLa méthode à un pas explicite la plus simple est ce que l’on appelle la méthode d’Euler qui consiste tout simplement à approcher l’intégrale par le rectangle suivant :\n\n    \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d}t \\approx h_i\\, f(t_i, x(t_i)),\n\nautrement dit, la fonction \\Phi pour la méthode de Euler s’écrit :\n\n    \\Phi_E(t, x, h) \\coloneqq h f(t, x).\n\n\n\n\n\n\n\nDéfinition\n\n\n\nOn appelle méthode (ou schéma) d’Euler explicite, le schéma\n\n    x_{i+1} = x_i + h_i\\, f(t_i, x_i).",
+    "text": "Euler\nLa méthode à un pas explicite la plus simple est ce que l’on appelle la méthode d’Euler qui consiste tout simplement à approcher l’intégrale par le rectangle suivant :\n\n    \\int_{t_i}^{t_{i+1}} f(t, x(t)) \\, \\mathrm{d}t \\approx h_i\\, f(t_i, x(t_i)).\n\nOn note g(t) \\coloneqq f(t, x(t)), où x(\\cdot) est la solution du problème de Cauchy. La méthode d’Euler consiste à approcher l’intégrale de la fonction g par une quadrature d’ordre 1 :\n\nPour la méthode d’Euler, la fonction \\Phi s’écrit :\n\n    \\Phi_E(t, x, h) \\coloneqq h f(t, x),\n\nainsi on a la définition suivante.\n\n\n\n\n\n\nDéfinition\n\n\n\nOn appelle méthode (ou schéma) d’Euler explicite, le schéma\n\n    x_{i+1} = x_i + h_i\\, f(t_i, x_i).",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
@@ -808,7 +808,7 @@
     "href": "src/integration_numerique/erreurs_arrondi.html",
     "title": "Influence des Erreurs d’Arrondi",
     "section": "",
-    "text": "Back to top",
+    "text": "Pour une méthode à un pas convergente, plus les pas d’intégration sont petits plus l’erreur est petite. On pourrait vouloir faire des pas les plus petits possibles pour s’assurer une certaine précision. Bien entendu, plus les pas sont petits, plus leur nombre est grand et donc plus le coût de calcul est grand. Il y a donc un compromis à faire entre la précision voulue et le budget de calculs.\nEn plus de cela il faut tenir compte des erreurs numériques introduites par le calcul sur machine. Dans la pratique, c’est-à-dire sur machine, faire de plus petits pas réduit l’erreur jusqu’à un certain point où les erreurs numériques deviennent plus grandes que les erreurs mathématiques d’approximation, comme l’illustre la figure suivante.\n\nPour en savoir plus, voir le Chapitre VIII du livre :\n\nDemailly, Jean-Pierre. Analyse numérique et équations différentielles. Les Ulis: EDP sciences, 2006.\n\n\n\n\n Back to top",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
@@ -820,7 +820,7 @@
     "href": "src/integration_numerique/convergence.html",
     "title": "Convergence",
     "section": "",
-    "text": "Étant donnée une subdivision, on souhaite avoir x_i \\approx x(t_i, t_0, x_0) pour tout i \\in \\llbracket 0\\,,\\, N \\rrbracket où {(x_i)}_{1 \\le i \\le N} est la solution de la méthode (discrétisée) à un pas explicite et où x(\\cdot, t_0, x_0) est la solution du problème de Cauchy (continu).\nEnfin, on souhaite que x_i tende vers x(t_i, t_0, x_0) quand le pas de discrétisation tend vers 0. On introduit la définition suivante.\n\n\n\n\n\n\nDéfinition\n\n\n\nUne méthode à un pas explicite est convergente si pour toute solution x(\\cdot, t_0, x_0), la suite {(x_i)}_i définie par x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i) vérifie\n\n    \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert \\to 0\n    \\quad\\text{quand}\\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa quantité \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert dans la définition précédente s’appelle l’erreur globale de convergence.",
+    "text": "Étant donnée une subdivision, on souhaite avoir x_i \\approx x(t_i) pour tout i \\in \\llbracket 0\\,,\\, N \\rrbracket où {(x_i)}_{1 \\le i \\le N} est la solution de la méthode (discrétisée) à un pas explicite et où x(\\cdot) est la solution du problème de Cauchy.\nEnfin, on souhaite que x_i tende vers x(t_i) quand le pas de discrétisation tend vers 0. On introduit la définition suivante.\n\n\n\n\n\n\nDéfinition\n\n\n\nUne méthode à un pas explicite est convergente si la suite {(x_i)}_i définie par x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i) vérifie\n\n    \\max_{0 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert \\to 0\n    \\quad\\text{quand}\\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa quantité \\max_{0 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert dans la définition précédente s’appelle l’erreur globale de convergence.",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
@@ -832,7 +832,7 @@
     "href": "src/integration_numerique/convergence.html#définition",
     "title": "Convergence",
     "section": "",
-    "text": "Étant donnée une subdivision, on souhaite avoir x_i \\approx x(t_i, t_0, x_0) pour tout i \\in \\llbracket 0\\,,\\, N \\rrbracket où {(x_i)}_{1 \\le i \\le N} est la solution de la méthode (discrétisée) à un pas explicite et où x(\\cdot, t_0, x_0) est la solution du problème de Cauchy (continu).\nEnfin, on souhaite que x_i tende vers x(t_i, t_0, x_0) quand le pas de discrétisation tend vers 0. On introduit la définition suivante.\n\n\n\n\n\n\nDéfinition\n\n\n\nUne méthode à un pas explicite est convergente si pour toute solution x(\\cdot, t_0, x_0), la suite {(x_i)}_i définie par x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i) vérifie\n\n    \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert \\to 0\n    \\quad\\text{quand}\\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa quantité \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert dans la définition précédente s’appelle l’erreur globale de convergence.",
+    "text": "Étant donnée une subdivision, on souhaite avoir x_i \\approx x(t_i) pour tout i \\in \\llbracket 0\\,,\\, N \\rrbracket où {(x_i)}_{1 \\le i \\le N} est la solution de la méthode (discrétisée) à un pas explicite et où x(\\cdot) est la solution du problème de Cauchy.\nEnfin, on souhaite que x_i tende vers x(t_i) quand le pas de discrétisation tend vers 0. On introduit la définition suivante.\n\n\n\n\n\n\nDéfinition\n\n\n\nUne méthode à un pas explicite est convergente si la suite {(x_i)}_i définie par x_{i+1} = x_i + h_i\\, \\Phi(t_i, x_i, h_i) vérifie\n\n    \\max_{0 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert \\to 0\n    \\quad\\text{quand}\\quad h_{\\max} = \\max_i h_i \\to 0.\n\n\n\n\n\n\n\n\n\nRemarque\n\n\n\nLa quantité \\max_{0 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert dans la définition précédente s’appelle l’erreur globale de convergence.",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",
@@ -844,7 +844,19 @@
     "href": "src/integration_numerique/convergence.html#condition-suffisante-de-convergence",
     "title": "Convergence",
     "section": "Condition Suffisante de Convergence",
-    "text": "Condition Suffisante de Convergence\nNotons x(\\cdot) = x(\\cdot, t_0, x_0) la solution du problème de Cauchy, t_0 et x_0 étant fixés. Par définition de l’erreur de consistance on a\n\n    x(t_{i+1}) = x(t_i) + h_i\\, \\Phi(t_i, x(t_i), h_i) + e_i.\n\nSi la méthode est stable, nous en déduisons que l’erreur globale de convergence vérifie\n\n    \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert \\le S \\sum_{i=0}^{N-1} \\lVert e_i\\rVert.\n\nNous en déduisons.\n\n\n\n\n\n\nThéorème\n\n\n\nSi la méthode à un pas explicite est stable et consistante, alors elle est convergente.\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLa méthode d’Euler est convergente si la fonction f est de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x.\n\n\nSi de plus la méthode est consistante d’ordre p et si l’on peut majorer les constantes C_i par une constante C indépendante de {(h_i)}_i, on obtient \n    \\begin{aligned}\n        \\max_{1 \\le i \\le N}\\, \\lVert x(t_i, t_0, x_0) - x_i\\rVert\n        &\\le S \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\le S \\sum_{i=0}^{N-1} C_i\\, {h_i}^{p+1} \\\\\n        &\\le S\\, C\\, h_{\\max}^p \\sum_{i=0}^{N-1} h_i \\le S\\, C\\, h_{\\max}^p (t_f - t_0)\n        \\le M h_{\\max}^p\n    \\end{aligned}\n pour une certaine constante M positive indépendante de {(h_i)}_i. Ainsi, l’ordre de convergence est donné par l’ordre de consistance.",
+    "text": "Condition Suffisante de Convergence\nPar définition de l’erreur de consistance on a\n\n    x(t_{i+1}) = x(t_i) + h_i\\, \\Phi(t_i, x(t_i), h_i) + e_i.\n\nSi la méthode est stable, nous en déduisons que l’erreur globale de convergence vérifie\n\n    \\max_{0 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert \\le S \\left( \\lVert x(t_0) - x_0\\rVert + \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\right).\n\nNous en déduisons.\n\n\n\n\n\n\nThéorème\n\n\n\nSi la méthode à un pas explicite est stable et consistante, alors elle est convergente.\n\n\n\n\n\n\n\n\nCorollaire\n\n\n\nLa méthode d’Euler est convergente si la fonction f est de classe \\mathscr{C}^{1} et globalement lipschitzienne par rapport à la variable x.\n\n\nSi de plus la méthode est consistante d’ordre p et si l’on peut majorer les constantes C_i par une constante C indépendante de {(h_i)}_i, on obtient \n    \\begin{aligned}\n        \\max_{1 \\le i \\le N}\\, \\lVert x(t_i) - x_i\\rVert\n        &\\le S \\sum_{i=0}^{N-1} \\lVert e_i\\rVert \\le S \\sum_{i=0}^{N-1} C_i\\, {h_i}^{p+1} \\\\\n        &\\le S\\, C\\, h_{\\max}^p \\sum_{i=0}^{N-1} h_i \\le S\\, C\\, h_{\\max}^p (t_f - t_0)\n        \\le M h_{\\max}^p\n    \\end{aligned}\n pour une certaine constante M positive indépendante de {(h_i)}_i. Ainsi, l’ordre de convergence est donné par l’ordre de consistance.",
+    "crumbs": [
+      "Plan du cours",
+      "Intégration numérique",
+      "Convergence"
+    ]
+  },
+  {
+    "objectID": "src/integration_numerique/convergence.html#illustration-de-la-convergence",
+    "href": "src/integration_numerique/convergence.html#illustration-de-la-convergence",
+    "title": "Convergence",
+    "section": "Illustration de la convergence",
+    "text": "Illustration de la convergence\nConsidérons un pas uniforme, c’est-à-dire h_i = h = (t_f - t_0) / N, avec N le nombre de pas. Notons l’erreur de convergence E. Faisons l’hypothèse que E = M h^p pour un certain M \\ge 0. En passant au logarithme, on obtient\n\n    \\log(E) = \\log(M) + p\\, \\log(h).\n\nNous en déduisons que si on trace \\log(E) en fonction de \\log(h), on doit obtenir une droite de pente p. La figure ci-dessous illustre les ordres de convergence de méthodes de Runge-Kutta pour l’exemple suivant :\n\n    x'(t) = (1-2t) x(t), \\quad x(0) = 1,\n\nsur l’intervalle [0, 3].",
     "crumbs": [
       "Plan du cours",
       "Intégration numérique",

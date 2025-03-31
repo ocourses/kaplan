@@ -7,17 +7,17 @@ page-layout: article
 
 ## Définition
 
-Étant donnée une subdivision, on souhaite avoir $x_i \approx x(t_i, t_0, x_0)$ pour tout $i \in \llbracket 0\,,\, N \rrbracket$ où ${(x_i)}_{1 \le i \le N}$ est la solution de la méthode (discrétisée) à un pas explicite et où $x(\cdot, t_0, x_0)$ est la solution du problème de Cauchy (continu).
+Étant donnée une subdivision, on souhaite avoir $x_i \approx x(t_i)$ pour tout $i \in \llbracket 0\,,\, N \rrbracket$ où ${(x_i)}_{1 \le i \le N}$ est la solution de la méthode (discrétisée) à un pas explicite et où $x(\cdot)$ est la solution du problème de Cauchy.
 
-Enfin, on souhaite que $x_i$ tende vers $x(t_i, t_0, x_0)$ quand le pas de discrétisation tend vers $0$. On introduit la définition suivante.
+Enfin, on souhaite que $x_i$ tende vers $x(t_i)$ quand le pas de discrétisation tend vers $0$. On introduit la définition suivante.
 
 ::: {.callout-warning icon=false}
 ### Définition
 
-Une méthode à un pas explicite est **convergente** si pour toute solution $x(\cdot, t_0, x_0)$, la suite ${(x_i)}_i$ définie par $x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i)$ vérifie
+Une méthode à un pas explicite est **convergente** si la suite ${(x_i)}_i$ définie par $x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i)$ vérifie
 
 $$
-    \max_{1 \le i \le N}\, \norm{x(t_i, t_0, x_0) - x_i} \to 0
+    \max_{0 \le i \le N}\, \norm{x(t_i) - x_i} \to 0
     \quad\text{quand}\quad h_{\max} = \max_i h_i \to 0.
 $$
 :::
@@ -25,12 +25,12 @@ $$
 ::: {.callout-note icon=false}
 ### Remarque
 
-La quantité $\max_{1 \le i \le N}\, \norm{x(t_i, t_0, x_0) - x_i}$ dans la définition précédente s'appelle **l'erreur globale de convergence**.
+La quantité $\max_{0 \le i \le N}\, \norm{x(t_i) - x_i}$ dans la définition précédente s'appelle **l'erreur globale de convergence**.
 :::
 
 ## Condition Suffisante de Convergence
 
-Notons $x(\cdot) = x(\cdot, t_0, x_0)$ la solution du problème de Cauchy, $t_0$ et $x_0$ étant fixés. Par définition de l'erreur de consistance on a
+Par définition de l'erreur de consistance on a
 
 $$
     x(t_{i+1}) = x(t_i) + h_i\, \Phi(t_i, x(t_i), h_i) + e_i.
@@ -39,7 +39,7 @@ $$
 Si la méthode est stable, nous en déduisons que l'erreur globale de convergence vérifie
 
 $$
-    \max_{1 \le i \le N}\, \norm{x(t_i, t_0, x_0) - x_i} \le S \sum_{i=0}^{N-1} \norm{e_i}.
+    \max_{0 \le i \le N}\, \norm{x(t_i) - x_i} \le S \left( \norm{x(t_0) - x_0} + \sum_{i=0}^{N-1} \norm{e_i} \right).
 $$
 
 Nous en déduisons.
@@ -59,7 +59,7 @@ La méthode d'Euler est convergente si la fonction $f$ est de classe $\mathscr{C
 Si de plus la méthode est consistante d'ordre $p$ et si l'on peut majorer les constantes $C_i$ par une constante $C$ indépendante de ${(h_i)}_i$, on obtient
 $$
     \begin{aligned}
-        \max_{1 \le i \le N}\, \norm{x(t_i, t_0, x_0) - x_i}
+        \max_{1 \le i \le N}\, \norm{x(t_i) - x_i}
         &\le S \sum_{i=0}^{N-1} \norm{e_i} \le S \sum_{i=0}^{N-1} C_i\, {h_i}^{p+1} \\
         &\le S\, C\, h_{\max}^p \sum_{i=0}^{N-1} h_i \le S\, C\, h_{\max}^p (t_f - t_0)
         \le M h_{\max}^p
@@ -67,3 +67,21 @@ $$
 $$
 pour une certaine constante $M$ positive indépendante de ${(h_i)}_i$.
 Ainsi, l'ordre de convergence est donné par l'ordre de consistance.
+
+## Illustration de la convergence
+
+Considérons un pas uniforme, c'est-à-dire $h_i = h = (t_f - t_0) / N$, avec $N$ le nombre de pas. Notons l'erreur de convergence $E$. Faisons l'hypothèse que $E = M h^p$ pour un certain $M \ge 0$. En passant au logarithme, on obtient
+
+$$
+    \log(E) = \log(M) + p\, \log(h).
+$$
+
+Nous en déduisons que si on trace $\log(E)$ en fonction de $\log(h)$, on doit obtenir une droite de pente $p$. La figure ci-dessous illustre les ordres de convergence de méthodes de Runge-Kutta pour l'exemple suivant :
+
+$$
+    x'(t) = (1-2t) x(t), \quad x(0) = 1,
+$$
+
+sur l'intervalle $[0, 3]$.
+
+<img src="../../assets/images/convergence.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">

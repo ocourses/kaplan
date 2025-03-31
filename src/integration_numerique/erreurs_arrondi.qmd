@@ -2,3 +2,13 @@
 title: "Influence des Erreurs d'Arrondi"
 page-layout: article
 ---
+
+Pour une méthode à un pas convergente, plus les pas d'intégration sont petits plus l'erreur est petite. On pourrait vouloir faire des pas les plus petits possibles pour s'assurer une certaine précision. Bien entendu, plus les pas sont petits, plus leur nombre est grand et donc plus le coût de calcul est grand. Il y a donc un compromis à faire entre la précision voulue et le budget de calculs. 
+
+En plus de cela il faut tenir compte des erreurs numériques introduites par le calcul sur machine. Dans la pratique, c'est-à-dire sur machine, faire de plus petits pas réduit l'erreur jusqu'à un certain point où les erreurs numériques deviennent plus grandes que les erreurs mathématiques d'approximation, comme l'illustre la figure suivante.
+
+<img src="../../assets/images/arrondi.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
+
+Pour en savoir plus, voir le [Chapitre VIII du livre](http://livre21.com/LIVREF/F12/F012005.pdf) :
+
+>Demailly, Jean-Pierre. Analyse numérique et équations différentielles. Les Ulis: EDP sciences, 2006.

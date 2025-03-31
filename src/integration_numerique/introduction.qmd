@@ -74,14 +74,20 @@ $$
 La méthode à un pas explicite la plus simple est ce que l'on appelle la **méthode d'Euler** qui consiste tout simplement à approcher l'intégrale par le rectangle suivant :
 
 $$ 
-    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)),
+    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)).
 $$
 
-autrement dit, la fonction $\Phi$ pour la méthode de Euler s'écrit :
+On note $g(t) \coloneqq f(t, x(t))$, où $x(\cdot)$ est la solution du problème de Cauchy. La méthode d'Euler consiste à approcher l'intégrale de la fonction $g$ par une quadrature d'ordre 1 :
+
+<img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
+
+Pour la méthode d'Euler, la fonction $\Phi$ s'écrit :
 
 $$
-    \Phi_E(t, x, h) \coloneqq h f(t, x).
+    \Phi_E(t, x, h) \coloneqq h f(t, x),
 $$
+
+ainsi on a la définition suivante.
 
 ::: {.callout-warning icon=false}
 ### Définition
@@ -92,8 +98,6 @@ $$
     x_{i+1} = x_i + h_i\, f(t_i, x_i).
 $$
 :::
-
-<img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
 
 ## Runge
 

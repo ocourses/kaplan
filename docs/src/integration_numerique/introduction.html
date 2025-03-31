@@ -531,12 +531,15 @@ Idée principale
 <h2 class="anchored" data-anchor-id="euler">Euler</h2>
 <p>La méthode à un pas explicite la plus simple est ce que l’on appelle la <strong>méthode d’Euler</strong> qui consiste tout simplement à approcher l’intégrale par le rectangle suivant :</p>
 <p><span class="math display">
-    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)),
+    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)).
 </span></p>
-<p>autrement dit, la fonction <span class="math inline">\Phi</span> pour la méthode de Euler s’écrit :</p>
+<p>On note <span class="math inline">g(t) \coloneqq f(t, x(t))</span>, où <span class="math inline">x(\cdot)</span> est la solution du problème de Cauchy. La méthode d’Euler consiste à approcher l’intégrale de la fonction <span class="math inline">g</span> par une quadrature d’ordre 1 :</p>
+<p><img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
+<p>Pour la méthode d’Euler, la fonction <span class="math inline">\Phi</span> s’écrit :</p>
 <p><span class="math display">
-    \Phi_E(t, x, h) \coloneqq h f(t, x).
+    \Phi_E(t, x, h) \coloneqq h f(t, x),
 </span></p>
+<p>ainsi on a la définition suivante.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -553,7 +556,6 @@ Définition
 </span></p>
 </div>
 </div>
-<p><img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
 </section>
 <section id="runge" class="level2">
 <h2 class="anchored" data-anchor-id="runge">Runge</h2>

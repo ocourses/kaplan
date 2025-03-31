@@ -164,10 +164,12 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Influence des Erreurs d’Arrondi – Cours EDO">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/images/arrondi.svg">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Influence des Erreurs d’Arrondi – Cours EDO">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/images/arrondi.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -402,6 +404,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Pour une méthode à un pas convergente, plus les pas d’intégration sont petits plus l’erreur est petite. On pourrait vouloir faire des pas les plus petits possibles pour s’assurer une certaine précision. Bien entendu, plus les pas sont petits, plus leur nombre est grand et donc plus le coût de calcul est grand. Il y a donc un compromis à faire entre la précision voulue et le budget de calculs.</p>
+<p>En plus de cela il faut tenir compte des erreurs numériques introduites par le calcul sur machine. Dans la pratique, c’est-à-dire sur machine, faire de plus petits pas réduit l’erreur jusqu’à un certain point où les erreurs numériques deviennent plus grandes que les erreurs mathématiques d’approximation, comme l’illustre la figure suivante.</p>
+<p><img src="../../assets/images/arrondi.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
+<p>Pour en savoir plus, voir le <a href="http://livre21.com/LIVREF/F12/F012005.pdf">Chapitre VIII du livre</a> :</p>
+<blockquote class="blockquote">
+<p>Demailly, Jean-Pierre. Analyse numérique et équations différentielles. Les Ulis: EDP sciences, 2006.</p>
+</blockquote>
 
 
 
