@@ -422,8 +422,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
+  <li><a href="#exemples" id="toc-exemples" class="nav-link" data-scroll-target="#exemples">Exemples</a></li>
+  <li><a href="#exercice" id="toc-exercice" class="nav-link" data-scroll-target="#exercice">Exercice</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -447,6 +455,8 @@ window.Quarto = {
 </header>
 
 
+<section id="définition" class="level2">
+<h2 class="anchored" data-anchor-id="définition">Définition</h2>
 <p>Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d’Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -461,14 +471,15 @@ Définition
 <p>On appelle <strong>méthode de Runge-Kutta explicite à <span class="math inline">s</span> étages</strong>, la méthode définie par le schéma</p>
 <p><span class="math display">
 \begin{aligned}
-    k_1 &amp;= f(t_0, x_0) \\
-    k_2 &amp;= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\
+    k_1 &amp;= f(t_i, x_i) \\
+    k_2 &amp;= f(t_i + c_2 h, x_i + h a_{21} k_1) \\
     \vdots &amp; \\[-1em]
-    k_s &amp;= f(t_0 + c_s h, x_0 + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
-    x_1 &amp;= x_0 + h \sum_{i=1}^{s} b_i k_i,
+    k_s &amp;= f(t_i + c_s h, x_i + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_{i+1} &amp;= x_i + h \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 </span></p>
-<p>où les coefficients <span class="math inline">c_i</span>, <span class="math inline">a_{ij}</span> et <span class="math inline">b_i</span> sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que <span class="math inline">c_1 = 0</span> et <span class="math inline">c_i = \sum_{j=1}^{i-1} a_{ij}</span>, pour <span class="math inline">i = 2, \ldots, s</span>.</p>
+<p>où les coefficients <span class="math inline">c_i</span>, <span class="math inline">a_{ij}</span> et <span class="math inline">b_i</span> sont des constantes qui définissent précisément le schéma.</p>
+<p>On supposera toujours dans la suite que <span class="math inline">c_1 = 0</span> et <span class="math inline">c_i = \sum_{j=1}^{i-1} a_{ij}</span>, pour <span class="math inline">i = 2, \ldots, s</span>.</p>
 </div>
 </div>
 <p>On représente en pratique ce schéma par le tableau de <a href="https://fr.wikipedia.org/wiki/John_Butcher">Butcher</a> suivant.</p>
@@ -484,6 +495,9 @@ Définition
             &amp; b_1 &amp; b_2 &amp; \cdots &amp; b_{s-1} &amp; b_s \\
 \end{array}
 </span></p>
+</section>
+<section id="exemples" class="level2">
+<h2 class="anchored" data-anchor-id="exemples">Exemples</h2>
 <p>Voici une liste d’exemples de schémas de Runge-Kutta explicites.</p>
 <ul>
 <li><p>Euler (ordre 1) <span class="math display">
@@ -549,6 +563,9 @@ Remarque
 <p>Dans les schémas ci-dessus, nous avons indiqué l’ordre de la méthode. Celle-ci est définie par la suite.</p>
 </div>
 </div>
+</section>
+<section id="exercice" class="level2">
+<h2 class="anchored" data-anchor-id="exercice">Exercice</h2>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -559,11 +576,12 @@ Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l’application <span class="math inline">\Phi(t_0, x_0, h)</span>.</p>
+<p>On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l’application <span class="math inline">\Phi(t, x, h)</span>.</p>
 </div>
 </div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1003,7 +1021,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/runge_kutta.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -1,4 +1,5 @@
 using Plots
+using LaTeXStrings
 
 function abscisses_curvilignes(x, y)
     # Vérifiez que les vecteurs x et y ont la même longueur

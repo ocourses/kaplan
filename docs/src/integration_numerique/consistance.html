@@ -208,11 +208,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Consistance – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/consistance.svg">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Consistance – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/consistance.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -427,8 +427,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#méthode-consistante" id="toc-méthode-consistante" class="nav-link active" data-scroll-target="#méthode-consistante">Méthode consistante</a></li>
-  <li><a href="#ordre-de-consistance" id="toc-ordre-de-consistance" class="nav-link" data-scroll-target="#ordre-de-consistance">Ordre de consistance</a></li>
+  <li><a href="#méthode-consistante" id="toc-méthode-consistante" class="nav-link active" data-scroll-target="#méthode-consistante">Méthode Consistante</a></li>
+  <li><a href="#condition-nécessaire-et-suffisante" id="toc-condition-nécessaire-et-suffisante" class="nav-link" data-scroll-target="#condition-nécessaire-et-suffisante">Condition Nécessaire et Suffisante</a></li>
+  <li><a href="#ordre-de-consistance" id="toc-ordre-de-consistance" class="nav-link" data-scroll-target="#ordre-de-consistance">Ordre de Consistance</a></li>
+  <li><a href="#exemples-et-exercices" id="toc-exemples-et-exercices" class="nav-link" data-scroll-target="#exemples-et-exercices">Exemples et Exercices</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/consistance.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -455,16 +457,16 @@ window.Quarto = {
 
 
 <section id="méthode-consistante" class="level2">
-<h2 class="anchored" data-anchor-id="méthode-consistante">Méthode consistante</h2>
+<h2 class="anchored" data-anchor-id="méthode-consistante">Méthode Consistante</h2>
 <p>Les méthodes de Runge-Kutta sont des méthodes à un pas</p>
 <p><span class="math display">
     x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i), \quad h_i = t_{i+1} - t_i,
 </span></p>
-<p>que l’on peut écrire sous la forme</p>
+<p>que l’on peut écrire sous la forme <span class="math inline">E_i(x_i, x_{i+1}) = 0</span> avec</p>
 <p><span class="math display">
-    E_i(x_i, x_{i+1}) \coloneqq x_{i+1} - \left( x_i + h_i\, \Phi(t_i, x_i, h_i) \right) = 0.
+    E_i(a, b) \coloneqq b - \left( a + h_i\, \Phi(t_i, a, h_i) \right).
 </span></p>
-<p>On rappelle que <span class="math inline">x(\cdot, t_0, x_0)</span> est la solution du problème de Cauchy <span class="math inline">x'(t) = f(t, x(t))</span>, <span class="math inline">x(t_0) = x_0</span>. Pour alléger les notations, nous écrivons simplement <span class="math inline">x(\cdot)</span> cette solution, <span class="math inline">t_0</span> et <span class="math inline">x_0</span> étant fixés.</p>
+<p>On rappelle pour la suite que <span class="math inline">x(\cdot)</span> est la solution du problème de Cauchy <span class="math inline">x'(t) = f(t, x(t))</span>, <span class="math inline">x(t_0) = x_0</span>.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -481,7 +483,8 @@ Définition
 </span></p>
 </div>
 </div>
-<p>Nous obtenons</p>
+<p>L’erreur locale de consistance est l’erreur obtenue lorque l’on injecte la solution du problème de Cauchy dans la méthode explicite à un pas. Si la méthode était parfaite, il n’y aurait pas d’erreur. Ainsi, cette erreur de consistance donne une idée de la cohérence de la méthode employée. Elle permet de quantifier à quel point le problème discret (la recherche des <span class="math inline">x_i</span>) est “proche” du problème de Cauchy.</p>
+<p>Le calcul de l’erreur locale de consistance nous donne</p>
 <p><span class="math display">
     \begin{aligned}
         e_i &amp;= E_i(x(t_i), x(t_{i+1}))
@@ -489,6 +492,13 @@ Définition
         &amp;= \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d} t - h_i \, \Phi(t_i, x(t_i), h_i).
     \end{aligned}
 </span></p>
+<p>Dans le cas de la méthode d’Euler nous avons l’illustration suivante :</p>
+<p><img src="../../assets/julia/consistance.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
+<p>où la tangente est donnée par</p>
+<p><span class="math display">
+    T(t) \coloneqq x(t_0) + (t-t_0)\, x'(t_0) = x(t_0) + (t-t_0)\, f(t_0, x(t_0)).
+</span></p>
+<p>La première notion que nous introduisons pour pouvoir parler plus tard de convergence, porte sur la somme des erreurs locales de consistance. Cette accumulation d’erreurs est purement théorique puisque l’on ne tient pas compte de la solution approchée mais seulement de la solution exacte.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -499,7 +509,7 @@ Définition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On dit qu’une méthode à un pas est <strong>consistante</strong> si pour toute solution au problème de Cauchy, on a</p>
+<p>On dit qu’une méthode à un pas est <strong>consistante</strong> si</p>
 <p><span class="math display">
     \sum_{i=0}^{N-1} \Vert e_i\Vert \to 0 \quad \text{quand} \quad h_{\max} = \max_i h_i \to 0.
 </span></p>
@@ -518,6 +528,9 @@ Remarque
 <p>Il est important de noter que les instants <span class="math inline">t_i</span> et le nombre de pas dépendent directement du vecteur de discrétisation <span class="math inline">{(h_i)}_{i}</span>.</p>
 </div>
 </div>
+</section>
+<section id="condition-nécessaire-et-suffisante" class="level2">
+<h2 class="anchored" data-anchor-id="condition-nécessaire-et-suffisante">Condition Nécessaire et Suffisante</h2>
 <p>Nous avons le résultat suivant.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -553,7 +566,7 @@ Corollaire
 </div>
 </section>
 <section id="ordre-de-consistance" class="level2">
-<h2 class="anchored" data-anchor-id="ordre-de-consistance">Ordre de consistance</h2>
+<h2 class="anchored" data-anchor-id="ordre-de-consistance">Ordre de Consistance</h2>
 <p>Pour évaluer l’erreur de consistance à l’indice <span class="math inline">i</span>, le paramètre important est le pas <span class="math inline">h_i</span>. On fixe les autres paramètres et on regarde comment se comporte l’erreur en fonction du pas. Nous aurons besoin de la <strong>notation de Landau</strong>. Rappelons que la notation de Landau <span class="math inline">e(h) = O\mathopen{}\left({h^p}\right)</span> signifie qu’il existe un voisinage <span class="math inline">U</span> de <span class="math inline">0</span> et une constante positive <span class="math inline">C</span> telle que pour tout <span class="math inline">h \in U</span>, <span class="math inline">\lVert e(h)\rVert \le C \lvert h\rvert^p</span>.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -604,18 +617,17 @@ Remarque
 <p><span class="math display">
 E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h).
 </span></p>
-<p>Pour simplifier un peu plus la notation, on utilise le fait que <span class="math inline">x(t_0) = x_0</span> et on note</p>
-<p><span class="math display">
-E(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h).
-</span></p>
 </div>
 </div>
-<p>Le schéma d’Euler explicite est d’ordre <span class="math inline">p=1</span> car par définition de la dérivée</p>
+</section>
+<section id="exemples-et-exercices" class="level2">
+<h2 class="anchored" data-anchor-id="exemples-et-exercices">Exemples et Exercices</h2>
+<p>Le schéma d’Euler explicite est d’ordre <span class="math inline">p=1</span> car, par définition de la dérivée, on a</p>
 <p><span class="math display">
 \begin{aligned}
-E(h) &amp;= x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h) \\
-&amp;= x'(t_0)\, h + O\mathopen{}\left(h^2\right) - h \, f(t_0, x_0) \\
-&amp;= h\, f(t_0, x_0) - h \, f(t_0, x_0) + O\mathopen{}\left(h^2\right) \\
+E(h) &amp;= x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h) \\
+&amp;= x'(t_0)\, h + O\mathopen{}\left(h^2\right) - h \, f(t_0, x(t_0)) \\
+&amp;= h\, f(t_0, x(t_0)) - h \, f(t_0, x(t_0)) + O\mathopen{}\left(h^2\right) \\
 &amp;= O\mathopen{}\left(h^2\right).
 \end{aligned}
 </span></p>
@@ -633,9 +645,9 @@ Question
 <p>Soit le schéma de Runge-Kutta</p>
 <p><span class="math display">
 \begin{aligned}
-k_1 &amp;= f(t_0, x_0) \\
-k_2 &amp;= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\
-x_1 &amp;= x_0 + h\, (b_1 k_1 + b_2 k_2).
+k_1 &amp;= f(t_i, x_i) \\
+k_2 &amp;= f(t_i + c_2 h_i, x_i + a_{21} h_i k_1) \\
+x_{i+1} &amp;= x_i + h_i\, (b_1 k_1 + b_2 k_2).
 \end{aligned}
 </span></p>
 <p>Retrouver que <span class="math inline">c_2 = a_{21}</span> et donner les 2 relations que doivent vérifier <span class="math inline">b_1</span>, <span class="math inline">b_2</span> et <span class="math inline">a_{21}</span> pour que le schéma soit d’ordre 2. En déduire que la méthode de Runge est d’ordre 2.</p>
@@ -655,15 +667,15 @@ Correction
 <div class="callout-body-container callout-body">
 <p>Dans ce cas, nous avons</p>
 <p><span class="math display">
-e(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h)
+E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h)
 </span></p>
 <p>avec</p>
 <p><span class="math display">
-\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).
+\Phi(t_0, x(t_0), h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x(t_0) + a_{21} h k_1).
 </span></p>
-<p>Développons <span class="math inline">e(h)</span> à l’ordre 2 et voyons les conditions à vérifier pour avoir <span class="math inline">e(h) = O\mathopen{}\left(h^3\right)</span>. Dans un premier temps, nous avons</p>
+<p>Développons <span class="math inline">E(h)</span> à l’ordre 2 et voyons les conditions à vérifier pour avoir <span class="math inline">E(h) = O\mathopen{}\left(h^3\right)</span>. Dans un premier temps, nous avons</p>
 <p><span class="math display">
-x(t_0 + h) - x_0 = hx'(t_0) + \frac{h^2}{2} x''(t_0) + O\mathopen{}\left(h^3\right)
+x(t_0 + h) - x(t_0) = hx'(t_0) + \frac{h^2}{2} x''(t_0) + O\mathopen{}\left(h^3\right)
 </span></p>
 <p>et puisque <span class="math inline">x'(t) = f(t, x(t))</span>, alors</p>
 <p><span class="math display">
@@ -672,26 +684,26 @@ x''(t) = \dfrac{\partial f}{\partial t}(t, x(t)) + \dfrac{\partial f}{\partial x
 </span></p>
 <p>donc</p>
 <p><span class="math display">
-x(t_0 + h) - x_0 = h f(t_0, x_0) + \frac{h^2}{2}
-\left( \dfrac{\partial f}{\partial t}(t_0, x_0) + \dfrac{\partial f}{\partial x}(t_0, x_0) \, f(t_0, x_0) \right) + O\mathopen{}\left(h^3\right).
+x(t_0 + h) - x(t_0) = h f(t_0, x(t_0)) + \frac{h^2}{2}
+\left( \dfrac{\partial f}{\partial t}(t_0, x(t_0)) + \dfrac{\partial f}{\partial x}(t_0, x(t_0)) \, f(t_0, x(t_0)) \right) + O\mathopen{}\left(h^3\right).
 </span></p>
 <p>D’un autre côté, nous avons</p>
 <p><span class="math display">
-k_2(h) = f(t_0, x_0) + h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) + O\mathopen{}\left(h^2\right).
+k_2(h) = f(t_0, x(t_0)) + h\, f'(t_0, x(t_0)) \cdot (c_2, a_{21} k_1) + O\mathopen{}\left(h^2\right).
 </span></p>
 <p>Au final, nous obtenons</p>
 <p><span class="math display">
 \begin{aligned}
-e(h) &amp;= h f(t_0, x_0) + \frac{h^2}{2}
-\left( \dfrac{\partial f}{\partial t}(t_0, x_0) + \dfrac{\partial f}{\partial x}(t_0, x_0) \, f(t_0, x_0) \right) \\[0.5em]
-&amp; \quad - h \left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) \right)
+E(h) &amp;= h f(t_0, x(t_0)) + \frac{h^2}{2}
+\left( \dfrac{\partial f}{\partial t}(t_0, x(t_0)) + \dfrac{\partial f}{\partial x}(t_0, x(t_0)) \, f(t_0, x(t_0)) \right) \\[0.5em]
+&amp; \quad - h \left( b_1 f(t_0, x(t_0)) + b_2 f(t_0, x(t_0)) + b_2 h\, f'(t_0, x(t_0)) \cdot (c_2, a_{21} k_1) \right)
 + O\mathopen{}\left(h^3\right) \\[0.5em]
-&amp;= h (1-b_1-b_2) f(t_0, x_0) \\[0.5em]
-&amp;\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \dfrac{\partial f}{\partial t}(t_0, x_0)
-+ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \dfrac{\partial f}{\partial x}(t_0, x_0)\, f(t_0, x_0) + O\mathopen{}\left(h^3\right).
+&amp;= h (1-b_1-b_2) f(t_0, x(t_0)) \\[0.5em]
+&amp;\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \dfrac{\partial f}{\partial t}(t_0, x(t_0))
++ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \dfrac{\partial f}{\partial x}(t_0, x(t_0))\, f(t_0, x(t_0)) + O\mathopen{}\left(h^3\right).
 \end{aligned}
 </span></p>
-<p>Ainsi, pour que <span class="math inline">e(h) = O\mathopen{}\left(h^3\right)</span> il faut avoir <span class="math inline">c_2 = a_{21}</span> et</p>
+<p>Ainsi, pour que <span class="math inline">E(h) = O\mathopen{}\left(h^3\right)</span> il faut avoir <span class="math inline">c_2 = a_{21}</span> et</p>
 <p><span class="math display">
 1 = b_1 + b_2 \quad \text{et} \quad b_2 a_{21} = \frac{1}{2}.
 </span></p>

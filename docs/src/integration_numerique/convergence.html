@@ -422,8 +422,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#définition" id="toc-définition" class="nav-link active" data-scroll-target="#définition">Définition</a></li>
+  <li><a href="#condition-suffisante-de-convergence" id="toc-condition-suffisante-de-convergence" class="nav-link" data-scroll-target="#condition-suffisante-de-convergence">Condition Suffisante de Convergence</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -447,6 +454,8 @@ window.Quarto = {
 </header>
 
 
+<section id="définition" class="level2">
+<h2 class="anchored" data-anchor-id="définition">Définition</h2>
 <p>Étant donnée une subdivision, on souhaite avoir <span class="math inline">x_i \approx x(t_i, t_0, x_0)</span> pour tout <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span> où <span class="math inline">{(x_i)}_{1 \le i \le N}</span> est la solution de la méthode (discrétisée) à un pas explicite et où <span class="math inline">x(\cdot, t_0, x_0)</span> est la solution du problème de Cauchy (continu).</p>
 <p>Enfin, on souhaite que <span class="math inline">x_i</span> tende vers <span class="math inline">x(t_i, t_0, x_0)</span> quand le pas de discrétisation tend vers <span class="math inline">0</span>. On introduit la définition suivante.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
@@ -479,6 +488,9 @@ Remarque
 <p>La quantité <span class="math inline">\max_{1 \le i \le N}\, \lVert x(t_i, t_0, x_0) - x_i\rVert</span> dans la définition précédente s’appelle <strong>l’erreur globale de convergence</strong>.</p>
 </div>
 </div>
+</section>
+<section id="condition-suffisante-de-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="condition-suffisante-de-convergence">Condition Suffisante de Convergence</h2>
 <p>Notons <span class="math inline">x(\cdot) = x(\cdot, t_0, x_0)</span> la solution du problème de Cauchy, <span class="math inline">t_0</span> et <span class="math inline">x_0</span> étant fixés. Par définition de l’erreur de consistance on a</p>
 <p><span class="math display">
     x(t_{i+1}) = x(t_i) + h_i\, \Phi(t_i, x(t_i), h_i) + e_i.
@@ -524,6 +536,7 @@ Corollaire
 </span> pour une certaine constante <span class="math inline">M</span> positive indépendante de <span class="math inline">{(h_i)}_i</span>. Ainsi, l’ordre de convergence est donné par l’ordre de consistance.</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -963,7 +976,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/convergence.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

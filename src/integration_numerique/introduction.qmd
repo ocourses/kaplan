@@ -3,8 +3,12 @@ title: "Introduction"
 page-layout: article
 ---
 
-On désire calculer une approximation de la solution, notée $x(\cdot, t_0, x_0)$, sur l'intervalle 
-$I \coloneqq [t_0, t_f]$ du problème de Cauchy
+{{< include ../../assets/latex/macros.qmd >}}
+
+## Idée principale
+
+On désire calculer une approximation de la solution, notée $x(\cdot)$, sur l'intervalle 
+$[t_0, t_f]$ du problème de Cauchy
 
 $$
     x'(t) = f(t, x(t)), \quad x(t_0) = x_0,
@@ -18,59 +22,65 @@ où $f \colon \R \times \R^n \to \R^n$ est une application **suffisamment régul
 Dans ce cours, nous nous intéressons uniquement à des équations différentielles ordinaires **linéaires**. Cependant, nous présentons les méthodes numériques dans un cadre plus général. On rappelle qu'une équations différentielles ordinaires linéaire est de la forme $x'(t) = A(t) x(t) + b(t)$, ainsi la fonction $f$ est donnée dans ce cas par $f(t, x) = A(t) x + b(t)$.
 :::
 
-On considère une subdivision de l'intervalle $I$ de la forme
+On considère une subdivision de l'intervalle $[t_0, t_f]$ de la forme
 
 $$ 
     t_0 < t_1 < \cdots < t_N \coloneqq t_f.
 $$ 
 
-On note $h_i \coloneqq t_{i+1} - t_i$ pour $i \in \llbracket 0, N-1 \rrbracket$, les pas de la subdivision et $h_{\max} \coloneqq \max_i(h_i)$ le pas le plus long. 
+On note $h_i \coloneqq t_{i+1} - t_i$, pour $i \in \llbracket 0, N-1 \rrbracket$, les pas de la subdivision et $h_{\max} \coloneqq \max_i(h_i)$ le pas le plus long. 
 
-L'idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher $x(t_i, t_0, x_0)$ pour $i \in \llbracket 0\,,\, N \rrbracket$. 
+L'idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher $x(t_i)$ pour $i \in \llbracket 0\,,\, N \rrbracket$. 
 
 ::: {.callout-warning icon=false}
 ### Définition
 
-On appelle **méthode explicite à un pas**, toute méthode pour laquelle la valeur $x_{i+1}$ est calculée en fonction de $t_i$, $h_i$ et $x_i$ de la forme :
+On appelle **méthode explicite à un pas**, toute méthode pour laquelle pour $i \in \llbracket 0, N-1 \rrbracket$ la valeur $x_{i+1}$ est calculée en fonction de $t_i$, $h_i$ et $x_i$ par une formule de récurrence de la forme :
 
 $$
-    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i).
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i),
+$$
+
+le point initial $x_0$ étant donné.
+:::
+
+Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas. 
+
+::: {.callout-important}
+### Idée principale
+
+Si on note $(x_0, \ldots, x_N) \in (\R^n)^{N+1}$ une suite finie donnée par une méthode explicite à un pas, alors on souhaite que 
+
+$$
+    x_i \approx x(t_i), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
 $$
 :::
 
-Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas. Si on note $(x_0, \ldots, x_N) \in (\R^n)^{N+1}$ une suite finie donnée par une méthode explicite à un pas, alors on souhaite que 
-
-$$
-    x_i \approx x(t_i, t_0, x_0), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
-$$
-
-
-::: {.callout-note icon=false}
-### Remarque
-
-Pour simplifier les notations, nous ne noterons la plupart du temps que le premier pas: 
-
-$$
-    x_1 = x_0 + h\, \Phi(t_0, x_0, h), \quad h \coloneqq h_0 = t_1 - t_0.
-$$
-:::
-
-L'idée générale est donc d'avoir 
+L'idée principale est donc d'avoir 
 
 $$ 
-    x_1 \approx x(t_1, t_0, x_0) = x_0 + \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t.
+    \begin{aligned}
+        x_0 &\approx x(t_0), \\
+        x_0 + h\, \Phi(t_0, x_0, h) = x_1 & \approx x(t_1) = x(t_0) + \int_{t_0}^{t_1} f(t, x(t)) \, \mathrm{d}t, \\
+        & \hspace{0.6em} \vdots \\
+        x_i + h\, \Phi(t_i, x_i, h) = x_{i+1} & \approx x(t_{i+1}) = x(t_i) + \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t, \\
+        & \hspace{0.6em} \vdots \\
+        x_{N-1} + h\, \Phi(t_{N-1}, x_{N-1}, h) = x_N & \approx x(t_N) = x(t_{N-1}) + \int_{t_{N-1}}^{t_N} f(t, x(t)) \, \mathrm{d}t. \\
+    \end{aligned}
 $$ 
 
-La méthode à un pas explicite la plus simple est ce que l'on appelle la **méthode d'Euler** qui consiste tout simplement à approcher l'intégrale 
+## Euler
+
+La méthode à un pas explicite la plus simple est ce que l'on appelle la **méthode d'Euler** qui consiste tout simplement à approcher l'intégrale par le rectangle suivant :
 
 $$ 
-    \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t
+    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)),
 $$
 
-par le rectangle 
+autrement dit, la fonction $\Phi$ pour la méthode de Euler s'écrit :
 
-$$ 
-    h f(t_0, x_0).
+$$
+    \Phi_E(t, x, h) \coloneqq h f(t, x).
 $$
 
 ::: {.callout-warning icon=false}
@@ -79,20 +89,26 @@ $$
 On appelle **méthode (ou schéma) d'Euler explicite**, le schéma
 
 $$
-    x_1 = x_0 + h f(t_0, x_0).
+    x_{i+1} = x_i + h_i\, f(t_i, x_i).
 $$
 :::
+
+<img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
+
+## Runge
 
 L'idée évidente pour améliorer la précision numérique est d'approcher cette intégrale par une formule de quadrature ayant un ordre plus élevé. Si on exploite le point milieu, nous obtenons
 
 $$
-    x(t_1, t_0, x_0) \approx x_0 + h f(t_0 + \frac{h}{2}, x(t_0 + \frac{h}{2}, t_0, x_0)).
+    x(t_{i+1}) \approx x(t_i) + h_i\, f\big(t_i + \frac{h_i\,}{2}, x(t_i + \frac{h_i\,}{2})\big).
 $$
 
-Le problème étant que l'on ne connait pas la valeur de $x(\cdot , t_0, x_0)$ à l'instant $t_0 + {h}/{2}$, d'où l'idée d'approcher cette valeur par un pas d'Euler : 
+<img src="../../assets/julia/milieu.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
+
+Le problème étant que l'on n'a pas accès à la valeur de $x(\cdot )$ à l'instant $t_i + {h_i}/{2}$, d'où l'idée d'approcher cette valeur par un pas d'Euler : 
 
 $$ 
-    x(t_0 + \frac{h}{2}, t_0, x_0) \approx x_0 + \frac{h}{2} f(t_0, x_0).
+    x(t_i + \frac{h_i}{2}) \approx x(t_i) + \frac{h_i}{2} f(t_i, x_i).
 $$ 
 
 Nous obtenons ainsi le **schéma de Runge**.
@@ -103,7 +119,15 @@ Nous obtenons ainsi le **schéma de Runge**.
 On appelle **méthode (ou schéma) de Runge** (explicite), le schéma
 
 $$
-    x_1 = x_0 + h f(t_0 + \frac{h}{2}, x_0 + \frac{h}{2} f(t_0, x_0)).
+    x_{i+1} = x_i + h_i\, f\big(t_i + \frac{h_i}{2}, x_i + \frac{h_i}{2} f(t_i, x_i)\big).
 $$
+:::
+
+::: {.callout-note icon=false}
+### Remarque
+
+Par la suite, nous allons étudier la convergence des méthodes explicites à un pas, autrement dit nous nous demandons si $x_i \to x(t_i)$ lorsque $h_{\max} \to 0$, et ce particulièrement pour les méthodes appelées méthodes de Runge-Kutta explicites.
+Pour étudier cette convergence, nous prenons un chemin détourné : nous allons montrer qu'une méthode consistante et stable est convergente, et que la vitesse de convergence est donnée par l'ordre de consistance.
+Ainsi, après avoir introduit les méthodes de Runge-Kutta, nous allons introduire les notions de consistance et de stabilité.
 :::
 

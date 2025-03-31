@@ -3,6 +3,8 @@ title: "Méthodes de Runge-Kutta"
 page-layout: article
 ---
 
+## Définition
+
 Dans la section précédente, nous avons introduit les méthodes explicites à un pas et nous avons donné deux exemples, la méthode d'Euler et la méthode de Runge. De manière générale, nous définissons les méthodes explicites à un pas suivantes, appelées méthodes de Runge-Kutta explicites.
 
 ::: {.callout-warning icon=false}
@@ -12,15 +14,17 @@ On appelle **méthode de Runge-Kutta explicite à $s$ étages**, la méthode dé
 
 $$
 \begin{aligned}
-    k_1 &= f(t_0, x_0) \\
-    k_2 &= f(t_0 + c_2 h, x_0 + h a_{21} k_1) \\
+    k_1 &= f(t_i, x_i) \\
+    k_2 &= f(t_i + c_2 h, x_i + h a_{21} k_1) \\
     \vdots & \\[-1em]
-    k_s &= f(t_0 + c_s h, x_0 + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
-    x_1 &= x_0 + h \sum_{i=1}^{s} b_i k_i,
+    k_s &= f(t_i + c_s h, x_i + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_{i+1} &= x_i + h \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 $$
 
-où les coefficients $c_i$, $a_{ij}$ et $b_i$ sont des constantes qui définissent précisément le schéma. On supposera toujours dans la suite que $c_1 = 0$ et $c_i = \sum_{j=1}^{i-1} a_{ij}$, pour $i = 2, \ldots, s$.
+où les coefficients $c_i$, $a_{ij}$ et $b_i$ sont des constantes qui définissent précisément le schéma. 
+
+On supposera toujours dans la suite que $c_1 = 0$ et $c_i = \sum_{j=1}^{i-1} a_{ij}$, pour $i = 2, \ldots, s$.
 :::
 
 On représente en pratique ce schéma par le tableau de [Butcher](https://fr.wikipedia.org/wiki/John_Butcher) suivant.
@@ -37,6 +41,8 @@ $$
             & b_1 & b_2 & \cdots & b_{s-1} & b_s \\
 \end{array}
 $$
+
+## Exemples
 
 Voici une liste d'exemples de schémas de Runge-Kutta explicites.
 
@@ -105,8 +111,10 @@ $$
 Dans les schémas ci-dessus, nous avons indiqué l'ordre de la méthode. Celle-ci est définie par la suite.
 :::
 
+## Exercice
+
 ::: {.callout-tip icon=false}
 ### Question
 
-On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l'application $\Phi(t_0, x_0, h)$.
+On considère le schéma de Heun donné ci-dessus. Écrire le schéma de Runge-Kutta correspondant et donner explicitement l'application $\Phi(t, x, h)$.
 :::

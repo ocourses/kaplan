@@ -208,11 +208,11 @@ window.Quarto = {
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Introduction – Cours EDO">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta property="og:image" content="https://ocourses.github.io/kaplan/assets/julia/euler.svg">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Introduction – Cours EDO">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/integration_numerique/assets/images/edo-favicon.png">
+<meta name="twitter:image" content="https://ocourses.github.io/kaplan/assets/julia/euler.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -422,8 +422,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#idée-principale" id="toc-idée-principale" class="nav-link active" data-scroll-target="#idée-principale">Idée principale</a></li>
+  <li><a href="#euler" id="toc-euler" class="nav-link" data-scroll-target="#euler">Euler</a></li>
+  <li><a href="#runge" id="toc-runge" class="nav-link" data-scroll-target="#runge">Runge</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -447,11 +455,13 @@ window.Quarto = {
 </header>
 
 
-<p>On désire calculer une approximation de la solution, notée <span class="math inline">x(\cdot, t_0, x_0)</span>, sur l’intervalle <span class="math inline">I \coloneqq [t_0, t_f]</span> du problème de Cauchy</p>
+<section id="idée-principale" class="level2">
+<h2 class="anchored" data-anchor-id="idée-principale">Idée principale</h2>
+<p>On désire calculer une approximation de la solution, notée <span class="math inline">x(\cdot)</span>, sur l’intervalle <span class="math inline">[t_0, t_f]</span> du problème de Cauchy</p>
 <p><span class="math display">
     x'(t) = f(t, x(t)), \quad x(t_0) = x_0,
 </span></p>
-<p>où <span class="math inline">f \colon \R \times \R^n \to \R^n</span> est une application <strong>suffisamment régulière</strong> (au moins <span class="math inline">\mathscr{C}^1</span>).</p>
+<p>où <span class="math inline">f \colon \mathbb{R}\times \mathbb{R}^n \to \mathbb{R}^n</span> est une application <strong>suffisamment régulière</strong> (au moins <span class="math inline">\mathscr{C}^1</span>).</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -465,12 +475,12 @@ Remarque
 <p>Dans ce cours, nous nous intéressons uniquement à des équations différentielles ordinaires <strong>linéaires</strong>. Cependant, nous présentons les méthodes numériques dans un cadre plus général. On rappelle qu’une équations différentielles ordinaires linéaire est de la forme <span class="math inline">x'(t) = A(t) x(t) + b(t)</span>, ainsi la fonction <span class="math inline">f</span> est donnée dans ce cas par <span class="math inline">f(t, x) = A(t) x + b(t)</span>.</p>
 </div>
 </div>
-<p>On considère une subdivision de l’intervalle <span class="math inline">I</span> de la forme</p>
+<p>On considère une subdivision de l’intervalle <span class="math inline">[t_0, t_f]</span> de la forme</p>
 <p><span class="math display">
     t_0 &lt; t_1 &lt; \cdots &lt; t_N \coloneqq t_f.
 </span></p>
-<p>On note <span class="math inline">h_i \coloneqq t_{i+1} - t_i</span> pour <span class="math inline">i \in \llbracket 0, N-1 \rrbracket</span>, les pas de la subdivision et <span class="math inline">h_{\max} \coloneqq \max_i(h_i)</span> le pas le plus long.</p>
-<p>L’idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher <span class="math inline">x(t_i, t_0, x_0)</span> pour <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span>.</p>
+<p>On note <span class="math inline">h_i \coloneqq t_{i+1} - t_i</span>, pour <span class="math inline">i \in \llbracket 0, N-1 \rrbracket</span>, les pas de la subdivision et <span class="math inline">h_{\max} \coloneqq \max_i(h_i)</span> le pas le plus long.</p>
+<p>L’idée est de calculer une approximation de la solution en les points de discrétisation, autrement dit on souhaite approcher <span class="math inline">x(t_i)</span> pour <span class="math inline">i \in \llbracket 0\,,\, N \rrbracket</span>.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -481,43 +491,51 @@ Définition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On appelle <strong>méthode explicite à un pas</strong>, toute méthode pour laquelle la valeur <span class="math inline">x_{i+1}</span> est calculée en fonction de <span class="math inline">t_i</span>, <span class="math inline">h_i</span> et <span class="math inline">x_i</span> de la forme :</p>
+<p>On appelle <strong>méthode explicite à un pas</strong>, toute méthode pour laquelle pour <span class="math inline">i \in \llbracket 0, N-1 \rrbracket</span> la valeur <span class="math inline">x_{i+1}</span> est calculée en fonction de <span class="math inline">t_i</span>, <span class="math inline">h_i</span> et <span class="math inline">x_i</span> par une formule de récurrence de la forme :</p>
 <p><span class="math display">
-    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i).
+    x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i),
 </span></p>
+<p>le point initial <span class="math inline">x_0</span> étant donné.</p>
 </div>
 </div>
-<p>Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas. Si on note <span class="math inline">(x_0, \ldots, x_N) \in (\R^n)^{N+1}</span> une suite finie donnée par une méthode explicite à un pas, alors on souhaite que</p>
-<p><span class="math display">
-    x_i \approx x(t_i, t_0, x_0), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
-</span></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<p>Nous nous intéressons dans ce cours seulement aux méthodes explicites à un pas.</p>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Remarque
+Idée principale
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pour simplifier les notations, nous ne noterons la plupart du temps que le premier pas:</p>
+<p>Si on note <span class="math inline">(x_0, \ldots, x_N) \in (\mathbb{R}^n)^{N+1}</span> une suite finie donnée par une méthode explicite à un pas, alors on souhaite que</p>
 <p><span class="math display">
-    x_1 = x_0 + h\, \Phi(t_0, x_0, h), \quad h \coloneqq h_0 = t_1 - t_0.
+    x_i \approx x(t_i), \quad \forall\, i \in \llbracket 0\,,\, N \rrbracket.
 </span></p>
 </div>
 </div>
-<p>L’idée générale est donc d’avoir</p>
+<p>L’idée principale est donc d’avoir</p>
 <p><span class="math display">
-    x_1 \approx x(t_1, t_0, x_0) = x_0 + \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t.
+    \begin{aligned}
+        x_0 &amp;\approx x(t_0), \\
+        x_0 + h\, \Phi(t_0, x_0, h) = x_1 &amp; \approx x(t_1) = x(t_0) + \int_{t_0}^{t_1} f(t, x(t)) \, \mathrm{d}t, \\
+        &amp; \hspace{0.6em} \vdots \\
+        x_i + h\, \Phi(t_i, x_i, h) = x_{i+1} &amp; \approx x(t_{i+1}) = x(t_i) + \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t, \\
+        &amp; \hspace{0.6em} \vdots \\
+        x_{N-1} + h\, \Phi(t_{N-1}, x_{N-1}, h) = x_N &amp; \approx x(t_N) = x(t_{N-1}) + \int_{t_{N-1}}^{t_N} f(t, x(t)) \, \mathrm{d}t. \\
+    \end{aligned}
 </span></p>
-<p>La méthode à un pas explicite la plus simple est ce que l’on appelle la <strong>méthode d’Euler</strong> qui consiste tout simplement à approcher l’intégrale</p>
+</section>
+<section id="euler" class="level2">
+<h2 class="anchored" data-anchor-id="euler">Euler</h2>
+<p>La méthode à un pas explicite la plus simple est ce que l’on appelle la <strong>méthode d’Euler</strong> qui consiste tout simplement à approcher l’intégrale par le rectangle suivant :</p>
 <p><span class="math display">
-    \int_{t_0}^{t_1} f(t, x(t, t_0, x_0)) \, \mathrm{d}t
+    \int_{t_i}^{t_{i+1}} f(t, x(t)) \, \mathrm{d}t \approx h_i\, f(t_i, x(t_i)),
 </span></p>
-<p>par le rectangle</p>
+<p>autrement dit, la fonction <span class="math inline">\Phi</span> pour la méthode de Euler s’écrit :</p>
 <p><span class="math display">
-    h f(t_0, x_0).
+    \Phi_E(t, x, h) \coloneqq h f(t, x).
 </span></p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -531,17 +549,22 @@ Définition
 <div class="callout-body-container callout-body">
 <p>On appelle <strong>méthode (ou schéma) d’Euler explicite</strong>, le schéma</p>
 <p><span class="math display">
-    x_1 = x_0 + h f(t_0, x_0).
+    x_{i+1} = x_i + h_i\, f(t_i, x_i).
 </span></p>
 </div>
 </div>
+<p><img src="../../assets/julia/euler.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
+</section>
+<section id="runge" class="level2">
+<h2 class="anchored" data-anchor-id="runge">Runge</h2>
 <p>L’idée évidente pour améliorer la précision numérique est d’approcher cette intégrale par une formule de quadrature ayant un ordre plus élevé. Si on exploite le point milieu, nous obtenons</p>
 <p><span class="math display">
-    x(t_1, t_0, x_0) \approx x_0 + h f(t_0 + \frac{h}{2}, x(t_0 + \frac{h}{2}, t_0, x_0)).
+    x(t_{i+1}) \approx x(t_i) + h_i\, f\big(t_i + \frac{h_i\,}{2}, x(t_i + \frac{h_i\,}{2})\big).
 </span></p>
-<p>Le problème étant que l’on ne connait pas la valeur de <span class="math inline">x(\cdot , t_0, x_0)</span> à l’instant <span class="math inline">t_0 + {h}/{2}</span>, d’où l’idée d’approcher cette valeur par un pas d’Euler :</p>
+<p><img src="../../assets/julia/milieu.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;"></p>
+<p>Le problème étant que l’on n’a pas accès à la valeur de <span class="math inline">x(\cdot )</span> à l’instant <span class="math inline">t_i + {h_i}/{2}</span>, d’où l’idée d’approcher cette valeur par un pas d’Euler :</p>
 <p><span class="math display">
-    x(t_0 + \frac{h}{2}, t_0, x_0) \approx x_0 + \frac{h}{2} f(t_0, x_0).
+    x(t_i + \frac{h_i}{2}) \approx x(t_i) + \frac{h_i}{2} f(t_i, x_i).
 </span></p>
 <p>Nous obtenons ainsi le <strong>schéma de Runge</strong>.</p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
@@ -556,12 +579,26 @@ Définition
 <div class="callout-body-container callout-body">
 <p>On appelle <strong>méthode (ou schéma) de Runge</strong> (explicite), le schéma</p>
 <p><span class="math display">
-    x_1 = x_0 + h f(t_0 + \frac{h}{2}, x_0 + \frac{h}{2} f(t_0, x_0)).
+    x_{i+1} = x_i + h_i\, f\big(t_i + \frac{h_i}{2}, x_i + \frac{h_i}{2} f(t_i, x_i)\big).
 </span></p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Par la suite, nous allons étudier la convergence des méthodes explicites à un pas, autrement dit nous nous demandons si <span class="math inline">x_i \to x(t_i)</span> lorsque <span class="math inline">h_{\max} \to 0</span>, et ce particulièrement pour les méthodes appelées méthodes de Runge-Kutta explicites. Pour étudier cette convergence, nous prenons un chemin détourné : nous allons montrer qu’une méthode consistante et stable est convergente, et que la vitesse de convergence est donnée par l’ordre de consistance. Ainsi, après avoir introduit les méthodes de Runge-Kutta, nous allons introduire les notions de consistance et de stabilité.</p>
+</div>
+</div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1001,7 +1038,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/integration_numerique/introduction.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -5,6 +5,8 @@ page-layout: article
 
 {{< include ../../assets/latex/macros.qmd >}}
 
+## Définition
+
 Étant donnée une subdivision, on souhaite avoir $x_i \approx x(t_i, t_0, x_0)$ pour tout $i \in \llbracket 0\,,\, N \rrbracket$ où ${(x_i)}_{1 \le i \le N}$ est la solution de la méthode (discrétisée) à un pas explicite et où $x(\cdot, t_0, x_0)$ est la solution du problème de Cauchy (continu).
 
 Enfin, on souhaite que $x_i$ tende vers $x(t_i, t_0, x_0)$ quand le pas de discrétisation tend vers $0$. On introduit la définition suivante.
@@ -25,6 +27,8 @@ $$
 
 La quantité $\max_{1 \le i \le N}\, \norm{x(t_i, t_0, x_0) - x_i}$ dans la définition précédente s'appelle **l'erreur globale de convergence**.
 :::
+
+## Condition Suffisante de Convergence
 
 Notons $x(\cdot) = x(\cdot, t_0, x_0)$ la solution du problème de Cauchy, $t_0$ et $x_0$ étant fixés. Par définition de l'erreur de consistance on a
 

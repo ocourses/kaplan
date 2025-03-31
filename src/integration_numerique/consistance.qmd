@@ -5,7 +5,7 @@ page-layout: article
 
 {{< include ../../assets/latex/macros.qmd >}}
 
-## Méthode consistante
+## Méthode Consistante
 
 Les méthodes de Runge-Kutta sont des méthodes à un pas 
 
@@ -13,13 +13,13 @@ $$
     x_{i+1} = x_i + h_i\, \Phi(t_i, x_i, h_i), \quad h_i = t_{i+1} - t_i,
 $$
 
-que l'on peut écrire sous la forme 
+que l'on peut écrire sous la forme $E_i(x_i, x_{i+1}) = 0$ avec 
 
 $$ 
-    E_i(x_i, x_{i+1}) \coloneqq x_{i+1} - \left( x_i + h_i\, \Phi(t_i, x_i, h_i) \right) = 0.
+    E_i(a, b) \coloneqq b - \left( a + h_i\, \Phi(t_i, a, h_i) \right).
 $$
 
-On rappelle que $x(\cdot, t_0, x_0)$ est la solution du problème de Cauchy $x'(t) = f(t, x(t))$, $x(t_0) = x_0$. Pour alléger les notations, nous écrivons simplement $x(\cdot)$ cette solution, $t_0$ et $x_0$ étant fixés.
+On rappelle pour la suite que $x(\cdot)$ est la solution du problème de Cauchy $x'(t) = f(t, x(t))$, $x(t_0) = x_0$.
 
 ::: {.callout-warning icon=false}
 ### Définition
@@ -31,7 +31,9 @@ $$
 $$
 :::
 
-Nous obtenons
+L'erreur locale de consistance est l'erreur obtenue lorque l'on injecte la solution du problème de Cauchy dans la méthode explicite à un pas. Si la méthode était parfaite, il n'y aurait pas d'erreur. Ainsi, cette erreur de consistance donne une idée de la cohérence de la méthode employée. Elle permet de quantifier à quel point le problème discret (la recherche des $x_i$) est "proche" du problème de Cauchy.
+
+Le calcul de l'erreur locale de consistance nous donne
 
 $$ 
     \begin{aligned}
@@ -41,10 +43,22 @@ $$
     \end{aligned}
 $$
 
+Dans le cas de la méthode d'Euler nous avons l'illustration suivante :
+
+<img src="../../assets/julia/consistance.svg" class="centering" style="max-width:500px; min-width:300px; width:60%;">
+
+où la tangente est donnée par
+
+$$
+    T(t) \coloneqq x(t_0) + (t-t_0)\, x'(t_0) = x(t_0) + (t-t_0)\, f(t_0, x(t_0)).
+$$
+
+La première notion que nous introduisons pour pouvoir parler plus tard de convergence, porte sur la somme des erreurs locales de consistance. Cette accumulation d'erreurs est purement théorique puisque l'on ne tient pas compte de la solution approchée mais seulement de la solution exacte.
+
 ::: {.callout-warning icon=false}
 ### Définition
 
-On dit qu'une méthode à un pas est **consistante** si pour toute solution au problème de Cauchy, on a
+On dit qu'une méthode à un pas est **consistante** si
 
 $$ 
     \sum_{i=0}^{N-1} \Vert e_i\Vert \to 0 \quad \text{quand} \quad h_{\max} = \max_i h_i \to 0.
@@ -56,6 +70,8 @@ $$
 
 Il est important de noter que les instants $t_i$ et le nombre de pas dépendent directement du vecteur de discrétisation ${(h_i)}_{i}$.
 :::
+
+## Condition Nécessaire et Suffisante
 
 Nous avons le résultat suivant.
 
@@ -79,7 +95,7 @@ $$
 $$
 :::
 
-## Ordre de consistance
+## Ordre de Consistance
 
 Pour évaluer l'erreur de consistance à l'indice $i$, le paramètre important est le pas $h_i$. On fixe les autres paramètres et on regarde comment se comporte l'erreur en fonction du pas. Nous aurons besoin de la **notation de Landau**. Rappelons que la notation de Landau $e(h) = O\mathopen{}\left({h^p}\right)$ signifie qu'il existe un voisinage $U$ de $0$ et une constante positive $C$ telle que pour tout $h \in U$, $\norm{e(h)} \le C \abs{h}^p$.
 
@@ -117,21 +133,17 @@ L'ordre de consistance ne dépend pas de l'indice $i$. Ainsi, on peut se restrei
 $$
 E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h).
 $$
-
-Pour simplifier un peu plus la notation, on utilise le fait que $x(t_0) = x_0$ et on note
-
-$$
-E(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h).
-$$
 :::
 
-Le schéma d'Euler explicite est d'ordre $p=1$ car par définition de la dérivée
+## Exemples et Exercices
+
+Le schéma d'Euler explicite est d'ordre $p=1$ car, par définition de la dérivée, on a
 
 $$
 \begin{aligned}
-E(h) &= x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h) \\
-&= x'(t_0)\, h + \grandO{h^2} - h \, f(t_0, x_0) \\
-&= h\, f(t_0, x_0) - h \, f(t_0, x_0) + \grandO{h^2} \\
+E(h) &= x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h) \\
+&= x'(t_0)\, h + \grandO{h^2} - h \, f(t_0, x(t_0)) \\
+&= h\, f(t_0, x(t_0)) - h \, f(t_0, x(t_0)) + \grandO{h^2} \\
 &= \grandO{h^2}.
 \end{aligned}
 $$
@@ -145,9 +157,9 @@ Soit le schéma de Runge-Kutta
 
 $$
 \begin{aligned}
-k_1 &= f(t_0, x_0) \\
-k_2 &= f(t_0 + c_2 h, x_0 + a_{21} h k_1) \\
-x_1 &= x_0 + h\, (b_1 k_1 + b_2 k_2).
+k_1 &= f(t_i, x_i) \\
+k_2 &= f(t_i + c_2 h_i, x_i + a_{21} h_i k_1) \\
+x_{i+1} &= x_i + h_i\, (b_1 k_1 + b_2 k_2).
 \end{aligned}
 $$
 
@@ -160,19 +172,19 @@ Retrouver que $c_2 = a_{21}$ et donner les 2 relations que doivent vérifier $b_
 Dans ce cas, nous avons
 
 $$
-e(h) = x(t_0 + h) - x_0 - h \, \Phi(t_0, x_0, h)
+E(h) = x(t_0 + h) - x(t_0) - h \, \Phi(t_0, x(t_0), h)
 $$
 
 avec
 
 $$
-\Phi(t_0, x_0, h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x_0 + a_{21} h k_1).
+\Phi(t_0, x(t_0), h) = b_1 k_1 + b_2 k_2(h), \quad k_2(h) = f(t_0 + c_2 h, x(t_0) + a_{21} h k_1).
 $$
 
-Développons $e(h)$ à l'ordre 2 et voyons les conditions à vérifier pour avoir $e(h) = \grandO{h^3}$. Dans un premier temps, nous avons
+Développons $E(h)$ à l'ordre 2 et voyons les conditions à vérifier pour avoir $E(h) = \grandO{h^3}$. Dans un premier temps, nous avons
 
 $$
-x(t_0 + h) - x_0 = hx'(t_0) + \frac{h^2}{2} x''(t_0) + \grandO{h^3}
+x(t_0 + h) - x(t_0) = hx'(t_0) + \frac{h^2}{2} x''(t_0) + \grandO{h^3}
 $$
 
 et puisque $x'(t) = f(t, x(t))$, alors
@@ -185,31 +197,31 @@ $$
 donc
 
 $$
-x(t_0 + h) - x_0 = h f(t_0, x_0) + \frac{h^2}{2}
-\left( \frp{f}{t}(t_0, x_0) + \frp{f}{x}(t_0, x_0) \, f(t_0, x_0) \right) + \grandO{h^3}.
+x(t_0 + h) - x(t_0) = h f(t_0, x(t_0)) + \frac{h^2}{2}
+\left( \frp{f}{t}(t_0, x(t_0)) + \frp{f}{x}(t_0, x(t_0)) \, f(t_0, x(t_0)) \right) + \grandO{h^3}.
 $$
 
 D'un autre côté, nous avons
 
 $$
-k_2(h) = f(t_0, x_0) + h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) + \grandO{h^2}.
+k_2(h) = f(t_0, x(t_0)) + h\, f'(t_0, x(t_0)) \cdot (c_2, a_{21} k_1) + \grandO{h^2}.
 $$
 
 Au final, nous obtenons
 
 $$
 \begin{aligned}
-e(h) &= h f(t_0, x_0) + \frac{h^2}{2}
-\left( \frp{f}{t}(t_0, x_0) + \frp{f}{x}(t_0, x_0) \, f(t_0, x_0) \right) \\[0.5em]
-& \quad - h \left( b_1 f(t_0, x_0) + b_2 f(t_0, x_0) + b_2 h\, f'(t_0, x_0) \cdot (c_2, a_{21} k_1) \right)
+E(h) &= h f(t_0, x(t_0)) + \frac{h^2}{2}
+\left( \frp{f}{t}(t_0, x(t_0)) + \frp{f}{x}(t_0, x(t_0)) \, f(t_0, x(t_0)) \right) \\[0.5em]
+& \quad - h \left( b_1 f(t_0, x(t_0)) + b_2 f(t_0, x(t_0)) + b_2 h\, f'(t_0, x(t_0)) \cdot (c_2, a_{21} k_1) \right)
 + \grandO{h^3} \\[0.5em]
-&= h (1-b_1-b_2) f(t_0, x_0) \\[0.5em]
-&\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \frp{f}{t}(t_0, x_0)
-+ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \frp{f}{x}(t_0, x_0)\, f(t_0, x_0) + \grandO{h^3}.
+&= h (1-b_1-b_2) f(t_0, x(t_0)) \\[0.5em]
+&\quad + \frac{h^2}{2} (1 - 2 b_2 c_2) \frp{f}{t}(t_0, x(t_0))
++ \frac{h^2}{2} (1 - 2 b_2 a_{21}) \frp{f}{x}(t_0, x(t_0))\, f(t_0, x(t_0)) + \grandO{h^3}.
 \end{aligned}
 $$
 
-Ainsi, pour que $e(h) = \grandO{h^3}$ il faut avoir $c_2 = a_{21}$ et
+Ainsi, pour que $E(h) = \grandO{h^3}$ il faut avoir $c_2 = a_{21}$ et
 
 $$
 1 = b_1 + b_2 \quad \text{et} \quad b_2 a_{21} = \frac{1}{2}.
