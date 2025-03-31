@@ -160,12 +160,57 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Paramètres – Cours EDO">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Paramètres – Cours EDO">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -376,8 +421,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cas-non-homogène" id="toc-cas-non-homogène" class="nav-link active" data-scroll-target="#cas-non-homogène">Cas Non Homogène</a></li>
+  <li><a href="#cas-homogène" id="toc-cas-homogène" class="nav-link" data-scroll-target="#cas-homogène">Cas Homogène</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -401,8 +453,61 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="cas-non-homogène" class="level2">
+<h2 class="anchored" data-anchor-id="cas-non-homogène">Cas Non Homogène</h2>
+<p>On considère le problème de Cauchy (vectoriel) linéaire</p>
+<p><span class="math display">
+    x'(t) = A(\theta) x(t) + b(t), \quad x(t_0) = x_0
+</span></p>
+<p>avec <span class="math inline">\theta \in \R</span> (ici <span class="math inline">l=1</span> pour simplifier), et dont la solution, notée <span class="math inline">x(\cdot, \theta)</span>, est</p>
+<p><span class="math display">
+    x(t, \theta) \coloneqq e^{(t-t_0)A(\theta)}\, x_0 + \int_{t_0}^{t} e^{(t-s)A(\theta)}\, b(s) \, ds.
+</span></p>
+<p>La dérivée partielle par rapport à <span class="math inline">\theta</span> est plus difficile à obtenir quand la matrice <span class="math inline">A</span> dépend du paramètre, par comparaison au cas où seulement la condition initiale dépend du paramètre. En effet, dans cette nouvelle situation, nous devons dériver l’application</p>
+<p><span class="math display">
+    A \mapsto e^A
+</span></p>
+<p>ce qui n’est pas aussi simple qu’il n’y parait. Nous allons donc procéder autrement pour trouver cette dérivée partielle. Lorsque nous avons dérivé par rapport à la condition initiale, nous avons remarqué que la dérivée était elle-même solution d’un problème de Cauchy. Profitons de cela et utilisons la <a href="../edo_lineaires/definition.html#formulation-intégrale">formulation intégrale</a>. La fonction <span class="math inline">x(t, \theta)</span> vérifie</p>
+<p><span class="math display">
+    x(t, \theta) = x_0 + \int_{t_0}^{t} \left( A(\theta)\, x(s, \theta) + b(s) \right) \, \mathrm{d}s.
+</span></p>
+<p>En dérivant les termes de gauche et de droite, leurs dérivées étant égales, nous obtenons</p>
+<p><span class="math display">
+    \frac{\partial x}{\partial \theta}(t, \theta) =
+    \int_{t_0}^{t} \left( A(\theta)\, \frac{\partial x}{\partial \theta}(s, \theta) + A'(\theta)\, x(s, \theta) \right) \, \mathrm{d}s.
+</span></p>
+<p>Autrement dit, la fonction <span class="math inline">t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)</span> est solution du problème de Cauchy</p>
+<p><span class="math display">
+    x'(t) = A(\theta)\, x(t) + A'(\theta)\, x(t, \theta), \quad x(t_0) = 0_{\R^n},
+</span></p>
+<p>qui n’est rien d’autre qu’un problème de Cauchy linéaire non homogène de la forme</p>
+<p><span class="math display">
+    x'(t) = A(\theta)\, x(t) + d_\theta(t), \quad x(t_0) = 0_{\R^n},
+</span></p>
+<p>où l’on a introduit <span class="math inline">d_\theta(t) \coloneqq A'(\theta)\, x(t, \theta)</span>.</p>
+</section>
+<section id="cas-homogène" class="level2">
+<h2 class="anchored" data-anchor-id="cas-homogène">Cas Homogène</h2>
+<p>Dans le cas où <span class="math inline">b(t) = 0</span>, en fixant <span class="math inline">t_0=0</span>, la solution est</p>
+<p><span class="math display">
+    x(t, \theta) = e^{tA(\theta)}\, x_0
+</span></p>
+<p>et pour calculer <span class="math inline">\frac{\partial x}{\partial \theta}(t, \theta)</span>, nous sommes amené à résoudre</p>
+<p><span class="math display">
+    x'(t) = A(\theta)\, x(t) + A'(\theta)\, e^{tA(\theta)}\, x_0, \quad x(0) = 0_{\R^n}.
+</span></p>
+<p>La solution est donnée par</p>
+<p><span class="math display">
+    \frac{\partial x}{\partial \theta}(t, \theta) =
+    \int_{t_0}^{t} \left( e^{(t-s)A(\theta)} A'(\theta)\, e^{sA(\theta)}\, x_0 \right) \, \mathrm{d}s
+</span></p>
+<p>et si <span class="math inline">[A'(\theta), A(\theta)] = A'(\theta) A(\theta) - A(\theta) A'(\theta) = 0_n</span> alors cette expression se réduit à</p>
+<p><span class="math display">
+    \frac{\partial x}{\partial \theta}(t, \theta) = t A'(\theta)\, e^{tA(\theta)}\, x_0.
+</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -839,7 +944,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ocourses/kaplan/edit/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/ocourses/kaplan/blob/main/src/derivees/derivee_parametres.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/ocourses/kaplan/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -4,7 +4,7 @@
     "href": "src/derivees/introduction.html",
     "title": "Introduction",
     "section": "",
-    "text": "Back to top",
+    "text": "On considère le problème de Cauchy (vectoriel) linéaire\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0\n\ndont la solution, notée x(\\cdot, A, x_0) pour faire apparaitre la dépendance en la matrice A et la condition initiale x_0, est\n\n    x(t, A, x_0) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds\n\nd’après le théorème dans le cas non homogène. Dans la suite de ce cours, nous nous intéressons aux dérivées partielles :\n\n    \\frac{\\partial x}{\\partial x_0}(t, A, x_0)\n    \\quad\n    \\text{et}\n    \\quad\n    \\frac{\\partial x}{\\partial A}(t, A, x_0).\n\nPlus précisément, si la matrice A et la condition initiale dépendent de paramètres \\theta \\in \\R^l, on pourra noter x(\\cdot, \\theta) la solution du problème de Cauchy\n\n    x'(t) = A(\\theta) x(t) + b(t), \\quad x(t_0) = x_0(\\theta)\n\net on cherchera à calculer\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta).\n\nDans tous les cas, nous avons besoin des dérivées partielles de la solution du problème de Cauchy par rapport à la matrice A et la condition initiale x_0.\n\n\n\n\n\n\nRemarque\n\n\n\nNous ferons l’hypothèse que ces dérivées partielles existent. Dans le cas où la fonction t \\mapsto b(t) est continue, nous pouvons montrer que c’est bien le cas. Nous supposons donc que b est continue. Si la matrice A et la condition initiale dépendent de \\theta, elles doivent en dépendre de manière différentiable bien entendu.\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Plan du cours",
       "Dérivées",
@@ -16,7 +16,7 @@
     "href": "src/derivees/derivee_parametres.html",
     "title": "Paramètres",
     "section": "",
-    "text": "Back to top",
+    "text": "On considère le problème de Cauchy (vectoriel) linéaire\n\n    x'(t) = A(\\theta) x(t) + b(t), \\quad x(t_0) = x_0\n\navec \\theta \\in \\R (ici l=1 pour simplifier), et dont la solution, notée x(\\cdot, \\theta), est\n\n    x(t, \\theta) \\coloneqq e^{(t-t_0)A(\\theta)}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A(\\theta)}\\, b(s) \\, ds.\n\nLa dérivée partielle par rapport à \\theta est plus difficile à obtenir quand la matrice A dépend du paramètre, par comparaison au cas où seulement la condition initiale dépend du paramètre. En effet, dans cette nouvelle situation, nous devons dériver l’application\n\n    A \\mapsto e^A\n\nce qui n’est pas aussi simple qu’il n’y parait. Nous allons donc procéder autrement pour trouver cette dérivée partielle. Lorsque nous avons dérivé par rapport à la condition initiale, nous avons remarqué que la dérivée était elle-même solution d’un problème de Cauchy. Profitons de cela et utilisons la formulation intégrale. La fonction x(t, \\theta) vérifie\n\n    x(t, \\theta) = x_0 + \\int_{t_0}^{t} \\left( A(\\theta)\\, x(s, \\theta) + b(s) \\right) \\, \\mathrm{d}s.\n\nEn dérivant les termes de gauche et de droite, leurs dérivées étant égales, nous obtenons\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta) =\n    \\int_{t_0}^{t} \\left( A(\\theta)\\, \\frac{\\partial x}{\\partial \\theta}(s, \\theta) + A'(\\theta)\\, x(s, \\theta) \\right) \\, \\mathrm{d}s.\n\nAutrement dit, la fonction t \\mapsto \\frac{\\partial x}{\\partial \\theta}(t, \\theta) est solution du problème de Cauchy\n\n    x'(t) = A(\\theta)\\, x(t) + A'(\\theta)\\, x(t, \\theta), \\quad x(t_0) = 0_{\\R^n},\n\nqui n’est rien d’autre qu’un problème de Cauchy linéaire non homogène de la forme\n\n    x'(t) = A(\\theta)\\, x(t) + d_\\theta(t), \\quad x(t_0) = 0_{\\R^n},\n\noù l’on a introduit d_\\theta(t) \\coloneqq A'(\\theta)\\, x(t, \\theta).",
     "crumbs": [
       "Plan du cours",
       "Dérivées",
@@ -184,7 +184,7 @@
     "href": "src/edo_lineaires/solution.html#cas-non-homogène",
     "title": "Solution du Problème de Cauchy Linéaire",
     "section": "Cas Non Homogène",
-    "text": "Cas Non Homogène\nConsidérons maintenant le problème de Cauchy linéaire non homogène :\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0,\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et t \\mapsto b(t) \\in \\mathbb{R}^n est définie et continue sur un intervalle ouvert \\mathcal{I} contenant t_0.\n\n\n\n\n\n\nHypothèse\n\n\n\nNous supposons acquis l’existence d’une unique solution globale.\n\n\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire non homogène est donnée par :\n\n\\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds\n\navec t \\in \\mathcal{I}.\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nVérifiez que \\varphi(t) est une solution du problème de Cauchy linéaire non homogène.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNotons\n\n    \\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds.\n\nPuisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction \\varphi(t) définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation de la constante. Faisons-le.\nMéthode de variation de la constante. Posons \\varphi(t) = e^{(t-t_0)A} z(t) et déterminons z(t). Tout d’abord, \\varphi(\\cdot) doit vérifier la condition initiale :\n\n\\varphi(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,\n\nd’où z(t_0) = x_0.\nEnsuite, \\varphi(\\cdot) doit satisfaire l’équation différentielle. En dérivant, on obtient :\n\n\\varphi'(t) = A \\varphi(t) + e^{(t-t_0)A} z'(t).\n\nIl faut donc choisir z(\\cdot) de manière à ce que b(t) = e^{(t-t_0)A} z'(t), ce qui équivaut à z'(t) = e^{(t_0-t)A} b(t).\nEnfin, en intégrant :\n\nz(t) = x_0 + \\int_{t_0}^t e^{(t_0-s)A}\\, b(s)\\, \\mathrm{d}s.\n\nD’où l’expression finale :\n\n\\varphi(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \\int_{t_0}^t e^{(t-s)A}\\, b(s)\\, \\mathrm{d}s,\n\ngrâce à la propriété e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}.",
+    "text": "Cas Non Homogène\nConsidérons maintenant le problème de Cauchy linéaire non homogène :\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0,\n\noù A \\in \\mathcal{M}_n(\\mathbb{R}) est une matrice constante et t \\mapsto b(t) \\in \\mathbb{R}^n est définie et continue sur un intervalle ouvert \\mathcal{I} contenant t_0.\n\n\n\n\n\n\nHypothèse\n\n\n\nNous supposons acquis l’existence d’une unique solution globale.\n\n\n\n\n\n\n\n\nThéorème\n\n\n\nLa solution du problème de Cauchy linéaire non homogène est donnée par :\n\n    \\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds\n\navec t \\in \\mathcal{I}.\n\n\n\n\n\n\n\n\nQuestion\n\n\n\nVérifiez que \\varphi(t) est une solution du problème de Cauchy linéaire non homogène.\n\n\n\n\n\n\n\n\nPreuve\n\n\n\n\n\nNotons\n\n    \\varphi(t) \\coloneqq e^{(t-t_0)A}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds.\n\nPuisque nous supposons l’existence d’une unique solution globale, il suffit de vérifier que la fonction \\varphi(t) définie dans le théorème satisfait à la fois la condition initiale et l’équation différentielle. Pour retrouver son expression en s’appuyant sur la solution du cas homogène, on utilise la méthode de variation de la constante. Faisons-le.\nMéthode de variation de la constante. Posons \\varphi(t) = e^{(t-t_0)A} z(t) et déterminons z(t). Tout d’abord, \\varphi(\\cdot) doit vérifier la condition initiale :\n\n\\varphi(t_0) = e^{(t_0-t_0)A} z(t_0) = z(t_0) = x_0,\n\nd’où z(t_0) = x_0.\nEnsuite, \\varphi(\\cdot) doit satisfaire l’équation différentielle. En dérivant, on obtient :\n\n\\varphi'(t) = A \\varphi(t) + e^{(t-t_0)A} z'(t).\n\nIl faut donc choisir z(\\cdot) de manière à ce que b(t) = e^{(t-t_0)A} z'(t), ce qui équivaut à z'(t) = e^{(t_0-t)A} b(t).\nEnfin, en intégrant :\n\nz(t) = x_0 + \\int_{t_0}^t e^{(t_0-s)A}\\, b(s)\\, \\mathrm{d}s.\n\nD’où l’expression finale :\n\n\\varphi(t) = e^{(t-t_0)A} z(t) = e^{(t-t_0)A} x_0 + \\int_{t_0}^t e^{(t-s)A}\\, b(s)\\, \\mathrm{d}s,\n\ngrâce à la propriété e^{(t-t_0)A} e^{(t_0-s)A} = e^{(t-s)A}.",
     "crumbs": [
       "Plan du cours",
       "Problème de Cauchy linéaire",
@@ -868,11 +868,35 @@
     "href": "src/derivees/derivee_ci.html",
     "title": "Condition initiale",
     "section": "",
-    "text": "Back to top",
+    "text": "On considère le problème de Cauchy (vectoriel) linéaire\n\n    x'(t) = A x(t) + b(t), \\quad x(t_0) = x_0(\\theta)\n\navec \\theta \\in \\R (ici l=1 pour simplifier), et dont la solution, notée x(\\cdot, \\theta), est\n\n    x(t, \\theta) \\coloneqq e^{(t-t_0)A}\\, x_0(\\theta) + \\int_{t_0}^{t} e^{(t-s)A}\\, b(s) \\, ds.\n\nLa dérivée partielle par rapport à \\theta est simplement\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta) = e^{(t-t_0)A}\\, x'_0(\\theta)\n\noù x'(\\theta) \\in L(\\R, \\R^n) \\cong \\R^n. Ainsi nous remarquons que la dérivée partielle est elle-même solution d’un problème de Cauchy linéaire,qui a la particularité supplémentaire d’être homogène. En effet, t \\mapsto \\frac{\\partial x}{\\partial \\theta}(t, \\theta) est la solution de :\n\n    x'(t) = A x(t), \\quad x(t_0) = x_0'(\\theta).\n\n\n\n\n Back to top",
     "crumbs": [
       "Plan du cours",
       "Dérivées",
       "Condition initiale"
+    ]
+  },
+  {
+    "objectID": "src/derivees/derivee_parametres.html#cas-non-homogène",
+    "href": "src/derivees/derivee_parametres.html#cas-non-homogène",
+    "title": "Paramètres",
+    "section": "",
+    "text": "On considère le problème de Cauchy (vectoriel) linéaire\n\n    x'(t) = A(\\theta) x(t) + b(t), \\quad x(t_0) = x_0\n\navec \\theta \\in \\R (ici l=1 pour simplifier), et dont la solution, notée x(\\cdot, \\theta), est\n\n    x(t, \\theta) \\coloneqq e^{(t-t_0)A(\\theta)}\\, x_0 + \\int_{t_0}^{t} e^{(t-s)A(\\theta)}\\, b(s) \\, ds.\n\nLa dérivée partielle par rapport à \\theta est plus difficile à obtenir quand la matrice A dépend du paramètre, par comparaison au cas où seulement la condition initiale dépend du paramètre. En effet, dans cette nouvelle situation, nous devons dériver l’application\n\n    A \\mapsto e^A\n\nce qui n’est pas aussi simple qu’il n’y parait. Nous allons donc procéder autrement pour trouver cette dérivée partielle. Lorsque nous avons dérivé par rapport à la condition initiale, nous avons remarqué que la dérivée était elle-même solution d’un problème de Cauchy. Profitons de cela et utilisons la formulation intégrale. La fonction x(t, \\theta) vérifie\n\n    x(t, \\theta) = x_0 + \\int_{t_0}^{t} \\left( A(\\theta)\\, x(s, \\theta) + b(s) \\right) \\, \\mathrm{d}s.\n\nEn dérivant les termes de gauche et de droite, leurs dérivées étant égales, nous obtenons\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta) =\n    \\int_{t_0}^{t} \\left( A(\\theta)\\, \\frac{\\partial x}{\\partial \\theta}(s, \\theta) + A'(\\theta)\\, x(s, \\theta) \\right) \\, \\mathrm{d}s.\n\nAutrement dit, la fonction t \\mapsto \\frac{\\partial x}{\\partial \\theta}(t, \\theta) est solution du problème de Cauchy\n\n    x'(t) = A(\\theta)\\, x(t) + A'(\\theta)\\, x(t, \\theta), \\quad x(t_0) = 0_{\\R^n},\n\nqui n’est rien d’autre qu’un problème de Cauchy linéaire non homogène de la forme\n\n    x'(t) = A(\\theta)\\, x(t) + d_\\theta(t), \\quad x(t_0) = 0_{\\R^n},\n\noù l’on a introduit d_\\theta(t) \\coloneqq A'(\\theta)\\, x(t, \\theta).",
+    "crumbs": [
+      "Plan du cours",
+      "Dérivées",
+      "Paramètres"
+    ]
+  },
+  {
+    "objectID": "src/derivees/derivee_parametres.html#cas-homogène",
+    "href": "src/derivees/derivee_parametres.html#cas-homogène",
+    "title": "Paramètres",
+    "section": "Cas Homogène",
+    "text": "Cas Homogène\nDans le cas où b(t) = 0, en fixant t_0=0, la solution est\n\n    x(t, \\theta) = e^{tA(\\theta)}\\, x_0\n\net pour calculer \\frac{\\partial x}{\\partial \\theta}(t, \\theta), nous sommes amené à résoudre\n\n    x'(t) = A(\\theta)\\, x(t) + A'(\\theta)\\, e^{tA(\\theta)}\\, x_0, \\quad x(0) = 0_{\\R^n}.\n\nLa solution est donnée par\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta) =\n    \\int_{t_0}^{t} \\left( e^{(t-s)A(\\theta)} A'(\\theta)\\, e^{sA(\\theta)}\\, x_0 \\right) \\, \\mathrm{d}s\n\net si [A'(\\theta), A(\\theta)] = A'(\\theta) A(\\theta) - A(\\theta) A'(\\theta) = 0_n alors cette expression se réduit à\n\n    \\frac{\\partial x}{\\partial \\theta}(t, \\theta) = t A'(\\theta)\\, e^{tA(\\theta)}\\, x_0.",
+    "crumbs": [
+      "Plan du cours",
+      "Dérivées",
+      "Paramètres"
     ]
   }
 ]

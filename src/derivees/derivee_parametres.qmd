@@ -3,3 +3,76 @@ title: "Paramètres"
 page-layout: article
 ---
 
+## Cas Non Homogène
+
+On considère le problème de Cauchy (vectoriel) linéaire
+
+$$
+    x'(t) = A(\theta) x(t) + b(t), \quad x(t_0) = x_0
+$$
+
+avec $\theta \in \R$ (ici $l=1$ pour simplifier), et dont la solution, notée $x(\cdot, \theta)$, est
+
+$$
+    x(t, \theta) \coloneqq e^{(t-t_0)A(\theta)}\, x_0 + \int_{t_0}^{t} e^{(t-s)A(\theta)}\, b(s) \, ds.
+$$
+
+La dérivée partielle par rapport à $\theta$ est plus difficile à obtenir quand la matrice $A$ dépend du paramètre, par comparaison au cas où seulement la condition initiale dépend du paramètre. En effet, dans cette nouvelle situation, nous devons dériver l'application
+
+$$
+    A \mapsto e^A
+$$
+
+ce qui n'est pas aussi simple qu'il n'y parait. Nous allons donc procéder autrement pour trouver cette dérivée partielle. Lorsque nous avons dérivé par rapport à la condition initiale, nous avons remarqué que la dérivée était elle-même solution d'un problème de Cauchy. Profitons de cela et utilisons la [formulation intégrale](../edo_lineaires/definition.html#formulation-intégrale). La fonction $x(t, \theta)$ vérifie
+
+$$
+    x(t, \theta) = x_0 + \int_{t_0}^{t} \left( A(\theta)\, x(s, \theta) + b(s) \right) \, \mathrm{d}s.
+$$
+
+En dérivant les termes de gauche et de droite, leurs dérivées étant égales, nous obtenons 
+
+$$
+    \frac{\partial x}{\partial \theta}(t, \theta) = 
+    \int_{t_0}^{t} \left( A(\theta)\, \frac{\partial x}{\partial \theta}(s, \theta) + A'(\theta)\, x(s, \theta) \right) \, \mathrm{d}s.
+$$
+
+Autrement dit, la fonction $t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)$ est solution du problème de Cauchy
+
+$$
+    x'(t) = A(\theta)\, x(t) + A'(\theta)\, x(t, \theta), \quad x(t_0) = 0_{\R^n},
+$$
+
+qui n'est rien d'autre qu'un problème de Cauchy linéaire non homogène de la forme 
+
+$$
+    x'(t) = A(\theta)\, x(t) + d_\theta(t), \quad x(t_0) = 0_{\R^n},
+$$
+
+où l'on a introduit $d_\theta(t) \coloneqq A'(\theta)\, x(t, \theta)$. 
+
+## Cas Homogène
+
+Dans le cas où $b(t) = 0$, en fixant $t_0=0$, la solution est
+
+$$
+    x(t, \theta) = e^{tA(\theta)}\, x_0
+$$
+
+et pour calculer $\frac{\partial x}{\partial \theta}(t, \theta)$, nous sommes amené à résoudre
+
+$$
+    x'(t) = A(\theta)\, x(t) + A'(\theta)\, e^{tA(\theta)}\, x_0, \quad x(0) = 0_{\R^n}.
+$$
+
+La solution est donnée par 
+
+$$
+    \frac{\partial x}{\partial \theta}(t, \theta) = 
+    \int_{t_0}^{t} \left( e^{(t-s)A(\theta)} A'(\theta)\, e^{sA(\theta)}\, x_0 \right) \, \mathrm{d}s
+$$
+
+et si $[A'(\theta), A(\theta)] = A'(\theta) A(\theta) - A(\theta) A'(\theta) = 0_n$ alors cette expression se réduit à
+
+$$
+    \frac{\partial x}{\partial \theta}(t, \theta) = t A'(\theta)\, e^{tA(\theta)}\, x_0.
+$$

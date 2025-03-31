@@ -161,12 +161,57 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../assets/css/styles.css">
 <meta property="og:title" content="Introduction – Cours EDO">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta property="og:site_name" content="Cours EDO">
 <meta name="twitter:title" content="Introduction – Cours EDO">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://ocourses.github.io/kaplan/src/derivees/assets/images/edo-favicon.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -402,6 +447,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>On considère le problème de Cauchy (vectoriel) linéaire</p>
+<p><span class="math display">
+    x'(t) = A x(t) + b(t), \quad x(t_0) = x_0
+</span></p>
+<p>dont la solution, notée <span class="math inline">x(\cdot, A, x_0)</span> pour faire apparaitre la dépendance en la matrice <span class="math inline">A</span> et la condition initiale <span class="math inline">x_0</span>, est</p>
+<p><span class="math display">
+    x(t, A, x_0) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
+</span></p>
+<p>d’après le <a href="../edo_lineaires/solution.html#cas-non-homogène">théorème dans le cas non homogène</a>. Dans la suite de ce cours, nous nous intéressons aux dérivées partielles :</p>
+<p><span class="math display">
+    \frac{\partial x}{\partial x_0}(t, A, x_0)
+    \quad
+    \text{et}
+    \quad
+    \frac{\partial x}{\partial A}(t, A, x_0).
+</span></p>
+<p>Plus précisément, si la matrice <span class="math inline">A</span> et la condition initiale dépendent de paramètres <span class="math inline">\theta \in \R^l</span>, on pourra noter <span class="math inline">x(\cdot, \theta)</span> la solution du problème de Cauchy</p>
+<p><span class="math display">
+    x'(t) = A(\theta) x(t) + b(t), \quad x(t_0) = x_0(\theta)
+</span></p>
+<p>et on cherchera à calculer</p>
+<p><span class="math display">
+    \frac{\partial x}{\partial \theta}(t, \theta).
+</span></p>
+<p>Dans tous les cas, nous avons besoin des dérivées partielles de la solution du problème de Cauchy par rapport à la matrice <span class="math inline">A</span> et la condition initiale <span class="math inline">x_0</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nous ferons l’hypothèse que ces dérivées partielles existent. Dans le cas où la fonction <span class="math inline">t \mapsto b(t)</span> est continue, nous pouvons montrer que c’est bien le cas. Nous supposons donc que <span class="math inline">b</span> est continue. Si la matrice <span class="math inline">A</span> et la condition initiale dépendent de <span class="math inline">\theta</span>, elles doivent en dépendre de manière différentiable bien entendu.</p>
+</div>
+</div>
 
 
 

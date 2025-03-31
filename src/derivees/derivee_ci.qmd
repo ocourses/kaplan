@@ -3,3 +3,26 @@ title: "Condition initiale"
 page-layout: article
 ---
 
+On considère le problème de Cauchy (vectoriel) linéaire
+
+$$
+    x'(t) = A x(t) + b(t), \quad x(t_0) = x_0(\theta)
+$$
+
+avec $\theta \in \R$ (ici $l=1$ pour simplifier), et dont la solution, notée $x(\cdot, \theta)$, est
+
+$$
+    x(t, \theta) \coloneqq e^{(t-t_0)A}\, x_0(\theta) + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds.
+$$
+
+La dérivée partielle par rapport à $\theta$ est simplement
+
+$$
+    \frac{\partial x}{\partial \theta}(t, \theta) = e^{(t-t_0)A}\, x'_0(\theta)
+$$
+
+où $x'(\theta) \in L(\R, \R^n) \cong \R^n$. Ainsi nous remarquons que la dérivée partielle est elle-même solution d'un problème de Cauchy linéaire,qui a la particularité supplémentaire d'être homogène. En effet, $t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)$ est la solution de :
+
+$$
+    x'(t) = A x(t), \quad x(t_0) = x_0'(\theta).
+$$

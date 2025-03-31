@@ -87,7 +87,7 @@ Nous supposons acquis l'existence d'une unique solution globale.
 La solution du problème de Cauchy linéaire non homogène est donnée par :
 
 $$
-\varphi(t) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
+    \varphi(t) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
 $$
 
 avec $t \in \mathcal{I}$.

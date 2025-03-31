@@ -3,3 +3,44 @@ title: "Introduction"
 page-layout: article
 ---
 
+On considère le problème de Cauchy (vectoriel) linéaire
+
+$$
+    x'(t) = A x(t) + b(t), \quad x(t_0) = x_0
+$$
+
+dont la solution, notée $x(\cdot, A, x_0)$ pour faire apparaitre la dépendance en la matrice $A$ et la condition initiale $x_0$, est
+
+$$
+    x(t, A, x_0) \coloneqq e^{(t-t_0)A}\, x_0 + \int_{t_0}^{t} e^{(t-s)A}\, b(s) \, ds
+$$
+
+d'après le [théorème dans le cas non homogène](../edo_lineaires/solution.html#cas-non-homogène). Dans la suite de ce cours, nous nous intéressons aux dérivées partielles : 
+
+$$
+    \frac{\partial x}{\partial x_0}(t, A, x_0)
+    \quad
+    \text{et}
+    \quad
+    \frac{\partial x}{\partial A}(t, A, x_0).
+$$
+
+Plus précisément, si la matrice $A$ et la condition initiale dépendent de paramètres $\theta \in \R^l$, on pourra noter $x(\cdot, \theta)$ la solution du problème de Cauchy
+
+$$
+    x'(t) = A(\theta) x(t) + b(t), \quad x(t_0) = x_0(\theta)
+$$
+
+et on cherchera à calculer
+
+$$
+    \frac{\partial x}{\partial \theta}(t, \theta).
+$$
+
+Dans tous les cas, nous avons besoin des dérivées partielles de la solution du problème de Cauchy par rapport à la matrice $A$ et la condition initiale $x_0$.
+
+::: {.callout-note icon=false}
+### Remarque
+
+Nous ferons l'hypothèse que ces dérivées partielles existent. Dans le cas où la fonction $t \mapsto b(t)$ est continue, nous pouvons montrer que c'est bien le cas. Nous supposons donc que $b$ est continue. Si la matrice $A$ et la condition initiale dépendent de $\theta$, elles doivent en dépendre de manière différentiable bien entendu.
+:::
