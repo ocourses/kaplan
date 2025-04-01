@@ -472,10 +472,10 @@ Définition
 <p><span class="math display">
 \begin{aligned}
     k_1 &amp;= f(t_i, x_i) \\
-    k_2 &amp;= f(t_i + c_2 h, x_i + h a_{21} k_1) \\
+    k_2 &amp;= f(t_i + c_2 h_i, x_i + h_i a_{21} k_1) \\
     \vdots &amp; \\[-1em]
-    k_s &amp;= f(t_i + c_s h, x_i + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
-    x_{i+1} &amp;= x_i + h \sum_{i=1}^{s} b_i k_i,
+    k_s &amp;= f(t_i + c_s h_i, x_i + h_i \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_{i+1} &amp;= x_i + h_i \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 </span></p>
 <p>où les coefficients <span class="math inline">c_i</span>, <span class="math inline">a_{ij}</span> et <span class="math inline">b_i</span> sont des constantes qui définissent précisément le schéma.</p>

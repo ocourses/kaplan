@@ -15,10 +15,10 @@ On appelle **méthode de Runge-Kutta explicite à $s$ étages**, la méthode dé
 $$
 \begin{aligned}
     k_1 &= f(t_i, x_i) \\
-    k_2 &= f(t_i + c_2 h, x_i + h a_{21} k_1) \\
+    k_2 &= f(t_i + c_2 h_i, x_i + h_i a_{21} k_1) \\
     \vdots & \\[-1em]
-    k_s &= f(t_i + c_s h, x_i + h \sum_{j=1}^{s-1} a_{sj} k_j) \\
-    x_{i+1} &= x_i + h \sum_{i=1}^{s} b_i k_i,
+    k_s &= f(t_i + c_s h_i, x_i + h_i \sum_{j=1}^{s-1} a_{sj} k_j) \\
+    x_{i+1} &= x_i + h_i \sum_{i=1}^{s} b_i k_i,
 \end{aligned}
 $$
 
