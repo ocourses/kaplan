@@ -223,10 +223,10 @@ $$
 Alors, pusique $A^2 = B^2 = 0_2$, on a :
 
 $$
-    e^A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
+    e^A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \quad e^B = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}
 $$
 
-mais par ailleursn $(A + B)^2 = I_2$ donc
+mais par ailleurs $(A + B)^2 = I_2$ donc
 
 $$
     \begin{aligned}

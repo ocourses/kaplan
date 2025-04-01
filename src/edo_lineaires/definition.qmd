@@ -53,7 +53,7 @@ et $\varphi(t_0) = x_0$.
 Il est courant d'utiliser la même notation pour la solution $\varphi$ et l'inconnue $x$.
 :::
 
-Une solution $(I,\varphi)$ est dite **maximale** si, pour toute autre solution $(J,\psi)$, on a $J \subset I$ et $\varphi = \psi$ sur $J$. On dit que qu'une solution $(I,\varphi)$ est un **prolongement** d'une autre solution $(J,\psi)$, si $J \subset I$ et $\varphi = \psi$ sur $J$. On parle de solution **globale** si ell est définie sur tout l'intervalle $\mathcal{I}$.
+Une solution $(I,\varphi)$ est dite **maximale** si, pour toute autre solution $(J,\psi)$, on a $J \subset I$ et $\varphi = \psi$ sur $J$. On dit que qu'une solution $(I,\varphi)$ est un **prolongement** d'une autre solution $(J,\psi)$, si $J \subset I$ et $\varphi = \psi$ sur $J$. On parle de solution **globale** si elle est définie sur tout l'intervalle $\mathcal{I}$.
 
 ::: {.callout-note icon=false}
 ### Remarques
