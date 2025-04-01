@@ -45,7 +45,7 @@ $$
 qui n'est rien d'autre qu'un problème de Cauchy linéaire non homogène de la forme 
 
 $$
-    x'(t) = A(\theta)\, x(t) + d_\theta(t), \quad x(t_0) = 0_{\R^n},
+    X'(t) = A(\theta)\, X(t) + d_\theta(t), \quad x(t_0) = 0_{\R^n},
 $$
 
 où l'on a introduit $d_\theta(t) \coloneqq A'(\theta)\, x(t, \theta)$. 
