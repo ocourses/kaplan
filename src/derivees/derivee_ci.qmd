@@ -21,7 +21,7 @@ $$
     \frac{\partial x}{\partial \theta}(t, \theta) = e^{(t-t_0)A}\, x'_0(\theta)
 $$
 
-où $x'(\theta) \in L(\R, \R^n) \cong \R^n$. Ainsi nous remarquons que la dérivée partielle est elle-même solution d'un problème de Cauchy linéaire,qui a la particularité supplémentaire d'être homogène. En effet, $t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)$ est la solution de :
+où $x'(\theta) \in L(\R, \R^n) \cong \R^n$. Ainsi nous remarquons que la dérivée partielle est elle-même solution d'un problème de Cauchy linéaire, qui a la particularité supplémentaire d'être homogène. En effet, $t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)$ est la solution de :
 
 $$
     X'(t) = A X(t), \quad X(t_0) = x_0'(\theta).
