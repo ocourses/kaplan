@@ -39,7 +39,7 @@ $$
 Autrement dit, la fonction $t \mapsto \frac{\partial x}{\partial \theta}(t, \theta)$ est solution du problème de Cauchy
 
 $$
-    x'(t) = A(\theta)\, x(t) + A'(\theta)\, x(t, \theta), \quad x(t_0) = 0_{\R^n},
+    X'(t) = A(\theta)\, X(t) + A'(\theta)\, x(t, \theta), \quad X(t_0) = 0_{\R^n},
 $$
 
 qui n'est rien d'autre qu'un problème de Cauchy linéaire non homogène de la forme 
@@ -61,7 +61,7 @@ $$
 et pour calculer $\frac{\partial x}{\partial \theta}(t, \theta)$, nous sommes amené à résoudre
 
 $$
-    x'(t) = A(\theta)\, x(t) + A'(\theta)\, e^{tA(\theta)}\, x_0, \quad x(0) = 0_{\R^n}.
+    X'(t) = A(\theta)\, X(t) + A'(\theta)\, e^{tA(\theta)}\, x_0, \quad X(0) = 0_{\R^n}.
 $$
 
 La solution est donnée par 
