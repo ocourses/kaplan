@@ -6,7 +6,7 @@ using Plots
 @recipe function f(cp::CurvePlot)
 
     x, θ, Δθa, Δθb, c, z = cp.args
-    N = 100
+    N = 200
     θs = range(θ-Δθa, θ+Δθb, length=N)
     xs = x.(θs)
 
@@ -30,29 +30,26 @@ using Plots
     return θs, xs
 end
 
-function draw(state)
-
-    # xlims_ = (-0.5, 2)
-    # ylims_ = (-0.4, 3)
-
-    xlims_ = (-2, 6)
-    ylims_ = (-0.6, 5)
-
-    font_size = 18
+function draw(state; dpi=300)
 
     # initialisation
-    function initiate_plot()
+    function initiate_plot(xlims_, ylims_, Fmax)
     
         # plot
-        plt = plot(framestyle=:none, ticks=nothing, legend=false, axes=false, xlims=xlims_, ylims=ylims_, dpi=300)
+        plt = plot(framestyle=:none, 
+            ticks=nothing, 
+            legend=false, 
+            axes=false, 
+            xlims=xlims_, 
+            ylims=ylims_, 
+            dpi=dpi)
     
         # axes
         plot!(plt, [xlims_[1], xlims_[2]], [0, 0], color=:black, lw=1, arrow=true)
         plot!(plt, [0, 0], [ylims_[1], ylims_[2]], color=:black, lw=1, arrow=true)
     
         # labels
-        annotate!(plt, xlims_[2]-0.1, -0.3, text(L"\theta", font_size), :top)
-        #annotate!(plt, -0.3, 3-0.1, text(L"x(t_i, \cdot)", font_size), :right)
+        annotate!(plt, xlims_[2]-0.1, -0.08*Fmax, text(L"\theta", font_size), :top)    
      
         return plt
     end
@@ -60,25 +57,26 @@ function draw(state)
     # affichage de la courbe sur un intervalle
     function draw_model!(plt, F, θ, Δθa, Δθb)
         curveplot!(plt, F, θ, Δθa, Δθb, :blue, 1)
-        annotate!(plt, 1, 1.5, text(L"F", font_size, :blue), :bottom)
+        annotate!(plt, 4.5, 0.5, text(L"F", font_size, :blue), :bottom)
     end
 
     # affichage de la tangente à la courbe en un point sur un intervalle
     function draw_tangent!(plt, ∂F, θ, Δθa, Δθb)
         T(y) = ∂F(θ, y-θ)
         curveplot!(plt, T, θ, Δθa, Δθb, :red, 2)
-        annotate!(plt, 3, 1, text(L"F_k", font_size, :red), :bottom)
+        annotate!(plt, -0.8, 0.5, text(L"F_k", font_size, :red), :bottom)
     end
 
     # données
-    xi = 0.5
+    xi = π/8 # entre -1 et 1
 
     # modèle
-    x(θ) = 2.5+cos(θ-1-π) # 0.5 + (θ-0.5)^2
+    x(θ) = cos(θ)
     F(θ) = 0.5*(xi-x(θ))^2
+    Fmax = F(π)
 
     # dérivée
-    ∂x(θ) = -sin(θ-1-π) # 2*(θ-0.5)
+    ∂x(θ) = -sin(θ)
     ∂F(θ, Δθ) = 0.5*(xi-x(θ)-∂x(θ)*Δθ)^2
 
     function lslin(θ)
@@ -87,11 +85,14 @@ function draw(state)
         return b/a
     end
 
-    # point de départ
-    #θₖ = 1
-    #xₖ = x(θₖ)
+    # limits of the plots
+    xlims_ = (-2, 6)
+    ylims_ = (-0.1*Fmax, 1.1*Fmax)
 
-    plt = initiate_plot()
+    font_size = 18
+
+    #
+    plt = initiate_plot(xlims_, ylims_, Fmax)
 
     text_theta = text(L"\theta_k", font_size, :black)
     text_theta_suivant = text(L"\theta_{k+1}", font_size, :black)
@@ -102,8 +103,8 @@ function draw(state)
         _ => nothing
     end
 
-    theta_y = -0.4
-    delta_theta_y = -0.2
+    theta_y = -0.08*Fmax
+    delta_theta_y = -0.05*Fmax
 
     @match state begin
         (θₖ, :theta, 1) => begin
@@ -216,12 +217,12 @@ function draw(state)
 
 end
 
-draw((2, :theta_suivant, 3))
+draw((2.5, :theta_suivant, 3))
 
 # Scénario
 function scenario()
     states = Any[]
-    θₖ = 2
+    θₖ = 2.5
     #
     for i ∈ 1:50        push!(states, (θₖ, :theta_suivant, 3))          end
     for i ∈ 1:50        push!(states, (θₖ, :theta_suivant, 2))          end
@@ -240,9 +241,9 @@ function scenario()
     for i ∈ 1:10        push!(states, (θₖ, :model_and_theta, 2))        end
     for i ∈ 1:30        push!(states, (θₖ, :model_and_theta, 3))        end
     for r ∈ 0:0.01:1    push!(states, (θₖ, :model_and_tangent, r))      end
-    for θₖ ∈ 2:0.025:5.5     push!(states, (θₖ, :model_and_tangent, 1))  end
-    for θₖ ∈ 5.5:-0.025:-1.5 push!(states, (θₖ, :model_and_tangent, 1))  end
-    for θₖ ∈ -1.5:0.025:2    push!(states, (θₖ, :model_and_tangent, 1))  end
+    for θₖ ∈ 2.5:0.025:5.8      push!(states, (θₖ, :model_and_tangent, 1))  end
+    for θₖ ∈ 5.8:-0.025:-1.8    push!(states, (θₖ, :model_and_tangent, 1))  end
+    for θₖ ∈ -1.8:0.025:2.5     push!(states, (θₖ, :model_and_tangent, 1))  end
     for i ∈ 1:30        push!(states, (θₖ, :model_and_tangent, 1))      end
     #
     for i ∈ 1:50        push!(states, (θₖ, :theta_suivant, 1))          end
@@ -253,7 +254,7 @@ end
 # affichage
 states = scenario()
 anim = @animate for state in states
-    plt = draw(state)
+    plt = draw(state; dpi=300)
 end
 
 pathname = "assets/julia/approximation_moindres_carres"
